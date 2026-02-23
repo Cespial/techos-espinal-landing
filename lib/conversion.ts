@@ -1,9 +1,9 @@
 export const COMPANY_NAME = "Espinal Multiservicios";
 export const SITE_URL = "https://techos-espinal-landing.vercel.app";
 
-export const PHONE_DISPLAY = "(+57) 300 000 0000";
-export const PHONE_E164 = "+573000000000";
-export const WA_NUMBER = "573000000000";
+export const PHONE_DISPLAY = "(+57) 300 733 6333";
+export const PHONE_E164 = "+573007336333";
+export const WA_NUMBER = "573007336333";
 export const DEFAULT_CITY = "Medellin / Valle de Aburra";
 
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
@@ -36,19 +36,19 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       id: "impermeabilizacion-cubiertas",
       name: "Impermeabilizacion de cubiertas",
       summary: "Control de filtraciones y sellado en puntos criticos.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$350.000 COP",
     },
     {
       id: "reparacion-goteras",
       name: "Reparacion de goteras",
       summary: "Intervencion puntual segun estado de la cubierta.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$180.000 COP",
     },
     {
       id: "mantenimiento-canoas",
       name: "Mantenimiento de canoas y bajantes",
       summary: "Limpieza y ajuste para mejorar evacuacion de agua.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$150.000 COP",
     },
   ],
   pintura: [
@@ -56,19 +56,19 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       id: "pintura-interior",
       name: "Pintura interior",
       summary: "Renovacion de espacios con acabados limpios.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$280.000 COP",
     },
     {
       id: "pintura-exterior",
       name: "Pintura exterior",
       summary: "Proteccion y acabado para fachadas.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$320.000 COP",
     },
     {
       id: "resanes-acabados",
       name: "Resanes y acabados",
       summary: "Nivelacion y correcciones previas a pintura.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$210.000 COP",
     },
   ],
   plomeria: [
@@ -76,19 +76,19 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       id: "reparacion-fugas",
       name: "Reparacion de fugas",
       summary: "Revision de tuberias y correccion segun el caso.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$170.000 COP",
     },
     {
       id: "destape-desagues",
       name: "Destape de desagues",
       summary: "Atencion de obstrucciones en redes internas.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$160.000 COP",
     },
     {
       id: "ajustes-hidrosanitarios",
       name: "Ajustes hidrosanitarios",
       summary: "Cambio y reparacion de piezas de uso frecuente.",
-      basePrice: "$[XX.XXX]",
+      basePrice: "$140.000 COP",
     },
   ],
 };
@@ -97,7 +97,7 @@ export const PLAN_DATA = [
   {
     id: "hogar-basico",
     name: "Plan Hogar Basico",
-    price: "$[XX.XXX]",
+    price: "$290.000 COP",
     features: [
       "1 visita de diagnostico",
       "Arreglo simple segun inspeccion",
@@ -108,7 +108,7 @@ export const PLAN_DATA = [
   {
     id: "preventivo",
     name: "Plan Preventivo",
-    price: "$[XX.XXX]",
+    price: "$690.000 COP",
     features: [
       "Revision programada",
       "Mantenimiento preventivo",
@@ -119,7 +119,7 @@ export const PLAN_DATA = [
   {
     id: "integral",
     name: "Plan Integral",
-    price: "$[XX.XXX]",
+    price: "$1.290.000 COP",
     features: [
       "Atencion por linea prioritaria",
       "Intervenciones por fases",
