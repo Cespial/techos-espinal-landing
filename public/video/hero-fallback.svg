@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Techos Espinal</title>
+  <desc id="desc">Servicio de impermeabilizacion y reparacion de techos en Medellin y Valle de Aburra.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="45%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.32" fill="none" stroke="#94a3b8" stroke-width="1">
+    <path d="M0 120h1600M0 260h1600M0 400h1600M0 540h1600M0 680h1600M0 820h1600"/>
+    <path d="M120 0v900M320 0v900M520 0v900M720 0v900M920 0v900M1120 0v900M1320 0v900M1520 0v900"/>
+  </g>
+  <path d="M240 520L800 180L1360 520" fill="none" stroke="url(#roof)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="370" y="520" width="860" height="180" rx="20" fill="#0b1220" opacity="0.84"/>
+  <text x="430" y="600" fill="#f8fafc" font-family="Arial, sans-serif" font-size="70" font-weight="700">Techos Espinal</text>
+  <text x="430" y="660" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="34">Impermeabilizacion y reparacion de techos en Medellin</text>
+</svg>

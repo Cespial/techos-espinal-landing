@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { COMPANY_NAME, SITE_URL } from "@/lib/conversion";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad",
-  description: "Conoce cómo Tu Página en 48 protege tus datos personales. Prácticas de privacidad transparentes para tu tranquilidad.",
+  title: "Politica de Privacidad",
+  description:
+    "Conoce como Techos Espinal trata los datos personales que recibimos por WhatsApp, llamada o formulario.",
   alternates: { canonical: `${SITE_URL}/privacidad` },
 };
 
@@ -14,91 +15,70 @@ export default function PrivacidadPage() {
         className="font-serif font-semibold leading-[1.1] tracking-[-0.025em] text-foreground"
         style={{ fontSize: "var(--font-size-h2)" }}
       >
-        Política de Privacidad
+        Politica de Privacidad
       </h1>
-      <p className="mt-2 font-sans text-body-sm text-text-tertiary">
-        Última actualización: febrero 2026
-      </p>
+      <p className="mt-2 font-sans text-body-sm text-text-tertiary">Ultima actualizacion: febrero 2026</p>
 
       <div className="mt-10 space-y-8 font-sans text-body leading-relaxed text-text-secondary">
         <section>
-          <h2 className="font-sans text-h3 text-foreground">1. Información que recopilamos</h2>
+          <h2 className="font-sans text-h3 text-foreground">1. Informacion que recopilamos</h2>
           <p className="mt-3">
-            Al usar nuestro sitio web o contratar nuestros servicios, podemos recopilar: nombre,
-            número de WhatsApp, tipo de negocio y plan seleccionado. Esta información se
-            proporciona voluntariamente a través del formulario de contacto o por WhatsApp.
+            Cuando nos contactas, podemos recibir datos como nombre, telefono, municipio, tipo de
+            servicio solicitado y nivel de urgencia. Esta informacion la entregas de forma voluntaria.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">2. Uso de la información</h2>
+          <h2 className="font-sans text-h3 text-foreground">2. Uso de la informacion</h2>
           <p className="mt-3">
-            Usamos tus datos exclusivamente para: comunicarnos contigo sobre el servicio
-            contratado, enviarte actualizaciones del proyecto y mejorar nuestros servicios.
-            No vendemos ni compartimos tu información con terceros.
+            Usamos estos datos para responder solicitudes, coordinar inspecciones tecnicas, enviar
+            cotizaciones y hacer seguimiento del servicio. No comercializamos tu informacion personal.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">3. Google Analytics</h2>
+          <h2 className="font-sans text-h3 text-foreground">3. Herramientas de analitica</h2>
           <p className="mt-3">
-            Utilizamos Google Analytics para entender cómo los visitantes interactúan con nuestro
-            sitio. Esta herramienta recopila datos anónimos como páginas visitadas, tiempo de
-            permanencia y dispositivo utilizado. No recopilamos información personal identificable
-            a través de Analytics.
+            Este sitio puede usar herramientas de analitica para medir interacciones generales (por
+            ejemplo, clics en botones de contacto). No se usa esta informacion para perfilar personas.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">4. Cookies</h2>
+          <h2 className="font-sans text-h3 text-foreground">4. WhatsApp y llamadas</h2>
           <p className="mt-3">
-            Nuestro sitio puede utilizar cookies técnicas necesarias para su funcionamiento y
-            cookies de análisis de Google Analytics. Puedes desactivar las cookies desde la
-            configuración de tu navegador.
+            Si escribes por WhatsApp o llamas, tu comunicacion se gestiona en plataformas de terceros.
+            Te recomendamos revisar sus politicas de privacidad para conocer su tratamiento de datos.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">5. WhatsApp</h2>
+          <h2 className="font-sans text-h3 text-foreground">5. Seguridad</h2>
           <p className="mt-3">
-            Cuando nos contactas por WhatsApp, tus mensajes se procesan a través de la plataforma
-            de Meta (WhatsApp). Te recomendamos revisar la política de privacidad de WhatsApp para
-            entender cómo manejan tus datos.
+            Aplicamos medidas razonables para proteger la informacion. Ningun metodo de transmision en
+            internet garantiza seguridad absoluta.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">6. Seguridad</h2>
+          <h2 className="font-sans text-h3 text-foreground">6. Tus derechos</h2>
           <p className="mt-3">
-            Tomamos medidas razonables para proteger tu información personal. Sin embargo, ningún
-            método de transmisión por Internet es 100% seguro.
+            Puedes solicitar actualizacion o eliminacion de tus datos contactandonos por WhatsApp.
+            Revisaremos tu solicitud en un plazo razonable.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">7. Tus derechos</h2>
+          <h2 className="font-sans text-h3 text-foreground">7. Cambios a esta politica</h2>
           <p className="mt-3">
-            Puedes solicitar acceso, corrección o eliminación de tus datos personales en cualquier
-            momento escribiéndonos por WhatsApp. Atenderemos tu solicitud en un plazo máximo de
-            10 días hábiles.
+            Podemos actualizar esta politica cuando sea necesario. La version vigente siempre estara
+            publicada en esta pagina.
           </p>
         </section>
 
         <section>
-          <h2 className="font-sans text-h3 text-foreground">8. Cambios a esta política</h2>
-          <p className="mt-3">
-            Podemos actualizar esta política periódicamente. La fecha de última actualización se
-            indica al inicio de esta página. El uso continuado del sitio implica la aceptación de
-            los cambios.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-sans text-h3 text-foreground">9. Contacto</h2>
-          <p className="mt-3">
-            Para preguntas sobre esta política, escríbenos por WhatsApp o a través del formulario
-            de contacto en {SITE_NAME}.
-          </p>
+          <h2 className="font-sans text-h3 text-foreground">8. Contacto</h2>
+          <p className="mt-3">Para preguntas sobre privacidad, escribenos desde el sitio de {COMPANY_NAME}.</p>
         </section>
       </div>
     </main>

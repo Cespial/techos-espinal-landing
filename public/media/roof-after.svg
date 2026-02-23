@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <path d="M120 480L600 180L1080 480" fill="none" stroke="#f97316" stroke-width="42" stroke-linecap="round" />
+  <rect x="210" y="480" width="780" height="220" rx="18" fill="#111827" />
+  <path d="M320 565H900" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" opacity="0.7" />
+  <path d="M340 610H880" stroke="#fb923c" stroke-width="8" stroke-linecap="round" opacity="0.8" />
+  <text x="92" y="110" fill="#f8fafc" font-size="72" font-family="Arial, sans-serif" font-weight="700">Despues</text>
+</svg>
