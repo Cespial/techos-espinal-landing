@@ -859,3 +859,29 @@ details > summary {
 details > summary::-webkit-details-marker {
   display: none;
 }
+
+.reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 420ms ease-out, transform 420ms ease-out;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

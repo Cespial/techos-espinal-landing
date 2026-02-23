@@ -23,40 +23,40 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Techos Espinal | Impermeabilizacion, Goteras y Canoas en Medellin",
-    template: "%s | Techos Espinal",
+    default: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
+    template: "%s | Espinal Multiservicios",
   },
   description:
-    "Techos Espinal: impermeabilizacion, goteras, canoas y arreglo de techos en Medellin, Valle de Aburra y Antioquia. Agenda inspeccion tecnica por WhatsApp o llamada.",
+    "Espinal Multiservicios en Medellin y Valle de Aburra: techos y cubiertas, pintura y acabados, plomeria. Cotiza por WhatsApp, llamada o formulario corto.",
   keywords: [
-    "impermeabilizacion Medellin",
-    "reparacion de goteras Medellin",
-    "canoas y bajantes Valle de Aburra",
-    "arreglo de techos Antioquia",
-    "techos espinal",
+    "multiservicios Medellin",
+    "techos y cubiertas Medellin",
+    "pintura y acabados Valle de Aburra",
+    "plomeria Antioquia",
+    "espinal multiservicios",
   ],
   openGraph: {
     type: "website",
     locale: "es_CO",
     url: SITE_URL,
-    siteName: "Techos Espinal",
-    title: "Techos Espinal | Impermeabilizacion, Goteras y Canoas en Medellin",
+    siteName: "Espinal Multiservicios",
+    title: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
     description:
-      "Servicio tecnico de impermeabilizacion y reparacion de techos en Medellin y municipios del Valle de Aburra.",
+      "Soluciones para hogares y negocios en Medellin, Valle de Aburra y Antioquia segun disponibilidad.",
     images: [
       {
         url: "/video/hero-fallback.svg",
         width: 1600,
         height: 900,
-        alt: "Techos Espinal en Medellin",
+        alt: "Espinal Multiservicios en Medellin",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Techos Espinal | Impermeabilizacion, Goteras y Canoas en Medellin",
+    title: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
     description:
-      "Agenda inspeccion tecnica por WhatsApp o llamada. Cobertura en Medellin y Valle de Aburra.",
+      "Cotiza por WhatsApp o llamada. Cobertura en Medellin, Valle de Aburra y Antioquia.",
     images: ["/video/hero-fallback.svg"],
   },
   robots: {
