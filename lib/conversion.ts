@@ -10,9 +10,8 @@ export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 
 export const NAV_LINKS = [
   { id: "servicios", label: "Servicios" },
-  { id: "proceso", label: "Proceso" },
-  { id: "galeria", label: "Galeria" },
-  { id: "precios", label: "Precios" },
+  { id: "proceso", label: "Como funciona" },
+  { id: "galeria", label: "Trabajos" },
   { id: "cobertura", label: "Cobertura" },
   { id: "faq", label: "Preguntas" },
 ] as const;

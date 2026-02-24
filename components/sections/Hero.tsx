@@ -12,9 +12,9 @@ type HeroProps = {
 };
 
 const TRUST_BULLETS = [
-  "Precios claros desde el inicio",
-  "Garantia por escrito",
-  "Orden y limpieza en obra",
+  "Te decimos el precio antes de empezar",
+  "Garantia por escrito en cada trabajo",
+  "Dejamos todo limpio y en orden",
 ];
 
 export default function Hero({
@@ -48,14 +48,13 @@ export default function Hero({
         ) : (
           <Image
             src="/video/slow-majestic-poster.jpg"
-            alt="Trabajo real de Espinal Multiservicios en Medellin"
+            alt="Equipo de Espinal Multiservicios trabajando en Medellin"
             fill
             priority
             sizes="100vw"
             className="object-cover"
           />
         )}
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       </div>
 
@@ -63,18 +62,18 @@ export default function Hero({
       <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-20 text-center text-white lg:px-8">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
           <MapPin className="h-4 w-4" aria-hidden="true" />
-          <span>Medellin y Valle de Aburra</span>
+          <span>Servicio en Medellin y todo el Valle de Aburra</span>
         </div>
 
-        <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Techos, pintura y plomeria con diagnostico y garantia
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+          ¿Necesitas arreglar el techo, pintar o reparar la plomeria?
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
-          Visita tecnica, cotizacion clara y ejecucion coordinada.
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          Nosotros vamos a tu casa o negocio, revisamos el problema, te damos el precio y lo resolvemos. Asi de sencillo.
         </p>
 
-        <div className="mx-auto mt-8 flex max-w-md flex-wrap justify-center gap-x-6 gap-y-3">
+        <div className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-3">
           {TRUST_BULLETS.map((bullet) => (
             <div
               key={bullet}
@@ -95,24 +94,24 @@ export default function Hero({
             target="_blank"
             rel="noreferrer"
             onClick={onWhatsAppClick}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-orange-600/30 transition-all hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-orange-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            Cotizar por WhatsApp
+            Pedir cotizacion gratis
           </a>
 
           <a
             href={phoneLink}
             onClick={onCallClick}
-            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-3.5 font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
             Llamar ahora
           </a>
         </div>
 
-        <p className="mt-4 text-xs text-white/50">
-          Cotizacion sujeta a inspeccion tecnica.
+        <p className="mt-5 text-sm text-white/60">
+          Escribenos por WhatsApp o llamanos. Te respondemos rapido en horario laboral.
         </p>
       </div>
     </section>

@@ -15,10 +15,9 @@ import { track } from "@/lib/tracking";
 
 import StickyHeader from "@/components/sections/StickyHeader";
 import Hero from "@/components/sections/Hero";
-import ServiceColumns from "@/components/sections/ServiceColumns";
+import ServiceTabs from "@/components/sections/ServiceTabs";
 import HowWeWork from "@/components/sections/HowWeWork";
 import BeforeAfterGallery from "@/components/sections/BeforeAfterGallery";
-import PricingRanges from "@/components/sections/PricingRanges";
 import CoverageAvailability from "@/components/sections/CoverageAvailability";
 import FaqFooter from "@/components/sections/FaqFooter";
 import MobileStickyBar from "@/components/sections/MobileStickyBar";
@@ -219,13 +218,11 @@ export default function TechosLanding() {
           onCallClick={() => track("cta_call_click", { source: "hero" })}
         />
 
-        <ServiceColumns onQuoteOpen={openQuoteModal} />
+        <ServiceTabs />
 
-        <HowWeWork waLink={heroWaLink} />
+        <HowWeWork waLink={heroWaLink} telLink={telLink} />
 
         <BeforeAfterGallery />
-
-        <PricingRanges onQuoteOpen={openQuoteModal} />
 
         <CoverageAvailability
           selectedMunicipality={selectedCoverageMunicipality}

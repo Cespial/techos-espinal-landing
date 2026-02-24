@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircle, Phone } from "lucide-react";
 import {
   COMPANY_NAME,
   FAQ_ITEMS,
@@ -31,8 +31,11 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
       <section id="faq" className="border-t border-slate-200 bg-white py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            Preguntas frecuentes
+            Preguntas que nos hacen seguido
           </h2>
+          <p className="mt-3 text-base text-slate-600">
+            Si tienes otra duda que no esta aqui, escribenos y te respondemos rapido.
+          </p>
 
           <div className="mt-8 space-y-3">
             {FAQ_ITEMS.map((item) => (
@@ -40,46 +43,63 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                 key={item.id}
                 className="group rounded-xl border border-slate-200 bg-slate-50"
               >
-                <summary className="flex cursor-pointer items-center justify-between gap-3 px-4 py-3 text-sm font-semibold text-slate-900 transition-all duration-300 ease-out hover:bg-white">
+                <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-slate-900 transition-all duration-300 ease-out hover:bg-white">
                   {item.question}
                   <ChevronDown
-                    className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180"
+                    className="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-180"
                     aria-hidden="true"
                   />
                 </summary>
-                <div className="border-t border-slate-200 px-4 py-3 text-sm text-slate-600">
+                <div className="border-t border-slate-200 px-5 py-4 text-sm leading-relaxed text-slate-600">
                   {item.answer}
                 </div>
               </details>
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-slate-600">
-              ¿No encontraste tu pregunta?
+          {/* Final CTA */}
+          <div className="mt-10 rounded-2xl border border-orange-200 bg-orange-50 p-6 text-center md:p-8">
+            <p className="text-xl font-semibold text-slate-900">
+              ¿Tienes un problema en tu casa o negocio?
             </p>
-            <a
-              href={buildWaLinkFaq()}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => track("cta_whatsapp_click", { source: "faq" })}
-              className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
-            >
-              Preguntanos por WhatsApp
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
+              No dejes que se haga mas grande. Escribenos ahora y te ayudamos a resolverlo. La cotizacion no tiene costo.
+            </p>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href={buildWaLinkFaq()}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => track("cta_whatsapp_click", { source: "faq_final" })}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
+              >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                Pedir cotizacion gratis
+              </a>
+              <a
+                href={telLink}
+                onClick={() => track("cta_call_click", { source: "faq_final" })}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Llamar ahora
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-10 text-slate-900">
+      <footer className="border-t border-slate-200 bg-slate-50 py-10 text-slate-900">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-lg font-semibold">{COMPANY_NAME}</p>
               <p className="mt-1 text-sm text-slate-600">
-                Equipo especializado en techos, pintura y plomeria para hogares y negocios en Medellin y Valle de Aburra.
+                Techos, pintura y plomeria para casas y negocios en Medellin y el Valle de Aburra.
+              </p>
+              <p className="mt-1 text-xs text-slate-500">
+                Respondemos rapido por WhatsApp o llamada.
               </p>
             </div>
 
@@ -92,14 +112,15 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                Cotizar por WhatsApp
+                Pedir cotizacion
               </a>
               <a
                 href={telLink}
                 onClick={() => track("cta_call_click", { source: "footer" })}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-400 active:scale-[0.98]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-400 active:scale-[0.98]"
               >
-                Llamar ahora
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Llamar
               </a>
             </div>
           </div>

@@ -31,7 +31,7 @@ export default function MobileStickyBar({ waLink, telLink }: MobileStickyBarProp
           className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-xs font-semibold text-slate-900 active:scale-[0.98] sm:text-sm"
         >
           <WhatsAppIcon className="h-4 w-4" />
-          Cotizar
+          Pedir cotizacion
         </a>
         <a
           href={telLink}

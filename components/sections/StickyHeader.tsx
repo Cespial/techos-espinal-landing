@@ -82,7 +82,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
             className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-sm active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            Cotizar por WhatsApp
+            Pedir cotizacion
           </a>
         </div>
 
@@ -129,7 +129,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 text-xs font-semibold text-white active:scale-[0.98] sm:text-sm"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                Cotizar
+                Pedir cotizacion
               </a>
               <a
                 href={telLink}
