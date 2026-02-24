@@ -8,22 +8,48 @@
 
 ---
 
-## R1 — SEO Domain Fix + www Redirect + Perf Consistency
+## R1 — SEO Domain Fix + www Redirect
+**Commit**: 95182ee
 
-### Hallazgos
+| Prioridad | Fix |
+|-----------|-----|
+| P0 | `SITE_URL` → `https://espinalservicios.com` (cascades to canonical, og:url, og:image, sitemap, robots, structured data, footer) |
+| P1 | www→root 301 redirect via next.config.ts `redirects()` |
 
-| Prioridad | Síntoma | Causa | Validación |
-|-----------|---------|-------|------------|
-| P0 | canonical, og:url, og:image, sitemap, robots Host apuntan a `techos-espinal-landing.vercel.app` | `SITE_URL` en `lib/conversion.ts` es el subdominio Vercel | Cambiar a `https://espinalservicios.com`, rebuild, curl + grep canonical |
-| P0 | Structured data `url` en page.tsx apunta a Vercel subdomain | Usa `SITE_URL` | Cascaded from fix above |
-| P1 | www.espinalservicios.com no redirige a raíz (o viceversa) — ambos sirven 200 con contenido duplicado | No hay redirect configurado en Vercel/next.config | Agregar redirect en next.config.ts |
-| P1 | Footer link "Sitio principal" apunta a Vercel subdomain | Usa `SITE_URL` | Cascaded from fix above |
+**Verificación**: canonical ✓, sitemap ✓, robots ✓, www 308→root ✓
 
-### Cambios R1
-1. `lib/conversion.ts` — `SITE_URL` → `https://espinalservicios.com`
-2. `next.config.ts` — redirect www → raíz (301)
+---
 
-### Evidencia post-fix
-- Build: OK
-- curl canonical: espinalservicios.com ✓
-- sitemap/robots: espinalservicios.com ✓
+## R2 — Dead Imports + Counter CLS Fix
+**Commit**: d6238ba
+
+| Prioridad | Fix |
+|-----------|-----|
+| P1 | Remove unused `MessageCircle` import from ServiceTabs.tsx |
+| P1 | Remove unused `LINE_OPTIONS` import from Testimonials.tsx |
+| P2 | Fix SocialProofBar counter flicker: wrap setValue(0) + animation start in same rAF |
+
+---
+
+## R3 — Green Text Contrast + Focus Visible
+**Commit**: ec266b8
+
+| Prioridad | Fix |
+|-----------|-----|
+| P1 | `text-[#25D366]` (~2.5:1) → `text-[#15803d]` (~5.1:1) on outlined green buttons for WCAG AA |
+| P1 | Add `focus-visible:ring-2` to escape hatch, FAQ inline CTAs, service card CTAs |
+
+---
+
+## R4 — Security Headers
+**Commit**: (this cycle)
+
+| Prioridad | Fix |
+|-----------|-----|
+| P1 | Add X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy, Permissions-Policy via next.config.ts `headers()` |
+
+---
+
+## STOP — Remaining items that require strategy decisions (out of scope)
+- Font CSS variable `--font-inter` is actually Manrope (cosmetic, no user impact)
+- Domain aliasing requires manual `vercel alias set` after each deploy (needs Vercel project domain binding to automate)
