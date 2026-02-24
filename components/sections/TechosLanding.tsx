@@ -6,7 +6,6 @@ import {
   FormEvent,
   useEffect,
   useMemo,
-  useRef,
   useState,
   type CSSProperties,
   type ComponentType,
@@ -110,33 +109,33 @@ const LINE_LABEL_BY_ID: Record<ServiceLineId, string> = {
 const PROCESS_STEPS: ProcessStep[] = [
   {
     id: "brief",
-    title: "Nos cuentas el caso",
+    title: "Brief de necesidad",
     detail:
-      "Escuchamos que esta pasando, priorizamos por urgencia y definimos la linea correcta.",
-    note: "Puedes iniciar por WhatsApp o llamada.",
+      "Escuchamos el problema, validamos urgencia y definimos la linea de servicio adecuada para tu caso.",
+    note: "Inicias por WhatsApp o llamada, sin formularios largos.",
     icon: MessageCircle,
   },
   {
     id: "diagnostic",
     title: "Diagnostico en sitio",
     detail:
-      "Revisamos acceso, estado actual y riesgos para proponer una solucion aterrizada.",
-    note: "Usamos equipos de diagnostico segun el caso.",
+      "Revisamos acceso, estado actual y puntos criticos para proponer una solucion aterrizada.",
+    note: "Equipos de diagnostico segun el caso.",
     icon: Search,
   },
   {
     id: "proposal",
-    title: "Alcance y valor estimado",
+    title: "Alcance y valor base",
     detail:
-      "Te mostramos opciones, materiales recomendados y costos base antes de ejecutar.",
-    note: "Siempre sujeto a inspeccion tecnica.",
+      "Definimos actividades, materiales y valor base para que tomes la decision con claridad.",
+    note: "Siempre sujeto a inspeccion tecnica y condiciones del sitio.",
     icon: FileText,
   },
   {
     id: "execution",
-    title: "Ejecucion y seguimiento",
+    title: "Ejecucion coordinada",
     detail:
-      "Coordinamos el trabajo, dejamos el area ordenada y cerramos con recomendaciones.",
+      "Programamos, ejecutamos y dejamos el area limpia con cierre tecnico y recomendaciones de cuidado.",
     note: "Garantia por escrito segun servicio y alcance.",
     icon: ShieldCheck,
   },
@@ -408,6 +407,192 @@ function ServiceStorySvg({
   );
 }
 
+function ProcessStorySvg({
+  activeStepIndex,
+  shouldReduceMotion,
+}: {
+  activeStepIndex: number;
+  shouldReduceMotion: boolean;
+}) {
+  const clampedIndex = Math.min(PROCESS_STEPS.length - 1, Math.max(0, activeStepIndex));
+  const progressX = 72 + clampedIndex * 86;
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-4 md:p-5">
+      <div
+        className="pointer-events-none absolute -left-10 top-0 h-36 w-36 rounded-full bg-orange-200/60 blur-2xl"
+        aria-hidden="true"
+      />
+      <svg
+        viewBox="0 0 420 280"
+        className="relative h-auto w-full"
+        role="img"
+        aria-label="Diagrama del proceso de trabajo en cuatro pasos"
+      >
+        <defs>
+          <linearGradient id="process-route" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#fb923c" />
+            <stop offset="100%" stopColor="#f97316" />
+          </linearGradient>
+        </defs>
+
+        <rect x="26" y="46" width="368" height="164" rx="18" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+        <path
+          d="M72 132 C120 72, 200 72, 248 132 C292 184, 330 184, 348 132"
+          fill="none"
+          stroke="#cbd5e1"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray="6 8"
+        />
+        <motion.path
+          d="M72 132 C120 72, 200 72, 248 132 C292 184, 330 184, 348 132"
+          fill="none"
+          stroke="url(#process-route)"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeDasharray="360"
+          animate={{ strokeDashoffset: 360 - clampedIndex * 92 - 96 }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.45, ease: "easeOut" }}
+        />
+
+        {PROCESS_STEPS.map((step, index) => {
+          const x = 72 + index * 86;
+          const y = index % 2 === 0 ? 132 : 112;
+          const isActive = index <= clampedIndex;
+
+          return (
+            <g key={step.id}>
+              <circle
+                cx={x}
+                cy={y}
+                r={isActive ? 12 : 8}
+                fill={isActive ? "#f97316" : "#94a3b8"}
+                stroke={isActive ? "#fdba74" : "#cbd5e1"}
+                strokeWidth="1.5"
+              />
+              <text
+                x={x}
+                y={y + 30}
+                textAnchor="middle"
+                fill={isActive ? "#0f172a" : "#475569"}
+                fontSize="11"
+                fontFamily="var(--font-inter)"
+                fontWeight={isActive ? 700 : 500}
+              >
+                Paso {index + 1}
+              </text>
+            </g>
+          );
+        })}
+
+        {!shouldReduceMotion ? (
+          <motion.circle
+            cx={progressX}
+            cy={clampedIndex % 2 === 0 ? 132 : 112}
+            r={15}
+            fill="#fb923c"
+            opacity={0.16}
+            animate={{ r: [14, 21, 14], opacity: [0.12, 0.24, 0.12] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ) : null}
+      </svg>
+    </div>
+  );
+}
+
+function ValleyStorySvg({
+  activeLine,
+  selectedMunicipality,
+  shouldReduceMotion,
+}: {
+  activeLine: ServiceLineId;
+  selectedMunicipality: string;
+  shouldReduceMotion: boolean;
+}) {
+  const accentColor =
+    activeLine === "techos"
+      ? "#f97316"
+      : activeLine === "pintura"
+        ? "#0891b2"
+        : "#16a34a";
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 md:p-5">
+      <div
+        className="pointer-events-none absolute -right-8 top-4 h-28 w-28 rounded-full bg-orange-100 blur-2xl"
+        aria-hidden="true"
+      />
+      <svg
+        viewBox="0 0 420 260"
+        className="relative h-auto w-full"
+        role="img"
+        aria-label="Mapa narrativo de servicios en el Valle de Aburra"
+      >
+        <path
+          d="M40 165 C52 90, 110 48, 176 40 C240 34, 302 58, 334 102 C360 136, 362 185, 330 214 C294 246, 244 244, 194 232 C136 218, 72 218, 40 165 Z"
+          fill="#f8fafc"
+          stroke="#cbd5e1"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M84 176 C118 136, 144 118, 176 120 C205 122, 233 144, 272 142 C292 142, 313 133, 336 116"
+          fill="none"
+          stroke="#cbd5e1"
+          strokeWidth="3"
+          strokeDasharray="6 8"
+          strokeLinecap="round"
+        />
+        <motion.path
+          d="M84 176 C118 136, 144 118, 176 120 C205 122, 233 144, 272 142 C292 142, 313 133, 336 116"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeDasharray="240"
+          animate={{ strokeDashoffset: [240, 0] }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 1.25, ease: "easeOut", repeat: Infinity, repeatDelay: 1.8 }
+          }
+        />
+
+        <circle cx="106" cy="164" r="8" fill="#f97316" />
+        <circle cx="178" cy="122" r="8" fill="#f97316" />
+        <circle cx="260" cy="142" r="8" fill="#f97316" />
+        <circle cx="336" cy="116" r="9" fill="#0f172a" />
+
+        {!shouldReduceMotion ? (
+          <motion.circle
+            cx="336"
+            cy="116"
+            r={18}
+            fill="#f97316"
+            opacity={0.16}
+            animate={{ r: [16, 24, 16], opacity: [0.1, 0.24, 0.1] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ) : null}
+
+        <text x="80" y="200" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
+          Medellin
+        </text>
+        <text x="156" y="98" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
+          Envigado
+        </text>
+        <text x="245" y="168" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
+          Sabaneta
+        </text>
+        <text x="308" y="98" fill="#0f172a" fontSize="12" fontWeight="700" fontFamily="var(--font-inter)">
+          {selectedMunicipality}
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 export default function TechosLanding() {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const [isScrolled, setIsScrolled] = useState(false);
@@ -427,7 +612,6 @@ export default function TechosLanding() {
   const [showCallFallback, setShowCallFallback] = useState(false);
   const [quoteModalState, setQuoteModalState] = useState<QuoteModalState>(INITIAL_QUOTE_STATE);
   const [resolverState, setResolverState] = useState<ResolverFormState>(INITIAL_RESOLVER_STATE);
-  const seenProcessStepsRef = useRef<Set<string>>(new Set());
 
   const telLink = useMemo(() => buildTelLink(), []);
   const activeLineLabel = useMemo(() => LINE_LABEL_BY_ID[activeLine], [activeLine]);
@@ -451,6 +635,10 @@ export default function TechosLanding() {
   const activeProcessIndex = useMemo(
     () => Math.max(0, PROCESS_STEPS.findIndex((step) => step.id === activeProcessStep)),
     [activeProcessStep],
+  );
+  const activeProcessData = useMemo(
+    () => PROCESS_STEPS[activeProcessIndex] ?? PROCESS_STEPS[0],
+    [activeProcessIndex],
   );
   const coverageMunicipalities = useMemo(
     () => MUNICIPALITY_OPTIONS.filter((municipio) => municipio !== "Otro"),
@@ -524,44 +712,6 @@ export default function TechosLanding() {
   }, [shouldReduceMotion, activeLine]);
 
   useEffect(() => {
-    const processNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-process-step]"));
-
-    if (!processNodes.length || typeof IntersectionObserver === "undefined") {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          const stepId = (entry.target as HTMLElement).dataset.processStep;
-
-          if (!stepId) {
-            return;
-          }
-
-          setActiveProcessStep(stepId);
-
-          if (!seenProcessStepsRef.current.has(stepId)) {
-            seenProcessStepsRef.current.add(stepId);
-            track("scrollytelling_step_view", {
-              source: "proceso",
-              step: stepId,
-            });
-          }
-        });
-      },
-      { threshold: 0.5, rootMargin: "-20% 0px -32% 0px" },
-    );
-
-    processNodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const controller = new AbortController();
 
     const fetchWeather = async () => {
@@ -620,6 +770,14 @@ export default function TechosLanding() {
   const onLineSelect = (linea: ServiceLineId, source: string = "tabs") => {
     setActiveLine(linea);
     track("service_tab_select", { source, linea });
+  };
+
+  const onProcessStepSelect = (
+    stepId: string,
+    source: "timeline" | "list" | "cta",
+  ) => {
+    setActiveProcessStep(stepId);
+    track("process_step_select", { source, step: stepId });
   };
 
   const openQuoteModal = ({ linea, servicio }: { linea: ServiceLineId; servicio?: string }) => {
@@ -700,6 +858,8 @@ export default function TechosLanding() {
       setShowCallFallback(true);
     }
   };
+
+  const ActiveProcessIcon = activeProcessData.icon;
 
   return (
     <div className="bg-slate-50 text-slate-950 pb-20 md:pb-0">
@@ -815,7 +975,6 @@ export default function TechosLanding() {
                 variants={HERO_CONTAINER_VARIANTS}
                 initial="hidden"
                 animate="visible"
-                className="order-2 lg:order-1"
               >
                 <motion.div variants={HERO_ITEM_VARIANTS}>
                   <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3.5 py-1.5 text-sm font-medium text-orange-600">
@@ -877,7 +1036,7 @@ export default function TechosLanding() {
                   {[
                     "Precios claros desde el inicio",
                     "Trabajo limpio y coordinado",
-                    "Garantia por escrito",
+                    "Garantia por escrito (segun servicio)",
                   ].map((item) => (
                     <li key={item} className="inline-flex items-center gap-2 text-sm font-medium text-slate-600">
                       <CheckCircle2 className="h-4 w-4 text-emerald-500" aria-hidden="true" />
@@ -891,7 +1050,7 @@ export default function TechosLanding() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                className="order-1 lg:order-2"
+                className="lg:pl-2"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100 bg-slate-200 shadow-2xl">
                   {!shouldReduceMotion && !videoFailed ? (
@@ -1049,120 +1208,150 @@ export default function TechosLanding() {
                 Asi trabajamos, paso a paso
               </h2>
               <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
-                Este bloque funciona como scrollytelling: a medida que avanzas, activas cada etapa de trabajo tal como ocurre en una visita real.
+                Un proceso claro, sin improvisacion: definimos prioridad, inspeccionamos, cotizamos y ejecutamos con orden.
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-              <Reveal className="lg:sticky lg:top-28 lg:self-start" delay={70}>
-                <div className="rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 md:p-6">
+            <Reveal className="mt-6 flex flex-wrap gap-2" delay={60}>
+              {PROCESS_STEPS.map((step, index) => {
+                const isActive = activeProcessStep === step.id;
+                return (
+                  <button
+                    key={step.id}
+                    type="button"
+                    onClick={() => onProcessStepSelect(step.id, "timeline")}
+                    className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
+                      isActive
+                        ? "border-orange-300 bg-orange-50 text-orange-700"
+                        : "border-slate-300 bg-white text-slate-700 hover:border-orange-200"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    Paso {index + 1}
+                    <span className="hidden text-xs font-medium text-slate-500 md:inline">
+                      {step.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </Reveal>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+              <Reveal delay={90}>
+                <ProcessStorySvg
+                  activeStepIndex={activeProcessIndex}
+                  shouldReduceMotion={shouldReduceMotion}
+                />
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  Esta ruta muestra como avanzamos en un servicio real: de la definicion inicial a la ejecucion, con comunicacion clara y seguimiento en cada etapa.
+                </p>
+              </Reveal>
+
+              <Reveal delay={130}>
+                <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_18px_36px_-30px_rgba(15,23,42,0.4)] md:p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
-                    Scrollytelling operativo
+                    Paso {activeProcessIndex + 1} de {PROCESS_STEPS.length}
                   </p>
-                  <h3 className="mt-2 text-xl font-semibold text-slate-900">
-                    {PROCESS_STEPS[activeProcessIndex]?.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {PROCESS_STEPS[activeProcessIndex]?.detail}
-                  </p>
+                  <div className="mt-3 flex items-start gap-3">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-orange-200 bg-orange-50 text-orange-700">
+                      <ActiveProcessIcon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900">
+                        {activeProcessData.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600 md:text-base">
+                        {activeProcessData.detail}
+                      </p>
+                      <p className="mt-3 text-sm text-slate-500">{activeProcessData.note}</p>
+                    </div>
+                  </div>
 
-                  <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <svg viewBox="0 0 260 352" className="h-auto w-full" aria-hidden="true">
-                      <line x1="36" y1="44" x2="36" y2="310" stroke="#cbd5e1" strokeWidth="2" />
-                      <motion.line
-                        x1="36"
-                        y1="44"
-                        x2="36"
-                        y2={44 + activeProcessIndex * 88}
-                        stroke="#fb923c"
-                        strokeWidth="3"
-                        animate={{ y2: 44 + activeProcessIndex * 88 }}
-                        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.35, ease: "easeOut" }}
-                      />
-                      {PROCESS_STEPS.map((step, index) => {
-                        const isActive = index <= activeProcessIndex;
-                        const y = 44 + index * 88;
-
-                        return (
-                          <g key={step.id}>
-                            <circle
-                              cx="36"
-                              cy={y}
-                              r={isActive ? 11 : 8}
-                              fill={isActive ? "#fb923c" : "#94a3b8"}
-                              stroke={isActive ? "#fdba74" : "#cbd5e1"}
-                            />
-                            <text
-                              x="58"
-                              y={y + 1}
-                              dominantBaseline="middle"
-                              fill={isActive ? "#0f172a" : "#475569"}
-                              fontSize="13"
-                              fontFamily="var(--font-inter)"
-                            >
-                              Paso {index + 1}
-                            </text>
-                          </g>
-                        );
-                      })}
-                    </svg>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onProcessStepSelect(
+                          PROCESS_STEPS[Math.max(0, activeProcessIndex - 1)].id,
+                          "list",
+                        )
+                      }
+                      disabled={activeProcessIndex === 0}
+                      className="inline-flex min-h-10 items-center justify-center rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-300 disabled:cursor-not-allowed disabled:opacity-45"
+                    >
+                      Paso anterior
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onProcessStepSelect(
+                          PROCESS_STEPS[
+                            Math.min(PROCESS_STEPS.length - 1, activeProcessIndex + 1)
+                          ].id,
+                          "list",
+                        )
+                      }
+                      disabled={activeProcessIndex === PROCESS_STEPS.length - 1}
+                      className="inline-flex min-h-10 items-center justify-center rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-300 disabled:cursor-not-allowed disabled:opacity-45"
+                    >
+                      Paso siguiente
+                    </button>
                   </div>
 
                   <a
                     href={buildWaLink({
                       linea: "Proceso de servicio",
-                      servicio: PROCESS_STEPS[activeProcessIndex]?.title,
-                      municipio: DEFAULT_CITY,
+                      servicio: activeProcessData.title,
+                      municipio: selectedCoverageMunicipality || DEFAULT_CITY,
                       urgencia: "Solo cotizacion",
                     })}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() =>
                       track("cta_whatsapp_click", {
-                        source: "process_sticky",
-                        step: PROCESS_STEPS[activeProcessIndex]?.id,
+                        source: "process_focus",
+                        step: activeProcessData.id,
                       })
                     }
-                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
+                    className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
                   >
-                    Hablar de este paso
+                    Hablar con un experto sobre este paso
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </a>
-                </div>
+                </article>
+
+                <ul className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-slate-50">
+                  {PROCESS_STEPS.map((step, index) => {
+                    const Icon = step.icon;
+                    const isActive = activeProcessStep === step.id;
+
+                    return (
+                      <li key={step.id}>
+                        <button
+                          type="button"
+                          onClick={() => onProcessStepSelect(step.id, "list")}
+                          className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-all duration-300 ease-out ${
+                            isActive ? "bg-white" : "hover:bg-white"
+                          }`}
+                          aria-pressed={isActive}
+                        >
+                          <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span>
+                            <span className="block text-sm font-semibold text-slate-900">
+                              {index + 1}. {step.title}
+                            </span>
+                            <span className="mt-0.5 block text-xs text-slate-600">
+                              {step.note}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
               </Reveal>
-
-              <div className="space-y-6 lg:space-y-10">
-                {PROCESS_STEPS.map((step, index) => {
-                  const Icon = step.icon;
-                  const isActive = activeProcessStep === step.id;
-
-                  return (
-                    <article
-                      key={step.id}
-                      data-process-step={step.id}
-                      className={`rounded-2xl border px-5 py-6 transition-all duration-300 ease-out lg:min-h-[58vh] lg:px-7 lg:py-8 ${
-                        isActive
-                          ? "border-orange-300 bg-orange-50/60 shadow-[0_16px_40px_-30px_rgba(249,115,22,0.35)]"
-                          : "border-slate-200 bg-white"
-                      }`}
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
-                        Paso {index + 1}
-                      </p>
-                      <div className="mt-3 flex items-start gap-3">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <div>
-                          <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
-                          <p className="mt-2 text-sm leading-relaxed text-slate-600 md:text-base">{step.detail}</p>
-                          <p className="mt-3 text-sm text-slate-500">{step.note}</p>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
             </div>
           </div>
         </section>
@@ -1298,66 +1487,90 @@ export default function TechosLanding() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                Situaciones frecuentes en el Valle de Aburra
+                Storytelling de casos reales en el Valle de Aburra
               </h2>
               <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
-                Estos son escenarios comunes de hogares y negocios. Elige el que mas se parezca a tu caso y te guiamos por WhatsApp con una ruta inicial.
+                Menos teoria y mas contexto real: revisa situaciones frecuentes por linea de servicio y abre tu caso con una ruta de atencion concreta.
               </p>
             </Reveal>
 
-            <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {prioritizedScenarios.map((scenario, index) => (
-                <Reveal key={scenario.id} delay={70 + index * 50}>
-                  <article className="h-full rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-[0_14px_34px_-32px_rgba(15,23,42,0.6)] transition-all duration-300 ease-out hover:border-orange-200 hover:bg-white hover:shadow-[0_18px_40px_-30px_rgba(249,115,22,0.3)]">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-500">
-                      {LINE_LABEL_BY_ID[scenario.linea]} · {scenario.municipio}
-                    </p>
-                    <h3 className="mt-2 text-lg font-semibold text-slate-900">{scenario.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{scenario.summary}</p>
+            <div className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <Reveal delay={70}>
+                <ValleyStorySvg
+                  activeLine={activeLine}
+                  selectedMunicipality={selectedCoverageMunicipality}
+                  shouldReduceMotion={shouldReduceMotion}
+                />
+                <div className="mt-4 space-y-2 text-sm text-slate-600">
+                  <p>
+                    Relacionamos cobertura, tipo de inmueble y urgencia para sugerir una ruta de trabajo realista desde el primer contacto.
+                  </p>
+                  <p>
+                    Puedes tomar un escenario como base y abrir WhatsApp con la informacion prellenada para ahorrar tiempo.
+                  </p>
+                </div>
+              </Reveal>
 
-                    <div className="mt-4 flex flex-col gap-2">
-                      <a
-                        href={buildWaLink({
-                          linea: LINE_LABEL_BY_ID[scenario.linea],
-                          servicio: scenario.service,
-                          municipio: scenario.municipio,
-                          urgencia: scenario.urgencia,
-                        })}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() =>
-                          track("cta_whatsapp_click", {
-                            source: "scenario",
-                            linea: scenario.linea,
+              <div className="rounded-2xl border border-slate-200 bg-white">
+                {prioritizedScenarios.slice(0, 5).map((scenario, index) => (
+                  <Reveal key={scenario.id} delay={90 + index * 40}>
+                    <article
+                      className={`px-4 py-4 transition-all duration-300 ease-out hover:bg-slate-50 md:px-5 ${
+                        index < Math.min(prioritizedScenarios.length, 5) - 1 ? "border-b border-slate-200" : ""
+                      }`}
+                    >
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+                        {LINE_LABEL_BY_ID[scenario.linea]} · {scenario.municipio}
+                      </p>
+                      <h3 className="mt-1 text-base font-semibold text-slate-900">
+                        {scenario.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-slate-600">{scenario.summary}</p>
+
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <a
+                          href={buildWaLink({
+                            linea: LINE_LABEL_BY_ID[scenario.linea],
                             servicio: scenario.service,
                             municipio: scenario.municipio,
-                          })
-                        }
-                        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
-                      >
-                        Hablar de este caso
-                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          onLineSelect(scenario.linea, "scenario");
-                          onCoverageSelect(scenario.municipio, "scenario");
-                          openQuoteModal({ linea: scenario.linea, servicio: scenario.service });
-                          track("service_item_click", {
-                            source: "scenario",
-                            linea: scenario.linea,
-                            servicio: scenario.service,
-                          });
-                        }}
-                        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
-                      >
-                        Usar este escenario en cotizacion
-                      </button>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
+                            urgencia: scenario.urgencia,
+                          })}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={() =>
+                            track("cta_whatsapp_click", {
+                              source: "scenario",
+                              linea: scenario.linea,
+                              servicio: scenario.service,
+                              municipio: scenario.municipio,
+                            })
+                          }
+                          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
+                        >
+                          Hablar de este caso
+                          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onLineSelect(scenario.linea, "scenario");
+                            onCoverageSelect(scenario.municipio, "scenario");
+                            openQuoteModal({ linea: scenario.linea, servicio: scenario.service });
+                            track("service_item_click", {
+                              source: "scenario",
+                              linea: scenario.linea,
+                              servicio: scenario.service,
+                            });
+                          }}
+                          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
+                        >
+                          Usar escenario en cotizacion
+                        </button>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
