@@ -1,5 +1,5 @@
 export const COMPANY_NAME = "Espinal Multiservicios";
-export const SITE_URL = "https://techos-espinal-landing.vercel.app";
+export const SITE_URL = "https://espinalservicios.com";
 
 export const PHONE_DISPLAY = "(+57) 300 733 6333";
 export const PHONE_E164 = "+573007336333";
