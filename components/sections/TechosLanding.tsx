@@ -1086,7 +1086,7 @@ export default function TechosLanding() {
                     transition={shouldReduceMotion ? undefined : { duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <Star className="h-5 w-5 text-amber-400" aria-hidden="true" />
-                    <p className="text-sm font-bold text-slate-800">4.9/5 Calificacion en Medellin</p>
+                    <p className="text-sm font-bold text-slate-800">Atencion bien valorada en Medellin</p>
                   </motion.div>
                 </div>
               </motion.div>
