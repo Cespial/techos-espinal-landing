@@ -9,8 +9,7 @@ export const DEFAULT_CITY = "Medellin / Valle de Aburra";
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 
 export const NAV_LINKS = [
-  { id: "servicios", label: "Servicios" },
-  { id: "planes", label: "Planes" },
+  { id: "servicios", label: "Cotizacion en linea" },
   { id: "proceso", label: "Proceso" },
   { id: "cobertura", label: "Cobertura" },
   { id: "resolver-ahora", label: "Resolver ahora" },
@@ -51,6 +50,36 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       summary: "Limpieza y ajuste para mejorar evacuacion de agua.",
       basePrice: "$150.000 COP",
     },
+    {
+      id: "sellado-fisuras",
+      name: "Sellado de fisuras y juntas",
+      summary: "Correccion en puntos de filtracion y uniones criticas.",
+      basePrice: "$210.000 COP",
+    },
+    {
+      id: "cambio-teja-puntual",
+      name: "Cambio puntual de teja",
+      summary: "Reposicion de piezas danadas segun acceso y pendiente.",
+      basePrice: "$190.000 COP",
+    },
+    {
+      id: "ajuste-bajantes",
+      name: "Ajuste de bajantes",
+      summary: "Correccion de pendientes y conexiones para mejor descarga.",
+      basePrice: "$170.000 COP",
+    },
+    {
+      id: "limpieza-cubierta",
+      name: "Limpieza de cubierta",
+      summary: "Retiro de residuos para reducir acumulacion de humedad.",
+      basePrice: "$140.000 COP",
+    },
+    {
+      id: "revision-puntos-criticos",
+      name: "Revision de puntos criticos",
+      summary: "Inspeccion tecnica para prevenir filtraciones recurrentes.",
+      basePrice: "$130.000 COP",
+    },
   ],
   pintura: [
     {
@@ -70,6 +99,36 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       name: "Resanes y acabados",
       summary: "Nivelacion y correcciones previas a pintura.",
       basePrice: "$210.000 COP",
+    },
+    {
+      id: "estuco-pulido",
+      name: "Estuco y pulido de muros",
+      summary: "Preparacion de superficie para acabado uniforme.",
+      basePrice: "$240.000 COP",
+    },
+    {
+      id: "correccion-humedad-superficial",
+      name: "Correccion de humedad superficial",
+      summary: "Tratamiento base segun el estado visible del muro.",
+      basePrice: "$250.000 COP",
+    },
+    {
+      id: "pintura-rejas-barandas",
+      name: "Pintura de rejas y barandas",
+      summary: "Limpieza, fondo y acabado para elementos metalicos.",
+      basePrice: "$160.000 COP",
+    },
+    {
+      id: "retoques-post-obra",
+      name: "Retoques post-obra",
+      summary: "Correccion de detalles para entregar acabado limpio.",
+      basePrice: "$140.000 COP",
+    },
+    {
+      id: "acabado-fachada",
+      name: "Acabado de fachada",
+      summary: "Mejora visual con proteccion y uniformidad del color.",
+      basePrice: "$330.000 COP",
     },
   ],
   plomeria: [
@@ -91,44 +150,38 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
       summary: "Cambio y reparacion de piezas de uso frecuente.",
       basePrice: "$140.000 COP",
     },
+    {
+      id: "deteccion-fuga-visible",
+      name: "Deteccion de fuga visible",
+      summary: "Revision de conexiones y zonas humedas para ubicar origen.",
+      basePrice: "$130.000 COP",
+    },
+    {
+      id: "cambio-griferia",
+      name: "Cambio de griferia",
+      summary: "Instalacion y ajuste de griferia en cocina o bano.",
+      basePrice: "$150.000 COP",
+    },
+    {
+      id: "ajuste-sanitario",
+      name: "Ajuste de sanitario",
+      summary: "Correccion de fugas, sellos y nivelacion basica.",
+      basePrice: "$165.000 COP",
+    },
+    {
+      id: "revision-presion",
+      name: "Revision de presion y caudal",
+      summary: "Diagnostico inicial para definir mejora en alimentacion.",
+      basePrice: "$120.000 COP",
+    },
+    {
+      id: "mantenimiento-red-interna",
+      name: "Mantenimiento de red interna",
+      summary: "Ajustes preventivos en puntos de consumo frecuentes.",
+      basePrice: "$200.000 COP",
+    },
   ],
 };
-
-export const PLAN_DATA = [
-  {
-    id: "hogar-basico",
-    name: "Plan Hogar Basico",
-    price: "$290.000 COP",
-    features: [
-      "1 visita de diagnostico",
-      "Arreglo simple segun inspeccion",
-      "Reporte por WhatsApp",
-      "Garantia por escrito (segun servicio y alcance)",
-    ],
-  },
-  {
-    id: "preventivo",
-    name: "Plan Preventivo",
-    price: "$690.000 COP",
-    features: [
-      "Revision programada",
-      "Mantenimiento preventivo",
-      "Recomendaciones priorizadas",
-      "Seguimiento de puntos criticos",
-    ],
-  },
-  {
-    id: "integral",
-    name: "Plan Integral",
-    price: "$1.290.000 COP",
-    features: [
-      "Atencion por linea prioritaria",
-      "Intervenciones por fases",
-      "Coordinacion de varias lineas",
-      "Plan de trabajo y control de avances",
-    ],
-  },
-] as const;
 
 export const URGENCY_OPTIONS = ["Hoy", "Esta semana", "Solo cotizacion"] as const;
 

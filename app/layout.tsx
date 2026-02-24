@@ -1,21 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Libre_Baskerville } from "next/font/google";
+import { Lora, Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import { SITE_URL } from "@/lib/conversion";
 import "./globals.css";
 
-const playfair = Libre_Baskerville({
+const playfair = Lora({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-playfair",
   display: "swap",
 });
 
-const inter = Inter({
+const inter = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
   display: "swap",
 });

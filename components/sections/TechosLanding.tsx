@@ -6,6 +6,7 @@ import {
   FormEvent,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
   type ComponentType,
@@ -13,7 +14,6 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
-  CheckCircle2,
   ChevronDown,
   Droplets,
   FileText,
@@ -35,7 +35,6 @@ import {
   MUNICIPALITY_OPTIONS,
   NAV_LINKS,
   PHONE_DISPLAY,
-  PLAN_DATA,
   SERVICE_DATA,
   SITE_URL,
   URGENCY_OPTIONS,
@@ -69,6 +68,14 @@ type ProcessStep = {
   detail: string;
   note: string;
   icon: ComponentType<LineIconProps>;
+};
+
+type ValleyMapArea = {
+  id: string;
+  label: string;
+  path: string;
+  labelX: number;
+  labelY: number;
 };
 
 const LINE_ICONS: Record<ServiceLineId, ComponentType<LineIconProps>> = {
@@ -109,6 +116,108 @@ const PROCESS_STEPS: ProcessStep[] = [
       "Coordinamos el trabajo, dejamos el area ordenada y cerramos con recomendaciones.",
     note: "Garantia por escrito segun servicio y alcance.",
     icon: ShieldCheck,
+  },
+];
+
+const LINE_STORY: Record<
+  ServiceLineId,
+  { title: string; summary: string; bullets: [string, string, string] }
+> = {
+  techos: {
+    title: "Cubiertas preparadas para temporada de lluvias",
+    summary:
+      "Atendemos goteras, sellos, canoas y puntos de filtracion para hogares y locales en el Valle de Aburra.",
+    bullets: [
+      "Diagnostico de filtraciones visibles",
+      "Intervencion segun acceso y pendiente",
+      "Mantenimiento preventivo por zonas",
+    ],
+  },
+  pintura: {
+    title: "Acabados limpios para vivienda y comercio",
+    summary:
+      "Preparamos superficie, corregimos detalles y aplicamos acabados con enfoque en durabilidad y presentacion.",
+    bullets: [
+      "Resanes y correccion de superficie",
+      "Pintura interior y exterior",
+      "Retoques de entrega post-obra",
+    ],
+  },
+  plomeria: {
+    title: "Red hidraulica funcional y sin fugas recurrentes",
+    summary:
+      "Revisamos puntos criticos de cocina, bano y red interna para resolver fugas y obstrucciones.",
+    bullets: [
+      "Deteccion de fugas visibles",
+      "Destapes y ajustes hidrosanitarios",
+      "Mantenimiento preventivo basico",
+    ],
+  },
+};
+
+const VALLEY_MAP_AREAS: ValleyMapArea[] = [
+  {
+    id: "copacabana",
+    label: "Copacabana",
+    path: "M140 24 L178 32 L172 72 L136 64 Z",
+    labelX: 157,
+    labelY: 52,
+  },
+  {
+    id: "girardota",
+    label: "Girardota",
+    path: "M182 34 L220 44 L214 86 L176 74 Z",
+    labelX: 198,
+    labelY: 61,
+  },
+  {
+    id: "bello",
+    label: "Bello",
+    path: "M116 80 L170 80 L166 124 L112 122 Z",
+    labelX: 141,
+    labelY: 104,
+  },
+  {
+    id: "medellin",
+    label: "Medellin",
+    path: "M110 126 L192 128 L198 230 L118 232 Z",
+    labelX: 154,
+    labelY: 180,
+  },
+  {
+    id: "itagui",
+    label: "Itagui",
+    path: "M90 236 L124 236 L124 272 L90 270 Z",
+    labelX: 106,
+    labelY: 255,
+  },
+  {
+    id: "envigado",
+    label: "Envigado",
+    path: "M128 234 L186 236 L184 274 L126 272 Z",
+    labelX: 156,
+    labelY: 255,
+  },
+  {
+    id: "la-estrella",
+    label: "La Estrella",
+    path: "M86 274 L122 274 L120 308 L84 306 Z",
+    labelX: 103,
+    labelY: 292,
+  },
+  {
+    id: "sabaneta",
+    label: "Sabaneta",
+    path: "M126 276 L178 278 L174 312 L124 308 Z",
+    labelX: 152,
+    labelY: 294,
+  },
+  {
+    id: "caldas",
+    label: "Caldas",
+    path: "M102 314 L170 316 L162 364 L96 356 Z",
+    labelX: 133,
+    labelY: 339,
   },
 ];
 
@@ -184,6 +293,90 @@ function Reveal({
   );
 }
 
+function ServiceStorySvg({
+  activeLine,
+  shouldReduceMotion,
+}: {
+  activeLine: ServiceLineId;
+  shouldReduceMotion: boolean;
+}) {
+  const roofIsActive = activeLine === "techos";
+  const paintIsActive = activeLine === "pintura";
+  const pipeIsActive = activeLine === "plomeria";
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-950 p-4 md:p-5">
+      <div
+        className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full blur-2xl transition-colors duration-500 ${
+          roofIsActive ? "bg-orange-500/35" : paintIsActive ? "bg-cyan-400/30" : "bg-emerald-400/30"
+        }`}
+        aria-hidden="true"
+      />
+      <svg
+        viewBox="0 0 360 270"
+        className="relative h-auto w-full"
+        role="img"
+        aria-label="Ilustracion de lineas de servicio para hogar"
+      >
+        <defs>
+          <linearGradient id="roof-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#fb923c" stopOpacity={roofIsActive ? 0.96 : 0.36} />
+            <stop offset="100%" stopColor="#f97316" stopOpacity={roofIsActive ? 0.96 : 0.2} />
+          </linearGradient>
+          <linearGradient id="wall-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={paintIsActive ? "#67e8f9" : "#e2e8f0"} stopOpacity={paintIsActive ? 0.88 : 0.65} />
+            <stop offset="100%" stopColor={paintIsActive ? "#0891b2" : "#cbd5e1"} stopOpacity={paintIsActive ? 0.82 : 0.6} />
+          </linearGradient>
+        </defs>
+
+        <rect x="42" y="58" width="276" height="170" rx="14" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
+        <polygon points="180,24 84,86 276,86" fill="url(#roof-gradient)" stroke="#fed7aa" strokeWidth="1.4" />
+        <rect x="108" y="92" width="144" height="112" rx="8" fill="url(#wall-gradient)" stroke="#cbd5e1" strokeWidth="1.2" />
+        <rect x="166" y="136" width="30" height="68" rx="4" fill="#0f172a" stroke="#94a3b8" strokeWidth="1.1" />
+        <rect x="122" y="108" width="28" height="26" rx="4" fill="#0f172a" stroke="#bae6fd" strokeWidth="1.1" />
+        <rect x="210" y="108" width="28" height="26" rx="4" fill="#0f172a" stroke="#bae6fd" strokeWidth="1.1" />
+
+        <path
+          d="M274 88 L274 190 L306 190"
+          fill="none"
+          stroke={pipeIsActive ? "#4ade80" : "#64748b"}
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        <path
+          d="M306 190 L306 222 L260 222"
+          fill="none"
+          stroke={pipeIsActive ? "#22c55e" : "#64748b"}
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+
+        <text x="64" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+          Techos y cubiertas
+        </text>
+        <text x="156" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+          Pintura y acabados
+        </text>
+        <text x="258" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+          Plomeria
+        </text>
+
+        {!shouldReduceMotion ? (
+          <motion.circle
+            cx={roofIsActive ? 180 : paintIsActive ? 180 : 290}
+            cy={roofIsActive ? 56 : paintIsActive ? 150 : 190}
+            r={roofIsActive ? 18 : paintIsActive ? 20 : 16}
+            fill={roofIsActive ? "#fb923c" : paintIsActive ? "#22d3ee" : "#4ade80"}
+            opacity={0.2}
+            animate={{ r: [16, 24, 16], opacity: [0.14, 0.28, 0.14] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        ) : null}
+      </svg>
+    </div>
+  );
+}
+
 export default function TechosLanding() {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const [isScrolled, setIsScrolled] = useState(false);
@@ -192,9 +385,12 @@ export default function TechosLanding() {
   const [videoFailed, setVideoFailed] = useState(false);
   const [activeLine, setActiveLine] = useState<ServiceLineId>("techos");
   const [activeFaq, setActiveFaq] = useState(FAQ_ITEMS[0].id);
+  const [activeProcessStep, setActiveProcessStep] = useState(PROCESS_STEPS[0].id);
+  const [selectedCoverageMunicipality, setSelectedCoverageMunicipality] = useState("Medellin");
   const [showCallFallback, setShowCallFallback] = useState(false);
   const [quoteModalState, setQuoteModalState] = useState<QuoteModalState>(INITIAL_QUOTE_STATE);
   const [resolverState, setResolverState] = useState<ResolverFormState>(INITIAL_RESOLVER_STATE);
+  const seenProcessStepsRef = useRef<Set<string>>(new Set());
 
   const telLink = useMemo(() => buildTelLink(), []);
   const heroWaLink = useMemo(
@@ -209,9 +405,28 @@ export default function TechosLanding() {
   );
 
   const activeLineData = useMemo(() => SERVICE_DATA[activeLine], [activeLine]);
+  const activeLineStory = useMemo(() => LINE_STORY[activeLine], [activeLine]);
   const resolverServices = useMemo(
     () => SERVICE_DATA[resolverState.linea],
     [resolverState.linea],
+  );
+  const activeProcessIndex = useMemo(
+    () => Math.max(0, PROCESS_STEPS.findIndex((step) => step.id === activeProcessStep)),
+    [activeProcessStep],
+  );
+  const extraCoverageMunicipalities = useMemo(() => {
+    const mapLabels = new Set(VALLEY_MAP_AREAS.map((area) => area.label));
+    return MUNICIPALITY_OPTIONS.filter((municipio) => !mapLabels.has(municipio));
+  }, []);
+  const coverageWaLink = useMemo(
+    () =>
+      buildWaLink({
+        linea: "Confirmacion de cobertura",
+        servicio: "Visita tecnica",
+        municipio: selectedCoverageMunicipality,
+        urgencia: "Solo cotizacion",
+      }),
+    [selectedCoverageMunicipality],
   );
 
   useEffect(() => {
@@ -257,6 +472,51 @@ export default function TechosLanding() {
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, [shouldReduceMotion, activeLine]);
+
+  useEffect(() => {
+    const processNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-process-step]"));
+
+    if (!processNodes.length || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          const stepId = (entry.target as HTMLElement).dataset.processStep;
+
+          if (!stepId) {
+            return;
+          }
+
+          setActiveProcessStep(stepId);
+
+          if (!seenProcessStepsRef.current.has(stepId)) {
+            seenProcessStepsRef.current.add(stepId);
+            track("scrollytelling_step_view", {
+              source: "proceso",
+              step: stepId,
+            });
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: "-20% 0px -32% 0px" },
+    );
+
+    processNodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
+  const onCoverageSelect = (municipio: string, source: "mapa" | "chip") => {
+    setSelectedCoverageMunicipality(municipio);
+    setResolverState((prev) => ({ ...prev, municipio }));
+    setQuoteModalState((prev) => ({ ...prev, municipio }));
+    track("coverage_map_select", { municipio, source });
+  };
 
   const onLineSelect = (linea: ServiceLineId) => {
     setActiveLine(linea);
@@ -549,278 +809,365 @@ export default function TechosLanding() {
         <section id="servicios" className="py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
-              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Cotizacion por linea</h2>
-                  <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
-                    Elige una linea, revisa precios base y abre una cotizacion directa con datos claros.
-                  </p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Cotizacion en linea por linea de servicio
+              </h2>
+              <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
+                Pensado para Medellin y el Valle de Aburra: selecciona tu linea, revisa servicios reales y abre una cotizacion directa sin vueltas.
+              </p>
+            </Reveal>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+              <Reveal className="lg:sticky lg:top-28 lg:self-start" delay={70}>
+                <ServiceStorySvg activeLine={activeLine} shouldReduceMotion={shouldReduceMotion} />
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5">
+                  <p className="text-sm font-semibold text-slate-900">{activeLineStory.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{activeLineStory.summary}</p>
+                  <ul className="mt-4 space-y-1.5 text-sm text-slate-600">
+                    {activeLineStory.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openQuoteModal({ linea: activeLine })}
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
-                >
-                  Cotizar esta linea
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </button>
-              </div>
-            </Reveal>
+              </Reveal>
 
-            <Reveal className="mt-6" delay={40}>
-              <div className="flex flex-wrap gap-2">
-                {LINE_OPTIONS.map((line) => {
-                  const isActive = activeLine === line.id;
-                  const Icon = LINE_ICONS[line.id];
+              <div>
+                <Reveal className="flex flex-wrap gap-2" delay={80}>
+                  {LINE_OPTIONS.map((line) => {
+                    const isActive = activeLine === line.id;
+                    const Icon = LINE_ICONS[line.id];
 
-                  return (
-                    <button
-                      key={line.id}
-                      type="button"
-                      onClick={() => onLineSelect(line.id)}
-                      className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
-                        isActive
-                          ? "border-orange-300 bg-orange-50 text-orange-700"
-                          : "border-slate-300 bg-white text-slate-700 hover:border-orange-200"
-                      }`}
-                    >
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                      {line.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </Reveal>
+                    return (
+                      <button
+                        key={line.id}
+                        type="button"
+                        onClick={() => onLineSelect(line.id)}
+                        className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
+                          isActive
+                            ? "border-orange-300 bg-orange-50 text-orange-700"
+                            : "border-slate-300 bg-white text-slate-700 hover:border-orange-200"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                        {line.label}
+                      </button>
+                    );
+                  })}
+                </Reveal>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {activeLineData.map((item, index) => (
-                <Reveal key={item.id} delay={80 + index * 70}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      track("service_item_click", { source: "tab_card", linea: activeLine, servicio: item.id });
-                      openQuoteModal({ linea: activeLine, servicio: item.name });
-                    }}
-                    className="group relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)] active:scale-[0.98]"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/85 to-transparent opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
-                    />
-                    <h3 className="text-lg font-semibold text-slate-900">{item.name}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.summary}</p>
-                    <div className="mt-3 flex items-center gap-1.5" aria-hidden="true">
-                      <span className="h-1 w-6 rounded-full bg-orange-200 transition-all duration-300 group-hover:w-8 group-hover:bg-orange-300" />
-                      <span className="h-1 w-10 rounded-full bg-slate-200 transition-all duration-300 group-hover:w-12 group-hover:bg-slate-300" />
-                    </div>
-                    <p className="mt-4 text-sm font-medium text-slate-700">
-                      <span className="text-slate-500">Desde </span>
-                      {item.basePrice}
+                <Reveal className="mt-4" delay={130}>
+                  <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_34px_-30px_rgba(15,23,42,0.6)]">
+                    {activeLineData.map((item, index) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          track("service_item_click", { source: "service_list", linea: activeLine, servicio: item.id });
+                          openQuoteModal({ linea: activeLine, servicio: item.name });
+                        }}
+                        className={`group flex w-full items-start justify-between gap-4 px-4 py-4 text-left transition-all duration-300 ease-out hover:bg-slate-50 active:scale-[0.995] ${
+                          index < activeLineData.length - 1 ? "border-b border-slate-200" : ""
+                        }`}
+                      >
+                        <div>
+                          <h3 className="text-sm font-semibold text-slate-900 md:text-base">{item.name}</h3>
+                          <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.summary}</p>
+                          <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-orange-700">
+                            Cotizar este servicio
+                            <ArrowRight
+                              className="h-3.5 w-3.5 transition-all duration-300 group-hover:translate-x-0.5"
+                              aria-hidden="true"
+                            />
+                          </span>
+                        </div>
+                        <div className="shrink-0 text-right">
+                          <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500">Desde</p>
+                          <p className="mt-1 text-sm font-semibold text-slate-900">{item.basePrice}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </Reveal>
+
+                <Reveal className="mt-4 rounded-2xl border border-slate-200 bg-white p-4" delay={170}>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs leading-relaxed text-slate-600">
+                      Valores base. El costo final depende del area, acceso, materiales y estado actual del sitio. Sujeto a inspeccion tecnica.
                     </p>
-                    <p className="mt-1 text-xs text-slate-500">Precio base</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange-700">
-                      Cotizar servicio
-                      <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-                    </span>
-                  </button>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal className="mt-5" delay={120}>
-              <p className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs leading-relaxed text-slate-600">
-                Valores base. El costo final depende del area, acceso, materiales y estado actual.
-              </p>
-            </Reveal>
-          </div>
-        </section>
-
-        <section id="planes" className="border-y border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <Reveal>
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Planes y precios</h2>
-              <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
-                Paquetes orientativos para hogares y negocios. Ajustamos el alcance tras la inspeccion tecnica.
-              </p>
-            </Reveal>
-
-            <div className="mt-7 grid gap-4 md:grid-cols-3">
-              {PLAN_DATA.map((plan, index) => (
-                <Reveal key={plan.id} delay={80 + index * 70}>
-                  <article
-                    className={`h-full rounded-2xl border p-6 shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)] ${
-                      index === 1 ? "border-orange-200 bg-orange-50/60" : "border-slate-200 bg-slate-50"
-                    }`}
-                  >
-                    {index === 1 ? (
-                      <p className="inline-flex rounded-full border border-orange-300 bg-white px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-orange-700">
-                        Recomendado
-                      </p>
-                    ) : null}
-                    <h3 className="text-xl font-semibold text-slate-900">{plan.name}</h3>
-                    <p className="mt-2 text-2xl font-bold text-slate-950">{plan.price}</p>
-                    <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href={buildWaLink({
-                        linea: "Plan de servicio",
-                        servicio: plan.name,
-                        municipio: DEFAULT_CITY,
-                        urgencia: "Solo cotizacion",
-                      })}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={() => track("cta_whatsapp_click", { source: "plan", plan: plan.id })}
-                      className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-slate-800 hover:shadow-lg active:scale-[0.98]"
+                    <button
+                      type="button"
+                      onClick={() => openQuoteModal({ linea: activeLine })}
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
                     >
-                      Cotizar este plan
-                    </a>
-                  </article>
+                      Abrir cotizacion rapida
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  </div>
                 </Reveal>
-              ))}
+              </div>
             </div>
-
-            <Reveal className="mt-5" delay={140}>
-              <p className="text-xs text-slate-600">Sujeto a inspeccion tecnica y condiciones del sitio.</p>
-            </Reveal>
           </div>
         </section>
 
-        <section id="proceso" className="bg-slate-50 py-16 md:py-24">
+        <section id="proceso" className="border-y border-slate-200 bg-white py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
                 Asi trabajamos, paso a paso
               </h2>
-              <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
-                En lugar de promesas visuales, te mostramos el flujo real de atencion para que sepas que esperar desde el primer contacto.
+              <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
+                Este bloque funciona como scrollytelling: a medida que avanzas, activas cada etapa de trabajo tal como ocurre en una visita real.
               </p>
             </Reveal>
 
-            <Reveal className="mt-7" delay={70}>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 md:p-7">
-                <div
-                  className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-orange-100/80 blur-3xl"
-                  aria-hidden="true"
-                />
-                <div
-                  className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-sky-100/70 blur-3xl"
-                  aria-hidden="true"
-                />
-
-                <div className="relative">
-                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">Ruta de trabajo</p>
-                  <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
-                    Esta ruta se adapta a la linea de servicio (techos, pintura o plomeria) y mantiene trazabilidad por WhatsApp.
+            <div className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+              <Reveal className="lg:sticky lg:top-28 lg:self-start" delay={70}>
+                <div className="rounded-2xl border border-slate-200 bg-slate-950 p-5 text-white md:p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-300">
+                    Scrollytelling operativo
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-white">
+                    {PROCESS_STEPS[activeProcessIndex]?.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                    {PROCESS_STEPS[activeProcessIndex]?.detail}
                   </p>
 
-                  <div className="mt-5 h-1 w-full overflow-hidden rounded-full bg-slate-200">
-                    {shouldReduceMotion ? (
-                      <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300" />
-                    ) : (
-                      <motion.div
-                        className="h-full w-2/3 rounded-full bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300"
-                        animate={{ x: ["-20%", "55%", "-20%"] }}
-                        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
+                  <div className="mt-5 rounded-xl border border-slate-700/80 bg-slate-900/70 p-3">
+                    <svg viewBox="0 0 260 352" className="h-auto w-full" aria-hidden="true">
+                      <line x1="36" y1="44" x2="36" y2="310" stroke="#334155" strokeWidth="2" />
+                      <motion.line
+                        x1="36"
+                        y1="44"
+                        x2="36"
+                        y2={44 + activeProcessIndex * 88}
+                        stroke="#fb923c"
+                        strokeWidth="3"
+                        animate={{ y2: 44 + activeProcessIndex * 88 }}
+                        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.35, ease: "easeOut" }}
                       />
-                    )}
+                      {PROCESS_STEPS.map((step, index) => {
+                        const isActive = index <= activeProcessIndex;
+                        const y = 44 + index * 88;
+
+                        return (
+                          <g key={step.id}>
+                            <circle
+                              cx="36"
+                              cy={y}
+                              r={isActive ? 11 : 8}
+                              fill={isActive ? "#fb923c" : "#475569"}
+                              stroke={isActive ? "#fdba74" : "#64748b"}
+                            />
+                            <text
+                              x="58"
+                              y={y + 1}
+                              dominantBaseline="middle"
+                              fill={isActive ? "#ffffff" : "#cbd5e1"}
+                              fontSize="13"
+                              fontFamily="var(--font-inter)"
+                            >
+                              Paso {index + 1}
+                            </text>
+                          </g>
+                        );
+                      })}
+                    </svg>
                   </div>
+
+                  <a
+                    href={buildWaLink({
+                      linea: "Proceso de servicio",
+                      servicio: PROCESS_STEPS[activeProcessIndex]?.title,
+                      municipio: DEFAULT_CITY,
+                      urgencia: "Solo cotizacion",
+                    })}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      track("cta_whatsapp_click", {
+                        source: "process_sticky",
+                        step: PROCESS_STEPS[activeProcessIndex]?.id,
+                      })
+                    }
+                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
+                  >
+                    Hablar de este paso
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
 
-            <div className="mt-6 grid gap-4 lg:grid-cols-2">
-              {PROCESS_STEPS.map((step, index) => {
-                const Icon = step.icon;
+              <div className="space-y-6 lg:space-y-10">
+                {PROCESS_STEPS.map((step, index) => {
+                  const Icon = step.icon;
+                  const isActive = activeProcessStep === step.id;
 
-                return (
-                  <Reveal key={step.id} delay={120 + index * 70}>
-                    <article className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)]">
-                      <div className="flex items-start gap-4">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-orange-200 bg-orange-50 text-orange-700">
+                  return (
+                    <article
+                      key={step.id}
+                      data-process-step={step.id}
+                      className={`rounded-2xl border px-5 py-6 transition-all duration-300 ease-out lg:min-h-[58vh] lg:px-7 lg:py-8 ${
+                        isActive
+                          ? "border-orange-300 bg-orange-50/60 shadow-[0_16px_40px_-30px_rgba(249,115,22,0.35)]"
+                          : "border-slate-200 bg-white"
+                      }`}
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                        Paso {index + 1}
+                      </p>
+                      <div className="mt-3 flex items-start gap-3">
+                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
-                            Paso {index + 1}
-                          </p>
-                          <h3 className="mt-1 text-lg font-semibold text-slate-900">{step.title}</h3>
-                          <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.detail}</p>
-                          <p className="mt-2 text-xs text-slate-500">{step.note}</p>
+                          <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-slate-600 md:text-base">{step.detail}</p>
+                          <p className="mt-3 text-sm text-slate-500">{step.note}</p>
                         </div>
                       </div>
-
-                      <a
-                        href={buildWaLink({
-                          linea: "Proceso de servicio",
-                          servicio: step.title,
-                          municipio: DEFAULT_CITY,
-                          urgencia: "Solo cotizacion",
-                        })}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() => track("cta_whatsapp_click", { source: "process_step", step: step.id })}
-                        className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange-700 transition-all duration-300 ease-out group-hover:text-orange-600"
-                      >
-                        Resolver este paso
-                        <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-                      </a>
                     </article>
-                  </Reveal>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="cobertura" className="border-y border-slate-200 bg-white py-16 md:py-24">
+        <section id="cobertura" className="bg-slate-50 py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Cobertura local</h2>
               <p className="mt-3 text-sm text-slate-600 md:text-base">
-                Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios de Antioquia (segun disponibilidad).
+                Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios cercanos de Antioquia segun disponibilidad operativa.
               </p>
               <p className="mt-2 text-sm text-slate-600 md:text-base">
-                Organizamos rutas por zona para darte una respuesta rapida y una visita bien coordinada.
+                Selecciona tu municipio para confirmar ruta y disponibilidad por WhatsApp.
               </p>
             </Reveal>
 
-            <Reveal className="mt-6">
-              <ul className="grid grid-cols-2 gap-2 text-sm text-slate-700 sm:grid-cols-3 md:grid-cols-4">
-                {MUNICIPALITY_OPTIONS.map((municipio) => (
-                  <li key={municipio} className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                    <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-orange-100 text-orange-700">
-                      <ChevronDown className="h-3 w-3 -rotate-90" aria-hidden="true" />
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+              <Reveal delay={70}>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                      Mapa operativo Valle de Aburra
+                    </p>
+                    <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
+                      {selectedCoverageMunicipality}
                     </span>
-                    {municipio}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+                  </div>
 
-            <Reveal className="mt-6">
-              <a
-                href={buildWaLink({
-                  linea: "Confirmacion de cobertura",
-                  servicio: "Visita tecnica",
-                  municipio: DEFAULT_CITY,
-                  urgencia: "Solo cotizacion",
-                })}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => track("cta_whatsapp_click", { source: "coverage" })}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                Confirmar cobertura por WhatsApp
-              </a>
-            </Reveal>
+                  <svg viewBox="0 0 320 390" className="h-auto w-full" role="img" aria-label="Mapa de cobertura del Valle de Aburra">
+                    <path
+                      d="M76 12 L232 34 L224 374 L84 362 Z"
+                      fill="#f8fafc"
+                      stroke="#e2e8f0"
+                      strokeWidth="2"
+                    />
+                    {VALLEY_MAP_AREAS.map((area) => {
+                      const isActive = selectedCoverageMunicipality === area.label;
+
+                      return (
+                        <g key={area.id}>
+                          <path
+                            d={area.path}
+                            fill={isActive ? "#fb923c" : "#e2e8f0"}
+                            stroke={isActive ? "#f97316" : "#94a3b8"}
+                            strokeWidth={isActive ? 2 : 1.3}
+                            className="cursor-pointer transition-all duration-300 ease-out hover:fill-orange-200"
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`Seleccionar ${area.label}`}
+                            onClick={() => onCoverageSelect(area.label, "mapa")}
+                            onKeyDown={(event) => {
+                              if (event.key !== "Enter" && event.key !== " ") {
+                                return;
+                              }
+                              event.preventDefault();
+                              onCoverageSelect(area.label, "mapa");
+                            }}
+                          />
+                          <text
+                            x={area.labelX}
+                            y={area.labelY}
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                            fill={isActive ? "#fff7ed" : "#334155"}
+                            fontFamily="var(--font-inter)"
+                            fontSize="9.5"
+                            className="pointer-events-none select-none"
+                          >
+                            {area.label}
+                          </text>
+                        </g>
+                      );
+                    })}
+                  </svg>
+                </div>
+              </Reveal>
+
+              <div className="space-y-4">
+                <Reveal delay={110}>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <p className="text-sm font-semibold text-slate-900">Municipio seleccionado</p>
+                    <p className="mt-2 text-2xl font-semibold text-slate-900">{selectedCoverageMunicipality}</p>
+                    <p className="mt-2 text-sm text-slate-600">
+                      Confirma por WhatsApp disponibilidad de ruta para visita tecnica en {selectedCoverageMunicipality}.
+                    </p>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={150}>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <p className="text-sm font-semibold text-slate-900">
+                      Otros municipios con atencion segun agenda
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {extraCoverageMunicipalities.map((municipio) => {
+                        const isActive = selectedCoverageMunicipality === municipio;
+                        return (
+                          <button
+                            key={municipio}
+                            type="button"
+                            onClick={() => onCoverageSelect(municipio, "chip")}
+                            className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
+                              isActive
+                                ? "border-orange-300 bg-orange-50 text-orange-700"
+                                : "border-slate-300 bg-white text-slate-700 hover:border-orange-200"
+                            }`}
+                          >
+                            {municipio}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={190}>
+                  <a
+                    href={coverageWaLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() =>
+                      track("cta_whatsapp_click", {
+                        source: "coverage",
+                        municipio: selectedCoverageMunicipality,
+                      })
+                    }
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
+                  >
+                    <WhatsAppIcon className="h-4 w-4" />
+                    Confirmar cobertura por WhatsApp
+                  </a>
+                </Reveal>
+              </div>
+            </div>
           </div>
         </section>
 
