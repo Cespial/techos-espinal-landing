@@ -88,6 +88,13 @@ type ServiceScenario = {
   urgencia: string;
 };
 
+type EvidencePoint = {
+  id: string;
+  title: string;
+  detail: string;
+  icon: ComponentType<LineIconProps>;
+};
+
 type WeatherSnapshot = {
   municipality: string;
   temperature: number;
@@ -230,6 +237,27 @@ const FREQUENT_SCENARIOS: ServiceScenario[] = [
       "Revisamos llaves y red interna para plantear ajuste de caudal segun instalacion.",
     service: "Revision de presion y caudal",
     urgencia: "Solo cotizacion",
+  },
+];
+
+const EVIDENCE_POINTS: EvidencePoint[] = [
+  {
+    id: "diagnostico",
+    title: "Diagnostico tecnico en sitio",
+    detail: "Revisamos causa y alcance antes de intervenir para evitar reprocesos.",
+    icon: Search,
+  },
+  {
+    id: "cotizacion",
+    title: "Cotizacion clara y por escrito",
+    detail: "Definimos actividades, materiales y valor base antes de ejecutar.",
+    icon: FileText,
+  },
+  {
+    id: "ejecucion",
+    title: "Ejecucion limpia y coordinada",
+    detail: "Protegemos zonas de trabajo y cerramos con recomendaciones.",
+    icon: ShieldCheck,
   },
 ];
 
@@ -1053,14 +1081,39 @@ export default function TechosLanding() {
           onCallClick={() => track("cta_call_click", { source: "hero" })}
         />
 
+        <section className="border-b border-slate-200 bg-slate-50/70 py-8 md:py-10">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="grid gap-3 md:grid-cols-3">
+              {EVIDENCE_POINTS.map((point, index) => {
+                const Icon = point.icon;
+                return (
+                  <Reveal key={point.id} delay={40 + index * 40}>
+                    <article className="h-full rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-[0_14px_26px_-24px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-orange-200 bg-orange-50 text-orange-700">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                      <h3 className="mt-3 text-sm font-semibold text-slate-900 md:text-base">
+                        {point.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                        {point.detail}
+                      </p>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         <section id="servicios" className="py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                Cotizacion en linea por linea de servicio
+                Cotizacion en linea por linea
               </h2>
-              <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
-                Pensado para Medellin y el Valle de Aburra: selecciona tu linea, revisa servicios reales y abre una cotizacion directa sin vueltas.
+              <p className="mt-3 max-w-4xl text-sm leading-relaxed text-slate-600 md:text-base">
+                Selecciona tu linea, revisa servicios concretos y abre una cotizacion orientativa en minutos. Diseñado para hogares y negocios en Medellin y el Valle de Aburra.
               </p>
             </Reveal>
 

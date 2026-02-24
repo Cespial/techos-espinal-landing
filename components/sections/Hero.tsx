@@ -4,11 +4,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  ClipboardCheck,
   CheckCircle2,
   CircleAlert,
+  Hammer,
   MapPin,
   MessageCircle,
   Phone,
+  ShieldCheck,
   Star,
 } from "lucide-react";
 
@@ -75,8 +78,15 @@ export default function Hero({
   };
 
   return (
-    <section id="inicio" className="border-b border-slate-200 bg-white pt-24 pb-16 lg:pt-32 lg:pb-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section
+      id="inicio"
+      className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-white pt-24 pb-16 lg:pt-32 lg:pb-24"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(251,146,60,0.18),transparent_62%)]" />
+      <div className="pointer-events-none absolute -left-24 top-28 h-44 w-44 rounded-full bg-orange-100/70 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 top-24 h-52 w-52 rounded-full bg-slate-200/80 blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div
             variants={container}
@@ -88,7 +98,7 @@ export default function Hero({
               <div
                 className={cn(
                   "inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2",
-                  "text-sm font-medium text-orange-600 ring-1 ring-orange-100",
+                  "text-sm font-medium text-orange-700 ring-1 ring-orange-200/80 shadow-[0_8px_24px_-18px_rgba(249,115,22,0.65)]",
                 )}
               >
                 <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -112,9 +122,9 @@ export default function Hero({
               desde el inicio.
             </motion.p>
 
-            <motion.div
-              variants={item}
-              className="mt-6 flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-50 p-4"
+              <motion.div
+                variants={item}
+                className="mt-6 flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-50 p-4"
               role="note"
               aria-label="Guia rapida para casos urgentes"
             >
@@ -136,7 +146,7 @@ export default function Hero({
                 whileTap={reduceMotion ? undefined : { scale: 0.98 }}
                 className={cn(
                   "inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3.5",
-                  "font-semibold text-white shadow-lg shadow-orange-600/20 transition-colors hover:bg-orange-700",
+                  "font-semibold text-white shadow-lg shadow-orange-600/20 transition-all hover:-translate-y-0.5 hover:bg-orange-700 hover:shadow-orange-600/30",
                   "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2",
                 )}
               >
@@ -151,7 +161,7 @@ export default function Hero({
                 whileTap={reduceMotion ? undefined : { scale: 0.98 }}
                 className={cn(
                   "inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5",
-                  "font-semibold text-slate-700 transition-colors hover:bg-slate-50",
+                  "font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-sm",
                   "focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2",
                 )}
               >
@@ -187,6 +197,10 @@ export default function Hero({
                 "relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100 bg-slate-200 shadow-2xl",
               )}
             >
+              <div className="absolute left-4 top-4 z-20 rounded-full border border-white/70 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-700 backdrop-blur">
+                Caso real · Valle de Aburra
+              </div>
+
               {!reduceMotion && !videoFailed ? (
                 <motion.video
                   className="h-full w-full object-cover"
@@ -235,10 +249,34 @@ export default function Hero({
                 </div>
                 <div className="leading-tight">
                   <div className="text-sm font-bold text-slate-800">
-                    4.9/5 Calificacion en Medellin
+                    Atencion bien valorada
                   </div>
-                  <div className="text-xs text-slate-500">Atencion bien valorada</div>
+                  <div className="text-xs text-slate-500">Medellin y municipios cercanos</div>
                 </div>
+              </motion.div>
+
+              <motion.div
+                animate={reduceMotion ? undefined : { y: [0, 3, 0] }}
+                transition={reduceMotion ? undefined : { duration: 4.4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-4 right-4 hidden max-w-[220px] rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur md:block"
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  Ruta tecnica
+                </p>
+                <ul className="mt-2 space-y-1.5 text-xs text-slate-700">
+                  <li className="inline-flex items-center gap-2">
+                    <ClipboardCheck className="h-3.5 w-3.5 text-orange-600" aria-hidden="true" />
+                    Diagnostico en sitio
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Hammer className="h-3.5 w-3.5 text-orange-600" aria-hidden="true" />
+                    Intervencion coordinada
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <ShieldCheck className="h-3.5 w-3.5 text-orange-600" aria-hidden="true" />
+                    Cierre con garantia
+                  </li>
+                </ul>
               </motion.div>
             </div>
 
