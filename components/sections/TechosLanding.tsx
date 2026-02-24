@@ -78,10 +78,26 @@ type ValleyMapArea = {
   labelY: number;
 };
 
+type ServiceScenario = {
+  id: string;
+  linea: ServiceLineId;
+  municipio: string;
+  title: string;
+  summary: string;
+  service: string;
+  urgencia: string;
+};
+
 const LINE_ICONS: Record<ServiceLineId, ComponentType<LineIconProps>> = {
   techos: Wrench,
   pintura: Paintbrush,
   plomeria: Droplets,
+};
+
+const LINE_LABEL_BY_ID: Record<ServiceLineId, string> = {
+  techos: "Techos y cubiertas",
+  pintura: "Pintura y acabados",
+  plomeria: "Plomeria",
 };
 
 const PROCESS_STEPS: ProcessStep[] = [
@@ -154,6 +170,68 @@ const LINE_STORY: Record<
     ],
   },
 };
+
+const HERO_LINE_COPY: Record<ServiceLineId, string> = {
+  techos:
+    "Si tienes filtraciones o goteras, te guiamos para priorizar intervencion y costo base.",
+  pintura:
+    "Si vas a renovar espacios, te ayudamos a definir alcance, acabado y tiempos realistas.",
+  plomeria:
+    "Si tienes fugas o baja presion, revisamos puntos criticos y proponemos solucion clara.",
+};
+
+const FREQUENT_SCENARIOS: ServiceScenario[] = [
+  {
+    id: "lluvia-medellin",
+    linea: "techos",
+    municipio: "Medellin",
+    title: "Goteras despues de lluvia fuerte",
+    summary:
+      "Revisamos cubierta, juntas y pendientes para definir correccion inmediata segun acceso.",
+    service: "Reparacion de goteras",
+    urgencia: "Esta semana",
+  },
+  {
+    id: "canoas-envigado",
+    linea: "techos",
+    municipio: "Envigado",
+    title: "Canoas con obstruccion recurrente",
+    summary:
+      "Limpieza, ajuste y verificacion de bajantes para mejorar evacuacion de agua.",
+    service: "Mantenimiento de canoas y bajantes",
+    urgencia: "Esta semana",
+  },
+  {
+    id: "muros-bello",
+    linea: "pintura",
+    municipio: "Bello",
+    title: "Muros con desgaste y manchas",
+    summary:
+      "Preparamos superficie, corregimos imperfecciones visibles y aplicamos acabado limpio.",
+    service: "Resanes y acabados",
+    urgencia: "Solo cotizacion",
+  },
+  {
+    id: "fuga-itagui",
+    linea: "plomeria",
+    municipio: "Itagui",
+    title: "Fuga en cocina o bano",
+    summary:
+      "Ubicamos punto de perdida visible y ajustamos conexiones para detener filtraciones.",
+    service: "Reparacion de fugas",
+    urgencia: "Hoy",
+  },
+  {
+    id: "presion-sabaneta",
+    linea: "plomeria",
+    municipio: "Sabaneta",
+    title: "Baja presion en puntos de consumo",
+    summary:
+      "Revisamos llaves y red interna para plantear ajuste de caudal segun instalacion.",
+    service: "Revision de presion y caudal",
+    urgencia: "Solo cotizacion",
+  },
+];
 
 const VALLEY_MAP_AREAS: ValleyMapArea[] = [
   {
@@ -393,15 +471,16 @@ export default function TechosLanding() {
   const seenProcessStepsRef = useRef<Set<string>>(new Set());
 
   const telLink = useMemo(() => buildTelLink(), []);
+  const activeLineLabel = useMemo(() => LINE_LABEL_BY_ID[activeLine], [activeLine]);
   const heroWaLink = useMemo(
     () =>
       buildWaLink({
-        linea: "Multiservicios hogar",
+        linea: activeLineLabel,
         servicio: "Diagnostico inicial",
-        municipio: DEFAULT_CITY,
+        municipio: selectedCoverageMunicipality || DEFAULT_CITY,
         urgencia: "Solo cotizacion",
       }),
-    [],
+    [activeLineLabel, selectedCoverageMunicipality],
   );
 
   const activeLineData = useMemo(() => SERVICE_DATA[activeLine], [activeLine]);
@@ -418,6 +497,13 @@ export default function TechosLanding() {
     const mapLabels = new Set(VALLEY_MAP_AREAS.map((area) => area.label));
     return MUNICIPALITY_OPTIONS.filter((municipio) => !mapLabels.has(municipio));
   }, []);
+  const prioritizedScenarios = useMemo(
+    () =>
+      [...FREQUENT_SCENARIOS].sort(
+        (a, b) => Number(b.linea === activeLine) - Number(a.linea === activeLine),
+      ),
+    [activeLine],
+  );
   const coverageWaLink = useMemo(
     () =>
       buildWaLink({
@@ -511,16 +597,16 @@ export default function TechosLanding() {
     return () => observer.disconnect();
   }, []);
 
-  const onCoverageSelect = (municipio: string, source: "mapa" | "chip") => {
+  const onCoverageSelect = (municipio: string, source: "mapa" | "chip" | "scenario") => {
     setSelectedCoverageMunicipality(municipio);
     setResolverState((prev) => ({ ...prev, municipio }));
     setQuoteModalState((prev) => ({ ...prev, municipio }));
     track("coverage_map_select", { municipio, source });
   };
 
-  const onLineSelect = (linea: ServiceLineId) => {
+  const onLineSelect = (linea: ServiceLineId, source: string = "tabs") => {
     setActiveLine(linea);
-    track("service_tab_select", { source: "tabs", linea });
+    track("service_tab_select", { source, linea });
   };
 
   const openQuoteModal = ({ linea, servicio }: { linea: ServiceLineId; servicio?: string }) => {
@@ -767,13 +853,36 @@ export default function TechosLanding() {
               </p>
             </Reveal>
 
+            <Reveal className="mt-5" delay={190}>
+              <div className="flex flex-wrap gap-2">
+                {LINE_OPTIONS.map((line) => {
+                  const isActive = activeLine === line.id;
+                  return (
+                    <button
+                      key={line.id}
+                      type="button"
+                      onClick={() => onLineSelect(line.id, "hero")}
+                      className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] transition-all duration-300 ease-out active:scale-[0.98] ${
+                        isActive
+                          ? "border-orange-300 bg-orange-500 text-white"
+                          : "border-white/35 bg-white/10 text-slate-100 hover:bg-white/20"
+                      }`}
+                    >
+                      {line.label}
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="mt-3 max-w-3xl text-sm text-slate-200">{HERO_LINE_COPY[activeLine]}</p>
+            </Reveal>
+
             <Reveal className="mt-8" delay={220}>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a
                   href={heroWaLink}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={() => track("cta_whatsapp_click", { source: "hero" })}
+                  onClick={() => track("cta_whatsapp_click", { source: "hero", linea: activeLine })}
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-orange-600 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
@@ -845,7 +954,7 @@ export default function TechosLanding() {
                       <button
                         key={line.id}
                         type="button"
-                        onClick={() => onLineSelect(line.id)}
+                        onClick={() => onLineSelect(line.id, "servicios")}
                         className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
                           isActive
                             ? "border-orange-300 bg-orange-50 text-orange-700"
@@ -1167,6 +1276,74 @@ export default function TechosLanding() {
                   </a>
                 </Reveal>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="escenarios-frecuentes" className="border-y border-slate-200 bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <Reveal>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Situaciones frecuentes en el Valle de Aburra
+              </h2>
+              <p className="mt-3 max-w-4xl text-sm text-slate-600 md:text-base">
+                Estos son escenarios comunes de hogares y negocios. Elige el que mas se parezca a tu caso y te guiamos por WhatsApp con una ruta inicial.
+              </p>
+            </Reveal>
+
+            <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {prioritizedScenarios.map((scenario, index) => (
+                <Reveal key={scenario.id} delay={70 + index * 50}>
+                  <article className="h-full rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-[0_14px_34px_-32px_rgba(15,23,42,0.6)] transition-all duration-300 ease-out hover:border-orange-200 hover:bg-white hover:shadow-[0_18px_40px_-30px_rgba(249,115,22,0.3)]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+                      {LINE_LABEL_BY_ID[scenario.linea]} · {scenario.municipio}
+                    </p>
+                    <h3 className="mt-2 text-lg font-semibold text-slate-900">{scenario.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{scenario.summary}</p>
+
+                    <div className="mt-4 flex flex-col gap-2">
+                      <a
+                        href={buildWaLink({
+                          linea: LINE_LABEL_BY_ID[scenario.linea],
+                          servicio: scenario.service,
+                          municipio: scenario.municipio,
+                          urgencia: scenario.urgencia,
+                        })}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() =>
+                          track("cta_whatsapp_click", {
+                            source: "scenario",
+                            linea: scenario.linea,
+                            servicio: scenario.service,
+                            municipio: scenario.municipio,
+                          })
+                        }
+                        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
+                      >
+                        Hablar de este caso
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onLineSelect(scenario.linea, "scenario");
+                          onCoverageSelect(scenario.municipio, "scenario");
+                          openQuoteModal({ linea: scenario.linea, servicio: scenario.service });
+                          track("service_item_click", {
+                            source: "scenario",
+                            linea: scenario.linea,
+                            servicio: scenario.service,
+                          });
+                        }}
+                        className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
+                      >
+                        Usar este escenario en cotizacion
+                      </button>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>

@@ -12,6 +12,7 @@ export const NAV_LINKS = [
   { id: "servicios", label: "Cotizacion en linea" },
   { id: "proceso", label: "Proceso" },
   { id: "cobertura", label: "Cobertura" },
+  { id: "escenarios-frecuentes", label: "Escenarios" },
   { id: "resolver-ahora", label: "Resolver ahora" },
 ] as const;
 
