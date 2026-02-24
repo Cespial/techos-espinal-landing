@@ -50,7 +50,7 @@ export default function Hero({
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             {...{ fetchPriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>}
             onError={() => setVideoFailed(true)}
           />
