@@ -14,15 +14,19 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
+  CheckCircle2,
+  CircleAlert,
   ChevronDown,
   Droplets,
   FileText,
+  MapPin,
   Menu,
   MessageCircle,
   Paintbrush,
   Phone,
   Search,
   ShieldCheck,
+  Star,
   Wrench,
   X,
 } from "lucide-react";
@@ -171,15 +175,6 @@ const LINE_STORY: Record<
   },
 };
 
-const HERO_LINE_COPY: Record<ServiceLineId, string> = {
-  techos:
-    "Si tienes filtraciones o goteras, te guiamos para priorizar intervencion y costo base.",
-  pintura:
-    "Si vas a renovar espacios, te ayudamos a definir alcance, acabado y tiempos realistas.",
-  plomeria:
-    "Si tienes fugas o baja presion, revisamos puntos criticos y proponemos solucion clara.",
-};
-
 const FREQUENT_SCENARIOS: ServiceScenario[] = [
   {
     id: "lluvia-medellin",
@@ -320,6 +315,27 @@ const FAQ_ITEMS = [
   },
 ];
 
+const HERO_CONTAINER_VARIANTS = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const HERO_ITEM_VARIANTS = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const INITIAL_RESOLVER_STATE: ResolverFormState = {
   nombre: "",
   telefono: "",
@@ -383,10 +399,10 @@ function ServiceStorySvg({
   const pipeIsActive = activeLine === "plomeria";
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-950 p-4 md:p-5">
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 md:p-5">
       <div
         className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full blur-2xl transition-colors duration-500 ${
-          roofIsActive ? "bg-orange-500/35" : paintIsActive ? "bg-cyan-400/30" : "bg-emerald-400/30"
+          roofIsActive ? "bg-orange-200/80" : paintIsActive ? "bg-cyan-200/80" : "bg-emerald-200/80"
         }`}
         aria-hidden="true"
       />
@@ -407,12 +423,12 @@ function ServiceStorySvg({
           </linearGradient>
         </defs>
 
-        <rect x="42" y="58" width="276" height="170" rx="14" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
+        <rect x="42" y="58" width="276" height="170" rx="14" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
         <polygon points="180,24 84,86 276,86" fill="url(#roof-gradient)" stroke="#fed7aa" strokeWidth="1.4" />
         <rect x="108" y="92" width="144" height="112" rx="8" fill="url(#wall-gradient)" stroke="#cbd5e1" strokeWidth="1.2" />
-        <rect x="166" y="136" width="30" height="68" rx="4" fill="#0f172a" stroke="#94a3b8" strokeWidth="1.1" />
-        <rect x="122" y="108" width="28" height="26" rx="4" fill="#0f172a" stroke="#bae6fd" strokeWidth="1.1" />
-        <rect x="210" y="108" width="28" height="26" rx="4" fill="#0f172a" stroke="#bae6fd" strokeWidth="1.1" />
+        <rect x="166" y="136" width="30" height="68" rx="4" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.1" />
+        <rect x="122" y="108" width="28" height="26" rx="4" fill="#e2e8f0" stroke="#bae6fd" strokeWidth="1.1" />
+        <rect x="210" y="108" width="28" height="26" rx="4" fill="#e2e8f0" stroke="#bae6fd" strokeWidth="1.1" />
 
         <path
           d="M274 88 L274 190 L306 190"
@@ -429,13 +445,13 @@ function ServiceStorySvg({
           strokeLinecap="round"
         />
 
-        <text x="64" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+        <text x="64" y="250" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
           Techos y cubiertas
         </text>
-        <text x="156" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+        <text x="156" y="250" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
           Pintura y acabados
         </text>
-        <text x="258" y="250" fill="#cbd5e1" fontSize="12" fontFamily="var(--font-inter)">
+        <text x="258" y="250" fill="#334155" fontSize="12" fontFamily="var(--font-inter)">
           Plomeria
         </text>
 
@@ -795,123 +811,130 @@ export default function TechosLanding() {
       </header>
 
       <main id="main-content">
-        <section id="inicio" className="relative min-h-[84svh] overflow-hidden border-b border-slate-200 pt-28 md:pt-32">
-          <div className="absolute inset-0">
-            {!shouldReduceMotion && !videoFailed ? (
-              <motion.video
-                className="h-full w-full object-cover"
-                src="/video/hero-main.mp4"
-                poster="/video/slow-majestic-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                onError={() => setVideoFailed(true)}
-                animate={{ scale: [1.03, 1.06] }}
-                transition={{ duration: 18, ease: "linear", repeat: Infinity, repeatType: "mirror" }}
-              />
-            ) : (
-              <Image
-                src="/video/slow-majestic-poster.jpg"
-                alt="Espinal Multiservicios en Medellin"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-            )}
+        <section id="inicio" className="border-b border-slate-200 bg-white pt-24 pb-16 lg:pt-32 lg:pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <motion.div
+                variants={HERO_CONTAINER_VARIANTS}
+                initial="hidden"
+                animate="visible"
+                className="order-2 lg:order-1"
+              >
+                <motion.div variants={HERO_ITEM_VARIANTS}>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3.5 py-1.5 text-sm font-medium text-orange-600">
+                    <MapPin className="h-4 w-4" aria-hidden="true" />
+                    Valle de Aburra + Antioquia
+                  </span>
+                </motion.div>
 
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/82 via-slate-900/68 to-slate-950/80" />
-            <div
-                className="absolute inset-0 opacity-20 mix-blend-soft-light"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(rgba(255,255,255,0.32) 0.7px, transparent 0.7px)",
-                  backgroundSize: "3px 3px",
-                }}
-              />
-            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent to-slate-50" />
-          </div>
-
-          <div className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-20">
-            <Reveal delay={40}>
-              <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">
-                Valle de Aburra + Antioquia
-              </span>
-            </Reveal>
-
-            <Reveal className="mt-5" delay={100}>
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
-                Soluciones integrales para tu hogar y negocio
-              </h1>
-            </Reveal>
-
-            <Reveal className="mt-4" delay={160}>
-              <p className="max-w-3xl text-base leading-relaxed text-slate-200 md:text-lg">
-                Techos y cubiertas · Pintura y acabados · Plomeria. Coordinamos visitas en Medellin y el Valle de Aburra con diagnostico tecnico, orden en la ejecucion y cotizacion clara desde el inicio.
-              </p>
-            </Reveal>
-
-            <Reveal className="mt-5" delay={190}>
-              <div className="flex flex-wrap gap-2">
-                {LINE_OPTIONS.map((line) => {
-                  const isActive = activeLine === line.id;
-                  return (
-                    <button
-                      key={line.id}
-                      type="button"
-                      onClick={() => onLineSelect(line.id, "hero")}
-                      className={`rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] transition-all duration-300 ease-out active:scale-[0.98] ${
-                        isActive
-                          ? "border-orange-300 bg-orange-500 text-white"
-                          : "border-white/35 bg-white/10 text-slate-100 hover:bg-white/20"
-                      }`}
-                    >
-                      {line.label}
-                    </button>
-                  );
-                })}
-              </div>
-              <p className="mt-3 max-w-3xl text-sm text-slate-200">{HERO_LINE_COPY[activeLine]}</p>
-            </Reveal>
-
-            <Reveal className="mt-8" delay={220}>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={heroWaLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => track("cta_whatsapp_click", { source: "hero", linea: activeLine })}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-orange-600 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
+                <motion.h1
+                  variants={HERO_ITEM_VARIANTS}
+                  className="mt-5 text-5xl font-extrabold leading-tight tracking-tight text-slate-900 lg:text-6xl"
                 >
-                  <WhatsAppIcon className="h-4 w-4" />
-                  Hablar con un experto (WhatsApp)
-                </a>
-                <a
-                  href={telLink}
-                  onClick={() => track("cta_call_click", { source: "hero" })}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/35 bg-white/10 px-6 text-sm font-semibold text-white backdrop-blur transition-all duration-300 ease-out hover:bg-white/20 hover:shadow-lg active:scale-[0.98]"
-                >
-                  <Phone className="h-4 w-4" aria-hidden="true" />
-                  Llamar ahora
-                </a>
-              </div>
-            </Reveal>
+                  Soluciones integrales para tu hogar y negocio
+                </motion.h1>
 
-            <Reveal className="mt-4" delay={280}>
-              <ul className="flex flex-wrap gap-2 text-xs text-slate-100">
-                {[
-                  "Precios claros desde el inicio",
-                  "Trabajo limpio y coordinado",
-                  "Garantia por escrito (segun servicio)",
-                ].map((item) => (
-                  <li key={item} className="rounded-full border border-white/30 bg-white/10 px-3 py-1">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+                <motion.p
+                  variants={HERO_ITEM_VARIANTS}
+                  className="mt-6 text-lg leading-relaxed text-slate-600"
+                >
+                  Techos y cubiertas · Pintura y acabados · Plomeria. Coordinamos visitas en Medellin y el Valle de Aburra con diagnostico tecnico, orden en la ejecucion y cotizacion clara desde el inicio.
+                </motion.p>
+
+                <motion.div
+                  variants={HERO_ITEM_VARIANTS}
+                  className="mt-6 flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-50 p-4"
+                >
+                  <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" aria-hidden="true" />
+                  <p className="text-sm font-medium text-amber-900">
+                    Si tienes filtraciones o goteras, te guiamos para priorizar intervencion y costo base.
+                  </p>
+                </motion.div>
+
+                <motion.div variants={HERO_ITEM_VARIANTS} className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <motion.a
+                    href={heroWaLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => track("cta_whatsapp_click", { source: "hero", linea: activeLine })}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-orange-600/20 transition-colors duration-300 hover:bg-orange-700"
+                    whileHover={{ scale: shouldReduceMotion ? 1 : 1.02 }}
+                    whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    Hablar con un experto
+                  </motion.a>
+                  <motion.a
+                    href={telLink}
+                    onClick={() => track("cta_call_click", { source: "hero" })}
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-base font-semibold text-slate-700 transition-colors duration-300 hover:bg-slate-50"
+                    whileHover={{ scale: shouldReduceMotion ? 1 : 1.02 }}
+                    whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
+                  >
+                    <Phone className="h-5 w-5" aria-hidden="true" />
+                    Llamar ahora
+                  </motion.a>
+                </motion.div>
+
+                <motion.ul variants={HERO_ITEM_VARIANTS} className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+                  {[
+                    "Precios claros desde el inicio",
+                    "Trabajo limpio y coordinado",
+                    "Garantia por escrito",
+                  ].map((item) => (
+                    <li key={item} className="inline-flex items-center gap-2 text-sm font-medium text-slate-600">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-500" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                className="order-1 lg:order-2"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-100 bg-slate-200 shadow-2xl">
+                  {!shouldReduceMotion && !videoFailed ? (
+                    <motion.video
+                      className="h-full w-full object-cover"
+                      src="/video/hero-main.mp4"
+                      poster="/video/slow-majestic-poster.jpg"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      onError={() => setVideoFailed(true)}
+                      animate={{ scale: [1, 1.03, 1] }}
+                      transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
+                    />
+                  ) : (
+                    <Image
+                      src="/video/slow-majestic-poster.jpg"
+                      alt="Trabajo de Espinal Multiservicios en Medellin"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  )}
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
+
+                  <motion.div
+                    className="absolute bottom-4 left-4 flex items-center gap-3 rounded-xl border border-white/50 bg-white/95 p-4 shadow-lg backdrop-blur"
+                    animate={shouldReduceMotion ? undefined : { y: [0, -5, 0] }}
+                    transition={shouldReduceMotion ? undefined : { duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Star className="h-5 w-5 text-amber-400" aria-hidden="true" />
+                    <p className="text-sm font-bold text-slate-800">4.9/5 Calificacion en Medellin</p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -1035,20 +1058,20 @@ export default function TechosLanding() {
 
             <div className="mt-8 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
               <Reveal className="lg:sticky lg:top-28 lg:self-start" delay={70}>
-                <div className="rounded-2xl border border-slate-200 bg-slate-950 p-5 text-white md:p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-300">
+                <div className="rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 md:p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
                     Scrollytelling operativo
                   </p>
-                  <h3 className="mt-2 text-xl font-semibold text-white">
+                  <h3 className="mt-2 text-xl font-semibold text-slate-900">
                     {PROCESS_STEPS[activeProcessIndex]?.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     {PROCESS_STEPS[activeProcessIndex]?.detail}
                   </p>
 
-                  <div className="mt-5 rounded-xl border border-slate-700/80 bg-slate-900/70 p-3">
+                  <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-3">
                     <svg viewBox="0 0 260 352" className="h-auto w-full" aria-hidden="true">
-                      <line x1="36" y1="44" x2="36" y2="310" stroke="#334155" strokeWidth="2" />
+                      <line x1="36" y1="44" x2="36" y2="310" stroke="#cbd5e1" strokeWidth="2" />
                       <motion.line
                         x1="36"
                         y1="44"
@@ -1069,14 +1092,14 @@ export default function TechosLanding() {
                               cx="36"
                               cy={y}
                               r={isActive ? 11 : 8}
-                              fill={isActive ? "#fb923c" : "#475569"}
-                              stroke={isActive ? "#fdba74" : "#64748b"}
+                              fill={isActive ? "#fb923c" : "#94a3b8"}
+                              stroke={isActive ? "#fdba74" : "#cbd5e1"}
                             />
                             <text
                               x="58"
                               y={y + 1}
                               dominantBaseline="middle"
-                              fill={isActive ? "#ffffff" : "#cbd5e1"}
+                              fill={isActive ? "#0f172a" : "#475569"}
                               fontSize="13"
                               fontFamily="var(--font-inter)"
                             >
@@ -1538,15 +1561,15 @@ export default function TechosLanding() {
         </section>
       </main>
 
-      <footer className="border-t border-slate-200 bg-slate-950 py-10 text-white">
+      <footer className="border-t border-slate-200 bg-white py-10 text-slate-900">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-lg font-semibold">{COMPANY_NAME}</p>
-              <p className="mt-1 text-sm text-slate-300">
+              <p className="mt-1 text-sm text-slate-600">
                 Equipo especializado en techos, pintura y plomeria para hogares y negocios en Medellin y Valle de Aburra.
               </p>
-              <p className="mt-1 text-xs text-slate-400">Te contactamos lo antes posible por WhatsApp o llamada.</p>
+              <p className="mt-1 text-xs text-slate-500">Te contactamos lo antes posible por WhatsApp o llamada.</p>
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
@@ -1563,7 +1586,7 @@ export default function TechosLanding() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => track("cta_whatsapp_click", { source: "footer" })}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:border-orange-400 active:scale-[0.98]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 text-sm font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-400 active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Hablar con un experto
@@ -1571,14 +1594,14 @@ export default function TechosLanding() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-800 pt-4 text-xs text-slate-400">
-            <Link href="/terminos" className="hover:text-white">
+          <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-200 pt-4 text-xs text-slate-500">
+            <Link href="/terminos" className="hover:text-slate-900">
               Terminos y condiciones
             </Link>
-            <Link href="/privacidad" className="hover:text-white">
+            <Link href="/privacidad" className="hover:text-slate-900">
               Politica de privacidad
             </Link>
-            <a href={SITE_URL} className="hover:text-white">
+            <a href={SITE_URL} className="hover:text-slate-900">
               Sitio principal
             </a>
             <span>Telefono: {PHONE_DISPLAY}</span>
