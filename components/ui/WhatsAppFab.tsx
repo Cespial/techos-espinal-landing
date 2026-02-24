@@ -25,7 +25,7 @@ export default function WhatsAppFab() {
       rel="noreferrer"
       onClick={() => track("cta_whatsapp_click", { source: "fab_desktop" })}
       aria-label="Escríbenos por WhatsApp"
-      className={`fixed bottom-6 right-6 z-[70] hidden items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl md:flex ${
+      className={`fixed bottom-6 right-6 z-[70] hidden items-center gap-2 rounded-full bg-[#15803d] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl md:flex ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

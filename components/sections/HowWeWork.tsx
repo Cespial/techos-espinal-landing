@@ -8,7 +8,7 @@ export default function HowWeWork() {
   return (
     <section id="proceso" className="border-y border-slate-200 bg-white py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
           PROCESO
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
@@ -58,7 +58,7 @@ export default function HowWeWork() {
               target="_blank"
               rel="noreferrer"
               onClick={() => track("cta_whatsapp_click", { source: "process" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
             >
               <WhatsAppIcon className="h-5 w-5" />
               Escribir por WhatsApp

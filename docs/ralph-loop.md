@@ -63,5 +63,21 @@
 
 ---
 
+## R6 — Accessibility Contrast + ARIA Fixes (Lighthouse 94→target 100)
+**Commit**: (this cycle)
+
+| Prioridad | Fix |
+|-----------|-----|
+| P1 | Add `role="img"` to star rating `<div>` in Testimonials.tsx (aria-label prohibited on generic div) |
+| P1 | `text-orange-600` → `text-orange-700` (~3.56:1→~5.17:1) on overline text in 6 section files |
+| P1 | `text-slate-400` → `text-slate-500` (~2.56:1→~4.75:1) on testimonial dates + form counter |
+| P1 | `bg-[#25D366]` → `bg-[#15803d]` (~1.92:1→~5.1:1) white text on solid green buttons across 9 components |
+| P1 | Update hover/shadow/ring colors from `#25D366`/`#20bd5a` to `#15803d`/`#166d34` for consistency |
+| P2 | `text-orange-600` → `text-orange-700` on "Enviar otro formulario" link in AppointmentScheduler |
+
+**Files changed**: Hero, MobileStickyBar, HowWeWork, CoverageAvailability, Testimonials, StickyHeader, ServiceTabs, AppointmentScheduler, FaqFooter, WhatsAppFab
+
+---
+
 ## STOP — All items resolved
 No remaining improvements without changing copys or strategy.

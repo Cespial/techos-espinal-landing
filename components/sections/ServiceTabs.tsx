@@ -64,7 +64,7 @@ export default function ServiceTabs() {
     <section id="servicios" className="py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Section header */}
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
           NUESTROS SERVICIOS
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
@@ -115,7 +115,7 @@ export default function ServiceTabs() {
             target="_blank"
             rel="noreferrer"
             onClick={() => track("cta_whatsapp_click", { source: "service_escape_hatch" })}
-            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#25D366]/10 px-4 py-2.5 text-sm font-semibold text-[#15803d] transition-colors hover:bg-[#25D366] hover:text-white focus-visible:ring-2 focus-visible:ring-[#25D366]"
+            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#15803d]/10 px-4 py-2.5 text-sm font-semibold text-[#15803d] transition-colors hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d]"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Describir mi problema
@@ -201,7 +201,7 @@ export default function ServiceTabs() {
                         servicio: service.id,
                       })
                     }
-                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-4 text-sm font-semibold text-[#15803d] transition-all duration-300 ease-out hover:bg-[#25D366] hover:text-white focus-visible:ring-2 focus-visible:ring-[#25D366] active:scale-[0.98]"
+                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#15803d] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Cotizar esto

@@ -64,7 +64,7 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
   return (
     <section id="agendar" className="py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
           AGENDAR
         </p>
         <div className="mt-4 rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-6 md:p-8">
@@ -100,7 +100,7 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
               <button
                 type="button"
                 onClick={() => setFormSubmitted(false)}
-                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-500"
+                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-orange-700 hover:text-orange-600"
               >
                 <RotateCcw className="h-4 w-4" aria-hidden="true" />
                 Enviar otro formulario
@@ -150,14 +150,14 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                   onChange={(e) => setDescripcion(e.target.value)}
                   className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
                 />
-                <span className="mt-1 block text-right text-xs text-slate-400">
+                <span className="mt-1 block text-right text-xs text-slate-500">
                   {descripcion.length}/200
                 </span>
               </label>
 
               <button
                 type="submit"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white shadow-lg shadow-[#25D366]/20 transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white shadow-lg shadow-[#15803d]/20 transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 Enviar por WhatsApp

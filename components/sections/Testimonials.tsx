@@ -17,7 +17,7 @@ const LINE_LABEL_MAP: Record<ServiceLineId, string> = {
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5" aria-label={`${rating} de 5 estrellas`}>
+    <div role="img" className="flex gap-0.5" aria-label={`${rating} de 5 estrellas`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
@@ -37,7 +37,7 @@ export default function Testimonials() {
   return (
     <section className="py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
           CLIENTES
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
@@ -67,7 +67,7 @@ export default function Testimonials() {
                     <p className="text-xs text-slate-500">
                       {testimonial.municipality}
                     </p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-500">
                       {testimonial.date}
                     </p>
                   </div>
@@ -106,7 +106,7 @@ export default function Testimonials() {
             onClick={() =>
               track("cta_whatsapp_click", { source: "testimonials" })
             }
-            className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
+            className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Escríbenos ahora

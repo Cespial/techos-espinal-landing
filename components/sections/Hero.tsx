@@ -106,7 +106,7 @@ export default function Hero({
             target="_blank"
             rel="noreferrer"
             onClick={onWhatsAppClick}
-            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-[#15803d] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-[#15803d]/30 transition-all hover:-translate-y-0.5 hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 focus:outline-none focus:ring-2 focus:ring-[#15803d] focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Cotizar por WhatsApp gratis

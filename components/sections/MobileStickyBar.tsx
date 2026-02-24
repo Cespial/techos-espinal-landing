@@ -21,7 +21,7 @@ export default function MobileStickyBar({ waLink, telLink }: MobileStickyBarProp
           target="_blank"
           rel="noreferrer"
           onClick={() => track("cta_whatsapp_click", { source: "mobile_bar" })}
-          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-sm font-bold text-white active:scale-[0.98]"
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-lg bg-[#15803d] px-3 text-sm font-bold text-white active:scale-[0.98]"
         >
           <WhatsAppIcon className="h-5 w-5" />
           Cotizar por WhatsApp
