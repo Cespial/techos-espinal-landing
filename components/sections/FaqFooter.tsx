@@ -55,7 +55,7 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => track("cta_whatsapp_click", { source: item.ctaSource ?? "faq_inline" })}
-                      className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#15803d]/10 px-3 py-2 text-sm font-semibold text-[#15803d] transition-colors hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d]"
+                      className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#15803d]/10 px-3 py-2 text-sm font-semibold text-[#166534] transition-colors hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d]"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       {item.ctaText}
