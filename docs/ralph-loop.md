@@ -50,6 +50,18 @@
 
 ---
 
-## STOP — Remaining items that require strategy decisions (out of scope)
-- Font CSS variable `--font-inter` is actually Manrope (cosmetic, no user impact)
-- Domain aliasing requires manual `vercel alias set` after each deploy (needs Vercel project domain binding to automate)
+## R5 — Font Variable Rename + Domain Binding
+**Commit**: dbfce6a
+
+| Prioridad | Fix |
+|-----------|-----|
+| P2 | Rename `--font-inter` → `--font-manrope` in layout.tsx + globals.css |
+| P1 | Bind espinalservicios.com + www (308→root) to Vercel project via API — `vercel --prod` now auto-aliases |
+| P1 | Remove redundant www redirect from next.config.ts (Vercel edge handles it) |
+
+**Verificación**: `vercel --prod` output shows `Aliased: https://espinalservicios.com` ✓
+
+---
+
+## STOP — All items resolved
+No remaining improvements without changing copys or strategy.
