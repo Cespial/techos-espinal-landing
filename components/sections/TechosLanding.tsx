@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { useReducedMotion } from "framer-motion";
 import {
   buildTelLink,
   buildWaLinkHero,
@@ -64,8 +63,20 @@ export function Reveal({
 /*  Main orchestrator                                                 */
 /* ------------------------------------------------------------------ */
 
+function useReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+  return reduced;
+}
+
 export default function TechosLanding() {
-  const shouldReduceMotion = Boolean(useReducedMotion());
+  const shouldReduceMotion = useReducedMotion();
 
   /* ---------- Core state ---------- */
   const [activeLine, setActiveLine] = useState<ServiceLineId>("techos");

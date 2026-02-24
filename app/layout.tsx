@@ -84,6 +84,8 @@ export default function RootLayout({
       <head>
         <meta name="geo.region" content="CO-ANT" />
         <meta name="geo.placename" content="Medellín" />
+        <link rel="preload" href="/video/slow-majestic-poster.jpg" as="image" fetchPriority="high" />
+        <link rel="preload" href="/video/hero-main.mp4" as="video" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />
       </head>
