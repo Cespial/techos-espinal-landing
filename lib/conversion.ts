@@ -9,11 +9,12 @@ export const DEFAULT_CITY = "Medellin / Valle de Aburra";
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 
 export const NAV_LINKS = [
-  { id: "servicios", label: "Cotizacion en linea" },
+  { id: "servicios", label: "Servicios" },
   { id: "proceso", label: "Proceso" },
+  { id: "galeria", label: "Galeria" },
+  { id: "precios", label: "Precios" },
   { id: "cobertura", label: "Cobertura" },
-  { id: "escenarios-frecuentes", label: "Escenarios" },
-  { id: "resolver-ahora", label: "Resolver ahora" },
+  { id: "faq", label: "Preguntas" },
 ] as const;
 
 export const LINE_OPTIONS = [
@@ -204,6 +205,256 @@ export const MUNICIPALITY_OPTIONS = [
 
 export type UrgencyOption = (typeof URGENCY_OPTIONS)[number];
 export type MunicipalityOption = (typeof MUNICIPALITY_OPTIONS)[number];
+
+/* ------------------------------------------------------------------ */
+/*  PROCESS STEPS                                                     */
+/* ------------------------------------------------------------------ */
+
+export type ProcessStep = {
+  id: string;
+  step: number;
+  title: string;
+  detail: string;
+  note: string;
+};
+
+export const PROCESS_STEPS: ProcessStep[] = [
+  {
+    id: "brief",
+    step: 1,
+    title: "Brief de necesidad",
+    detail:
+      "Escuchamos el problema, validamos urgencia y definimos la linea de servicio adecuada para tu caso.",
+    note: "Inicias por WhatsApp o llamada, sin formularios largos.",
+  },
+  {
+    id: "diagnostic",
+    step: 2,
+    title: "Diagnostico en sitio",
+    detail:
+      "Revisamos acceso, estado actual y puntos criticos para proponer una solucion aterrizada.",
+    note: "Equipos de diagnostico segun el caso.",
+  },
+  {
+    id: "proposal",
+    step: 3,
+    title: "Alcance y valor base",
+    detail:
+      "Definimos actividades, materiales y valor base para que tomes la decision con claridad.",
+    note: "Siempre sujeto a inspeccion tecnica y condiciones del sitio.",
+  },
+  {
+    id: "execution",
+    step: 4,
+    title: "Ejecucion coordinada",
+    detail:
+      "Programamos, ejecutamos y dejamos el area limpia con cierre tecnico y recomendaciones de cuidado.",
+    note: "Garantia por escrito segun servicio y alcance.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  LINE STORY                                                        */
+/* ------------------------------------------------------------------ */
+
+export const LINE_STORY: Record<
+  ServiceLineId,
+  { title: string; summary: string; bullets: [string, string, string] }
+> = {
+  techos: {
+    title: "Cubiertas preparadas para temporada de lluvias",
+    summary:
+      "Atendemos goteras, sellos, canoas y puntos de filtracion para hogares y locales en el Valle de Aburra.",
+    bullets: [
+      "Diagnostico de filtraciones visibles",
+      "Intervencion segun acceso y pendiente",
+      "Mantenimiento preventivo por zonas",
+    ],
+  },
+  pintura: {
+    title: "Acabados limpios para vivienda y comercio",
+    summary:
+      "Preparamos superficie, corregimos detalles y aplicamos acabados con enfoque en durabilidad y presentacion.",
+    bullets: [
+      "Resanes y correccion de superficie",
+      "Pintura interior y exterior",
+      "Retoques de entrega post-obra",
+    ],
+  },
+  plomeria: {
+    title: "Red hidraulica funcional y sin fugas recurrentes",
+    summary:
+      "Revisamos puntos criticos de cocina, bano y red interna para resolver fugas y obstrucciones.",
+    bullets: [
+      "Deteccion de fugas visibles",
+      "Destapes y ajustes hidrosanitarios",
+      "Mantenimiento preventivo basico",
+    ],
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/*  FAQ ITEMS                                                         */
+/* ------------------------------------------------------------------ */
+
+export type FaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: "faq-1",
+    question: "¿Manejan garantia?",
+    answer:
+      "Si. Entregamos garantia por escrito segun servicio, alcance y condiciones del sitio.",
+  },
+  {
+    id: "faq-2",
+    question: "¿Como hacen el diagnostico?",
+    answer:
+      "Primero revisamos el problema en sitio y, segun el caso, usamos equipos de diagnostico para precisar la solucion.",
+  },
+  {
+    id: "faq-3",
+    question: "¿Atienden hogares y negocios?",
+    answer:
+      "Si. Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios de Antioquia segun disponibilidad.",
+  },
+  {
+    id: "faq-4",
+    question: "¿Cuanto tiempo toma una visita tecnica?",
+    answer:
+      "Dependiendo de la ubicacion y el tipo de servicio, coordinamos visita en 24 a 72 horas habiles despues del primer contacto.",
+  },
+  {
+    id: "faq-5",
+    question: "¿Puedo cotizar sin compromiso?",
+    answer:
+      "Si. Puedes solicitar cotizacion orientativa por WhatsApp o llamada sin ningun compromiso. El valor final se confirma despues de la visita tecnica.",
+  },
+  {
+    id: "faq-6",
+    question: "¿Que formas de pago aceptan?",
+    answer:
+      "Efectivo, transferencia bancaria y Nequi. Dependiendo del alcance del proyecto, manejamos pagos parciales con acuerdo previo.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  BEFORE/AFTER GALLERY PLACEHOLDERS                                 */
+/* ------------------------------------------------------------------ */
+
+export type BeforeAfterItem = {
+  id: string;
+  label: string;
+  linea: ServiceLineId;
+  location: string;
+};
+
+export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
+  {
+    id: "ba-1",
+    label: "Impermeabilizacion cubierta",
+    linea: "techos",
+    location: "Envigado",
+  },
+  {
+    id: "ba-2",
+    label: "Reparacion de goteras",
+    linea: "techos",
+    location: "Medellin",
+  },
+  {
+    id: "ba-3",
+    label: "Pintura interior apartamento",
+    linea: "pintura",
+    location: "Sabaneta",
+  },
+  {
+    id: "ba-4",
+    label: "Acabado de fachada",
+    linea: "pintura",
+    location: "Bello",
+  },
+  {
+    id: "ba-5",
+    label: "Reparacion de fugas",
+    linea: "plomeria",
+    location: "Itagui",
+  },
+  {
+    id: "ba-6",
+    label: "Destape de desagues",
+    linea: "plomeria",
+    location: "La Estrella",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  COVERAGE SCHEDULE                                                 */
+/* ------------------------------------------------------------------ */
+
+export const COVERAGE_SCHEDULE = {
+  hours: "Lunes a sabado, 7:00 a.m. - 6:00 p.m.",
+  responseTime: "Respuesta en menos de 2 horas en horario laboral.",
+  urgencyNote:
+    "Urgencias fuera de horario: escribenos por WhatsApp y coordinamos lo antes posible.",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/*  CONTEXTUAL WHATSAPP MESSAGES                                      */
+/* ------------------------------------------------------------------ */
+
+export function buildWaLinkHero(municipio?: string, linea?: string) {
+  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
+  const safeLinea = linea?.trim() || "multiservicios";
+  const msg = `Quiero cotizar un servicio en ${safeMunicipio}. Es sobre ${safeLinea}.`;
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkTechos() {
+  const msg = "Tengo gotera/filtracion. Que hago hoy y cuando pueden venir?";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkPintura() {
+  const msg = "Quiero pintar apto/casa. Como cotizan?";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkPlomeria() {
+  const msg = "Tengo fuga/sanitario. Atienden hoy?";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkProcess() {
+  const msg = "Quiero iniciar proceso de cotizacion.";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkPricing(servicio?: string, municipio?: string) {
+  const safeServicio = servicio?.trim() || "servicio";
+  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
+  const msg = `Quiero confirmar valor para ${safeServicio} en ${safeMunicipio}.`;
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkCoverage(municipio?: string) {
+  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
+  const msg = `Quiero confirmar si atienden en ${safeMunicipio}.`;
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+export function buildWaLinkFaq() {
+  const msg = "Tengo una duda sobre sus servicios.";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
+/* ------------------------------------------------------------------ */
+/*  LEGACY GENERIC WA LINK BUILDER (kept for QuoteModal)              */
+/* ------------------------------------------------------------------ */
 
 export type BuildWaLinkInput = {
   linea?: string;
