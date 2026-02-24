@@ -24,16 +24,6 @@ const baseConfig: NextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.espinalservicios.com" }],
-        destination: "https://espinalservicios.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 let nextConfig: NextConfig = baseConfig;
