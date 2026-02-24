@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   FormEvent,
+  KeyboardEvent,
   useEffect,
   useMemo,
   useState,
@@ -65,6 +66,12 @@ type QuoteModalState = {
   linea: ServiceLineId;
   servicio: string;
   urgencia: string;
+};
+
+type QuoteModalOpenInput = {
+  linea: ServiceLineId;
+  servicio?: string;
+  source: string;
 };
 
 type ProcessStep = {
@@ -290,6 +297,15 @@ const INITIAL_QUOTE_STATE: QuoteModalState = {
   servicio: SERVICE_DATA.techos[0].name,
   urgencia: "Solo cotizacion",
 };
+
+function normalizePhoneInput(value: string) {
+  return value.replace(/[^\d+\s()-]/g, "");
+}
+
+function hasValidPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 10 && digits.length <= 13;
+}
 
 function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -610,6 +626,8 @@ export default function TechosLanding() {
     "idle" | "loading" | "ready" | "error"
   >("idle");
   const [showCallFallback, setShowCallFallback] = useState(false);
+  const [resolverFormError, setResolverFormError] = useState("");
+  const [quoteFormError, setQuoteFormError] = useState("");
   const [quoteModalState, setQuoteModalState] = useState<QuoteModalState>(INITIAL_QUOTE_STATE);
   const [resolverState, setResolverState] = useState<ResolverFormState>(INITIAL_RESOLVER_STATE);
 
@@ -666,6 +684,22 @@ export default function TechosLanding() {
       }),
     [selectedCoverageMunicipality],
   );
+  const formattedWeatherUpdatedAt = useMemo(() => {
+    if (!weatherSnapshot?.updatedAt) {
+      return "";
+    }
+
+    try {
+      return new Intl.DateTimeFormat("es-CO", {
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(new Date(weatherSnapshot.updatedAt));
+    } catch {
+      return "";
+    }
+  }, [weatherSnapshot?.updatedAt]);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 6);
@@ -780,18 +814,58 @@ export default function TechosLanding() {
     track("process_step_select", { source, step: stepId });
   };
 
-  const openQuoteModal = ({ linea, servicio }: { linea: ServiceLineId; servicio?: string }) => {
+  const onProcessStepKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      const nextIndex = Math.min(PROCESS_STEPS.length - 1, index + 1);
+      onProcessStepSelect(PROCESS_STEPS[nextIndex].id, "timeline");
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      const prevIndex = Math.max(0, index - 1);
+      onProcessStepSelect(PROCESS_STEPS[prevIndex].id, "timeline");
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      onProcessStepSelect(PROCESS_STEPS[0].id, "timeline");
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      onProcessStepSelect(PROCESS_STEPS[PROCESS_STEPS.length - 1].id, "timeline");
+    }
+  };
+
+  const openQuoteModal = ({ linea, servicio, source }: QuoteModalOpenInput) => {
     const serviceName = servicio || SERVICE_DATA[linea][0].name;
+    setQuoteFormError("");
+    setShowCallFallback(false);
     setQuoteModalState((prev) => ({
       ...prev,
       linea,
       servicio: serviceName,
     }));
     setIsQuoteModalOpen(true);
+    track("quote_modal_open", {
+      source,
+      linea,
+      servicio: serviceName,
+    });
   };
 
   const onQuoteSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const sanitizedPhone = quoteModalState.telefono.trim();
+
+    if (sanitizedPhone && !hasValidPhone(sanitizedPhone)) {
+      setQuoteFormError("Revisa el telefono. Usa formato de 10 a 13 digitos.");
+      return;
+    }
+
+    setQuoteFormError("");
+    setShowCallFallback(false);
 
     track("form_submit", {
       source: "quote_modal",
@@ -807,7 +881,7 @@ export default function TechosLanding() {
       municipio: quoteModalState.municipio,
       urgencia: quoteModalState.urgencia,
       nombre: quoteModalState.nombre,
-      telefono: quoteModalState.telefono,
+      telefono: sanitizedPhone,
     });
 
     track("cta_whatsapp_click", {
@@ -820,13 +894,24 @@ export default function TechosLanding() {
 
     if (!popup) {
       setShowCallFallback(true);
+      return;
     }
 
+    setQuoteModalState((prev) => ({ ...prev, nombre: "", telefono: "" }));
     setIsQuoteModalOpen(false);
   };
 
   const onResolverSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const sanitizedPhone = resolverState.telefono.trim();
+
+    if (!hasValidPhone(sanitizedPhone)) {
+      setResolverFormError("Ingresa un telefono valido de 10 a 13 digitos.");
+      return;
+    }
+
+    setResolverFormError("");
+    setShowCallFallback(false);
 
     track("form_submit", {
       source: "resolver_ahora",
@@ -842,7 +927,7 @@ export default function TechosLanding() {
       municipio: resolverState.municipio,
       urgencia: resolverState.urgencia,
       nombre: resolverState.nombre,
-      telefono: resolverState.telefono,
+      telefono: sanitizedPhone,
       detalle: resolverState.detalle,
     });
 
@@ -856,7 +941,15 @@ export default function TechosLanding() {
 
     if (!popup) {
       setShowCallFallback(true);
+      return;
     }
+
+    setResolverState((prev) => ({
+      ...prev,
+      nombre: "",
+      telefono: "",
+      detalle: "",
+    }));
   };
 
   const ActiveProcessIcon = activeProcessData.icon;
@@ -914,7 +1007,13 @@ export default function TechosLanding() {
           <button
             type="button"
             aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            onClick={() =>
+              setIsMobileMenuOpen((prev) => {
+                const next = !prev;
+                track("mobile_menu_toggle", { open: next });
+                return next;
+              })
+            }
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 bg-white text-slate-900 transition-all duration-300 ease-out hover:border-orange-300 md:hidden"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
@@ -945,10 +1044,10 @@ export default function TechosLanding() {
                     setIsMobileMenuOpen(false);
                     track("cta_whatsapp_click", { source: "mobile_menu" });
                   }}
-                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 text-sm font-semibold text-white active:scale-[0.98]"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 text-xs font-semibold text-white active:scale-[0.98] sm:text-sm"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp
+                  Hablar con experto
                 </a>
                 <a
                   href={telLink}
@@ -1155,7 +1254,7 @@ export default function TechosLanding() {
                         type="button"
                         onClick={() => {
                           track("service_item_click", { source: "service_list", linea: activeLine, servicio: item.id });
-                          openQuoteModal({ linea: activeLine, servicio: item.name });
+                          openQuoteModal({ linea: activeLine, servicio: item.name, source: "service_list" });
                         }}
                         className={`group flex w-full items-start justify-between gap-4 px-4 py-4 text-left transition-all duration-300 ease-out hover:bg-slate-50 active:scale-[0.995] ${
                           index < activeLineData.length - 1 ? "border-b border-slate-200" : ""
@@ -1188,10 +1287,10 @@ export default function TechosLanding() {
                     </p>
                     <button
                       type="button"
-                      onClick={() => openQuoteModal({ linea: activeLine })}
+                      onClick={() => openQuoteModal({ linea: activeLine, source: "service_footer" })}
                       className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
                     >
-                      Abrir cotizacion rapida
+                      Hablar con un experto
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </button>
                   </div>
@@ -1220,12 +1319,14 @@ export default function TechosLanding() {
                     key={step.id}
                     type="button"
                     onClick={() => onProcessStepSelect(step.id, "timeline")}
+                    onKeyDown={(event) => onProcessStepKeyDown(event, index)}
                     className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] ${
                       isActive
                         ? "border-orange-300 bg-orange-50 text-orange-700"
                         : "border-slate-300 bg-white text-slate-700 hover:border-orange-200"
                     }`}
                     aria-pressed={isActive}
+                    aria-label={`Paso ${index + 1}: ${step.title}`}
                   >
                     Paso {index + 1}
                     <span className="hidden text-xs font-medium text-slate-500 md:inline">
@@ -1364,7 +1465,7 @@ export default function TechosLanding() {
                 Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios cercanos de Antioquia segun disponibilidad operativa.
               </p>
               <p className="mt-2 text-sm text-slate-600 md:text-base">
-                Selecciona tu municipio para confirmar ruta y disponibilidad por WhatsApp.
+                Sectores frecuentes: Laureles, El Poblado, Envigado y Sabaneta. Selecciona tu municipio para confirmar ruta y disponibilidad.
               </p>
             </Reveal>
 
@@ -1400,7 +1501,7 @@ export default function TechosLanding() {
                 </Reveal>
 
                 <Reveal delay={135}>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5" aria-live="polite">
                     <p className="text-sm font-semibold text-slate-900">Condiciones actuales de referencia</p>
                     {weatherStatus === "loading" ? (
                       <p className="mt-2 text-sm text-slate-600">Consultando clima en {selectedCoverageMunicipality}...</p>
@@ -1423,6 +1524,11 @@ export default function TechosLanding() {
                         <p className="text-xs text-slate-500">
                           Dato de referencia climatica para coordinar visita en {weatherSnapshot.municipality}.
                         </p>
+                        {formattedWeatherUpdatedAt ? (
+                          <p className="text-xs text-slate-500">
+                            Actualizado: {formattedWeatherUpdatedAt}
+                          </p>
+                        ) : null}
                       </div>
                     ) : null}
 
@@ -1475,7 +1581,7 @@ export default function TechosLanding() {
                     className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
-                    Confirmar cobertura por WhatsApp
+                    Hablar con un experto de cobertura
                   </a>
                 </Reveal>
               </div>
@@ -1547,7 +1653,7 @@ export default function TechosLanding() {
                           }
                           className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
                         >
-                          Hablar de este caso
+                          Hablar con un experto del caso
                           <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </a>
                         <button
@@ -1555,7 +1661,11 @@ export default function TechosLanding() {
                           onClick={() => {
                             onLineSelect(scenario.linea, "scenario");
                             onCoverageSelect(scenario.municipio, "scenario");
-                            openQuoteModal({ linea: scenario.linea, servicio: scenario.service });
+                            openQuoteModal({
+                              linea: scenario.linea,
+                              servicio: scenario.service,
+                              source: "scenario",
+                            });
                             track("service_item_click", {
                               source: "scenario",
                               linea: scenario.linea,
@@ -1604,6 +1714,8 @@ export default function TechosLanding() {
                       <input
                         type="text"
                         required
+                        autoComplete="name"
+                        placeholder="Tu nombre"
                         value={resolverState.nombre}
                         onChange={(event) => setResolverState((prev) => ({ ...prev, nombre: event.target.value }))}
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
@@ -1614,8 +1726,18 @@ export default function TechosLanding() {
                       <input
                         type="tel"
                         required
+                        inputMode="tel"
+                        autoComplete="tel"
+                        placeholder="300 000 0000"
+                        pattern="[0-9+()\\-\\s]{10,18}"
                         value={resolverState.telefono}
-                        onChange={(event) => setResolverState((prev) => ({ ...prev, telefono: event.target.value }))}
+                        onChange={(event) => {
+                          setResolverFormError("");
+                          setResolverState((prev) => ({
+                            ...prev,
+                            telefono: normalizePhoneInput(event.target.value),
+                          }));
+                        }}
                         className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
                       />
                     </label>
@@ -1720,6 +1842,12 @@ export default function TechosLanding() {
                       Si WhatsApp no se abrio, usa la llamada directa para continuar.
                     </p>
                   ) : null}
+
+                  {resolverFormError ? (
+                    <p className="mt-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+                      {resolverFormError}
+                    </p>
+                  ) : null}
                 </form>
               </Reveal>
             </div>
@@ -1779,7 +1907,7 @@ export default function TechosLanding() {
             <div className="flex flex-col gap-2 sm:flex-row">
               <button
                 type="button"
-                onClick={() => openQuoteModal({ linea: activeLine })}
+                onClick={() => openQuoteModal({ linea: activeLine, source: "footer" })}
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
               >
                 Resolver ahora
@@ -1816,7 +1944,7 @@ export default function TechosLanding() {
       <div className="pointer-events-none fixed bottom-6 right-6 z-[70] hidden md:block">
         <div className="group relative">
           <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 translate-x-1 rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100">
-            WhatsApp
+            Hablar con experto
           </span>
           <a
             href={heroWaLink}
@@ -1841,10 +1969,10 @@ export default function TechosLanding() {
             target="_blank"
             rel="noreferrer"
             onClick={() => track("cta_whatsapp_click", { source: "mobile_bar" })}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-sm font-semibold text-slate-900 active:scale-[0.98]"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-xs font-semibold text-slate-900 active:scale-[0.98] sm:text-sm"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            WhatsApp
+            Hablar con experto
           </a>
           <a
             href={telLink}
@@ -1873,7 +2001,10 @@ export default function TechosLanding() {
               <button
                 type="button"
                 aria-label="Cerrar modal"
-                onClick={() => setIsQuoteModalOpen(false)}
+                onClick={() => {
+                  setQuoteFormError("");
+                  setIsQuoteModalOpen(false);
+                }}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 text-slate-700"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
@@ -1886,6 +2017,8 @@ export default function TechosLanding() {
                   Nombre
                   <input
                     type="text"
+                    autoComplete="name"
+                    placeholder="Tu nombre"
                     value={quoteModalState.nombre}
                     onChange={(event) =>
                       setQuoteModalState((prev) => ({ ...prev, nombre: event.target.value }))
@@ -1897,10 +2030,18 @@ export default function TechosLanding() {
                   Telefono
                   <input
                     type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="300 000 0000"
+                    pattern="[0-9+()\\-\\s]{10,18}"
                     value={quoteModalState.telefono}
-                    onChange={(event) =>
-                      setQuoteModalState((prev) => ({ ...prev, telefono: event.target.value }))
-                    }
+                    onChange={(event) => {
+                      setQuoteFormError("");
+                      setQuoteModalState((prev) => ({
+                        ...prev,
+                        telefono: normalizePhoneInput(event.target.value),
+                      }));
+                    }}
                     className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm"
                   />
                 </label>
@@ -1987,7 +2128,7 @@ export default function TechosLanding() {
                   className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  Enviar por WhatsApp
+                  Hablar con un experto
                 </button>
                 <a
                   href={telLink}
@@ -1999,6 +2140,16 @@ export default function TechosLanding() {
                 </a>
               </div>
               <p className="text-xs text-slate-500">Sujeto a inspeccion tecnica y condiciones del sitio.</p>
+              {quoteFormError ? (
+                <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+                  {quoteFormError}
+                </p>
+              ) : null}
+              {showCallFallback ? (
+                <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                  Si WhatsApp no se abrio, usa la llamada directa para continuar.
+                </p>
+              ) : null}
             </form>
           </div>
         </div>
