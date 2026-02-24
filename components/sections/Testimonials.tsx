@@ -3,7 +3,6 @@
 import { Star } from "lucide-react";
 import {
   TESTIMONIAL_DATA,
-  LINE_OPTIONS,
   buildWaLinkFaq,
   type ServiceLineId,
 } from "@/lib/conversion";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Droplets, Info, MessageCircle, Paintbrush, Wrench } from "lucide-react";
+import { Droplets, Info, Paintbrush, Wrench } from "lucide-react";
 import {
   LINE_OPTIONS,
   LINE_STORY,

@@ -13,24 +13,25 @@ function useCountUp(target: number, duration: number = 1500, decimals: number = 
     if (hasAnimated.current) return;
     hasAnimated.current = true;
 
-    const start = performance.now();
-    const from = 0;
+    // Reset to 0 and start animation in the same frame to avoid CLS flash
+    requestAnimationFrame(() => {
+      setValue(0);
+      const start = performance.now();
 
-    function step(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // cubic ease-out
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = from + (target - from) * eased;
-      setValue(Number(current.toFixed(decimals)));
+      function step(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        setValue(Number(current.toFixed(decimals)));
 
-      if (progress < 1) {
-        requestAnimationFrame(step);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
       }
-    }
 
-    setValue(0);
-    requestAnimationFrame(step);
+      requestAnimationFrame(step);
+    });
   }, [target, duration, decimals]);
 
   useEffect(() => {
