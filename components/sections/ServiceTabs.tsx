@@ -115,7 +115,7 @@ export default function ServiceTabs() {
             target="_blank"
             rel="noreferrer"
             onClick={() => track("cta_whatsapp_click", { source: "service_escape_hatch" })}
-            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#25D366]/10 px-4 py-2.5 text-sm font-semibold text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
+            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#25D366]/10 px-4 py-2.5 text-sm font-semibold text-[#15803d] transition-colors hover:bg-[#25D366] hover:text-white focus-visible:ring-2 focus-visible:ring-[#25D366]"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Describir mi problema
@@ -201,7 +201,7 @@ export default function ServiceTabs() {
                         servicio: service.id,
                       })
                     }
-                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-4 text-sm font-semibold text-[#25D366] transition-all duration-300 ease-out hover:bg-[#25D366] hover:text-white active:scale-[0.98]"
+                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-4 text-sm font-semibold text-[#15803d] transition-all duration-300 ease-out hover:bg-[#25D366] hover:text-white focus-visible:ring-2 focus-visible:ring-[#25D366] active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Cotizar esto
