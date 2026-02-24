@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { Clock, CloudSun, Droplets, Thermometer, Zap, AlertTriangle } from "lucide-react";
 
@@ -42,6 +43,25 @@ export default function CoverageAvailability({
   weather,
   weatherStatus,
 }: CoverageAvailabilityProps) {
+  const [mapVisible, setMapVisible] = useState(false);
+  const mapSentinelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = mapSentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMapVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const otherMunicipalities = MUNICIPALITY_OPTIONS.filter(
     (m) => m !== "Otro" && m !== selectedMunicipality,
   );
@@ -61,7 +81,7 @@ export default function CoverageAvailability({
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           {/* Map */}
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
+          <div ref={mapSentinelRef} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
                 Mapa operativo Valle de Aburrá
@@ -70,10 +90,16 @@ export default function CoverageAvailability({
                 {selectedMunicipality}
               </span>
             </div>
-            <CoverageMap
-              selectedMunicipality={selectedMunicipality}
-              onMunicipalitySelect={(municipio) => onSelect(municipio, "mapbox")}
-            />
+            {mapVisible ? (
+              <CoverageMap
+                selectedMunicipality={selectedMunicipality}
+                onMunicipalitySelect={(municipio) => onSelect(municipio, "mapbox")}
+              />
+            ) : (
+              <div className="flex h-[360px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-100 text-sm text-slate-500 md:h-[420px]">
+                Cargando mapa...
+              </div>
+            )}
           </div>
 
           {/* Info panel */}
