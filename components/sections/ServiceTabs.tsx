@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Droplets, Paintbrush, Wrench } from "lucide-react";
+import { Droplets, Info, MessageCircle, Paintbrush, Wrench } from "lucide-react";
 import {
   LINE_OPTIONS,
   LINE_STORY,
   SERVICE_DATA,
   WA_BASE_URL,
+  buildWaLinkHero,
   type ServiceLineId,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
@@ -101,6 +102,26 @@ export default function ServiceTabs() {
           })}
         </div>
 
+        {/* Escape hatch - "¿No sabes qué necesitas?" */}
+        <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5">
+          <p className="text-sm font-semibold text-slate-900">
+            ¿No sabes exactamente qué necesitas?
+          </p>
+          <p className="mt-1 text-sm text-slate-600">
+            Cuéntanos tu problema por WhatsApp y te decimos cuál servicio aplica.
+          </p>
+          <a
+            href={buildWaLinkHero()}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => track("cta_whatsapp_click", { source: "service_escape_hatch" })}
+            className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#25D366]/10 px-4 py-2.5 text-sm font-semibold text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Describir mi problema
+          </a>
+        </div>
+
         {/* Active tab description + story bullets */}
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
           <p className="text-sm font-semibold text-slate-900">
@@ -119,6 +140,17 @@ export default function ServiceTabs() {
           </ul>
         </div>
 
+        {/* Pricing disclaimer - BEFORE the grid */}
+        <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4">
+          <div className="flex items-start gap-3">
+            <Info className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+            <p className="text-sm leading-relaxed text-slate-600">
+              <strong className="text-slate-900">Precios base de referencia.</strong>{" "}
+              El valor final se confirma con una visita técnica gratuita — sin compromiso ni sorpresas.
+            </p>
+          </div>
+        </div>
+
         {/* Service list */}
         <div
           id={`panel-${activeTab}`}
@@ -127,7 +159,7 @@ export default function ServiceTabs() {
           className="mt-6"
         >
           <p className="mb-4 text-sm font-medium text-slate-500">
-            {activeServices.length} servicios disponibles en {activeLineLabel.toLowerCase()}. Toca &quot;Pedir cotización de esto&quot; en el que necesites y te atendemos por WhatsApp.
+            {activeServices.length} servicios disponibles en {activeLineLabel.toLowerCase()}.
           </p>
 
           <div key={activeTab} className="grid gap-4 sm:grid-cols-2">
@@ -169,26 +201,15 @@ export default function ServiceTabs() {
                         servicio: service.id,
                       })
                     }
-                    className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
+                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#25D366] bg-[#25D366]/10 px-4 text-sm font-semibold text-[#25D366] transition-all duration-300 ease-out hover:bg-[#25D366] hover:text-white active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
-                    Pedir cotización de esto
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    Cotizar esto
                   </a>
                 </article>
               );
             })}
           </div>
-        </div>
-
-        {/* Pricing disclaimer */}
-        <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-4">
-          <p className="text-sm font-semibold text-amber-900">
-            ¿Cómo funciona el precio?
-          </p>
-          <p className="mt-1 text-sm leading-relaxed text-amber-800">
-            Los valores que ves son precios base de referencia. El precio final depende del tamaño del trabajo, los materiales y el estado del sitio. Por eso primero hacemos una visita técnica gratuita para darte un precio exacto y sin sorpresas.
-          </p>
         </div>
       </div>
     </section>

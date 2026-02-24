@@ -1,41 +1,19 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CalendarDays, CheckCircle2, Phone, RotateCcw } from "lucide-react";
+import { CheckCircle2, MessageCircle, RotateCcw } from "lucide-react";
 import {
   buildWaLinkAppointment,
   LINE_OPTIONS,
-  MUNICIPALITY_OPTIONS,
   PHONE_DISPLAY,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-const HORARIO_OPTIONS = [
-  "Mañana (7am-12pm)",
-  "Tarde (12pm-6pm)",
-  "Cualquier horario",
+const SERVICE_OPTIONS = [
+  ...LINE_OPTIONS.map((l) => l.label),
+  "No sé todavía",
 ] as const;
-
-function normalizePhoneInput(value: string) {
-  return value.replace(/[^\d+\s()-]/g, "");
-}
-
-function hasValidPhone(value: string) {
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= 10 && digits.length <= 13;
-}
-
-function getTodayString() {
-  const d = new Date();
-  return d.toISOString().split("T")[0];
-}
-
-function getMaxDateString() {
-  const d = new Date();
-  d.setDate(d.getDate() + 30);
-  return d.toISOString().split("T")[0];
-}
 
 type AppointmentSchedulerProps = {
   telLink: string;
@@ -43,11 +21,7 @@ type AppointmentSchedulerProps = {
 
 export default function AppointmentScheduler({ telLink }: AppointmentSchedulerProps) {
   const [nombre, setNombre] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [municipio, setMunicipio] = useState("Medellín");
-  const [linea, setLinea] = useState("Techos y cubiertas");
-  const [fecha, setFecha] = useState("");
-  const [horario, setHorario] = useState<string>(HORARIO_OPTIONS[0]);
+  const [linea, setLinea] = useState<string>(SERVICE_OPTIONS[0]);
   const [descripcion, setDescripcion] = useState("");
   const [formError, setFormError] = useState("");
   const [showCallFallback, setShowCallFallback] = useState(false);
@@ -63,30 +37,14 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
       return;
     }
 
-    if (!telefono.trim() || !hasValidPhone(telefono)) {
-      setFormError("Revisa el teléfono. Usa formato de 10 a 13 dígitos.");
-      return;
-    }
-
-    if (!fecha) {
-      setFormError("Selecciona una fecha preferida para la visita.");
-      return;
-    }
-
     track("form_submit", {
       source: "appointment_scheduler",
-      municipio,
       linea,
-      horario,
     });
 
     const waLink = buildWaLinkAppointment({
       nombre: nombre.trim(),
-      telefono: telefono.trim(),
-      municipio,
       linea,
-      fecha,
-      horario,
       descripcion: descripcion.trim() || undefined,
     });
 
@@ -102,8 +60,6 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
   };
 
   const hasNombreError = formError.includes("nombre");
-  const hasTelefonoError = formError.includes("teléfono") || formError.includes("Revisa");
-  const hasFechaError = formError.includes("fecha");
 
   return (
     <section id="agendar" className="py-16 md:py-24">
@@ -114,16 +70,16 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
         <div className="mt-4 rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-6 md:p-8">
           <div className="flex items-center gap-3">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-orange-600 text-white">
-              <CalendarDays className="h-5 w-5" aria-hidden="true" />
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Agenda tu visita técnica gratis
+                Cuéntanos tu problema
               </h2>
             </div>
           </div>
           <p className="mt-3 text-base text-slate-600">
-            Llena este formulario y te confirmamos disponibilidad por WhatsApp. No tiene costo.
+            Llena estos 3 datos y te respondemos por WhatsApp en menos de 2 horas.
           </p>
 
           {formSubmitted ? (
@@ -139,7 +95,6 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                 href={telLink}
                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 hover:text-slate-900"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" />
                 También puedes llamarnos al {PHONE_DISPLAY}
               </a>
               <button
@@ -171,39 +126,6 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                   />
                 </label>
                 <label className="block text-sm font-medium text-slate-700">
-                  Teléfono *
-                  <input
-                    type="tel"
-                    inputMode="tel"
-                    autoComplete="tel"
-                    placeholder="300 000 0000"
-                    value={telefono}
-                    aria-required="true"
-                    aria-invalid={hasTelefonoError || undefined}
-                    onChange={(e) => {
-                      setFormError("");
-                      setTelefono(normalizePhoneInput(e.target.value));
-                    }}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
-                  />
-                </label>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
-                  Municipio *
-                  <select
-                    value={municipio}
-                    aria-required="true"
-                    onChange={(e) => setMunicipio(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
-                  >
-                    {MUNICIPALITY_OPTIONS.map((m) => (
-                      <option key={m} value={m}>{m}</option>
-                    ))}
-                  </select>
-                </label>
-                <label className="block text-sm font-medium text-slate-700">
                   Tipo de servicio *
                   <select
                     value={linea}
@@ -211,39 +133,8 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                     onChange={(e) => setLinea(e.target.value)}
                     className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
                   >
-                    {LINE_OPTIONS.map((l) => (
-                      <option key={l.id} value={l.label}>{l.label}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
-                  Fecha preferida *
-                  <input
-                    type="date"
-                    min={getTodayString()}
-                    max={getMaxDateString()}
-                    value={fecha}
-                    aria-required="true"
-                    aria-invalid={hasFechaError || undefined}
-                    onChange={(e) => {
-                      setFormError("");
-                      setFecha(e.target.value);
-                    }}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
-                  />
-                </label>
-                <label className="block text-sm font-medium text-slate-700">
-                  Horario preferido
-                  <select
-                    value={horario}
-                    onChange={(e) => setHorario(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
-                  >
-                    {HORARIO_OPTIONS.map((h) => (
-                      <option key={h} value={h}>{h}</option>
+                    {SERVICE_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>
                 </label>
@@ -254,7 +145,7 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                 <textarea
                   placeholder="Cuéntanos brevemente qué necesitas resolver..."
                   maxLength={200}
-                  rows={3}
+                  rows={2}
                   value={descripcion}
                   onChange={(e) => setDescripcion(e.target.value)}
                   className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-orange-400 focus:outline-none focus:ring-1 focus:ring-orange-400"
@@ -264,26 +155,16 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                 </span>
               </label>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="submit"
-                  className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white shadow-lg shadow-orange-600/20 transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
-                >
-                  <WhatsAppIcon className="h-5 w-5" />
-                  Agendar por WhatsApp
-                </button>
-                <a
-                  href={telLink}
-                  onClick={() => track("cta_call_click", { source: "appointment_scheduler" })}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-6 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
-                >
-                  <Phone className="h-5 w-5" aria-hidden="true" />
-                  O llámanos directo
-                </a>
-              </div>
+              <button
+                type="submit"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white shadow-lg shadow-[#25D366]/20 transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                Enviar por WhatsApp
+              </button>
 
               <p className="text-xs text-slate-500">
-                Sujeto a disponibilidad. Te confirmamos en menos de 2 horas.
+                Se abre WhatsApp con tu mensaje listo. Solo dale enviar.
               </p>
 
               {formError ? (
@@ -305,7 +186,7 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                   <p>Si WhatsApp no se abrió, puedes:</p>
                   <ul className="mt-1 list-disc pl-4">
                     <li>
-                      <a href={buildWaLinkAppointment({ nombre: nombre.trim(), telefono: telefono.trim(), municipio, linea, fecha, horario, descripcion: descripcion.trim() || undefined })} className="underline">
+                      <a href={buildWaLinkAppointment({ nombre: nombre.trim(), linea, descripcion: descripcion.trim() || undefined })} className="underline">
                         Abrir enlace de WhatsApp directamente
                       </a>
                     </li>

@@ -15,24 +15,24 @@ export default function MobileStickyBar({ waLink, telLink }: MobileStickyBarProp
       className="fixed inset-x-0 bottom-0 z-[75] border-t border-slate-200 bg-white/95 px-3 py-2 backdrop-blur md:hidden"
       style={{ paddingBottom: "max(env(safe-area-inset-bottom), 0.5rem)" }}
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-[1.5fr_1fr] gap-2">
+      <div className="mx-auto flex max-w-6xl items-center gap-2">
         <a
           href={waLink}
           target="_blank"
           rel="noreferrer"
           onClick={() => track("cta_whatsapp_click", { source: "mobile_bar" })}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-sm font-semibold text-slate-900 active:scale-[0.98]"
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-sm font-bold text-white active:scale-[0.98]"
         >
           <WhatsAppIcon className="h-5 w-5" />
-          WhatsApp
+          Cotizar por WhatsApp
         </a>
         <a
           href={telLink}
           onClick={() => track("cta_call_click", { source: "mobile_bar" })}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-slate-900 px-3 text-sm font-semibold text-white active:scale-[0.98]"
+          aria-label="Llamar"
+          className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-slate-300 bg-white active:scale-[0.98]"
         >
-          <Phone className="h-4 w-4" aria-hidden="true" />
-          Llamar
+          <Phone className="h-5 w-5 text-slate-700" aria-hidden="true" />
         </a>
       </div>
     </div>

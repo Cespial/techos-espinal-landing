@@ -5,6 +5,7 @@ import CoverageMap from "@/components/sections/CoverageMap";
 import {
   MUNICIPALITY_OPTIONS,
   buildWaLinkCoverage,
+  buildWaLinkEmergency,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -31,7 +32,6 @@ export default function CoverageAvailability({
   onSelect,
   weather,
   weatherStatus,
-  waLink,
 }: CoverageAvailabilityProps) {
   const otherMunicipalities = MUNICIPALITY_OPTIONS.filter(
     (m) => m !== "Otro" && m !== selectedMunicipality,
@@ -52,7 +52,7 @@ export default function CoverageAvailability({
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           {/* Map */}
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
                 Mapa operativo Valle de Aburrá
@@ -69,7 +69,7 @@ export default function CoverageAvailability({
 
           {/* Info panel */}
           <div className="space-y-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-slate-900">Municipio seleccionado</p>
               <p className="mt-2 text-2xl font-semibold text-slate-900">{selectedMunicipality}</p>
               <p className="mt-2 text-sm text-slate-600">
@@ -77,8 +77,8 @@ export default function CoverageAvailability({
               </p>
             </div>
 
-            {/* Schedule - timeline visual */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            {/* Schedule */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-slate-900">Horario y disponibilidad</p>
               <ul className="mt-3 space-y-3">
                 <li className="flex items-center gap-3 text-sm text-slate-600">
@@ -89,46 +89,56 @@ export default function CoverageAvailability({
                   <Zap className="h-4 w-4 shrink-0 text-orange-500" aria-hidden="true" />
                   Respuesta en menos de 2 horas
                 </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <AlertTriangle className="h-4 w-4 shrink-0 text-orange-500" aria-hidden="true" />
-                  Urgencias: escríbenos por WhatsApp
+                <li className="flex items-center gap-3 text-sm">
+                  <AlertTriangle className="h-4 w-4 shrink-0 text-red-500" aria-hidden="true" />
+                  <a
+                    href={buildWaLinkEmergency()}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => track("cta_whatsapp_click", { source: "emergency" })}
+                    className="font-semibold text-red-600 underline decoration-red-300 underline-offset-2 hover:text-red-700"
+                  >
+                    Urgencias: escríbenos por WhatsApp
+                  </a>
                 </li>
               </ul>
             </div>
 
             {/* Weather */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-5" aria-live="polite">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-live="polite">
               <p className="text-sm font-semibold text-slate-900">Condiciones actuales</p>
-              {weatherStatus === "loading" ? (
-                <p className="mt-2 text-sm text-slate-600">Consultando clima en {selectedMunicipality}...</p>
-              ) : null}
+              <div className="transition-opacity duration-300">
+                {weatherStatus === "loading" ? (
+                  <p className="mt-2 text-sm text-slate-600">Consultando clima en {selectedMunicipality}...</p>
+                ) : null}
 
-              {weatherStatus === "ready" && weather ? (
-                <div className="mt-3 space-y-2 text-sm text-slate-600">
-                  <p className="inline-flex items-center gap-2 text-slate-900">
-                    <CloudSun className="h-4 w-4 text-orange-500" aria-hidden="true" />
-                    {weather.description || "Condición estable"}
-                  </p>
-                  <p className="inline-flex items-center gap-2">
-                    <Thermometer className="h-4 w-4 text-orange-500" aria-hidden="true" />
-                    {weather.temperature}°C (sensación {weather.feelsLike}°C)
-                  </p>
-                  <p className="inline-flex items-center gap-2">
-                    <Droplets className="h-4 w-4 text-sky-500" aria-hidden="true" />
-                    Humedad: {weather.humidity ?? "--"}%
-                  </p>
-                </div>
-              ) : null}
+                {weatherStatus === "ready" && weather ? (
+                  <div className="mt-3 space-y-2 text-sm text-slate-600">
+                    <p className="inline-flex items-center gap-2 text-slate-900">
+                      <CloudSun className="h-4 w-4 text-orange-500" aria-hidden="true" />
+                      {weather.description || "Condición estable"}
+                    </p>
+                    <p className="inline-flex items-center gap-2">
+                      <Thermometer className="h-4 w-4 text-orange-500" aria-hidden="true" />
+                      {weather.temperature}°C (sensación {weather.feelsLike}°C)
+                    </p>
+                    <p className="inline-flex items-center gap-2">
+                      <Droplets className="h-4 w-4 text-sky-500" aria-hidden="true" />
+                      Humedad: {weather.humidity ?? "--"}%
+                    </p>
+                  </div>
+                ) : null}
 
-              {weatherStatus === "error" ? (
-                <p className="mt-2 text-sm text-slate-600">
-                  Clima no disponible. Podemos coordinar visita igual por WhatsApp.
-                </p>
-              ) : null}
+                {weatherStatus === "error" ? (
+                  <p className="mt-2 text-sm text-slate-600">
+                    Clima no disponible. Podemos coordinar visita igual por WhatsApp.
+                  </p>
+                ) : null}
+              </div>
             </div>
 
-            {/* Municipality chips */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
+            {/* Municipality chips - 44px touch target */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-semibold text-slate-900">
                 Otros municipios
               </p>
@@ -138,7 +148,7 @@ export default function CoverageAvailability({
                     key={municipio}
                     type="button"
                     onClick={() => onSelect(municipio, "chip")}
-                    className="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-200 active:scale-[0.98]"
+                    className="min-h-[44px] rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-200 active:scale-[0.98]"
                   >
                     {municipio}
                   </button>
@@ -146,30 +156,19 @@ export default function CoverageAvailability({
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <a
-                href="#agendar"
-                onClick={() =>
-                  track("cta_agendar_click", { source: "coverage", municipio: selectedMunicipality })
-                }
-                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
-              >
-                Agendar visita en {selectedMunicipality}
-              </a>
-              <a
-                href={buildWaLinkCoverage(selectedMunicipality)}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() =>
-                  track("cta_whatsapp_click", { source: "coverage", municipio: selectedMunicipality })
-                }
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-4 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                Escribir por WhatsApp
-              </a>
-            </div>
+            {/* Single merged CTA */}
+            <a
+              href={buildWaLinkCoverage(selectedMunicipality)}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() =>
+                track("cta_whatsapp_click", { source: "coverage", municipio: selectedMunicipality })
+              }
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              Agendar visita en {selectedMunicipality}
+            </a>
           </div>
         </div>
       </div>

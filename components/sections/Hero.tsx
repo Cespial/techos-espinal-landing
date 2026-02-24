@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { CalendarDays, CheckCircle2, MapPin, Phone } from "lucide-react";
+import { ChevronDown, MapPin, ShieldCheck } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { PHONE_DISPLAY } from "@/lib/conversion";
 
 type HeroProps = {
   whatsappLink: string;
@@ -11,11 +13,16 @@ type HeroProps = {
   onCallClick: () => void;
 };
 
-const TRUST_BULLETS = [
-  "Precio claro antes de empezar — sin costos ocultos",
-  "Garantía por escrito en cada trabajo que hacemos",
-  "Dejamos todo limpio y ordenado al terminar",
-];
+const TRUST_BADGES = ["Precio claro", "Garantía por escrito", "350+ trabajos"];
+
+function getSeasonalMessage(): string | null {
+  const month = new Date().getMonth();
+  if (month === 0 || month === 1) return "Empieza el año con la casa en orden";
+  if (month === 3 || month === 4) return "Temporada de lluvias — agenda revisión de techo";
+  if (month >= 8 && month <= 10) return "Segunda temporada de lluvias — protege tu cubierta";
+  if (month === 11) return "Prepara tu casa para las fiestas";
+  return null;
+}
 
 export default function Hero({
   whatsappLink,
@@ -24,6 +31,7 @@ export default function Hero({
   onCallClick,
 }: HeroProps) {
   const [videoFailed, setVideoFailed] = useState(false);
+  const seasonalMsg = getSeasonalMessage();
 
   return (
     <section
@@ -65,6 +73,12 @@ export default function Hero({
           <span>Servicio en Medellín y todo el Valle de Aburrá</span>
         </div>
 
+        {seasonalMsg && (
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-sm font-medium text-amber-300">
+            <span>{seasonalMsg}</span>
+          </div>
+        )}
+
         <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
           Arreglamos techos, pintamos y reparamos la plomería de tu casa o negocio
         </h1>
@@ -73,44 +87,54 @@ export default function Hero({
           Vamos a tu casa, revisamos el problema, te damos un precio claro y lo resolvemos. Sin sorpresas.
         </p>
 
-        <div className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-3">
-          {TRUST_BULLETS.map((bullet) => (
-            <div
-              key={bullet}
-              className="flex items-center gap-2 text-sm font-medium text-white/90"
+        {/* Trust badges - compact, above CTA */}
+        <div className="mx-auto mt-6 flex flex-wrap justify-center gap-3">
+          {TRUST_BADGES.map((badge) => (
+            <span
+              key={badge}
+              className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-sm"
             >
-              <CheckCircle2
-                className="h-4 w-4 shrink-0 text-emerald-400"
-                aria-hidden="true"
-              />
-              <span>{bullet}</span>
-            </div>
+              {badge}
+            </span>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        {/* Primary CTA - WhatsApp */}
+        <div className="mt-8 flex flex-col items-center gap-4">
           <a
-            href="#agendar"
+            href={whatsappLink}
+            target="_blank"
+            rel="noreferrer"
             onClick={onWhatsAppClick}
-            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-orange-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
-            <CalendarDays className="h-5 w-5" aria-hidden="true" />
-            Agendar visita gratis
+            <WhatsAppIcon className="h-5 w-5" />
+            Cotizar por WhatsApp gratis
           </a>
 
+          {/* Secondary - call as text link */}
           <a
             href={phoneLink}
             onClick={onCallClick}
-            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl border-2 border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="text-sm text-white/80 underline decoration-white/40 underline-offset-4 transition-colors hover:text-white"
           >
-            <Phone className="h-5 w-5" aria-hidden="true" />
-            Llamar ahora
+            O llama al {PHONE_DISPLAY}
           </a>
         </div>
 
-        <p className="mt-5 text-sm text-white/80">
-          La visita técnica y la cotización no tienen costo. Respondemos en menos de 2 horas.
-        </p>
+        {/* Guarantee badge */}
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
+          <ShieldCheck className="h-4 w-4 text-emerald-400" aria-hidden="true" />
+          <span>Cotización sin costo — Respuesta en menos de 2 horas</span>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+        <ChevronDown
+          className="h-6 w-6 text-white/60 animate-bounce"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );

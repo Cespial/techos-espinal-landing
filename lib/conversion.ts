@@ -300,6 +300,8 @@ export type FaqItem = {
   id: string;
   question: string;
   answer: string;
+  ctaText?: string;
+  ctaSource?: string;
 };
 
 export const FAQ_ITEMS: FaqItem[] = [
@@ -326,12 +328,16 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "¿Cuánto tiempo toma una visita técnica?",
     answer:
       "Dependiendo de la ubicación y el tipo de servicio, coordinamos visita en 24 a 72 horas hábiles después del primer contacto.",
+    ctaText: "Agendar visita ahora",
+    ctaSource: "faq_visita",
   },
   {
     id: "faq-5",
     question: "¿Puedo cotizar sin compromiso?",
     answer:
       "Sí. Puedes solicitar cotización orientativa por WhatsApp o llamada sin ningún compromiso. El valor final se confirma después de la visita técnica.",
+    ctaText: "Pedir cotización gratis",
+    ctaSource: "faq_cotizar",
   },
   {
     id: "faq-6",
@@ -362,6 +368,7 @@ export type Testimonial = {
   serviceLine: ServiceLineId;
   text: string;
   rating: number;
+  date: string;
 };
 
 export const TESTIMONIAL_DATA: Testimonial[] = [
@@ -372,6 +379,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "techos",
     text: "Teníamos goteras en toda la casa. Vinieron al otro día, revisaron todo el techo y lo dejaron perfecto. Precio justo y trabajo limpio.",
     rating: 5,
+    date: "Noviembre 2025",
   },
   {
     id: "t2",
@@ -380,6 +388,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "pintura",
     text: "Pintaron todo el apartamento en dos días. Quedó como nuevo. Muy organizados y puntuales con los horarios.",
     rating: 5,
+    date: "Diciembre 2025",
   },
   {
     id: "t3",
@@ -388,6 +397,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "plomeria",
     text: "Tenía una fuga que nadie encontraba. Ellos la detectaron rápido y la repararon el mismo día. Muy profesionales.",
     rating: 5,
+    date: "Enero 2026",
   },
   {
     id: "t4",
@@ -396,6 +406,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "techos",
     text: "Impermeabilizaron la cubierta del negocio. Ya pasaron dos temporadas de lluvias y cero filtraciones. Recomendados.",
     rating: 5,
+    date: "Octubre 2025",
   },
   {
     id: "t5",
@@ -404,6 +415,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "pintura",
     text: "Resanaron y pintaron la fachada completa. Los vecinos me preguntan quién lo hizo. Excelente acabado.",
     rating: 5,
+    date: "Febrero 2026",
   },
   {
     id: "t6",
@@ -412,6 +424,7 @@ export const TESTIMONIAL_DATA: Testimonial[] = [
     serviceLine: "plomeria",
     text: "Cambiaron toda la grifería del baño y arreglaron el sanitario. Rápidos, limpios y con garantía. Muy satisfecha.",
     rating: 5,
+    date: "Enero 2026",
   },
 ];
 
@@ -483,22 +496,23 @@ export function buildWaLinkFaq() {
 
 export function buildWaLinkAppointment(data: {
   nombre: string;
-  telefono: string;
-  municipio: string;
+  telefono?: string;
+  municipio?: string;
   linea: string;
-  fecha: string;
-  horario: string;
+  fecha?: string;
+  horario?: string;
   descripcion?: string;
 }) {
   const parts = [
     "Quiero agendar una visita técnica.",
     `Nombre: ${data.nombre}.`,
-    `Teléfono: ${data.telefono}.`,
-    `Municipio: ${data.municipio}.`,
-    `Servicio: ${data.linea}.`,
-    `Fecha preferida: ${data.fecha}.`,
-    `Horario: ${data.horario}.`,
   ];
+
+  if (data.telefono?.trim()) parts.push(`Teléfono: ${data.telefono}.`);
+  if (data.municipio?.trim()) parts.push(`Municipio: ${data.municipio}.`);
+  parts.push(`Servicio: ${data.linea}.`);
+  if (data.fecha?.trim()) parts.push(`Fecha preferida: ${data.fecha}.`);
+  if (data.horario?.trim()) parts.push(`Horario: ${data.horario}.`);
 
   if (data.descripcion?.trim()) {
     parts.push(`Problema: ${data.descripcion.trim()}.`);
@@ -507,6 +521,11 @@ export function buildWaLinkAppointment(data: {
   parts.push("¿Me confirman disponibilidad?");
 
   return `${WA_BASE_URL}?text=${encodeURIComponent(parts.join(" "))}`;
+}
+
+export function buildWaLinkEmergency() {
+  const msg = "URGENTE: Tengo una emergencia y necesito atención lo antes posible. ¿Pueden ayudarme?";
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 
 export function buildTelLink() {

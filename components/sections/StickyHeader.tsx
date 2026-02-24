@@ -71,7 +71,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
             target="_blank"
             rel="noreferrer"
             onClick={() => track("cta_whatsapp_click", { source: "navbar" })}
-            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-sm active:scale-[0.98]"
+            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#25D366] px-3 py-2 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-sm active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-4 w-4" />
             Pedir cotización
@@ -94,8 +94,15 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
         </button>
       </div>
 
-      {isMobileMenuOpen ? (
-        <div className="border-t border-slate-200 bg-white md:hidden">
+      {/* Mobile menu with transition */}
+      <div
+        className={`overflow-hidden border-t transition-all duration-300 md:hidden ${
+          isMobileMenuOpen
+            ? "max-h-[400px] border-slate-200 opacity-100"
+            : "max-h-0 border-transparent opacity-0"
+        }`}
+      >
+        <div className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="space-y-2" aria-label="Navegación móvil">
               {NAV_LINKS.map((link) => (
@@ -118,7 +125,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
                   setIsMobileMenuOpen(false);
                   track("cta_whatsapp_click", { source: "mobile_menu" });
                 }}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 text-xs font-semibold text-white active:scale-[0.98] sm:text-sm"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-3 text-xs font-semibold text-white active:scale-[0.98] sm:text-sm"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Pedir cotización
@@ -137,7 +144,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
             </div>
           </div>
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }

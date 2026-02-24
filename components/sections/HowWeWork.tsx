@@ -1,15 +1,10 @@
 "use client";
 
-import { MessageCircle, Phone } from "lucide-react";
 import { PROCESS_STEPS, buildWaLinkProcess } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-type HowWeWorkProps = {
-  waLink: string;
-  telLink: string;
-};
-
-export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
+export default function HowWeWork() {
   return (
     <section id="proceso" className="border-y border-slate-200 bg-white py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -27,7 +22,7 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
           {PROCESS_STEPS.map((step, index) => (
             <article
               key={step.id}
-              className="relative rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md"
+              className="relative rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md"
             >
               {/* Connector line between steps */}
               {index < PROCESS_STEPS.length - 1 && (
@@ -57,24 +52,16 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
           <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
             No importa si no sabes exactamente qué necesitas. Cuéntanos tu problema y nosotros te decimos qué servicio aplica, cuánto cuesta y cuándo podemos ir. Respuesta en menos de 2 horas en horario laboral.
           </p>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-6 flex justify-center">
             <a
               href={buildWaLinkProcess()}
               target="_blank"
               rel="noreferrer"
               onClick={() => track("cta_whatsapp_click", { source: "process" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
             >
-              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              <WhatsAppIcon className="h-5 w-5" />
               Escribir por WhatsApp
-            </a>
-            <a
-              href={telLink}
-              onClick={() => track("cta_call_click", { source: "process" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-6 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
-            >
-              <Phone className="h-5 w-5" aria-hidden="true" />
-              O llámanos directo
             </a>
           </div>
         </div>

@@ -194,23 +194,35 @@ export default function TechosLanding() {
 
         <SocialProofBar />
 
-        <ServiceTabs />
+        <div className="section-perf">
+          <ServiceTabs />
+        </div>
 
-        <HowWeWork waLink={heroWaLink} telLink={telLink} />
+        <div className="section-perf">
+          <HowWeWork />
+        </div>
 
-        <Testimonials />
+        <div className="section-perf">
+          <Testimonials />
+        </div>
 
-        <CoverageAvailability
-          selectedMunicipality={selectedCoverageMunicipality}
-          onSelect={onCoverageSelect}
-          weather={weatherSnapshot}
-          weatherStatus={weatherStatus}
-          waLink={coverageWaLink}
-        />
+        <div className="section-perf">
+          <CoverageAvailability
+            selectedMunicipality={selectedCoverageMunicipality}
+            onSelect={onCoverageSelect}
+            weather={weatherSnapshot}
+            weatherStatus={weatherStatus}
+            waLink={coverageWaLink}
+          />
+        </div>
 
-        <AppointmentScheduler telLink={telLink} />
+        <div className="section-perf">
+          <AppointmentScheduler telLink={telLink} />
+        </div>
 
-        <FaqFooter waLink={heroWaLink} telLink={telLink} />
+        <div className="section-perf">
+          <FaqFooter waLink={heroWaLink} telLink={telLink} />
+        </div>
       </main>
 
       <MobileStickyBar waLink={heroWaLink} telLink={telLink} />

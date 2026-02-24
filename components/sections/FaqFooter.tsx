@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, MessageCircle, Phone } from "lucide-react";
+import { ChevronDown, Phone } from "lucide-react";
 import {
   COMPANY_NAME,
   FAQ_ITEMS,
@@ -22,7 +22,7 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
   return (
     <>
       {/* FAQ */}
-      <section id="faq" className="border-t border-slate-200 bg-white py-16">
+      <section id="faq" className="border-t border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
             PREGUNTAS FRECUENTES
@@ -38,7 +38,7 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
             {FAQ_ITEMS.map((item) => (
               <details
                 key={item.id}
-                className="group rounded-xl border border-slate-200 bg-slate-50"
+                className="group rounded-2xl border border-slate-200 bg-slate-50"
               >
                 <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-slate-900 transition-all duration-300 ease-out hover:bg-white">
                   {item.question}
@@ -49,12 +49,24 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                 </summary>
                 <div className="border-t border-slate-200 px-5 py-4 text-sm leading-relaxed text-slate-600">
                   {item.answer}
+                  {item.ctaText && (
+                    <a
+                      href={buildWaLinkFaq()}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => track("cta_whatsapp_click", { source: item.ctaSource ?? "faq_inline" })}
+                      className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#25D366]/10 px-3 py-2 text-sm font-semibold text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
+                    >
+                      <WhatsAppIcon className="h-4 w-4" />
+                      {item.ctaText}
+                    </a>
+                  )}
                 </div>
               </details>
             ))}
           </div>
 
-          {/* Final CTA */}
+          {/* Final CTA - keep dual here (last contact point) */}
           <div className="mt-10 rounded-2xl border border-orange-200 bg-orange-50 p-6 text-center md:p-8">
             <p className="text-xl font-semibold text-slate-900">
               ¿Listo para resolver tu problema?
@@ -68,9 +80,9 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => track("cta_whatsapp_click", { source: "faq_final" })}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
               >
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                <WhatsAppIcon className="h-5 w-5" />
                 Pedir cotización gratis
               </a>
               <a
@@ -109,7 +121,7 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => track("cta_whatsapp_click", { source: "footer" })}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 active:scale-[0.98]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] active:scale-[0.98]"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Pedir cotización

@@ -54,7 +54,7 @@ export default function Testimonials() {
             {TESTIMONIAL_DATA.map((testimonial) => (
               <article
                 key={testimonial.id}
-                className="min-w-[280px] max-w-[320px] shrink-0 snap-start rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:min-w-0 md:max-w-none"
+                className="min-w-[280px] max-w-[320px] shrink-0 snap-start rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md md:min-w-0 md:max-w-none"
               >
                 <StarRating rating={testimonial.rating} />
                 <blockquote className="mt-3 text-sm leading-relaxed text-slate-700">
@@ -68,12 +68,26 @@ export default function Testimonials() {
                     <p className="text-xs text-slate-500">
                       {testimonial.municipality}
                     </p>
+                    <p className="text-xs text-slate-400">
+                      {testimonial.date}
+                    </p>
                   </div>
                   <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-600">
                     {LINE_LABEL_MAP[testimonial.serviceLine]}
                   </span>
                 </div>
               </article>
+            ))}
+          </div>
+
+          {/* Scroll indicator dots - mobile only */}
+          <div className="mt-3 flex justify-center gap-1.5 md:hidden">
+            {TESTIMONIAL_DATA.map((t) => (
+              <span
+                key={t.id}
+                className="h-1.5 w-1.5 rounded-full bg-slate-300"
+                aria-hidden="true"
+              />
             ))}
           </div>
         </div>
@@ -93,7 +107,7 @@ export default function Testimonials() {
             onClick={() =>
               track("cta_whatsapp_click", { source: "testimonials" })
             }
-            className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
+            className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#20bd5a] hover:shadow-lg hover:shadow-[#25D366]/20 active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Escríbenos ahora
