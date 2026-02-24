@@ -63,7 +63,10 @@ export default function ServiceTabs() {
     <section id="servicios" className="py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Section header */}
-        <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+          NUESTROS SERVICIOS
+        </p>
+        <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
           Nuestros servicios — elige el que necesitas
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
@@ -127,21 +130,22 @@ export default function ServiceTabs() {
             {activeServices.length} servicios disponibles en {activeLineLabel.toLowerCase()}. Toca &quot;Pedir cotización de esto&quot; en el que necesites y te atendemos por WhatsApp.
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {activeServices.map((service) => {
+          <div key={activeTab} className="grid gap-4 sm:grid-cols-2">
+            {activeServices.map((service, index) => {
               const waLink = buildServiceWaLink(service.name, activeLineLabel);
 
               return (
                 <article
                   key={service.id}
-                  className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md"
+                  className="animate-fade-up flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md"
+                  style={{ animationDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="text-base font-semibold text-slate-900">
                       {service.name}
                     </h3>
                     <div className="shrink-0 text-right">
-                      <p className="text-[10px] uppercase tracking-wider text-slate-400">
+                      <p className="text-[10px] uppercase tracking-wider text-slate-500">
                         Desde
                       </p>
                       <p className="text-base font-bold text-slate-900">

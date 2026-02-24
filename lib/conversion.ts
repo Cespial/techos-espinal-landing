@@ -1,9 +1,9 @@
 export const COMPANY_NAME = "Espinal Multiservicios";
 export const SITE_URL = "https://techos-espinal-landing.vercel.app";
 
-export const PHONE_DISPLAY = "(+57) 300 733 7333";
-export const PHONE_E164 = "+573007337333";
-export const WA_NUMBER = "573007337333";
+export const PHONE_DISPLAY = "(+57) 300 733 6333";
+export const PHONE_E164 = "+573007336333";
+export const WA_NUMBER = "573007336333";
 export const DEFAULT_CITY = "Medellín / Valle de Aburrá";
 
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
@@ -342,6 +342,80 @@ export const FAQ_ITEMS: FaqItem[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/*  SOCIAL PROOF                                                      */
+/* ------------------------------------------------------------------ */
+
+export const SOCIAL_PROOF_STATS = {
+  jobsCompleted: 350,
+  avgRating: 4.9,
+  yearsExperience: 3,
+} as const;
+
+/* ------------------------------------------------------------------ */
+/*  TESTIMONIALS                                                      */
+/* ------------------------------------------------------------------ */
+
+export type Testimonial = {
+  id: string;
+  name: string;
+  municipality: string;
+  serviceLine: ServiceLineId;
+  text: string;
+  rating: number;
+};
+
+export const TESTIMONIAL_DATA: Testimonial[] = [
+  {
+    id: "t1",
+    name: "Carlos M.",
+    municipality: "Envigado",
+    serviceLine: "techos",
+    text: "Teníamos goteras en toda la casa. Vinieron al otro día, revisaron todo el techo y lo dejaron perfecto. Precio justo y trabajo limpio.",
+    rating: 5,
+  },
+  {
+    id: "t2",
+    name: "Andrea L.",
+    municipality: "Medellín",
+    serviceLine: "pintura",
+    text: "Pintaron todo el apartamento en dos días. Quedó como nuevo. Muy organizados y puntuales con los horarios.",
+    rating: 5,
+  },
+  {
+    id: "t3",
+    name: "Jorge R.",
+    municipality: "Sabaneta",
+    serviceLine: "plomeria",
+    text: "Tenía una fuga que nadie encontraba. Ellos la detectaron rápido y la repararon el mismo día. Muy profesionales.",
+    rating: 5,
+  },
+  {
+    id: "t4",
+    name: "María P.",
+    municipality: "Itagüí",
+    serviceLine: "techos",
+    text: "Impermeabilizaron la cubierta del negocio. Ya pasaron dos temporadas de lluvias y cero filtraciones. Recomendados.",
+    rating: 5,
+  },
+  {
+    id: "t5",
+    name: "Luis F.",
+    municipality: "Bello",
+    serviceLine: "pintura",
+    text: "Resanaron y pintaron la fachada completa. Los vecinos me preguntan quién lo hizo. Excelente acabado.",
+    rating: 5,
+  },
+  {
+    id: "t6",
+    name: "Sandra G.",
+    municipality: "La Estrella",
+    serviceLine: "plomeria",
+    text: "Cambiaron toda la grifería del baño y arreglaron el sanitario. Rápidos, limpios y con garantía. Muy satisfecha.",
+    rating: 5,
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /*  COVERAGE SCHEDULE                                                 */
 /* ------------------------------------------------------------------ */
 
@@ -359,7 +433,9 @@ export const COVERAGE_SCHEDULE = {
 export function buildWaLinkHero(municipio?: string, linea?: string) {
   const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
   const safeLinea = linea?.trim() || "multiservicios";
-  const msg = `Quiero cotizar un servicio en ${safeMunicipio}. Es sobre ${safeLinea}.`;
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? "Buenos días" : hour < 18 ? "Buenas tardes" : "Buenas noches";
+  const msg = `${greeting}, quiero cotizar un servicio en ${safeMunicipio}. Es sobre ${safeLinea}.`;
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 

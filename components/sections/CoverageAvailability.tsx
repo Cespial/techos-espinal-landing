@@ -40,7 +40,10 @@ export default function CoverageAvailability({
   return (
     <section id="cobertura" className="bg-slate-50 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+          COBERTURA
+        </p>
+        <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
           ¿Dónde atendemos?
         </h2>
         <p className="mt-3 text-sm text-slate-600 md:text-base">

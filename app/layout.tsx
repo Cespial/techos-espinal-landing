@@ -82,6 +82,8 @@ export default function RootLayout({
   return (
     <html lang="es-CO" className={manrope.variable}>
       <head>
+        <meta name="geo.region" content="CO-ANT" />
+        <meta name="geo.placename" content="Medellín" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />
       </head>

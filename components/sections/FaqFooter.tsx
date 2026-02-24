@@ -24,7 +24,10 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
       {/* FAQ */}
       <section id="faq" className="border-t border-slate-200 bg-white py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">
+            PREGUNTAS FRECUENTES
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
             Preguntas frecuentes
           </h2>
           <p className="mt-3 text-base text-slate-600">

@@ -191,6 +191,11 @@ html {
   animation: motion-fade-up-keyframe var(--motion-duration-320) var(--motion-ease-premium) forwards;
 }
 
+.animate-fade-up {
+  opacity: 0;
+  animation: motion-fade-up-keyframe var(--motion-duration-320) var(--motion-ease-premium) forwards;
+}
+
 .motion-fade-in {
   opacity: 0;
   animation: motion-fade-in-keyframe var(--motion-duration-240) var(--motion-ease-premium) forwards;
@@ -286,7 +291,8 @@ details > summary::-webkit-details-marker {
   }
 
   .motion-fade-up,
-  .motion-fade-in {
+  .motion-fade-in,
+  .animate-fade-up {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

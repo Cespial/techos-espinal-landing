@@ -14,12 +14,15 @@ import { track } from "@/lib/tracking";
 
 import StickyHeader from "@/components/sections/StickyHeader";
 import Hero from "@/components/sections/Hero";
+import SocialProofBar from "@/components/sections/SocialProofBar";
 import ServiceTabs from "@/components/sections/ServiceTabs";
 import HowWeWork from "@/components/sections/HowWeWork";
+import Testimonials from "@/components/sections/Testimonials";
 import CoverageAvailability from "@/components/sections/CoverageAvailability";
 import AppointmentScheduler from "@/components/sections/AppointmentScheduler";
 import FaqFooter from "@/components/sections/FaqFooter";
 import MobileStickyBar from "@/components/sections/MobileStickyBar";
+import WhatsAppFab from "@/components/ui/WhatsAppFab";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                             */
@@ -189,9 +192,13 @@ export default function TechosLanding() {
           onCallClick={() => track("cta_call_click", { source: "hero" })}
         />
 
+        <SocialProofBar />
+
         <ServiceTabs />
 
         <HowWeWork waLink={heroWaLink} telLink={telLink} />
+
+        <Testimonials />
 
         <CoverageAvailability
           selectedMunicipality={selectedCoverageMunicipality}
@@ -207,6 +214,7 @@ export default function TechosLanding() {
       </main>
 
       <MobileStickyBar waLink={heroWaLink} telLink={telLink} />
+      <WhatsAppFab />
     </div>
   );
 }

@@ -108,7 +108,7 @@ export default function Hero({
           </a>
         </div>
 
-        <p className="mt-5 text-sm text-white/60">
+        <p className="mt-5 text-sm text-white/80">
           La visita técnica y la cotización no tienen costo. Respondemos en menos de 2 horas.
         </p>
       </div>
