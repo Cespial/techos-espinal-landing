@@ -15,16 +15,16 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
+    default: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
     template: "%s | Espinal Multiservicios",
   },
   description:
-    "Espinal Multiservicios en Medellin y Valle de Aburra: techos y cubiertas, pintura y acabados, plomeria. Cotiza por WhatsApp, llamada o formulario corto.",
+    "Espinal Multiservicios en Medellín y Valle de Aburrá: techos y cubiertas, pintura y acabados, plomería. Cotiza por WhatsApp, llamada o formulario corto.",
   keywords: [
-    "multiservicios Medellin",
-    "techos y cubiertas Medellin",
-    "pintura y acabados Valle de Aburra",
-    "plomeria Antioquia",
+    "multiservicios Medellín",
+    "techos y cubiertas Medellín",
+    "pintura y acabados Valle de Aburrá",
+    "plomería Antioquia",
     "espinal multiservicios",
   ],
   openGraph: {
@@ -32,23 +32,23 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: SITE_URL,
     siteName: "Espinal Multiservicios",
-    title: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
+    title: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
     description:
-      "Soluciones para hogares y negocios en Medellin, Valle de Aburra y Antioquia segun disponibilidad.",
+      "Soluciones para hogares y negocios en Medellín, Valle de Aburrá y Antioquia según disponibilidad.",
     images: [
       {
         url: "/video/slow-majestic-poster.jpg",
         width: 1600,
         height: 900,
-        alt: "Espinal Multiservicios en Medellin",
+        alt: "Espinal Multiservicios en Medellín",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
+    title: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
     description:
-      "Cotiza por WhatsApp o llamada. Cobertura en Medellin, Valle de Aburra y Antioquia.",
+      "Cotiza por WhatsApp o llamada. Cobertura en Medellín, Valle de Aburrá y Antioquia.",
     images: ["/video/slow-majestic-poster.jpg"],
   },
   robots: {

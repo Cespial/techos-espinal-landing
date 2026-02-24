@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 import { PROCESS_STEPS, buildWaLinkProcess } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
 
@@ -14,10 +14,10 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
     <section id="proceso" className="border-y border-slate-200 bg-white py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
-          ¿Como funciona? Es muy facil
+          Así de fácil es el proceso
         </h2>
         <p className="mt-3 max-w-4xl text-base text-slate-600">
-          No necesitas saber nada tecnico. Solo seguir estos 4 pasos y nosotros nos encargamos del resto.
+          No necesitas saber nada técnico. Solo seguir estos 4 pasos y nosotros nos encargamos del resto.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -45,10 +45,10 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
         {/* Clear CTA block */}
         <div className="mt-10 rounded-2xl border border-orange-200 bg-orange-50 p-6 text-center md:p-8">
           <p className="text-lg font-semibold text-slate-900 md:text-xl">
-            ¿Listo para empezar? Escribenos y te guiamos
+            ¿Tienes un problema? Cuéntanos y te ayudamos
           </p>
           <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
-            No importa si no sabes exactamente que necesitas. Cuentanos tu problema y nosotros te decimos que servicio aplica, cuanto cuesta y cuando podemos ir.
+            No importa si no sabes exactamente qué necesitas. Cuéntanos tu problema y nosotros te decimos qué servicio aplica, cuánto cuesta y cuándo podemos ir. Respuesta en menos de 2 horas en horario laboral.
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
@@ -56,7 +56,7 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
               target="_blank"
               rel="noreferrer"
               onClick={() => track("cta_whatsapp_click", { source: "process" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg active:scale-[0.98]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 active:scale-[0.98]"
             >
               <MessageCircle className="h-5 w-5" aria-hidden="true" />
               Escribir por WhatsApp
@@ -64,10 +64,10 @@ export default function HowWeWork({ waLink, telLink }: HowWeWorkProps) {
             <a
               href={telLink}
               onClick={() => track("cta_call_click", { source: "process" })}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-slate-300 bg-white px-6 text-base font-semibold text-slate-800 transition-all duration-300 ease-out hover:border-orange-300 active:scale-[0.98]"
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
-              O llamanos directo
+              O llámanos directo
             </a>
           </div>
         </div>

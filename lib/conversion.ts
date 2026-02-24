@@ -1,25 +1,25 @@
 export const COMPANY_NAME = "Espinal Multiservicios";
 export const SITE_URL = "https://techos-espinal-landing.vercel.app";
 
-export const PHONE_DISPLAY = "(+57) 300 733 6333";
-export const PHONE_E164 = "+573007336333";
-export const WA_NUMBER = "573007336333";
-export const DEFAULT_CITY = "Medellin / Valle de Aburra";
+export const PHONE_DISPLAY = "(+57) 300 733 7333";
+export const PHONE_E164 = "+573007337333";
+export const WA_NUMBER = "573007337333";
+export const DEFAULT_CITY = "Medellín / Valle de Aburrá";
 
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 
 export const NAV_LINKS = [
   { id: "servicios", label: "Servicios" },
-  { id: "proceso", label: "Como funciona" },
-  { id: "galeria", label: "Trabajos" },
+  { id: "proceso", label: "Cómo funciona" },
   { id: "cobertura", label: "Cobertura" },
+  { id: "agendar", label: "Agendar visita" },
   { id: "faq", label: "Preguntas" },
 ] as const;
 
 export const LINE_OPTIONS = [
   { id: "techos", label: "Techos y cubiertas" },
   { id: "pintura", label: "Pintura y acabados" },
-  { id: "plomeria", label: "Plomeria" },
+  { id: "plomeria", label: "Plomería" },
 ] as const;
 
 export type ServiceLineId = (typeof LINE_OPTIONS)[number]["id"];
@@ -35,50 +35,50 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
   techos: [
     {
       id: "impermeabilizacion-cubiertas",
-      name: "Impermeabilizacion de cubiertas",
-      summary: "Control de filtraciones y sellado en puntos criticos.",
+      name: "Impermeabilización de cubiertas",
+      summary: "Control de filtraciones y sellado en puntos críticos.",
       basePrice: "$350.000 COP",
     },
     {
       id: "reparacion-goteras",
-      name: "Reparacion de goteras",
-      summary: "Intervencion puntual segun estado de la cubierta.",
+      name: "Reparación de goteras",
+      summary: "Intervención puntual según estado de la cubierta.",
       basePrice: "$180.000 COP",
     },
     {
       id: "mantenimiento-canoas",
       name: "Mantenimiento de canoas y bajantes",
-      summary: "Limpieza y ajuste para mejorar evacuacion de agua.",
+      summary: "Limpieza y ajuste para mejorar evacuación de agua.",
       basePrice: "$150.000 COP",
     },
     {
       id: "sellado-fisuras",
       name: "Sellado de fisuras y juntas",
-      summary: "Correccion en puntos de filtracion y uniones criticas.",
+      summary: "Corrección en puntos de filtración y uniones críticas.",
       basePrice: "$210.000 COP",
     },
     {
       id: "cambio-teja-puntual",
       name: "Cambio puntual de teja",
-      summary: "Reposicion de piezas danadas segun acceso y pendiente.",
+      summary: "Reposición de piezas dañadas según acceso y pendiente.",
       basePrice: "$190.000 COP",
     },
     {
       id: "ajuste-bajantes",
       name: "Ajuste de bajantes",
-      summary: "Correccion de pendientes y conexiones para mejor descarga.",
+      summary: "Corrección de pendientes y conexiones para mejor descarga.",
       basePrice: "$170.000 COP",
     },
     {
       id: "limpieza-cubierta",
       name: "Limpieza de cubierta",
-      summary: "Retiro de residuos para reducir acumulacion de humedad.",
+      summary: "Retiro de residuos para reducir acumulación de humedad.",
       basePrice: "$140.000 COP",
     },
     {
       id: "revision-puntos-criticos",
-      name: "Revision de puntos criticos",
-      summary: "Inspeccion tecnica para prevenir filtraciones recurrentes.",
+      name: "Revisión de puntos críticos",
+      summary: "Inspección técnica para prevenir filtraciones recurrentes.",
       basePrice: "$130.000 COP",
     },
   ],
@@ -86,93 +86,93 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
     {
       id: "pintura-interior",
       name: "Pintura interior",
-      summary: "Renovacion de espacios con acabados limpios.",
+      summary: "Renovación de espacios con acabados limpios.",
       basePrice: "$280.000 COP",
     },
     {
       id: "pintura-exterior",
       name: "Pintura exterior",
-      summary: "Proteccion y acabado para fachadas.",
+      summary: "Protección y acabado para fachadas.",
       basePrice: "$320.000 COP",
     },
     {
       id: "resanes-acabados",
       name: "Resanes y acabados",
-      summary: "Nivelacion y correcciones previas a pintura.",
+      summary: "Nivelación y correcciones previas a pintura.",
       basePrice: "$210.000 COP",
     },
     {
       id: "estuco-pulido",
       name: "Estuco y pulido de muros",
-      summary: "Preparacion de superficie para acabado uniforme.",
+      summary: "Preparación de superficie para acabado uniforme.",
       basePrice: "$240.000 COP",
     },
     {
       id: "correccion-humedad-superficial",
-      name: "Correccion de humedad superficial",
-      summary: "Tratamiento base segun el estado visible del muro.",
+      name: "Corrección de humedad superficial",
+      summary: "Tratamiento base según el estado visible del muro.",
       basePrice: "$250.000 COP",
     },
     {
       id: "pintura-rejas-barandas",
       name: "Pintura de rejas y barandas",
-      summary: "Limpieza, fondo y acabado para elementos metalicos.",
+      summary: "Limpieza, fondo y acabado para elementos metálicos.",
       basePrice: "$160.000 COP",
     },
     {
       id: "retoques-post-obra",
       name: "Retoques post-obra",
-      summary: "Correccion de detalles para entregar acabado limpio.",
+      summary: "Corrección de detalles para entregar acabado limpio.",
       basePrice: "$140.000 COP",
     },
     {
       id: "acabado-fachada",
       name: "Acabado de fachada",
-      summary: "Mejora visual con proteccion y uniformidad del color.",
+      summary: "Mejora visual con protección y uniformidad del color.",
       basePrice: "$330.000 COP",
     },
   ],
   plomeria: [
     {
       id: "reparacion-fugas",
-      name: "Reparacion de fugas",
-      summary: "Revision de tuberias y correccion segun el caso.",
+      name: "Reparación de fugas",
+      summary: "Revisión de tuberías y corrección según el caso.",
       basePrice: "$170.000 COP",
     },
     {
       id: "destape-desagues",
-      name: "Destape de desagues",
-      summary: "Atencion de obstrucciones en redes internas.",
+      name: "Destape de desagües",
+      summary: "Atención de obstrucciones en redes internas.",
       basePrice: "$160.000 COP",
     },
     {
       id: "ajustes-hidrosanitarios",
       name: "Ajustes hidrosanitarios",
-      summary: "Cambio y reparacion de piezas de uso frecuente.",
+      summary: "Cambio y reparación de piezas de uso frecuente.",
       basePrice: "$140.000 COP",
     },
     {
       id: "deteccion-fuga-visible",
-      name: "Deteccion de fuga visible",
-      summary: "Revision de conexiones y zonas humedas para ubicar origen.",
+      name: "Detección de fuga visible",
+      summary: "Revisión de conexiones y zonas húmedas para ubicar origen.",
       basePrice: "$130.000 COP",
     },
     {
       id: "cambio-griferia",
-      name: "Cambio de griferia",
-      summary: "Instalacion y ajuste de griferia en cocina o bano.",
+      name: "Cambio de grifería",
+      summary: "Instalación y ajuste de grifería en cocina o baño.",
       basePrice: "$150.000 COP",
     },
     {
       id: "ajuste-sanitario",
       name: "Ajuste de sanitario",
-      summary: "Correccion de fugas, sellos y nivelacion basica.",
+      summary: "Corrección de fugas, sellos y nivelación básica.",
       basePrice: "$165.000 COP",
     },
     {
       id: "revision-presion",
-      name: "Revision de presion y caudal",
-      summary: "Diagnostico inicial para definir mejora en alimentacion.",
+      name: "Revisión de presión y caudal",
+      summary: "Diagnóstico inicial para definir mejora en alimentación.",
       basePrice: "$120.000 COP",
     },
     {
@@ -184,14 +184,14 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
   ],
 };
 
-export const URGENCY_OPTIONS = ["Hoy", "Esta semana", "Solo cotizacion"] as const;
+export const URGENCY_OPTIONS = ["Hoy", "Esta semana", "Solo cotización"] as const;
 
 export const MUNICIPALITY_OPTIONS = [
-  "Medellin",
+  "Medellín",
   "Envigado",
   "Sabaneta",
   "Bello",
-  "Itagui",
+  "Itagüí",
   "La Estrella",
   "Caldas",
   "Copacabana",
@@ -223,32 +223,32 @@ export const PROCESS_STEPS: ProcessStep[] = [
     step: 1,
     title: "Brief de necesidad",
     detail:
-      "Escuchamos el problema, validamos urgencia y definimos la linea de servicio adecuada para tu caso.",
+      "Escuchamos el problema, validamos urgencia y definimos la línea de servicio adecuada para tu caso.",
     note: "Inicias por WhatsApp o llamada, sin formularios largos.",
   },
   {
     id: "diagnostic",
     step: 2,
-    title: "Diagnostico en sitio",
+    title: "Diagnóstico en sitio",
     detail:
-      "Revisamos acceso, estado actual y puntos criticos para proponer una solucion aterrizada.",
-    note: "Equipos de diagnostico segun el caso.",
+      "Revisamos acceso, estado actual y puntos críticos para proponer una solución aterrizada.",
+    note: "Equipos de diagnóstico según el caso.",
   },
   {
     id: "proposal",
     step: 3,
     title: "Alcance y valor base",
     detail:
-      "Definimos actividades, materiales y valor base para que tomes la decision con claridad.",
-    note: "Siempre sujeto a inspeccion tecnica y condiciones del sitio.",
+      "Definimos actividades, materiales y valor base para que tomes la decisión con claridad.",
+    note: "Siempre sujeto a inspección técnica y condiciones del sitio.",
   },
   {
     id: "execution",
     step: 4,
-    title: "Ejecucion coordinada",
+    title: "Ejecución coordinada",
     detail:
-      "Programamos, ejecutamos y dejamos el area limpia con cierre tecnico y recomendaciones de cuidado.",
-    note: "Garantia por escrito segun servicio y alcance.",
+      "Programamos, ejecutamos y dejamos el área limpia con cierre técnico y recomendaciones de cuidado.",
+    note: "Garantía por escrito según servicio y alcance.",
   },
 ];
 
@@ -263,31 +263,31 @@ export const LINE_STORY: Record<
   techos: {
     title: "Cubiertas preparadas para temporada de lluvias",
     summary:
-      "Atendemos goteras, sellos, canoas y puntos de filtracion para hogares y locales en el Valle de Aburra.",
+      "Atendemos goteras, sellos, canoas y puntos de filtración para hogares y locales en el Valle de Aburrá.",
     bullets: [
-      "Diagnostico de filtraciones visibles",
-      "Intervencion segun acceso y pendiente",
+      "Diagnóstico de filtraciones visibles",
+      "Intervención según acceso y pendiente",
       "Mantenimiento preventivo por zonas",
     ],
   },
   pintura: {
     title: "Acabados limpios para vivienda y comercio",
     summary:
-      "Preparamos superficie, corregimos detalles y aplicamos acabados con enfoque en durabilidad y presentacion.",
+      "Preparamos superficie, corregimos detalles y aplicamos acabados con enfoque en durabilidad y presentación.",
     bullets: [
-      "Resanes y correccion de superficie",
+      "Resanes y corrección de superficie",
       "Pintura interior y exterior",
       "Retoques de entrega post-obra",
     ],
   },
   plomeria: {
-    title: "Red hidraulica funcional y sin fugas recurrentes",
+    title: "Red hidráulica funcional y sin fugas recurrentes",
     summary:
-      "Revisamos puntos criticos de cocina, bano y red interna para resolver fugas y obstrucciones.",
+      "Revisamos puntos críticos de cocina, baño y red interna para resolver fugas y obstrucciones.",
     bullets: [
-      "Deteccion de fugas visibles",
+      "Detección de fugas visibles",
       "Destapes y ajustes hidrosanitarios",
-      "Mantenimiento preventivo basico",
+      "Mantenimiento preventivo básico",
     ],
   },
 };
@@ -305,89 +305,39 @@ export type FaqItem = {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     id: "faq-1",
-    question: "¿Manejan garantia?",
+    question: "¿Manejan garantía?",
     answer:
-      "Si. Entregamos garantia por escrito segun servicio, alcance y condiciones del sitio.",
+      "Sí. Entregamos garantía por escrito según servicio, alcance y condiciones del sitio.",
   },
   {
     id: "faq-2",
-    question: "¿Como hacen el diagnostico?",
+    question: "¿Cómo hacen el diagnóstico?",
     answer:
-      "Primero revisamos el problema en sitio y, segun el caso, usamos equipos de diagnostico para precisar la solucion.",
+      "Primero revisamos el problema en sitio y, según el caso, usamos equipos de diagnóstico para precisar la solución.",
   },
   {
     id: "faq-3",
     question: "¿Atienden hogares y negocios?",
     answer:
-      "Si. Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios de Antioquia segun disponibilidad.",
+      "Sí. Atendemos hogares y negocios en Medellín, Valle de Aburrá y municipios de Antioquia según disponibilidad.",
   },
   {
     id: "faq-4",
-    question: "¿Cuanto tiempo toma una visita tecnica?",
+    question: "¿Cuánto tiempo toma una visita técnica?",
     answer:
-      "Dependiendo de la ubicacion y el tipo de servicio, coordinamos visita en 24 a 72 horas habiles despues del primer contacto.",
+      "Dependiendo de la ubicación y el tipo de servicio, coordinamos visita en 24 a 72 horas hábiles después del primer contacto.",
   },
   {
     id: "faq-5",
     question: "¿Puedo cotizar sin compromiso?",
     answer:
-      "Si. Puedes solicitar cotizacion orientativa por WhatsApp o llamada sin ningun compromiso. El valor final se confirma despues de la visita tecnica.",
+      "Sí. Puedes solicitar cotización orientativa por WhatsApp o llamada sin ningún compromiso. El valor final se confirma después de la visita técnica.",
   },
   {
     id: "faq-6",
-    question: "¿Que formas de pago aceptan?",
+    question: "¿Qué formas de pago aceptan?",
     answer:
       "Efectivo, transferencia bancaria y Nequi. Dependiendo del alcance del proyecto, manejamos pagos parciales con acuerdo previo.",
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  BEFORE/AFTER GALLERY PLACEHOLDERS                                 */
-/* ------------------------------------------------------------------ */
-
-export type BeforeAfterItem = {
-  id: string;
-  label: string;
-  linea: ServiceLineId;
-  location: string;
-};
-
-export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
-  {
-    id: "ba-1",
-    label: "Impermeabilizacion cubierta",
-    linea: "techos",
-    location: "Envigado",
-  },
-  {
-    id: "ba-2",
-    label: "Reparacion de goteras",
-    linea: "techos",
-    location: "Medellin",
-  },
-  {
-    id: "ba-3",
-    label: "Pintura interior apartamento",
-    linea: "pintura",
-    location: "Sabaneta",
-  },
-  {
-    id: "ba-4",
-    label: "Acabado de fachada",
-    linea: "pintura",
-    location: "Bello",
-  },
-  {
-    id: "ba-5",
-    label: "Reparacion de fugas",
-    linea: "plomeria",
-    location: "Itagui",
-  },
-  {
-    id: "ba-6",
-    label: "Destape de desagues",
-    linea: "plomeria",
-    location: "La Estrella",
   },
 ];
 
@@ -396,10 +346,10 @@ export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
 /* ------------------------------------------------------------------ */
 
 export const COVERAGE_SCHEDULE = {
-  hours: "Lunes a sabado, 7:00 a.m. - 6:00 p.m.",
+  hours: "Lunes a sábado, 7:00 a.m. - 6:00 p.m.",
   responseTime: "Respuesta en menos de 2 horas en horario laboral.",
   urgencyNote:
-    "Urgencias fuera de horario: escribenos por WhatsApp y coordinamos lo antes posible.",
+    "Urgencias fuera de horario: escríbenos por WhatsApp y coordinamos lo antes posible.",
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -414,22 +364,22 @@ export function buildWaLinkHero(municipio?: string, linea?: string) {
 }
 
 export function buildWaLinkTechos() {
-  const msg = "Tengo gotera/filtracion. Que hago hoy y cuando pueden venir?";
+  const msg = "Tengo gotera/filtración. ¿Qué hago hoy y cuándo pueden venir?";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 
 export function buildWaLinkPintura() {
-  const msg = "Quiero pintar apto/casa. Como cotizan?";
+  const msg = "Quiero pintar apto/casa. ¿Cómo cotizan?";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 
 export function buildWaLinkPlomeria() {
-  const msg = "Tengo fuga/sanitario. Atienden hoy?";
+  const msg = "Tengo fuga/sanitario. ¿Atienden hoy?";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 
 export function buildWaLinkProcess() {
-  const msg = "Quiero iniciar proceso de cotizacion.";
+  const msg = "Quiero iniciar proceso de cotización.";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 
@@ -452,58 +402,37 @@ export function buildWaLinkFaq() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  LEGACY GENERIC WA LINK BUILDER (kept for QuoteModal)              */
+/*  APPOINTMENT WA LINK BUILDER                                       */
 /* ------------------------------------------------------------------ */
 
-export type BuildWaLinkInput = {
-  linea?: string;
-  servicio?: string;
-  municipio?: string;
-  urgencia?: string;
-  nombre?: string;
-  telefono?: string;
-  detalle?: string;
-};
+export function buildWaLinkAppointment(data: {
+  nombre: string;
+  telefono: string;
+  municipio: string;
+  linea: string;
+  fecha: string;
+  horario: string;
+  descripcion?: string;
+}) {
+  const parts = [
+    "Quiero agendar una visita técnica.",
+    `Nombre: ${data.nombre}.`,
+    `Teléfono: ${data.telefono}.`,
+    `Municipio: ${data.municipio}.`,
+    `Servicio: ${data.linea}.`,
+    `Fecha preferida: ${data.fecha}.`,
+    `Horario: ${data.horario}.`,
+  ];
+
+  if (data.descripcion?.trim()) {
+    parts.push(`Problema: ${data.descripcion.trim()}.`);
+  }
+
+  parts.push("¿Me confirman disponibilidad?");
+
+  return `${WA_BASE_URL}?text=${encodeURIComponent(parts.join(" "))}`;
+}
 
 export function buildTelLink() {
   return `tel:${PHONE_E164}`;
-}
-
-export function buildWaLink({
-  linea,
-  servicio,
-  municipio,
-  urgencia,
-  nombre,
-  telefono,
-  detalle,
-}: BuildWaLinkInput) {
-  const safeLinea = linea?.trim() || "multiservicios";
-  const safeServicio = servicio?.trim() || "cotizacion general";
-  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
-  const safeUrgencia = urgencia?.trim() || "Solo cotizacion";
-
-  const parts = [
-    "Hola, quiero cotizar servicio.",
-    `Linea: ${safeLinea}.`,
-    `Servicio: ${safeServicio}.`,
-    `Estoy en ${safeMunicipio}.`,
-    `Urgencia: ${safeUrgencia}.`,
-  ];
-
-  if (nombre?.trim()) {
-    parts.push(`Nombre: ${nombre.trim()}.`);
-  }
-
-  if (telefono?.trim()) {
-    parts.push(`Telefono: ${telefono.trim()}.`);
-  }
-
-  if (detalle?.trim()) {
-    parts.push(`Detalle: ${detalle.trim()}.`);
-  }
-
-  parts.push("¿Me confirmas disponibilidad y valor estimado?");
-
-  return `${WA_BASE_URL}?text=${encodeURIComponent(parts.join(" "))}`;
 }

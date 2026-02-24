@@ -6,14 +6,14 @@ const structuredData = {
   "@type": "LocalBusiness",
   name: "Espinal Multiservicios",
   description:
-    "Servicios de techos y cubiertas, pintura y acabados, y plomeria para hogares y negocios en Medellin y Valle de Aburra.",
+    "Servicios de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá.",
   url: SITE_URL,
   telephone: PHONE_DISPLAY,
-  areaServed: ["Medellin", "Valle de Aburra", "Antioquia"],
+  areaServed: ["Medellín", "Valle de Aburrá", "Antioquia"],
   serviceType: [
     "Techos y cubiertas",
     "Pintura y acabados",
-    "Plomeria",
+    "Plomería",
   ],
 };
 

@@ -1,20 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
 import {
   COMPANY_NAME,
   NAV_LINKS,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
-
-function WhatsAppIcon({ className = "h-4 w-4" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-      <path d="M20.5 3.5A11.8 11.8 0 0 0 12.06 0C5.47 0 .1 5.37.1 11.97c0 2.1.55 4.15 1.59 5.96L0 24l6.22-1.63a11.91 11.91 0 0 0 5.84 1.49h.01c6.59 0 11.95-5.37 11.95-11.97 0-3.2-1.25-6.2-3.52-8.39M12.07 21.84h-.01a9.9 9.9 0 0 1-5.04-1.39l-.36-.22-3.69.97.98-3.6-.23-.37a9.9 9.9 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9a9.8 9.8 0 0 1 7.04 2.93 9.86 9.86 0 0 1 2.89 7.04c0 5.46-4.44 9.9-9.9 9.9m5.44-7.44c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.77.97-.95 1.16-.17.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.12-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.66-1.62-.9-2.21-.24-.58-.49-.5-.66-.51h-.57c-.2 0-.52.08-.8.38-.28.3-1.05 1.03-1.05 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.22 5.1 4.51.71.31 1.26.5 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.01-1.42.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.35" />
-    </svg>
-  );
-}
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 type StickyHeaderProps = {
   waLink: string;
@@ -47,13 +41,11 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#inicio" className="inline-flex items-center gap-2 font-semibold tracking-tight">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-orange-600 text-sm font-bold text-white">
-            EM
-          </span>
+          <Image src="/logo-espinal.svg" alt="Espinal Multiservicios" width={32} height={32} />
           <span>{COMPANY_NAME}</span>
         </a>
 
-        <nav className="hidden items-center gap-5 md:flex" aria-label="Navegacion principal">
+        <nav className="hidden items-center gap-5 md:flex" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
             <a
               key={link.id}
@@ -82,13 +74,13 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
             className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-orange-600 px-3 py-2 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-orange-500 hover:shadow-sm active:scale-[0.98]"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            Pedir cotizacion
+            Pedir cotización
           </a>
         </div>
 
         <button
           type="button"
-          aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => {
             setIsMobileMenuOpen((prev) => {
               const next = !prev;
@@ -105,7 +97,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
       {isMobileMenuOpen ? (
         <div className="border-t border-slate-200 bg-white md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
-            <nav className="space-y-2" aria-label="Navegacion movil">
+            <nav className="space-y-2" aria-label="Navegación móvil">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.id}
@@ -129,7 +121,7 @@ export default function StickyHeader({ waLink, telLink }: StickyHeaderProps) {
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 text-xs font-semibold text-white active:scale-[0.98] sm:text-sm"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                Pedir cotizacion
+                Pedir cotización
               </a>
               <a
                 href={telLink}

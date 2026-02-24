@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { CheckCircle2, MapPin, MessageCircle, Phone } from "lucide-react";
+import { CalendarDays, CheckCircle2, MapPin, Phone } from "lucide-react";
 
 type HeroProps = {
   whatsappLink: string;
@@ -12,9 +12,9 @@ type HeroProps = {
 };
 
 const TRUST_BULLETS = [
-  "Te decimos el precio antes de empezar",
-  "Garantia por escrito en cada trabajo",
-  "Dejamos todo limpio y en orden",
+  "Precio claro antes de empezar — sin costos ocultos",
+  "Garantía por escrito en cada trabajo que hacemos",
+  "Dejamos todo limpio y ordenado al terminar",
 ];
 
 export default function Hero({
@@ -48,7 +48,7 @@ export default function Hero({
         ) : (
           <Image
             src="/video/slow-majestic-poster.jpg"
-            alt="Equipo de Espinal Multiservicios trabajando en Medellin"
+            alt="Equipo de Espinal Multiservicios trabajando en Medellín"
             fill
             priority
             sizes="100vw"
@@ -62,15 +62,15 @@ export default function Hero({
       <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-20 text-center text-white lg:px-8">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
           <MapPin className="h-4 w-4" aria-hidden="true" />
-          <span>Servicio en Medellin y todo el Valle de Aburra</span>
+          <span>Servicio en Medellín y todo el Valle de Aburrá</span>
         </div>
 
         <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
-          ¿Necesitas arreglar el techo, pintar o reparar la plomeria?
+          Arreglamos techos, pintamos y reparamos la plomería de tu casa o negocio
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
-          Nosotros vamos a tu casa o negocio, revisamos el problema, te damos el precio y lo resolvemos. Asi de sencillo.
+          Vamos a tu casa, revisamos el problema, te damos un precio claro y lo resolvemos. Sin sorpresas.
         </p>
 
         <div className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-6 gap-y-3">
@@ -90,20 +90,18 @@ export default function Hero({
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noreferrer"
+            href="#agendar"
             onClick={onWhatsAppClick}
-            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-orange-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl bg-orange-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-600/20 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
-            <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            Pedir cotizacion gratis
+            <CalendarDays className="h-5 w-5" aria-hidden="true" />
+            Agendar visita gratis
           </a>
 
           <a
             href={phoneLink}
             onClick={onCallClick}
-            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
+            className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-xl border-2 border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black active:scale-[0.98]"
           >
             <Phone className="h-5 w-5" aria-hidden="true" />
             Llamar ahora
@@ -111,7 +109,7 @@ export default function Hero({
         </div>
 
         <p className="mt-5 text-sm text-white/60">
-          Escribenos por WhatsApp o llamanos. Te respondemos rapido en horario laboral.
+          La visita técnica y la cotización no tienen costo. Respondemos en menos de 2 horas.
         </p>
       </div>
     </section>

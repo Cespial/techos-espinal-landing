@@ -8,7 +8,6 @@ import {
   buildWaLinkCoverage,
   DEFAULT_CITY,
   LINE_OPTIONS,
-  SERVICE_DATA,
   type ServiceLineId,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
@@ -17,11 +16,10 @@ import StickyHeader from "@/components/sections/StickyHeader";
 import Hero from "@/components/sections/Hero";
 import ServiceTabs from "@/components/sections/ServiceTabs";
 import HowWeWork from "@/components/sections/HowWeWork";
-import BeforeAfterGallery from "@/components/sections/BeforeAfterGallery";
 import CoverageAvailability from "@/components/sections/CoverageAvailability";
+import AppointmentScheduler from "@/components/sections/AppointmentScheduler";
 import FaqFooter from "@/components/sections/FaqFooter";
 import MobileStickyBar from "@/components/sections/MobileStickyBar";
-import QuoteModal from "@/components/sections/QuoteModal";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                             */
@@ -34,12 +32,6 @@ type WeatherSnapshot = {
   humidity: number | null;
   description: string;
   updatedAt: string;
-};
-
-type QuoteModalOpenInput = {
-  linea: ServiceLineId;
-  servicio?: string;
-  source: string;
 };
 
 /* ------------------------------------------------------------------ */
@@ -75,17 +67,12 @@ export default function TechosLanding() {
   /* ---------- Core state ---------- */
   const [activeLine, setActiveLine] = useState<ServiceLineId>("techos");
   const [selectedCoverageMunicipality, setSelectedCoverageMunicipality] =
-    useState("Medellin");
+    useState("Medellín");
   const [weatherSnapshot, setWeatherSnapshot] =
     useState<WeatherSnapshot | null>(null);
   const [weatherStatus, setWeatherStatus] = useState<
     "idle" | "loading" | "ready" | "error"
   >("idle");
-
-  /* ---------- Quote modal state ---------- */
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
-  const [quoteLinea, setQuoteLinea] = useState<ServiceLineId>("techos");
-  const [quoteServicio, setQuoteServicio] = useState<string | undefined>();
 
   /* ---------- Derived ---------- */
   const activeLineLabel = useMemo(
@@ -139,14 +126,6 @@ export default function TechosLanding() {
     return () => observer.disconnect();
   }, [shouldReduceMotion]);
 
-  // Lock body when modal open
-  useEffect(() => {
-    document.body.style.overflow = isQuoteModalOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isQuoteModalOpen]);
-
   // Weather fetch
   useEffect(() => {
     const controller = new AbortController();
@@ -194,14 +173,6 @@ export default function TechosLanding() {
     track("coverage_map_select", { municipio, source });
   };
 
-  const openQuoteModal = ({ linea, servicio, source }: QuoteModalOpenInput) => {
-    const serviceName = servicio || SERVICE_DATA[linea][0].name;
-    setQuoteLinea(linea);
-    setQuoteServicio(serviceName);
-    setIsQuoteModalOpen(true);
-    track("quote_modal_open", { source, linea, servicio: serviceName });
-  };
-
   /* ---------- Render ---------- */
 
   return (
@@ -222,8 +193,6 @@ export default function TechosLanding() {
 
         <HowWeWork waLink={heroWaLink} telLink={telLink} />
 
-        <BeforeAfterGallery />
-
         <CoverageAvailability
           selectedMunicipality={selectedCoverageMunicipality}
           onSelect={onCoverageSelect}
@@ -232,19 +201,12 @@ export default function TechosLanding() {
           waLink={coverageWaLink}
         />
 
+        <AppointmentScheduler telLink={telLink} />
+
         <FaqFooter waLink={heroWaLink} telLink={telLink} />
       </main>
 
       <MobileStickyBar waLink={heroWaLink} telLink={telLink} />
-
-      {isQuoteModalOpen ? (
-        <QuoteModal
-          initialLinea={quoteLinea}
-          initialServicio={quoteServicio}
-          initialMunicipio={selectedCoverageMunicipality}
-          onClose={() => setIsQuoteModalOpen(false)}
-        />
-      ) : null}
     </div>
   );
 }
