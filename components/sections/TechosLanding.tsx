@@ -14,6 +14,7 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
+  CloudSun,
   CheckCircle2,
   CircleAlert,
   ChevronDown,
@@ -27,6 +28,7 @@ import {
   Search,
   ShieldCheck,
   Star,
+  Thermometer,
   Wrench,
   X,
 } from "lucide-react";
@@ -44,8 +46,8 @@ import {
   URGENCY_OPTIONS,
   type ServiceLineId,
 } from "@/lib/conversion";
+import CoverageMap from "@/components/sections/CoverageMap";
 import { track } from "@/lib/tracking";
-
 type LineIconProps = { className?: string };
 type ResolverFormState = {
   nombre: string;
@@ -74,14 +76,6 @@ type ProcessStep = {
   icon: ComponentType<LineIconProps>;
 };
 
-type ValleyMapArea = {
-  id: string;
-  label: string;
-  path: string;
-  labelX: number;
-  labelY: number;
-};
-
 type ServiceScenario = {
   id: string;
   linea: ServiceLineId;
@@ -90,6 +84,15 @@ type ServiceScenario = {
   summary: string;
   service: string;
   urgencia: string;
+};
+
+type WeatherSnapshot = {
+  municipality: string;
+  temperature: number;
+  feelsLike: number;
+  humidity: number | null;
+  description: string;
+  updatedAt: string;
 };
 
 const LINE_ICONS: Record<ServiceLineId, ComponentType<LineIconProps>> = {
@@ -225,72 +228,6 @@ const FREQUENT_SCENARIOS: ServiceScenario[] = [
       "Revisamos llaves y red interna para plantear ajuste de caudal segun instalacion.",
     service: "Revision de presion y caudal",
     urgencia: "Solo cotizacion",
-  },
-];
-
-const VALLEY_MAP_AREAS: ValleyMapArea[] = [
-  {
-    id: "copacabana",
-    label: "Copacabana",
-    path: "M140 24 L178 32 L172 72 L136 64 Z",
-    labelX: 157,
-    labelY: 52,
-  },
-  {
-    id: "girardota",
-    label: "Girardota",
-    path: "M182 34 L220 44 L214 86 L176 74 Z",
-    labelX: 198,
-    labelY: 61,
-  },
-  {
-    id: "bello",
-    label: "Bello",
-    path: "M116 80 L170 80 L166 124 L112 122 Z",
-    labelX: 141,
-    labelY: 104,
-  },
-  {
-    id: "medellin",
-    label: "Medellin",
-    path: "M110 126 L192 128 L198 230 L118 232 Z",
-    labelX: 154,
-    labelY: 180,
-  },
-  {
-    id: "itagui",
-    label: "Itagui",
-    path: "M90 236 L124 236 L124 272 L90 270 Z",
-    labelX: 106,
-    labelY: 255,
-  },
-  {
-    id: "envigado",
-    label: "Envigado",
-    path: "M128 234 L186 236 L184 274 L126 272 Z",
-    labelX: 156,
-    labelY: 255,
-  },
-  {
-    id: "la-estrella",
-    label: "La Estrella",
-    path: "M86 274 L122 274 L120 308 L84 306 Z",
-    labelX: 103,
-    labelY: 292,
-  },
-  {
-    id: "sabaneta",
-    label: "Sabaneta",
-    path: "M126 276 L178 278 L174 312 L124 308 Z",
-    labelX: 152,
-    labelY: 294,
-  },
-  {
-    id: "caldas",
-    label: "Caldas",
-    path: "M102 314 L170 316 L162 364 L96 356 Z",
-    labelX: 133,
-    labelY: 339,
   },
 ];
 
@@ -481,6 +418,12 @@ export default function TechosLanding() {
   const [activeFaq, setActiveFaq] = useState(FAQ_ITEMS[0].id);
   const [activeProcessStep, setActiveProcessStep] = useState(PROCESS_STEPS[0].id);
   const [selectedCoverageMunicipality, setSelectedCoverageMunicipality] = useState("Medellin");
+  const [weatherSnapshot, setWeatherSnapshot] = useState<WeatherSnapshot | null>(
+    null,
+  );
+  const [weatherStatus, setWeatherStatus] = useState<
+    "idle" | "loading" | "ready" | "error"
+  >("idle");
   const [showCallFallback, setShowCallFallback] = useState(false);
   const [quoteModalState, setQuoteModalState] = useState<QuoteModalState>(INITIAL_QUOTE_STATE);
   const [resolverState, setResolverState] = useState<ResolverFormState>(INITIAL_RESOLVER_STATE);
@@ -509,10 +452,15 @@ export default function TechosLanding() {
     () => Math.max(0, PROCESS_STEPS.findIndex((step) => step.id === activeProcessStep)),
     [activeProcessStep],
   );
+  const coverageMunicipalities = useMemo(
+    () => MUNICIPALITY_OPTIONS.filter((municipio) => municipio !== "Otro"),
+    [],
+  );
   const extraCoverageMunicipalities = useMemo(() => {
-    const mapLabels = new Set(VALLEY_MAP_AREAS.map((area) => area.label));
-    return MUNICIPALITY_OPTIONS.filter((municipio) => !mapLabels.has(municipio));
-  }, []);
+    return coverageMunicipalities.filter(
+      (municipio) => municipio !== selectedCoverageMunicipality,
+    );
+  }, [coverageMunicipalities, selectedCoverageMunicipality]);
   const prioritizedScenarios = useMemo(
     () =>
       [...FREQUENT_SCENARIOS].sort(
@@ -525,7 +473,7 @@ export default function TechosLanding() {
       buildWaLink({
         linea: "Confirmacion de cobertura",
         servicio: "Visita tecnica",
-        municipio: selectedCoverageMunicipality,
+        municipio: selectedCoverageMunicipality || DEFAULT_CITY,
         urgencia: "Solo cotizacion",
       }),
     [selectedCoverageMunicipality],
@@ -613,7 +561,56 @@ export default function TechosLanding() {
     return () => observer.disconnect();
   }, []);
 
-  const onCoverageSelect = (municipio: string, source: "mapa" | "chip" | "scenario") => {
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const fetchWeather = async () => {
+      setWeatherStatus("loading");
+
+      try {
+        const response = await fetch(
+          `/api/weather?municipio=${encodeURIComponent(selectedCoverageMunicipality)}`,
+          {
+            signal: controller.signal,
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error("weather_request_failed");
+        }
+
+        const payload = await response.json();
+
+        if (!payload?.ok) {
+          throw new Error("weather_payload_failed");
+        }
+
+        setWeatherSnapshot({
+          municipality: payload.municipality,
+          temperature: payload.temperature,
+          feelsLike: payload.feelsLike,
+          humidity: payload.humidity,
+          description: payload.description,
+          updatedAt: payload.updatedAt,
+        });
+        setWeatherStatus("ready");
+      } catch {
+        if (controller.signal.aborted) {
+          return;
+        }
+        setWeatherStatus("error");
+      }
+    };
+
+    fetchWeather();
+
+    return () => controller.abort();
+  }, [selectedCoverageMunicipality]);
+
+  const onCoverageSelect = (
+    municipio: string,
+    source: "mapa" | "chip" | "scenario" | "mapbox",
+  ) => {
     setSelectedCoverageMunicipality(municipio);
     setResolverState((prev) => ({ ...prev, municipio }));
     setQuoteModalState((prev) => ({ ...prev, municipio }));
@@ -1193,53 +1190,12 @@ export default function TechosLanding() {
                       {selectedCoverageMunicipality}
                     </span>
                   </div>
-
-                  <svg viewBox="0 0 320 390" className="h-auto w-full" role="img" aria-label="Mapa de cobertura del Valle de Aburra">
-                    <path
-                      d="M76 12 L232 34 L224 374 L84 362 Z"
-                      fill="#f8fafc"
-                      stroke="#e2e8f0"
-                      strokeWidth="2"
-                    />
-                    {VALLEY_MAP_AREAS.map((area) => {
-                      const isActive = selectedCoverageMunicipality === area.label;
-
-                      return (
-                        <g key={area.id}>
-                          <path
-                            d={area.path}
-                            fill={isActive ? "#fb923c" : "#e2e8f0"}
-                            stroke={isActive ? "#f97316" : "#94a3b8"}
-                            strokeWidth={isActive ? 2 : 1.3}
-                            className="cursor-pointer transition-all duration-300 ease-out hover:fill-orange-200"
-                            role="button"
-                            tabIndex={0}
-                            aria-label={`Seleccionar ${area.label}`}
-                            onClick={() => onCoverageSelect(area.label, "mapa")}
-                            onKeyDown={(event) => {
-                              if (event.key !== "Enter" && event.key !== " ") {
-                                return;
-                              }
-                              event.preventDefault();
-                              onCoverageSelect(area.label, "mapa");
-                            }}
-                          />
-                          <text
-                            x={area.labelX}
-                            y={area.labelY}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            fill={isActive ? "#fff7ed" : "#334155"}
-                            fontFamily="var(--font-inter)"
-                            fontSize="9.5"
-                            className="pointer-events-none select-none"
-                          >
-                            {area.label}
-                          </text>
-                        </g>
-                      );
-                    })}
-                  </svg>
+                  <CoverageMap
+                    selectedMunicipality={selectedCoverageMunicipality}
+                    onMunicipalitySelect={(municipio) =>
+                      onCoverageSelect(municipio, "mapbox")
+                    }
+                  />
                 </div>
               </Reveal>
 
@@ -1251,6 +1207,41 @@ export default function TechosLanding() {
                     <p className="mt-2 text-sm text-slate-600">
                       Confirma por WhatsApp disponibilidad de ruta para visita tecnica en {selectedCoverageMunicipality}.
                     </p>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={135}>
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <p className="text-sm font-semibold text-slate-900">Condiciones actuales de referencia</p>
+                    {weatherStatus === "loading" ? (
+                      <p className="mt-2 text-sm text-slate-600">Consultando clima en {selectedCoverageMunicipality}...</p>
+                    ) : null}
+
+                    {weatherStatus === "ready" && weatherSnapshot ? (
+                      <div className="mt-3 space-y-2 text-sm text-slate-600">
+                        <p className="inline-flex items-center gap-2 text-slate-900">
+                          <CloudSun className="h-4 w-4 text-orange-500" aria-hidden="true" />
+                          {weatherSnapshot.description || "Condicion estable"}
+                        </p>
+                        <p className="inline-flex items-center gap-2">
+                          <Thermometer className="h-4 w-4 text-orange-500" aria-hidden="true" />
+                          {weatherSnapshot.temperature}°C (sensacion {weatherSnapshot.feelsLike}°C)
+                        </p>
+                        <p className="inline-flex items-center gap-2">
+                          <Droplets className="h-4 w-4 text-sky-500" aria-hidden="true" />
+                          Humedad: {weatherSnapshot.humidity ?? "--"}%
+                        </p>
+                        <p className="text-xs text-slate-500">
+                          Dato de referencia climatica para coordinar visita en {weatherSnapshot.municipality}.
+                        </p>
+                      </div>
+                    ) : null}
+
+                    {weatherStatus === "error" ? (
+                      <p className="mt-2 text-sm text-slate-600">
+                        Clima no disponible en este momento. Podemos coordinar visita igual por WhatsApp.
+                      </p>
+                    ) : null}
                   </div>
                 </Reveal>
 
