@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   FormEvent,
-  KeyboardEvent,
   useEffect,
   useMemo,
   useState,
+  type CSSProperties,
   type ComponentType,
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -16,9 +16,13 @@ import {
   CheckCircle2,
   ChevronDown,
   Droplets,
+  FileText,
   Menu,
+  MessageCircle,
   Paintbrush,
   Phone,
+  Search,
+  ShieldCheck,
   Wrench,
   X,
 } from "lucide-react";
@@ -59,11 +63,54 @@ type QuoteModalState = {
   urgencia: string;
 };
 
+type ProcessStep = {
+  id: string;
+  title: string;
+  detail: string;
+  note: string;
+  icon: ComponentType<LineIconProps>;
+};
+
 const LINE_ICONS: Record<ServiceLineId, ComponentType<LineIconProps>> = {
   techos: Wrench,
   pintura: Paintbrush,
   plomeria: Droplets,
 };
+
+const PROCESS_STEPS: ProcessStep[] = [
+  {
+    id: "brief",
+    title: "Nos cuentas el caso",
+    detail:
+      "Escuchamos que esta pasando, priorizamos por urgencia y definimos la linea correcta.",
+    note: "Puedes iniciar por WhatsApp o llamada.",
+    icon: MessageCircle,
+  },
+  {
+    id: "diagnostic",
+    title: "Diagnostico en sitio",
+    detail:
+      "Revisamos acceso, estado actual y riesgos para proponer una solucion aterrizada.",
+    note: "Usamos equipos de diagnostico segun el caso.",
+    icon: Search,
+  },
+  {
+    id: "proposal",
+    title: "Alcance y valor estimado",
+    detail:
+      "Te mostramos opciones, materiales recomendados y costos base antes de ejecutar.",
+    note: "Siempre sujeto a inspeccion tecnica.",
+    icon: FileText,
+  },
+  {
+    id: "execution",
+    title: "Ejecucion y seguimiento",
+    detail:
+      "Coordinamos el trabajo, dejamos el area ordenada y cerramos con recomendaciones.",
+    note: "Garantia por escrito segun servicio y alcance.",
+    icon: ShieldCheck,
+  },
+];
 
 const FAQ_ITEMS = [
   {
@@ -119,9 +166,19 @@ function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const style: CSSProperties | undefined = delay > 0 ? { transitionDelay: `${delay}ms` } : undefined;
+
   return (
-    <div data-reveal className={`reveal-item ${className}`}>
+    <div data-reveal className={`reveal-item ${className}`} style={style}>
       {children}
     </div>
   );
@@ -135,7 +192,6 @@ export default function TechosLanding() {
   const [videoFailed, setVideoFailed] = useState(false);
   const [activeLine, setActiveLine] = useState<ServiceLineId>("techos");
   const [activeFaq, setActiveFaq] = useState(FAQ_ITEMS[0].id);
-  const [sliderPercent, setSliderPercent] = useState<number>(58);
   const [showCallFallback, setShowCallFallback] = useState(false);
   const [quoteModalState, setQuoteModalState] = useState<QuoteModalState>(INITIAL_QUOTE_STATE);
   const [resolverState, setResolverState] = useState<ResolverFormState>(INITIAL_RESOLVER_STATE);
@@ -286,15 +342,6 @@ export default function TechosLanding() {
     }
   };
 
-  const onSliderKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
-      return;
-    }
-    event.preventDefault();
-    const change = event.key === "ArrowRight" ? 2 : -2;
-    setSliderPercent((prev) => Math.max(5, Math.min(95, prev + change)));
-  };
-
   return (
     <div className="bg-slate-50 text-slate-950 pb-20 md:pb-0">
       <header
@@ -317,7 +364,7 @@ export default function TechosLanding() {
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className="text-sm text-slate-600 transition-all duration-300 ease-out hover:text-slate-950"
+                className="nav-link-hover relative text-sm text-slate-600 transition-all duration-300 ease-out hover:text-slate-950"
               >
                 {link.label}
               </a>
@@ -408,7 +455,7 @@ export default function TechosLanding() {
               <motion.video
                 className="h-full w-full object-cover"
                 src="/video/hero-main.mp4"
-                poster="/video/hero-fallback.svg"
+                poster="/video/slow-majestic-poster.jpg"
                 autoPlay
                 muted
                 loop
@@ -420,7 +467,7 @@ export default function TechosLanding() {
               />
             ) : (
               <Image
-                src="/video/hero-fallback.svg"
+                src="/video/slow-majestic-poster.jpg"
                 alt="Espinal Multiservicios en Medellin"
                 fill
                 priority
@@ -442,25 +489,25 @@ export default function TechosLanding() {
           </div>
 
           <div className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-20">
-            <Reveal>
+            <Reveal delay={40}>
               <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">
                 Valle de Aburra + Antioquia
               </span>
             </Reveal>
 
-            <Reveal className="mt-5">
+            <Reveal className="mt-5" delay={100}>
               <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
                 Soluciones integrales para tu hogar y negocio
               </h1>
             </Reveal>
 
-            <Reveal className="mt-4">
+            <Reveal className="mt-4" delay={160}>
               <p className="max-w-3xl text-base leading-relaxed text-slate-200 md:text-lg">
-                Techos y cubiertas · Pintura y acabados · Plomeria. Atencion en Medellin y Valle de Aburra con enfoque tecnico y ordenado.
+                Techos y cubiertas · Pintura y acabados · Plomeria. Coordinamos visitas en Medellin y el Valle de Aburra con diagnostico tecnico, orden en la ejecucion y cotizacion clara desde el inicio.
               </p>
             </Reveal>
 
-            <Reveal className="mt-8">
+            <Reveal className="mt-8" delay={220}>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a
                   href={heroWaLink}
@@ -483,11 +530,11 @@ export default function TechosLanding() {
               </div>
             </Reveal>
 
-            <Reveal className="mt-4">
+            <Reveal className="mt-4" delay={280}>
               <ul className="flex flex-wrap gap-2 text-xs text-slate-100">
                 {[
-                  "Precios claros",
-                  "Trabajo limpio",
+                  "Precios claros desde el inicio",
+                  "Trabajo limpio y coordinado",
                   "Garantia por escrito (segun servicio)",
                 ].map((item) => (
                   <li key={item} className="rounded-full border border-white/30 bg-white/10 px-3 py-1">
@@ -506,7 +553,7 @@ export default function TechosLanding() {
                 <div>
                   <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Cotizacion por linea</h2>
                   <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
-                    Selecciona la linea, revisa servicios base y abre una cotizacion rapida.
+                    Elige una linea, revisa precios base y abre una cotizacion directa con datos claros.
                   </p>
                 </div>
                 <button
@@ -520,7 +567,7 @@ export default function TechosLanding() {
               </div>
             </Reveal>
 
-            <Reveal className="mt-6">
+            <Reveal className="mt-6" delay={40}>
               <div className="flex flex-wrap gap-2">
                 {LINE_OPTIONS.map((line) => {
                   const isActive = activeLine === line.id;
@@ -547,17 +594,25 @@ export default function TechosLanding() {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {activeLineData.map((item, index) => (
-                <Reveal key={item.id} className={index > 0 ? "" : ""}>
+                <Reveal key={item.id} delay={80 + index * 70}>
                   <button
                     type="button"
                     onClick={() => {
                       track("service_item_click", { source: "tab_card", linea: activeLine, servicio: item.id });
                       openQuoteModal({ linea: activeLine, servicio: item.name });
                     }}
-                    className="group h-full w-full rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)] active:scale-[0.98]"
+                    className="group relative h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)] active:scale-[0.98]"
                   >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/85 to-transparent opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                    />
                     <h3 className="text-lg font-semibold text-slate-900">{item.name}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.summary}</p>
+                    <div className="mt-3 flex items-center gap-1.5" aria-hidden="true">
+                      <span className="h-1 w-6 rounded-full bg-orange-200 transition-all duration-300 group-hover:w-8 group-hover:bg-orange-300" />
+                      <span className="h-1 w-10 rounded-full bg-slate-200 transition-all duration-300 group-hover:w-12 group-hover:bg-slate-300" />
+                    </div>
                     <p className="mt-4 text-sm font-medium text-slate-700">
                       <span className="text-slate-500">Desde </span>
                       {item.basePrice}
@@ -572,7 +627,7 @@ export default function TechosLanding() {
               ))}
             </div>
 
-            <Reveal className="mt-5">
+            <Reveal className="mt-5" delay={120}>
               <p className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs leading-relaxed text-slate-600">
                 Valores base. El costo final depende del area, acceso, materiales y estado actual.
               </p>
@@ -591,8 +646,17 @@ export default function TechosLanding() {
 
             <div className="mt-7 grid gap-4 md:grid-cols-3">
               {PLAN_DATA.map((plan, index) => (
-                <Reveal key={plan.id} className={index === 1 ? "" : ""}>
-                  <article className="h-full rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)]">
+                <Reveal key={plan.id} delay={80 + index * 70}>
+                  <article
+                    className={`h-full rounded-2xl border p-6 shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)] ${
+                      index === 1 ? "border-orange-200 bg-orange-50/60" : "border-slate-200 bg-slate-50"
+                    }`}
+                  >
+                    {index === 1 ? (
+                      <p className="inline-flex rounded-full border border-orange-300 bg-white px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-orange-700">
+                        Recomendado
+                      </p>
+                    ) : null}
                     <h3 className="text-xl font-semibold text-slate-900">{plan.name}</h3>
                     <p className="mt-2 text-2xl font-bold text-slate-950">{plan.price}</p>
                     <ul className="mt-4 space-y-2 text-sm text-slate-600">
@@ -622,73 +686,96 @@ export default function TechosLanding() {
               ))}
             </div>
 
-            <Reveal className="mt-5">
+            <Reveal className="mt-5" delay={140}>
               <p className="text-xs text-slate-600">Sujeto a inspeccion tecnica y condiciones del sitio.</p>
             </Reveal>
           </div>
         </section>
 
-        <section id="resultados" className="bg-slate-50 py-16 md:py-24">
+        <section id="proceso" className="bg-slate-50 py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Antes y despues</h2>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Asi trabajamos, paso a paso
+              </h2>
               <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
-                Referencia visual para entender el cambio esperado segun el servicio.
+                En lugar de promesas visuales, te mostramos el flujo real de atencion para que sepas que esperar desde el primer contacto.
               </p>
             </Reveal>
 
-            <Reveal className="mt-7">
-              <div className="rounded-2xl border border-slate-200 bg-slate-950 p-4 md:p-6">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
-                  <Image
-                    src="/media/roof-after.svg"
-                    alt="Estado despues de la intervencion"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 1100px"
-                    className="object-cover"
-                  />
-                  <div
-                    className="absolute inset-y-0 left-0 overflow-hidden"
-                    style={{ width: `${sliderPercent}%` }}
-                    aria-hidden="true"
-                  >
-                    <Image
-                      src="/media/roof-before.svg"
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 100vw, 1100px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-y-0" style={{ left: `calc(${sliderPercent}% - 1px)` }} aria-hidden="true">
-                    <div className="h-full w-0.5 bg-white/90" />
-                    <div className="absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-black/60 text-xs font-semibold text-white">
-                      {sliderPercent}%
-                    </div>
-                  </div>
-                  <span className="absolute left-3 top-3 rounded bg-black/55 px-2 py-1 text-xs font-medium text-white">Antes</span>
-                  <span className="absolute right-3 top-3 rounded bg-orange-600/90 px-2 py-1 text-xs font-medium text-white">Despues</span>
-                </div>
+            <Reveal className="mt-7" delay={70}>
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 md:p-7">
+                <div
+                  className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-orange-100/80 blur-3xl"
+                  aria-hidden="true"
+                />
+                <div
+                  className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-sky-100/70 blur-3xl"
+                  aria-hidden="true"
+                />
 
-                <div className="mt-4">
-                  <label htmlFor="before-after-slider" className="block text-sm text-slate-200">
-                    Comparador antes y despues
-                  </label>
-                  <input
-                    id="before-after-slider"
-                    type="range"
-                    min={5}
-                    max={95}
-                    value={sliderPercent}
-                    onChange={(event) => setSliderPercent(Number(event.target.value))}
-                    onKeyDown={onSliderKeyDown}
-                    className="mt-2 h-2 w-full cursor-pointer accent-orange-500"
-                    aria-label="Comparador antes y despues"
-                    aria-valuetext={`${sliderPercent}%`}
-                  />
+                <div className="relative">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">Ruta de trabajo</p>
+                  <p className="mt-2 max-w-2xl text-sm text-slate-600 md:text-base">
+                    Esta ruta se adapta a la linea de servicio (techos, pintura o plomeria) y mantiene trazabilidad por WhatsApp.
+                  </p>
+
+                  <div className="mt-5 h-1 w-full overflow-hidden rounded-full bg-slate-200">
+                    {shouldReduceMotion ? (
+                      <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300" />
+                    ) : (
+                      <motion.div
+                        className="h-full w-2/3 rounded-full bg-gradient-to-r from-orange-300 via-orange-500 to-orange-300"
+                        animate={{ x: ["-20%", "55%", "-20%"] }}
+                        transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </Reveal>
+
+            <div className="mt-6 grid gap-4 lg:grid-cols-2">
+              {PROCESS_STEPS.map((step, index) => {
+                const Icon = step.icon;
+
+                return (
+                  <Reveal key={step.id} delay={120 + index * 70}>
+                    <article className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_14px_32px_-30px_rgba(15,23,42,0.55)] transition-all duration-300 ease-out hover:border-orange-200 hover:shadow-[0_18px_38px_-26px_rgba(249,115,22,0.35)]">
+                      <div className="flex items-start gap-4">
+                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-orange-200 bg-orange-50 text-orange-700">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                            Paso {index + 1}
+                          </p>
+                          <h3 className="mt-1 text-lg font-semibold text-slate-900">{step.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.detail}</p>
+                          <p className="mt-2 text-xs text-slate-500">{step.note}</p>
+                        </div>
+                      </div>
+
+                      <a
+                        href={buildWaLink({
+                          linea: "Proceso de servicio",
+                          servicio: step.title,
+                          municipio: DEFAULT_CITY,
+                          urgencia: "Solo cotizacion",
+                        })}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => track("cta_whatsapp_click", { source: "process_step", step: step.id })}
+                        className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange-700 transition-all duration-300 ease-out group-hover:text-orange-600"
+                      >
+                        Resolver este paso
+                        <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+                      </a>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </section>
 
@@ -700,7 +787,7 @@ export default function TechosLanding() {
                 Atendemos hogares y negocios en Medellin, Valle de Aburra y municipios de Antioquia (segun disponibilidad).
               </p>
               <p className="mt-2 text-sm text-slate-600 md:text-base">
-                Nuestro equipo especializado coordina visitas por zona para dar respuesta rapida y ordenada.
+                Organizamos rutas por zona para darte una respuesta rapida y una visita bien coordinada.
               </p>
             </Reveal>
 
@@ -744,7 +831,7 @@ export default function TechosLanding() {
                 <div>
                   <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Resolver ahora</h2>
                   <p className="mt-3 text-sm text-slate-600 md:text-base">
-                    Completa este formulario corto y abrimos WhatsApp con tu solicitud prellenada.
+                    Completa este formulario corto, sin pasos largos, y abrimos WhatsApp con tu solicitud prellenada.
                   </p>
                   <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
                     <p className="font-semibold text-slate-900">Que incluye este paso</p>
@@ -933,7 +1020,7 @@ export default function TechosLanding() {
             <div>
               <p className="text-lg font-semibold">{COMPANY_NAME}</p>
               <p className="mt-1 text-sm text-slate-300">
-                Tecnicos especializados para techos, pintura y plomeria en Medellin y Valle de Aburra.
+                Equipo especializado en techos, pintura y plomeria para hogares y negocios en Medellin y Valle de Aburra.
               </p>
               <p className="mt-1 text-xs text-slate-400">Te contactamos lo antes posible por WhatsApp o llamada.</p>
             </div>
@@ -976,16 +1063,21 @@ export default function TechosLanding() {
       </footer>
 
       <div className="pointer-events-none fixed bottom-6 right-6 z-[70] hidden md:block">
-        <a
-          href={heroWaLink}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Abrir WhatsApp"
-          onClick={() => track("cta_whatsapp_click", { source: "floating" })}
-          className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-slate-900 shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
-        >
-          <WhatsAppIcon className="h-5 w-5" />
-        </a>
+        <div className="group relative">
+          <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 translate-x-1 rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100">
+            WhatsApp
+          </span>
+          <a
+            href={heroWaLink}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Abrir WhatsApp"
+            onClick={() => track("cta_whatsapp_click", { source: "floating" })}
+            className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-slate-900 shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+          </a>
+        </div>
       </div>
 
       <div
@@ -1025,7 +1117,7 @@ export default function TechosLanding() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-600">Cotizacion rapida</p>
-                <h3 className="mt-1 text-2xl font-semibold text-slate-900">Cotizar esta linea</h3>
+                <h3 className="mt-1 text-2xl font-semibold text-slate-900">Cotizar por linea</h3>
               </div>
               <button
                 type="button"

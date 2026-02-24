@@ -11,6 +11,7 @@ export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 export const NAV_LINKS = [
   { id: "servicios", label: "Servicios" },
   { id: "planes", label: "Planes" },
+  { id: "proceso", label: "Proceso" },
   { id: "cobertura", label: "Cobertura" },
   { id: "resolver-ahora", label: "Resolver ahora" },
 ] as const;

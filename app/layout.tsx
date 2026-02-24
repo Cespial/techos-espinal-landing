@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       "Soluciones para hogares y negocios en Medellin, Valle de Aburra y Antioquia segun disponibilidad.",
     images: [
       {
-        url: "/video/hero-fallback.svg",
+        url: "/video/slow-majestic-poster.jpg",
         width: 1600,
         height: 900,
         alt: "Espinal Multiservicios en Medellin",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "Espinal Multiservicios | Techos, Pintura y Plomeria en Medellin",
     description:
       "Cotiza por WhatsApp o llamada. Cobertura en Medellin, Valle de Aburra y Antioquia.",
-    images: ["/video/hero-fallback.svg"],
+    images: ["/video/slow-majestic-poster.jpg"],
   },
   robots: {
     index: true,
