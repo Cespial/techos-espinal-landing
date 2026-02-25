@@ -45,6 +45,8 @@ export default async function BlogListingPage({ searchParams }: Props) {
     (typeof BLOG_CATEGORIES)[BlogCategory],
   ][];
 
+  const allPosts = getAllPosts();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -58,11 +60,26 @@ export default async function BlogListingPage({ searchParams }: Props) {
     },
   };
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: allPosts.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      name: post.title,
+    })),
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <BlogHeader />
 

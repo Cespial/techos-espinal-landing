@@ -64,6 +64,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     languages: {
       "es-CO": SITE_URL,
+      "x-default": SITE_URL,
     },
   },
 };
@@ -84,6 +85,8 @@ export default function RootLayout({
       <head>
         <meta name="geo.region" content="CO-ANT" />
         <meta name="geo.placename" content="Medellín" />
+        <meta name="geo.position" content="6.2518;-75.5636" />
+        <meta name="ICBM" content="6.2518, -75.5636" />
         <link rel="preload" href="/video/slow-majestic-poster.jpg" as="image" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />

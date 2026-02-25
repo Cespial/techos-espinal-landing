@@ -105,3 +105,57 @@ Sí. La visita técnica y la cotización no tienen costo ni compromiso.
 - Cobertura: https://espinalservicios.com/cobertura/medellin
 - Nosotros: https://espinalservicios.com/nosotros
 - Blog: https://espinalservicios.com/blog
+
+## Páginas por servicio y municipio
+
+Cada servicio tiene una página específica por municipio con precios y FAQs locales:
+
+### Techos por municipio
+- https://espinalservicios.com/servicios/techos/medellin
+- https://espinalservicios.com/servicios/techos/envigado
+- https://espinalservicios.com/servicios/techos/sabaneta
+- https://espinalservicios.com/servicios/techos/bello
+- https://espinalservicios.com/servicios/techos/itagui
+- https://espinalservicios.com/servicios/techos/la-estrella
+- https://espinalservicios.com/servicios/techos/caldas
+- https://espinalservicios.com/servicios/techos/copacabana
+- https://espinalservicios.com/servicios/techos/girardota
+- https://espinalservicios.com/servicios/techos/rionegro
+- https://espinalservicios.com/servicios/techos/la-ceja
+- https://espinalservicios.com/servicios/techos/marinilla
+
+### Pintura por municipio
+- https://espinalservicios.com/servicios/pintura/medellin
+- https://espinalservicios.com/servicios/pintura/envigado
+- https://espinalservicios.com/servicios/pintura/sabaneta
+- https://espinalservicios.com/servicios/pintura/bello
+- https://espinalservicios.com/servicios/pintura/itagui
+- https://espinalservicios.com/servicios/pintura/la-estrella
+- https://espinalservicios.com/servicios/pintura/caldas
+- https://espinalservicios.com/servicios/pintura/copacabana
+- https://espinalservicios.com/servicios/pintura/girardota
+- https://espinalservicios.com/servicios/pintura/rionegro
+- https://espinalservicios.com/servicios/pintura/la-ceja
+- https://espinalservicios.com/servicios/pintura/marinilla
+
+### Plomería por municipio
+- https://espinalservicios.com/servicios/plomeria/medellin
+- https://espinalservicios.com/servicios/plomeria/envigado
+- https://espinalservicios.com/servicios/plomeria/sabaneta
+- https://espinalservicios.com/servicios/plomeria/bello
+- https://espinalservicios.com/servicios/plomeria/itagui
+- https://espinalservicios.com/servicios/plomeria/la-estrella
+- https://espinalservicios.com/servicios/plomeria/caldas
+- https://espinalservicios.com/servicios/plomeria/copacabana
+- https://espinalservicios.com/servicios/plomeria/girardota
+- https://espinalservicios.com/servicios/plomeria/rionegro
+- https://espinalservicios.com/servicios/plomeria/la-ceja
+- https://espinalservicios.com/servicios/plomeria/marinilla
+
+## Artículos del blog
+
+- Cómo arreglar una gotera en el techo: https://espinalservicios.com/blog/como-arreglar-gotera-techo
+- Precio de pintar un apartamento en Medellín: https://espinalservicios.com/blog/precio-pintar-apartamento-medellin
+- Cómo detectar una fuga de agua en la pared: https://espinalservicios.com/blog/fuga-agua-pared-como-detectar
+- Impermeabilización de techos en Medellín — precios: https://espinalservicios.com/blog/impermeabilizacion-techos-medellin-precios
+- Humedad en paredes — causas y soluciones: https://espinalservicios.com/blog/humedad-paredes-causas-soluciones

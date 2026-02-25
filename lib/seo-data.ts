@@ -338,3 +338,161 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
 export function getMunicipalitySEO(slug: string) {
   return MUNICIPALITY_SEO.find((m) => m.slug === slug);
 }
+
+/* ------------------------------------------------------------------ */
+/*  CROSS-PAGE SEO DATA (Service × Municipality)                       */
+/* ------------------------------------------------------------------ */
+
+export type CrossPageSEO = {
+  lineSlug: string;
+  municipioSlug: string;
+  lineLabel: string;
+  municipioName: string;
+  title: string;
+  metaDescription: string;
+  h1: string;
+  intro: string;
+  faqs: { question: string; answer: string }[];
+};
+
+const LINE_LABELS: Record<string, string> = {
+  techos: "Techos y cubiertas",
+  pintura: "Pintura y acabados",
+  plomeria: "Plomería",
+};
+
+const LINE_VERB: Record<string, string> = {
+  techos: "reparación de techos, impermeabilización y mantenimiento de cubiertas",
+  pintura: "pintura interior y exterior, resanes y tratamiento de humedad",
+  plomeria: "reparación de fugas, destape de desagües y cambio de grifería",
+};
+
+const MUNICIPALITY_INTROS: Record<string, Record<string, string>> = {
+  techos: {
+    medellin: "Medellín, con su clima de lluvias frecuentes y temperaturas cambiantes, exige techos en buen estado. Las cubiertas expuestas al sol y a la lluvia del Valle de Aburrá necesitan mantenimiento regular para evitar filtraciones.",
+    envigado: "Las lluvias del sur del Valle de Aburrá afectan directamente las cubiertas en Envigado. Ya sea en casas del centro o edificios residenciales, un techo bien sellado es clave para evitar daños.",
+    sabaneta: "Sabaneta, con su crecimiento urbano acelerado, tiene tanto casas antiguas con tejas de barro como edificios nuevos. Ambos tipos de cubierta necesitan revisión y mantenimiento periódico.",
+    bello: "Bello, al norte del Valle de Aburrá, recibe lluvias fuertes que ponen a prueba los techos. Ofrecemos impermeabilización, reparación de goteras y limpieza de canales en todo el municipio.",
+    itagui: "En Itagüí, las zonas industriales y residenciales requieren cubiertas en buen estado. Atendemos bodegas, locales comerciales y viviendas con servicio profesional y garantía.",
+    "la-estrella": "La Estrella, ubicada al sur del Valle de Aburrá, tiene viviendas expuestas a lluvias constantes. Sellamos, impermeabilizamos y reparamos techos con materiales de calidad.",
+    caldas: "Caldas, al sur del Valle de Aburrá, tiene un clima húmedo que exige techos bien protegidos. Atendemos casas y negocios con reparación de goteras e impermeabilización.",
+    copacabana: "Copacabana, al norte del Valle de Aburrá, presenta condiciones de humedad que afectan las cubiertas. Ofrecemos mantenimiento preventivo y reparaciones rápidas.",
+    girardota: "Girardota combina zona rural y urbana, con techos de diferentes materiales. Atendemos desde fincas hasta viviendas del casco urbano con servicio profesional.",
+    rionegro: "Rionegro, en el Oriente antioqueño, tiene un clima frío y lluvioso que exige techos impermeabilizados. Atendemos viviendas, fincas y locales comerciales.",
+    "la-ceja": "La Ceja tiene un clima frío y húmedo que deteriora rápidamente las cubiertas sin mantenimiento. Reparamos goteras, sellamos juntas e impermeabilizamos con garantía.",
+    marinilla: "Marinilla, con lluvias frecuentes en el Oriente antioqueño, necesita techos bien protegidos. Ofrecemos impermeabilización, reparación y mantenimiento de cubiertas.",
+  },
+  pintura: {
+    medellin: "En Medellín, el clima templado y la humedad del Valle de Aburrá exigen pinturas de calidad que resistan. Ya sea un apartamento en El Poblado o una casa en Robledo, pintamos con acabado profesional.",
+    envigado: "Envigado tiene viviendas y apartamentos que necesitan pintura de calidad. Preparamos las superficies, tratamos la humedad si la hay, y dejamos el acabado impecable.",
+    sabaneta: "En Sabaneta, los apartamentos nuevos y las casas antiguas necesitan diferentes tratamientos. Nos adaptamos al tipo de superficie y te damos un acabado limpio y duradero.",
+    bello: "Bello tiene barrios residenciales grandes donde la pintura se deteriora por la humedad y el sol. Preparamos las paredes, resanamos y pintamos con materiales que duran.",
+    itagui: "En Itagüí, atendemos viviendas y locales comerciales con pintura interior y exterior. Tratamos humedad, resanamos paredes y dejamos el espacio como nuevo.",
+    "la-estrella": "La Estrella tiene conjuntos residenciales y casas que necesitan mantenimiento de pintura. Hacemos resanes, tratamiento de humedad y pintura con acabado profesional.",
+    caldas: "En Caldas, las condiciones de humedad pueden afectar la pintura de las paredes. Tratamos el origen de la humedad antes de pintar para un resultado que dure.",
+    copacabana: "Copacabana tiene viviendas que necesitan renovación periódica de pintura. Desde interiores hasta fachadas completas, pintamos con calidad y limpieza.",
+    girardota: "En Girardota, las fincas y viviendas del casco urbano necesitan pintura que resista el clima. Atendemos interiores, exteriores y fachadas con garantía.",
+    rionegro: "Rionegro tiene un crecimiento urbano fuerte, con apartamentos y casas que necesitan pintura de calidad. Atendemos desde estudios hasta fincas del Oriente antioqueño.",
+    "la-ceja": "La Ceja tiene condiciones de humedad que afectan la pintura. Tratamos las paredes, resanamos y pintamos con productos anti-humedad para un acabado duradero.",
+    marinilla: "En Marinilla, la humedad del Oriente antioqueño exige pinturas resistentes. Preparamos las superficies y usamos materiales que soporten las condiciones climáticas.",
+  },
+  plomeria: {
+    medellin: "En Medellín, los problemas de plomería son frecuentes por la antigüedad de muchas instalaciones. Atendemos fugas, desagües tapados y cambio de grifería en todo el Valle de Aburrá.",
+    envigado: "Envigado tiene edificios y casas con instalaciones que necesitan mantenimiento. Detectamos fugas, destapamos desagües y reparamos conexiones con servicio rápido.",
+    sabaneta: "En Sabaneta, los apartamentos nuevos y las casas antiguas presentan diferentes problemas de plomería. Nos adaptamos y solucionamos desde fugas hasta instalación de grifería.",
+    bello: "Bello tiene barrios con tuberías antiguas que presentan fugas y obstrucciones. Atendemos el mismo día cuando es posible y reparamos con garantía.",
+    itagui: "En Itagüí, atendemos hogares y negocios con problemas de plomería. Desde una fuga simple hasta reparaciones más complejas de tuberías.",
+    "la-estrella": "La Estrella tiene viviendas que necesitan mantenimiento de plomería regular. Reparamos fugas, destapamos desagües y cambiamos grifería con servicio profesional.",
+    caldas: "En Caldas, atendemos problemas de plomería en casas y negocios. Detección de fugas, destape de desagües y mantenimiento de tuberías con garantía.",
+    copacabana: "Copacabana tiene instalaciones que necesitan atención profesional de plomería. Llegamos rápido, diagnosticamos el problema y lo reparamos el mismo día cuando es posible.",
+    girardota: "En Girardota, atendemos plomería en viviendas urbanas y fincas. Reparamos fugas, destapamos cañerías y hacemos mantenimiento preventivo de tuberías.",
+    rionegro: "Rionegro tiene un crecimiento urbano que exige servicios de plomería confiables. Atendemos fugas, desagües y grifería en viviendas y locales del Oriente antioqueño.",
+    "la-ceja": "En La Ceja, ofrecemos servicio de plomería profesional para hogares y negocios. Detección de fugas, destape de desagües y reparación de conexiones.",
+    marinilla: "Marinilla necesita plomeros confiables. Atendemos fugas, desagües tapados, cambio de grifería y mantenimiento de tuberías con servicio profesional.",
+  },
+};
+
+const CROSS_PAGE_FAQS: Record<string, { question: string; answer: string }[]> = {
+  techos: [
+    {
+      question: "¿Cuánto cuesta reparar una gotera en {municipio}?",
+      answer: "La reparación de una gotera puntual en {municipio} empieza desde $180.000 COP. El precio final depende de la causa y extensión del daño. Ofrecemos visita técnica gratuita en {municipio} para dar un precio exacto.",
+    },
+    {
+      question: "¿Impermeabilizan techos en {municipio}?",
+      answer: "Sí. Impermeabilizamos techos en {municipio} desde $350.000 COP. Usamos sistemas acrílicos, manto asfáltico, poliuretano y silicona elastomérica según las necesidades del techo.",
+    },
+    {
+      question: "¿Cuánto tarda una reparación de techo en {municipio}?",
+      answer: "Una reparación puntual de gotera toma entre medio día y un día. Una impermeabilización completa puede tomar 1 a 3 días dependiendo del área. Coordinamos horarios flexibles en {municipio}.",
+    },
+  ],
+  pintura: [
+    {
+      question: "¿Cuánto cuesta pintar un apartamento en {municipio}?",
+      answer: "Pintar un apartamento en {municipio} cuesta entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Incluye mano de obra, pintura, preparación y limpieza. Cotización gratis.",
+    },
+    {
+      question: "¿Pintan fachadas en {municipio}?",
+      answer: "Sí. Pintamos fachadas de casas, edificios y locales en {municipio}. El acabado de fachada empieza desde $330.000 COP. Incluimos preparación, resanes y pintura exterior resistente.",
+    },
+    {
+      question: "¿Tratan humedad en paredes en {municipio}?",
+      answer: "Sí. Antes de pintar, diagnosticamos y tratamos el origen de la humedad. El tratamiento de humedad en paredes empieza desde $250.000 COP en {municipio}. No pintamos encima de humedad sin resolver la causa.",
+    },
+  ],
+  plomeria: [
+    {
+      question: "¿Cuánto cuesta un plomero en {municipio}?",
+      answer: "Los servicios de plomería en {municipio} empiezan desde $120.000 COP (revisión de presión). Reparación de fugas desde $170.000, destape de desagües desde $160.000, cambio de grifería desde $150.000. Visita técnica gratis.",
+    },
+    {
+      question: "¿Atienden emergencias de plomería en {municipio}?",
+      answer: "Hacemos lo posible por atender urgencias el mismo día en {municipio}. Escríbenos por WhatsApp, confirmamos disponibilidad y coordinamos la visita lo antes posible. Horario: lunes a sábado 7 a.m. a 6 p.m.",
+    },
+    {
+      question: "¿Destapan desagües en {municipio}?",
+      answer: "Sí. Destapamos desagües de baño, cocina, patio y sifones en {municipio}. El servicio empieza desde $160.000 COP. Usamos herramientas profesionales para un resultado efectivo.",
+    },
+  ],
+};
+
+function buildCrossPages(): CrossPageSEO[] {
+  const pages: CrossPageSEO[] = [];
+  for (const line of SERVICE_LINE_SEO) {
+    for (const muni of MUNICIPALITY_SEO) {
+      const lineLabel = LINE_LABELS[line.slug] ?? line.slug;
+      const lineVerb = LINE_VERB[line.slug] ?? line.slug;
+
+      const intro =
+        MUNICIPALITY_INTROS[line.slug]?.[muni.slug] ??
+        `Ofrecemos ${lineVerb} en ${muni.name} con visita técnica gratuita y garantía por escrito.`;
+
+      const faqs = (CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
+        question: faq.question.replace(/\{municipio\}/g, muni.name),
+        answer: faq.answer.replace(/\{municipio\}/g, muni.name),
+      }));
+
+      pages.push({
+        lineSlug: line.slug,
+        municipioSlug: muni.slug,
+        lineLabel,
+        municipioName: muni.name,
+        title: `${lineLabel} en ${muni.name}: servicios y precios`,
+        metaDescription: `${lineLabel} en ${muni.name}: ${lineVerb}. Visita técnica gratis, precios claros y garantía. Cotiza por WhatsApp.`.slice(0, 155),
+        h1: `${lineLabel} en ${muni.name}`,
+        intro,
+        faqs,
+      });
+    }
+  }
+  return pages;
+}
+
+export const CROSS_PAGE_SEO = buildCrossPages();
+
+export function getCrossPageSEO(lineSlug: string, municipioSlug: string) {
+  return CROSS_PAGE_SEO.find(
+    (p) => p.lineSlug === lineSlug && p.municipioSlug === municipioSlug,
+  );
+}

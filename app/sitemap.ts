@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/conversion";
 import { getAllPosts } from "@/lib/blog-utils";
-import { SERVICE_LINE_SEO, MUNICIPALITY_SEO } from "@/lib/seo-data";
+import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, CROSS_PAGE_SEO } from "@/lib/seo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getAllPosts();
@@ -27,6 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const crossPageEntries: MetadataRoute.Sitemap = CROSS_PAGE_SEO.map((p) => ({
+    url: `${SITE_URL}/servicios/${p.lineSlug}/${p.municipioSlug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -42,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...serviceEntries,
     ...coverageEntries,
+    ...crossPageEntries,
     ...blogEntries,
     {
       url: `${SITE_URL}/nosotros`,

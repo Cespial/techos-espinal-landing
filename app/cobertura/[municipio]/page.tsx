@@ -16,6 +16,7 @@ import {
   buildWaLinkCoverage,
 } from "@/lib/conversion";
 import { MUNICIPALITY_SEO, getMunicipalitySEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import { getAllPosts } from "@/lib/blog-utils";
 
 export function generateStaticParams() {
   return MUNICIPALITY_SEO.map((m) => ({ municipio: m.slug }));
@@ -281,8 +282,33 @@ export default async function CoberturaPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Internal links to other municipalities */}
+        {/* Related blog articles */}
         <section className="border-t border-slate-200 bg-white py-12">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-lg font-semibold text-slate-900">
+              Artículos relacionados
+            </h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {getAllPosts().slice(0, 3).map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-orange-200 hover:bg-orange-50/50"
+                >
+                  <p className="text-sm font-semibold text-slate-900 group-hover:text-orange-700">
+                    {post.title}
+                  </p>
+                  <p className="mt-1 line-clamp-2 text-xs text-slate-600">
+                    {post.metaDescription}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Internal links to other municipalities */}
+        <section className="border-t border-slate-200 bg-slate-50 py-12">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-lg font-semibold text-slate-900">
               También atendemos en
