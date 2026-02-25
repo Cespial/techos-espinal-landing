@@ -116,7 +116,7 @@ export default async function ServicioPage({ params }: Props) {
     <>
       <BlogHeader />
 
-      <main className="pt-20">
+      <main id="main-content" className="pt-20">
         {/* Hero */}
         <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">

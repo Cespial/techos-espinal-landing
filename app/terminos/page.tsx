@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function TerminosPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-24 sm:px-6 md:py-32">
+    <main id="main-content" className="mx-auto max-w-3xl px-4 py-24 sm:px-6 md:py-32">
       <h1
         className="font-serif font-semibold leading-[1.1] tracking-[-0.025em] text-foreground"
         style={{ fontSize: "var(--font-size-h2)" }}

@@ -66,7 +66,7 @@ export default async function BlogListingPage({ searchParams }: Props) {
       />
       <BlogHeader />
 
-      <main className="pt-20 pb-16">
+      <main id="main-content" className="pt-20 pb-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           {/* Page header */}
           <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
