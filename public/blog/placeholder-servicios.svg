@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="#FFF7ED" stroke="#FDBA74" stroke-width="2"/>
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#1E293B">Espinal Multiservicios</text>
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="500" fill="#64748B">Techos · Pintura · Plomería</text>
+  <text x="600" y="400" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#9F580A">Medellín y Valle de Aburrá</text>
+</svg>

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/conversion";
 import { getAllPosts } from "@/lib/blog-utils";
+import { SERVICE_LINE_SEO, MUNICIPALITY_SEO } from "@/lib/seo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getAllPosts();
@@ -10,6 +11,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.updatedAt),
     changeFrequency: "monthly",
     priority: 0.7,
+  }));
+
+  const serviceEntries: MetadataRoute.Sitemap = SERVICE_LINE_SEO.map((s) => ({
+    url: `${SITE_URL}/servicios/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  const coverageEntries: MetadataRoute.Sitemap = MUNICIPALITY_SEO.map((m) => ({
+    url: `${SITE_URL}/cobertura/${m.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
   }));
 
   return [
@@ -25,6 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...serviceEntries,
+    ...coverageEntries,
     ...blogEntries,
     {
       url: `${SITE_URL}/terminos`,

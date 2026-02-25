@@ -192,7 +192,7 @@ La mejor forma de evitar goteras es hacer mantenimiento preventivo:
 
 ## ¿Necesitás ayuda con una gotera?
 
-Si tenés una gotera en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Revisamos tu techo, te decimos qué pasa y cuánto cuesta arreglarlo. Sin compromiso.`,
+Si tenés una gotera en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce todos nuestros [servicios de techos y cubiertas](/servicios/techos) o lee nuestra guía de [impermeabilización de techos en Medellín](/blog/impermeabilizacion-techos-medellin-precios). Revisamos tu techo, te decimos qué pasa y cuánto cuesta arreglarlo. Sin compromiso.`,
   },
 
   /* ---- ARTICLE 2 ---- */
@@ -323,7 +323,7 @@ Esto varía según la calidad de la pintura usada y las condiciones del espacio.
 
 ## ¿Necesitás cotizar pintura para tu apartamento?
 
-Si estás en Medellín o el Valle de Aburrá, podemos ir a tu apartamento, revisar el estado de las paredes y darte un precio claro, sin sorpresas. La visita y la cotización no tienen costo.`,
+Si estás en Medellín o el Valle de Aburrá, podemos ir a tu apartamento, revisar el estado de las paredes y darte un precio claro, sin sorpresas. Explora nuestros [servicios de pintura y acabados](/servicios/pintura). Si tenés problemas de humedad antes de pintar, lee nuestra guía de [humedad en las paredes: causas y soluciones](/blog/humedad-paredes-causas-soluciones). La visita y la cotización no tienen costo.`,
   },
 
   /* ---- ARTICLE 3 ---- */
@@ -463,7 +463,7 @@ El precio final depende de la ubicación de la fuga, el tipo de tubería y la di
 
 ## ¿Tenés una fuga en la pared?
 
-Si sospechás que hay una fuga en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Vamos, revisamos y te decimos qué pasa y cuánto cuesta arreglarlo.`,
+Si sospechás que hay una fuga en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce todos nuestros [servicios de plomería](/servicios/plomeria). Si la humedad ya afectó tus paredes, te recomendamos leer [humedad en las paredes: causas y soluciones](/blog/humedad-paredes-causas-soluciones). Vamos, revisamos y te decimos qué pasa y cuánto cuesta arreglarlo.`,
   },
 
   /* ---- ARTICLE 4 ---- */
@@ -621,7 +621,7 @@ La duración depende del sistema usado y las condiciones:
 
 ## ¿Necesitás impermeabilizar tu techo?
 
-Si estás en Medellín o el Valle de Aburrá, podemos ir a revisar tu techo y darte una cotización sin costo. Te decimos qué tipo de impermeabilización necesitás y cuánto va a costar.`,
+Si estás en Medellín o el Valle de Aburrá, podemos ir a revisar tu techo y darte una cotización sin costo. Explora todos nuestros [servicios de techos y cubiertas](/servicios/techos) o lee nuestra guía sobre [cómo arreglar una gotera en el techo](/blog/como-arreglar-gotera-techo). Te decimos qué tipo de impermeabilización necesitás y cuánto va a costar.`,
   },
 
   /* ---- ARTICLE 5 ---- */
@@ -762,6 +762,6 @@ Por eso es importante resolver la humedad no solo por estética sino por salud.
 
 ## ¿Necesitás ayuda con la humedad en tus paredes?
 
-Si tenés paredes con manchas de humedad en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Revisamos cuál es la causa, te proponemos la solución y te damos un precio claro.`,
+Si tenés paredes con manchas de humedad en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce nuestros [servicios de pintura](/servicios/pintura) y [servicios de techos](/servicios/techos). Si sospechás que la humedad viene de una tubería, lee nuestra guía de [fuga de agua en la pared](/blog/fuga-agua-pared-como-detectar). Revisamos cuál es la causa, te proponemos la solución y te damos un precio claro.`,
   },
 ];

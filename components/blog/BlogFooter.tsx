@@ -58,6 +58,12 @@ export default function BlogFooter() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-200 pt-4 text-xs text-slate-500">
+          <Link href="/servicios/techos" className="hover:text-slate-900">
+            Servicios
+          </Link>
+          <Link href="/cobertura/medellin" className="hover:text-slate-900">
+            Cobertura
+          </Link>
           <Link href="/blog" className="hover:text-slate-900">
             Blog
           </Link>

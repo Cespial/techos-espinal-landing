@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
-import { SITE_URL } from "@/lib/conversion";
+import { SITE_URL, COMPANY_NAME, PHONE_E164 } from "@/lib/conversion";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -87,6 +87,31 @@ export default function RootLayout({
         <link rel="preload" href="/video/slow-majestic-poster.jpg" as="image" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: COMPANY_NAME,
+              url: SITE_URL,
+              logo: `${SITE_URL}/logo-espinal.svg`,
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: PHONE_E164,
+                contactType: "customer service",
+                availableLanguage: "Spanish",
+                areaServed: "CO",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Medellín",
+                addressRegion: "Antioquia",
+                addressCountry: "CO",
+              },
+            }),
+          }}
+        />
       </head>
       <body className="bg-background text-foreground antialiased">
         <a href="#main-content" className="skip-link">

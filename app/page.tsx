@@ -4,6 +4,7 @@ import {
   PHONE_DISPLAY,
   SITE_URL,
   SOCIAL_PROOF_STATS,
+  TESTIMONIAL_DATA,
 } from "@/lib/conversion";
 
 const structuredData = {
@@ -50,6 +51,17 @@ const structuredData = {
     bestRating: 5,
     ratingCount: SOCIAL_PROOF_STATS.jobsCompleted,
   },
+  review: TESTIMONIAL_DATA.map((t) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: t.name },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: t.rating,
+      bestRating: 5,
+    },
+    reviewBody: t.text,
+    datePublished: t.date,
+  })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Servicios de Espinal Multiservicios",
