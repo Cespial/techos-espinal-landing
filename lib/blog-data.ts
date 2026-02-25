@@ -87,7 +87,7 @@ export const BLOG_POSTS: BlogPost[] = [
     featuredImageAlt: "Reparación de gotera en techo de casa en Medellín",
     readingTimeMinutes: 8,
     isFeatured: true,
-    relatedSlugs: ["impermeabilizacion-techos-medellin-precios", "humedad-paredes-causas-soluciones"],
+    relatedSlugs: ["impermeabilizacion-techos-medellin-precios", "humedad-paredes-causas-soluciones", "preparar-casa-temporada-lluvias-medellin"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí"],
     tags: ["goteras", "techos", "reparación", "impermeabilización"],
     body: `## ¿Por qué gotea el techo de tu casa?
@@ -220,7 +220,7 @@ Si tenés una gotera en tu casa o negocio en Medellín o el Valle de Aburrá, po
     featuredImageAlt: "Pintura interior de apartamento en Medellín",
     readingTimeMinutes: 7,
     isFeatured: true,
-    relatedSlugs: ["humedad-paredes-causas-soluciones", "como-arreglar-gotera-techo"],
+    relatedSlugs: ["humedad-paredes-causas-soluciones", "como-quitar-moho-paredes-definitivamente", "como-arreglar-gotera-techo"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí"],
     tags: ["pintura", "precios", "apartamento", "Medellín"],
     body: `## ¿Cuánto cuesta pintar un apartamento en Medellín?
@@ -351,7 +351,7 @@ Si estás en Medellín o el Valle de Aburrá, podemos ir a tu apartamento, revis
     featuredImageAlt: "Detección de fuga de agua en pared de vivienda",
     readingTimeMinutes: 7,
     isFeatured: false,
-    relatedSlugs: ["humedad-paredes-causas-soluciones", "como-arreglar-gotera-techo"],
+    relatedSlugs: ["humedad-paredes-causas-soluciones", "cuanto-cobra-plomero-medellin-precios", "destape-canerias-medellin-metodos-precios"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí"],
     tags: ["fugas", "plomería", "detección", "pared mojada"],
     body: `## ¿Cómo saber si hay una fuga de agua en la pared?
@@ -491,7 +491,7 @@ Si sospechás que hay una fuga en tu casa o negocio en Medellín o el Valle de A
     featuredImageAlt: "Impermeabilización de techo con membrana en Medellín",
     readingTimeMinutes: 8,
     isFeatured: false,
-    relatedSlugs: ["como-arreglar-gotera-techo", "humedad-paredes-causas-soluciones"],
+    relatedSlugs: ["como-arreglar-gotera-techo", "tipos-tejas-casas-colombia-comparativa", "preparar-casa-temporada-lluvias-medellin"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí"],
     tags: ["impermeabilización", "techos", "precios", "Medellín"],
     body: `## ¿Qué es la impermeabilización de techos?
@@ -649,7 +649,7 @@ Si estás en Medellín o el Valle de Aburrá, podemos ir a revisar tu techo y da
     featuredImageAlt: "Tratamiento de humedad en pared de casa en Medellín",
     readingTimeMinutes: 8,
     isFeatured: false,
-    relatedSlugs: ["fuga-agua-pared-como-detectar", "como-arreglar-gotera-techo"],
+    relatedSlugs: ["fuga-agua-pared-como-detectar", "como-quitar-moho-paredes-definitivamente", "preparar-casa-temporada-lluvias-medellin"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí"],
     tags: ["humedad", "paredes", "pintura", "tratamiento"],
     body: `## ¿Por qué salen manchas de humedad en las paredes?
@@ -763,5 +763,927 @@ Por eso es importante resolver la humedad no solo por estética sino por salud.
 ## ¿Necesitás ayuda con la humedad en tus paredes?
 
 Si tenés paredes con manchas de humedad en tu casa o negocio en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce nuestros [servicios de pintura](/servicios/pintura) y [servicios de techos](/servicios/techos). Si sospechás que la humedad viene de una tubería, lee nuestra guía de [fuga de agua en la pared](/blog/fuga-agua-pared-como-detectar). Revisamos cuál es la causa, te proponemos la solución y te damos un precio claro.`,
+  },
+
+  /* ---- ARTICLE 6 ---- */
+  {
+    slug: "preparar-casa-temporada-lluvias-medellin",
+    title: "Cómo preparar tu casa para la temporada de lluvias en Medellín",
+    metaDescription:
+      "Checklist completo para preparar tu casa antes de la temporada de lluvias en Medellín. Techo, canales, paredes y plomería: todo lo que debés revisar.",
+    targetKeyword: "preparar casa temporada lluvias Medellín",
+    secondaryKeywords: [
+      "temporada lluvias Medellín 2026",
+      "checklist mantenimiento casa lluvias",
+      "proteger casa lluvias Valle de Aburrá",
+      "mantenimiento techo antes de lluvias",
+    ],
+    category: "hogar",
+    serviceLines: ["techos", "pintura", "plomeria"],
+    relatedServiceIds: ["impermeabilizacion-cubiertas", "mantenimiento-canoas", "reparacion-goteras", "correccion-humedad-superficial"],
+    publishedAt: "2026-03-01",
+    updatedAt: "2026-03-01",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/blog/placeholder-hogar.svg",
+    featuredImage: "/blog/placeholder-hogar.svg",
+    featuredImageAlt: "Mantenimiento de techo antes de temporada de lluvias en Medellín",
+    readingTimeMinutes: 9,
+    isFeatured: true,
+    relatedSlugs: ["como-arreglar-gotera-techo", "impermeabilizacion-techos-medellin-precios", "humedad-paredes-causas-soluciones"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella", "Caldas", "Copacabana", "Girardota"],
+    tags: ["lluvias", "mantenimiento", "checklist", "temporada", "Medellín"],
+    body: `## ¿Cuándo es la temporada de lluvias en Medellín?
+
+Medellín tiene dos temporadas de lluvias al año:
+
+- **Primera temporada**: marzo a mayo.
+- **Segunda temporada**: septiembre a noviembre.
+
+Entre las dos, Medellín recibe en promedio más de 1.600 mm de lluvia al año. Eso es mucha agua cayendo sobre tu techo, tus paredes y tus bajantes.
+
+El problema no es la lluvia en sí, sino lo que pasa cuando tu casa no está preparada. Goteras, inundaciones menores, humedades en las paredes y daños que pudieron evitarse con una revisión a tiempo.
+
+## Checklist completo: qué revisar antes de las lluvias
+
+Acá te dejamos una guía paso a paso con todo lo que debés revisar antes de que empiecen las lluvias fuertes.
+
+### 1. Techo y cubierta
+
+El techo es tu primera línea de defensa contra la lluvia. Si falla, todo lo demás se complica.
+
+**Revisá:**
+
+- **Tejas rotas o desplazadas**: Mirá desde abajo si hay luz entrando por el techo. Si podés subir con seguridad, revisá que todas las tejas estén completas y bien asentadas.
+- **Sellados y juntas**: Los puntos donde el techo se encuentra con la pared, con tubos o con otros techos son los más vulnerables. Verificá que el sellado esté íntegro.
+- **Impermeabilización**: Si tu techo tiene más de 3-5 años sin impermeabilizar, es momento de hacerlo. La impermeabilización vencida es la causa número uno de goteras.
+- **Claraboyas y tragaluces**: Revisá que los sellos alrededor estén en buen estado.
+
+> Si encontrás tejas rotas o sellados deteriorados, es mejor arreglarlos ahora. Consultá nuestra guía de [cómo arreglar una gotera en el techo](/blog/como-arreglar-gotera-techo).
+
+### 2. Canales y bajantes
+
+Los canales recogen el agua del techo y la conducen hacia abajo. Si están tapados, el agua se desborda y entra por donde no debe.
+
+**Revisá:**
+
+- **Hojas y basura acumulada**: Limpiá los canales a fondo. Si tenés árboles cerca, esto es especialmente importante.
+- **Inclinación correcta**: El agua debe correr hacia los bajantes, no estancarse. Si ves charcos en los canales, están mal nivelados.
+- **Bajantes libres**: Verificá que el agua baje bien. Podés echar agua con una manguera para probar.
+- **Uniones y empalmes**: Revisá que no haya fugas en las uniones de los canales ni en la conexión con los bajantes.
+- **Salida final**: ¿A dónde llega el agua? Asegurate de que la salida de los bajantes esté libre y dirija el agua lejos de la base de la casa.
+
+### 3. Paredes exteriores
+
+Las paredes exteriores también reciben agua directa, especialmente las que dan hacia el norte o hacia donde sopla el viento cuando llueve.
+
+**Revisá:**
+
+- **Pintura y revestimiento**: Si la pintura exterior está descascarada o agrietada, el agua se filtra por ahí. Una buena pintura exterior con impermeabilizante protege la pared.
+- **Grietas visibles**: Cualquier grieta en la fachada es una puerta de entrada para el agua. Sellá con masilla o mortero.
+- **Ventanas y marcos**: Revisá los sellos alrededor de las ventanas. Un sellado deteriorado deja pasar agua en cada aguacero.
+- **Base de las paredes**: Si ves que la base de las paredes exteriores siempre está húmeda, puede haber un problema de capilaridad que hay que tratar antes de las lluvias.
+
+> Para más información sobre humedad en las paredes, lee nuestra guía completa de [humedad en las paredes: causas y soluciones](/blog/humedad-paredes-causas-soluciones).
+
+### 4. Plomería y desagües
+
+Las lluvias fuertes ponen a prueba todo el sistema de desagüe de tu casa.
+
+**Revisá:**
+
+- **Desagües del patio y terraza**: Limpiá las rejillas y verificá que el agua drene rápido. Un desagüe lento se convierte en una inundación cuando llueve fuerte.
+- **Sifones y trampas de grasa**: Si están tapados, el agua se devuelve. Hacé limpieza preventiva.
+- **Tuberías visibles**: Revisá si hay fugas, goteos o conexiones flojas en tuberías que puedas ver (cuarto de lavado, baños, cocina).
+- **Bombas de achique**: Si tu casa tiene sótano o zona baja que se inunda, verificá que la bomba de achique funcione antes de que la necesités.
+
+### 5. Interior de la casa
+
+También hay cosas que podés hacer adentro para prepararte:
+
+- **Revisá los cielo rasos**: Manchas, abultamientos o pintura que se pela pueden indicar filtraciones activas desde el techo.
+- **Ventilación**: Asegurate de que baños y cocina tengan buena ventilación para evitar condensación.
+- **Muebles contra paredes exteriores**: Dejá un espacio de al menos 5 cm entre muebles y paredes exteriores para permitir circulación de aire.
+- **Revisá las llaves de paso**: Sabé dónde están y verificá que cierren bien, por si necesitás cortar el agua en una emergencia.
+
+## ¿Qué pasa si no preparás tu casa?
+
+Los problemas más comunes que vemos después de cada temporada de lluvias son:
+
+| Problema | Causa típica | Costo de reparación |
+|----------|-------------|-------------------|
+| Goteras activas | Impermeabilización vencida o tejas rotas | Desde $180.000 COP |
+| Humedad en paredes interiores | Filtración por fachada o techo | Desde $250.000 COP |
+| Inundación en patio o garaje | Desagües tapados | Desde $160.000 COP |
+| Moho en paredes y techos | Condensación + falta de ventilación | Desde $250.000 COP |
+| Daño en cielo raso | Agua acumulada sobre el cielo raso | Desde $350.000 COP |
+
+Todos estos problemas son más baratos de prevenir que de reparar.
+
+## Calendario de mantenimiento preventivo
+
+Para que no se te olvide, acá tenés un calendario simple:
+
+### Febrero - marzo (antes de la primera temporada)
+- Limpiar canales y bajantes.
+- Revisar impermeabilización del techo.
+- Revisar y sellar grietas en fachada.
+- Verificar desagües de patio y terraza.
+
+### Agosto - septiembre (antes de la segunda temporada)
+- Repetir limpieza de canales.
+- Verificar que las reparaciones de la primera temporada aguantaron.
+- Revisar pintura exterior.
+- Limpiar sifones y desagües interiores.
+
+### Todo el año
+- Revisar el techo después de tormentas fuertes.
+- Atender manchas de humedad apenas aparezcan.
+- Mantener las rejillas de desagüe libres de hojas.
+
+## Cuánto cuesta el mantenimiento preventivo
+
+| Servicio preventivo | Precio aproximado |
+|-------------------|------------------|
+| Limpieza de canales y bajantes | Desde $150.000 COP |
+| Revisión completa del techo | Desde $130.000 COP |
+| Sellado de fisuras y juntas | Desde $210.000 COP |
+| Impermeabilización de cubierta | Desde $350.000 COP |
+| Limpieza de cubierta | Desde $140.000 COP |
+| Pintura exterior (fachada) | Desde $330.000 COP |
+
+> Todos los precios son de referencia. El valor final se define con la visita técnica gratuita.
+
+## ¿Necesitás preparar tu casa antes de las lluvias?
+
+Si estás en Medellín o el Valle de Aburrá, podemos hacer una revisión completa de tu techo, canales, paredes y desagües. Conoce nuestros [servicios de techos y cubiertas](/servicios/techos), [servicios de pintura](/servicios/pintura) y [servicios de plomería](/servicios/plomeria). Te decimos qué necesita atención, qué puede esperar y cuánto cuesta cada cosa. La visita y la cotización son gratuitas.`,
+  },
+
+  /* ---- ARTICLE 7 ---- */
+  {
+    slug: "cuanto-cobra-plomero-medellin-precios",
+    title: "¿Cuánto cobra un plomero en Medellín en 2026? Precios reales",
+    metaDescription:
+      "Precios reales de plomería en Medellín en 2026. Cuánto cobra un plomero por destape, reparación de fugas, cambio de grifería y más servicios.",
+    targetKeyword: "cuanto cobra un plomero en Medellín",
+    secondaryKeywords: [
+      "precio plomero Medellín",
+      "plomero Medellín precio",
+      "cuanto cuesta un plomero en Medellín",
+      "tarifas plomería Medellín 2026",
+      "plomero barato Medellín",
+    ],
+    category: "guias",
+    serviceLines: ["plomeria"],
+    relatedServiceIds: ["reparacion-fugas", "destape-desagues", "cambio-griferia", "ajuste-sanitario", "revision-presion-agua", "mantenimiento-tuberias"],
+    publishedAt: "2026-03-05",
+    updatedAt: "2026-03-05",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/blog/placeholder-plomeria.svg",
+    featuredImage: "/blog/placeholder-plomeria.svg",
+    featuredImageAlt: "Plomero profesional reparando tubería en Medellín",
+    readingTimeMinutes: 8,
+    isFeatured: true,
+    relatedSlugs: ["fuga-agua-pared-como-detectar", "destape-canerias-medellin-metodos-precios", "preparar-casa-temporada-lluvias-medellin"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella", "Copacabana"],
+    tags: ["plomería", "precios", "plomero", "Medellín", "tarifas"],
+    body: `## ¿Cuánto cobra un plomero en Medellín?
+
+Si tenés un problema de plomería en tu casa o negocio, lo primero que querés saber es cuánto te va a costar resolverlo. Acá te damos los precios reales del mercado en Medellín y el Valle de Aburrá para 2026.
+
+**La respuesta corta**: un servicio de plomería en Medellín cuesta entre **$120.000 y $500.000 COP** dependiendo del tipo de trabajo. La mayoría de reparaciones comunes están en el rango de $130.000 a $250.000 COP.
+
+## Tabla de precios de plomería en Medellín 2026
+
+Estos son los precios de referencia para los servicios de plomería más solicitados:
+
+| Servicio | Precio desde | Rango típico |
+|----------|-------------|-------------|
+| Revisión de presión del agua | $120.000 COP | $120.000 - $180.000 |
+| Detección de fuga visible | $130.000 COP | $130.000 - $200.000 |
+| Reparación de llaves y conexiones | $140.000 COP | $140.000 - $220.000 |
+| Cambio de grifería | $150.000 COP | $150.000 - $280.000 |
+| Destape de desagües | $160.000 COP | $160.000 - $300.000 |
+| Ajuste de sanitario | $165.000 COP | $165.000 - $250.000 |
+| Reparación de fugas | $170.000 COP | $170.000 - $350.000 |
+| Mantenimiento de tuberías | $200.000 COP | $200.000 - $400.000 |
+
+> Estos precios incluyen mano de obra. Los materiales (llaves, griferías, tubos, accesorios) se cotizan aparte según lo que se necesite.
+
+## ¿Qué incluye el precio de un plomero?
+
+Un servicio de plomería profesional normalmente incluye:
+
+- **Diagnóstico**: El plomero revisa el problema, identifica la causa y te explica qué hay que hacer.
+- **Mano de obra**: El trabajo de reparación en sí.
+- **Herramienta especializada**: El plomero lleva sus herramientas.
+- **Garantía**: Un servicio profesional te da garantía por el trabajo realizado.
+
+### ¿Qué NO incluye normalmente?
+
+- **Materiales**: Tubos, codos, pegantes, griferías, válvulas y accesorios se cobran aparte.
+- **Obra civil**: Si hay que romper piso o pared para acceder a la tubería, eso es un costo adicional.
+- **Resane posterior**: Después de reparar, si se abrió pared o piso, el resane puede tener un costo adicional.
+
+## Desglose por tipo de servicio
+
+### Destape de desagües
+
+El destape es uno de los servicios más pedidos. El precio varía según la dificultad:
+
+| Tipo de destape | Precio aproximado |
+|----------------|------------------|
+| Destape sencillo (sifón o rejilla) | $160.000 - $200.000 |
+| Destape con sonda manual | $200.000 - $280.000 |
+| Destape con máquina rotativa | $280.000 - $400.000 |
+| Destape de tubería principal | $350.000 - $500.000+ |
+
+La diferencia está en dónde está el tapón y qué tan profundo hay que llegar para resolverlo. Un sifón tapado en el lavamanos es simple. Un tapón en la tubería principal de desagüe es otra cosa.
+
+> Para más información, lee nuestra guía completa de [destape de cañerías en Medellín: métodos y precios](/blog/destape-canerias-medellin-metodos-precios).
+
+### Reparación de fugas
+
+El precio depende de la ubicación y la gravedad de la fuga:
+
+| Tipo de fuga | Precio aproximado |
+|-------------|------------------|
+| Fuga visible en llave o conexión | $170.000 - $230.000 |
+| Fuga en tubería expuesta | $200.000 - $300.000 |
+| Fuga oculta en pared (con apertura) | $300.000 - $500.000 |
+| Fuga en piso (con apertura) | $350.000 - $600.000+ |
+
+Las fugas ocultas son más caras porque hay que encontrarlas, abrir la pared o el piso, reparar y cerrar de nuevo.
+
+> Si sospechás que tenés una fuga oculta, consultá nuestra guía de [fuga de agua en la pared: cómo detectarla](/blog/fuga-agua-pared-como-detectar).
+
+### Cambio de grifería
+
+El precio del cambio depende del tipo de grifería y la complejidad de la instalación:
+
+| Tipo de trabajo | Precio aproximado (solo mano de obra) |
+|----------------|--------------------------------------|
+| Cambio de llave sencilla | $150.000 - $200.000 |
+| Instalación de grifería de cocina | $180.000 - $250.000 |
+| Instalación de grifería de ducha | $200.000 - $300.000 |
+| Cambio de mezclador (caliente/fría) | $220.000 - $320.000 |
+
+> El precio de la grifería en sí varía enormemente. Una llave básica cuesta $30.000 - $60.000 COP. Una grifería de marca puede costar $150.000 - $500.000+.
+
+## ¿Qué factores cambian el precio?
+
+### 1. Urgencia
+
+Un servicio de emergencia (fuga activa, inundación) puede costar más que un servicio programado, especialmente si es en horario nocturno o fin de semana.
+
+### 2. Accesibilidad
+
+Si la tubería está enterrada, empotrada en la pared o en un lugar de difícil acceso, el trabajo toma más tiempo y cuesta más.
+
+### 3. Antigüedad de la instalación
+
+En casas viejas con tuberías de hierro galvanizado o con conexiones obsoletas, las reparaciones son más complicadas porque a veces hay que adaptar materiales.
+
+### 4. Materiales necesarios
+
+Un cambio de llave simple necesita un accesorio de $20.000. Pero si hay que reemplazar un tramo de tubería completo, los materiales suman.
+
+### 5. Zona
+
+Los precios pueden variar ligeramente entre municipios del Valle de Aburrá. En zonas de difícil acceso o distantes, puede haber un cargo por desplazamiento.
+
+## ¿Cómo elegir un buen plomero en Medellín?
+
+No todos los plomeros son iguales. Acá te damos criterios para elegir bien:
+
+### Lo que debés buscar
+
+- **Que haga diagnóstico antes de cobrar**: Un buen plomero primero revisa, diagnostica y te dice qué hay que hacer antes de empezar.
+- **Que te dé un precio claro antes de empezar**: Nada de "eso lo vemos después". Debés saber cuánto vas a pagar antes de que empiece el trabajo.
+- **Que ofrezca garantía por escrito**: Si la reparación falla, debe responder sin costo adicional.
+- **Que tenga experiencia demostrable**: Preguntá por trabajos anteriores o buscá referencias.
+
+### Señales de alerta
+
+- Te cobra solo por ir a mirar (la visita debería ser gratis o a precio simbólico).
+- No te da precio antes de empezar.
+- Te presiona para hacer trabajos adicionales que no pediste.
+- No tiene herramienta profesional.
+- No da factura ni garantía.
+
+## Errores comunes al contratar un plomero
+
+### 1. Buscar solo el más barato
+
+El plomero que cobra $50.000 por un destape probablemente no tiene herramienta profesional, no da garantía y puede dejarte el problema peor.
+
+### 2. Esperar demasiado
+
+Una fuga pequeña que cuesta $170.000 hoy puede convertirse en un daño de $800.000 si dejás que el agua siga dañando la pared, el piso o la estructura.
+
+### 3. Intentar hacerlo vos mismo
+
+Hay cosas simples que podés hacer (cambiar un empaque, ajustar una llave). Pero las reparaciones de tuberías, destapes profundos y fugas ocultas necesitan herramientas y experiencia profesional.
+
+## ¿Necesitás un plomero en Medellín?
+
+Si tenés un problema de plomería en Medellín o el Valle de Aburrá, podemos ayudarte. Explorá todos nuestros [servicios de plomería](/servicios/plomeria) con precios de referencia. Vamos a tu casa o negocio, revisamos el problema y te damos un precio claro antes de empezar. La visita técnica y la cotización son gratuitas.`,
+  },
+
+  /* ---- ARTICLE 8 ---- */
+  {
+    slug: "destape-canerias-medellin-metodos-precios",
+    title: "Destape de cañerías en Medellín: métodos, precios y consejos",
+    metaDescription:
+      "Guía completa de destape de cañerías en Medellín. Métodos profesionales, precios por tipo de destape, cuándo hacerlo vos mismo y cuándo llamar a un profesional.",
+    targetKeyword: "destape cañerías Medellín",
+    secondaryKeywords: [
+      "destape desagües Medellín precio",
+      "desatapar cañería",
+      "cañería tapada que hacer",
+      "destape tuberías precio Medellín",
+      "plomero destape Medellín",
+    ],
+    category: "plomeria",
+    serviceLines: ["plomeria"],
+    relatedServiceIds: ["destape-desagues", "mantenimiento-tuberias", "reparacion-fugas"],
+    publishedAt: "2026-03-15",
+    updatedAt: "2026-03-15",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/blog/placeholder-plomeria.svg",
+    featuredImage: "/blog/placeholder-plomeria.svg",
+    featuredImageAlt: "Destape profesional de cañería con equipo especializado en Medellín",
+    readingTimeMinutes: 8,
+    isFeatured: false,
+    relatedSlugs: ["cuanto-cobra-plomero-medellin-precios", "fuga-agua-pared-como-detectar", "preparar-casa-temporada-lluvias-medellin"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella"],
+    tags: ["destape", "cañerías", "desagües", "plomería", "Medellín"],
+    body: `## ¿Por qué se tapan las cañerías?
+
+Las cañerías tapadas son uno de los problemas de plomería más frecuentes en las casas de Medellín. Antes de hablar de soluciones, entendamos qué las causa:
+
+### Causas más comunes
+
+- **Grasa y residuos de cocina**: La grasa que botás por el lavaplatos se enfría dentro de la tubería y se va acumulando hasta formar un tapón.
+- **Cabello y jabón**: En duchas y lavamanos, el cabello se enreda con residuos de jabón y forma obstrucciones.
+- **Papel higiénico y toallas húmedas**: Botar toallas húmedas, toallas desmaquillantes o papel excesivo por el sanitario tapa las tuberías con el tiempo.
+- **Raíces de árboles**: En casas con jardín, las raíces pueden meterse en las tuberías de desagüe y bloquearlas.
+- **Sedimento y cal**: Con el tiempo, los minerales del agua se acumulan en las paredes internas de las tuberías, reduciendo el diámetro.
+- **Objetos extraños**: Juguetes, tapas, cubiertos u objetos que caen accidentalmente al desagüe.
+
+## Señales de que tu cañería está tapándose
+
+No esperés a que se tape completamente. Estas señales te avisan que hay un problema en formación:
+
+1. **El agua baja lento**: Si el lavamanos, la ducha o el lavaplatos tardan más de lo normal en vaciar, la tubería se está obstruyendo.
+2. **Burbujas al drenar**: Si ves burbujas cuando el agua baja, hay aire atrapado por una obstrucción.
+3. **Mal olor en los desagües**: Los residuos acumulados generan un olor fuerte y desagradable.
+4. **Agua que se devuelve**: Si el agua sube por otro desagüe cuando descargás el sanitario o usás la lavadora, las tuberías principales están comprometidas.
+5. **Ruidos en las tuberías**: Sonidos de gorgoteo o burbujeo cuando el agua drena.
+
+## Métodos de destape: del más simple al más complejo
+
+### 1. Agua caliente (DIY)
+
+**Para qué sirve**: Tapones leves de grasa en el lavaplatos.
+
+**Cómo hacerlo**:
+1. Hervir una olla grande de agua.
+2. Verter el agua caliente directamente por el desagüe en un chorro continuo.
+3. Esperar 5 minutos y repetir.
+
+**Limitaciones**: Solo funciona con tapones leves de grasa. No sirve para pelo, objetos sólidos ni tapones viejos.
+
+> **Precaución**: No usés agua hirviendo en tuberías de PVC viejas, ya que el calor excesivo puede dañar las uniones.
+
+### 2. Chupa o sopapa (DIY)
+
+**Para qué sirve**: Tapones parciales en lavamanos, lavaplatos o sanitario.
+
+**Cómo hacerlo**:
+1. Tapá el rebosadero del lavamanos con un trapo húmedo (el orificio de arriba).
+2. Poné la chupa sobre el desagüe asegurando un buen sello.
+3. Bombeá con fuerza 15-20 veces.
+4. Retirá y verificá si el agua baja.
+
+**Limitaciones**: No funciona con tapones profundos ni con tuberías principales.
+
+### 3. Sonda manual o cable destapador (semi-profesional)
+
+**Para qué sirve**: Tapones a 1-3 metros de profundidad en tuberías secundarias.
+
+**Cómo funciona**: Se introduce un cable flexible por el desagüe que va rompiendo o enganchando la obstrucción. Se puede comprar en ferreterías por $25.000-$50.000 COP.
+
+**Limitaciones**: Requiere algo de habilidad. No es efectivo en tuberías principales ni en tapones muy duros.
+
+### 4. Máquina rotativa (profesional)
+
+**Para qué sirve**: Tapones difíciles, profundos o en tuberías principales.
+
+**Cómo funciona**: Una máquina eléctrica gira un cable de acero que rompe cualquier obstrucción, incluyendo raíces, grasa endurecida y sedimento acumulado. Puede llegar a 15-30 metros de profundidad.
+
+**Cuándo usarla**: Es el método más efectivo para tapones serios. Requiere un plomero profesional con el equipo.
+
+### 5. Hydro-jetting (profesional avanzado)
+
+**Para qué sirve**: Limpieza profunda de tuberías comerciales o residenciales con tapones recurrentes.
+
+**Cómo funciona**: Se inyecta agua a alta presión (1.500-4.000 PSI) que barre todo el interior de la tubería: grasa, raíces, sedimento y cualquier obstrucción.
+
+**Cuándo usarla**: Para tuberías que se tapan constantemente, edificios, restaurantes o cuando otros métodos no resuelven.
+
+## ¿Cuánto cuesta destapar una cañería en Medellín?
+
+| Tipo de destape | Precio aproximado | Tiempo estimado |
+|----------------|------------------|----------------|
+| Destape sencillo (sifón/rejilla) | $160.000 - $200.000 | 30-60 min |
+| Destape con sonda manual | $200.000 - $280.000 | 1-2 horas |
+| Destape con máquina rotativa | $280.000 - $400.000 | 1-3 horas |
+| Destape de tubería principal | $350.000 - $500.000+ | 2-4 horas |
+| Hydro-jetting (alta presión) | $400.000 - $700.000+ | 2-5 horas |
+
+> Estos precios incluyen mano de obra y uso de equipos. Los precios pueden variar según la dificultad y la ubicación del tapón.
+
+## ¿Cuándo hacerlo vos mismo y cuándo llamar a un profesional?
+
+### Podés intentar vos mismo cuando:
+
+- El agua baja lento pero todavía drena.
+- El problema es en un solo punto (un lavamanos, una ducha).
+- No hay mal olor fuerte ni agua devolviéndose.
+- Es la primera vez que pasa en esa zona.
+
+### Llamá a un profesional cuando:
+
+- El agua no baja del todo.
+- Varios desagües están afectados al mismo tiempo.
+- El agua se devuelve por otro desagüe.
+- Ya intentaste los métodos caseros y no funcionaron.
+- Hay mal olor persistente.
+- El problema es recurrente (se tapa cada pocas semanas).
+
+## Productos químicos destapadores: ¿sirven?
+
+Los destapadores químicos que se venden en el supermercado pueden funcionar para tapones leves, pero tienen problemas importantes:
+
+**Contras:**
+- Son corrosivos y pueden dañar tuberías de PVC con el uso frecuente.
+- Son tóxicos y peligrosos para manipular.
+- No resuelven tapones serios (solo los aflojan temporalmente).
+- Contaminan el agua.
+
+**Nuestra recomendación**: Evitalos. Un destape profesional es más seguro, más efectivo y no daña tus tuberías.
+
+## Cómo prevenir que se tapen las cañerías
+
+La prevención es más barata que el destape:
+
+- **Usá un filtro en el lavaplatos**: Atrapa restos de comida antes de que lleguen a la tubería. Cuestan $5.000-$15.000 COP.
+- **No botés grasa por el desagüe**: Dejá que la grasa se enfríe y botala a la basura.
+- **Poné rejilla atrapa-pelos en la ducha**: Evita que el cabello llegue a la tubería.
+- **No botés toallas húmedas por el sanitario**: Solo papel higiénico. Todo lo demás va a la basura.
+- **Echá agua caliente por los desagües una vez por semana**: Ayuda a disolver grasa acumulada.
+- **Hacé mantenimiento preventivo cada 6-12 meses**: Una limpieza profesional periódica evita tapones.
+
+## ¿Tenés una cañería tapada?
+
+Si tenés un desagüe tapado en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce todos nuestros [servicios de plomería](/servicios/plomeria) o consultá nuestros [precios de plomería en Medellín](/blog/cuanto-cobra-plomero-medellin-precios). Vamos, revisamos y destapamos. Sin complicaciones.`,
+  },
+
+  /* ---- ARTICLE 9 ---- */
+  {
+    slug: "como-quitar-moho-paredes-definitivamente",
+    title: "Cómo quitar el moho de las paredes de forma definitiva",
+    metaDescription:
+      "Guía para eliminar el moho de las paredes definitivamente. Métodos caseros, productos recomendados, riesgos para la salud y cuándo necesitás un profesional.",
+    targetKeyword: "como quitar moho paredes",
+    secondaryKeywords: [
+      "eliminar moho pared",
+      "moho negro pared como quitar",
+      "hongos en las paredes como eliminar",
+      "quitar moho pared definitivamente",
+      "moho en casa Medellín",
+    ],
+    category: "pintura",
+    serviceLines: ["pintura", "techos"],
+    relatedServiceIds: ["correccion-humedad-superficial", "pintura-interior", "impermeabilizacion-cubiertas"],
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-04-01",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/blog/placeholder-pintura.svg",
+    featuredImage: "/blog/placeholder-pintura.svg",
+    featuredImageAlt: "Tratamiento profesional de moho en pared de vivienda",
+    readingTimeMinutes: 9,
+    isFeatured: false,
+    relatedSlugs: ["humedad-paredes-causas-soluciones", "preparar-casa-temporada-lluvias-medellin", "precio-pintar-apartamento-medellin"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella"],
+    tags: ["moho", "hongos", "paredes", "humedad", "salud"],
+    body: `## ¿Qué es el moho y por qué aparece en las paredes?
+
+El moho es un hongo que crece en superficies húmedas. Se ve como manchas negras, verdes, grises o blancas en las paredes, los techos o las esquinas de la casa. Además de ser feo, es un problema de salud.
+
+En Medellín, con la humedad relativa que promedia el 70% durante el año y que sube durante las temporadas de lluvia, el moho es un problema muy común en las casas.
+
+### ¿Por qué crece moho en tu casa?
+
+El moho necesita tres cosas para crecer:
+
+1. **Humedad**: Sin humedad no hay moho. Puede venir de goteras, fugas, condensación o humedad del suelo.
+2. **Temperatura**: El moho crece mejor entre 20°C y 30°C. Exactamente el rango de temperatura de Medellín.
+3. **Material orgánico**: La pintura, el papel de colgadura, la madera y hasta el polvo son alimento para el moho.
+
+En resumen: si tu casa tiene alguna fuente de humedad y no tiene buena ventilación, el moho va a aparecer.
+
+## Riesgos del moho para la salud
+
+Antes de hablar de cómo quitarlo, es importante que sepas por qué debés hacerlo rápido:
+
+- **Problemas respiratorios**: El moho libera esporas que irritan las vías respiratorias. Las personas con asma son especialmente sensibles.
+- **Alergias**: Estornudos, congestión nasal, ojos rojos y picazón en la piel.
+- **Infecciones**: En personas con el sistema inmune debilitado, el moho puede causar infecciones pulmonares.
+- **Irritación**: Ojos llorosos, dolor de cabeza y malestar general.
+
+> **Importante**: Si algún miembro de tu familia tiene asma, alergias o problemas respiratorios, el moho puede empeorar su condición significativamente. Actuá rápido.
+
+## Cómo quitar el moho: métodos caseros
+
+Para manchas de moho pequeñas (menos de 1 metro cuadrado) podés intentar estos métodos:
+
+### 1. Vinagre blanco
+
+El vinagre es un antifúngico natural que mata el 82% de las especies de moho.
+
+**Cómo usarlo**:
+1. Poné vinagre blanco puro (sin diluir) en un rociador.
+2. Rociá generosamente sobre la zona con moho.
+3. Dejá actuar 1-2 horas.
+4. Limpiá con un cepillo de cerdas duras.
+5. Enjuagá con agua limpia y dejá secar.
+
+**Ventaja**: Es seguro, económico y no daña la mayoría de superficies.
+
+### 2. Bicarbonato de sodio
+
+Funciona bien solo o combinado con vinagre.
+
+**Cómo usarlo**:
+1. Mezclá 1 cucharada de bicarbonato en 1 taza de agua.
+2. Rociá sobre el moho.
+3. Dejá actuar 30 minutos.
+4. Frotá con un cepillo.
+5. Enjuagá con agua y secá bien.
+
+**Para manchas difíciles**: Hacé una pasta espesa de bicarbonato con agua, aplicá sobre el moho y dejá actuar toda la noche. Al otro día, frotá y enjuagá.
+
+### 3. Agua oxigenada (peróxido de hidrógeno al 3%)
+
+Más potente que el vinagre para manchas difíciles.
+
+**Cómo usarlo**:
+1. Aplicá agua oxigenada con un rociador sobre la zona afectada.
+2. Dejá actuar 15-20 minutos.
+3. Frotá con un cepillo.
+4. Limpiá y dejá secar.
+
+**Precaución**: Puede aclarar superficies oscuras o de color. Probá primero en un área pequeña.
+
+### 4. Cloro diluido (último recurso)
+
+El cloro mata el moho superficial pero no penetra en materiales porosos.
+
+**Cómo usarlo**:
+1. Mezclá 1 parte de cloro en 10 partes de agua.
+2. Aplicá con esponja o rociador.
+3. Dejá actuar 10 minutos.
+4. Enjuagá bien con agua limpia.
+
+**Precauciones importantes**:
+- **Nunca mezcles cloro con vinagre, amoníaco u otros productos**: produce gases tóxicos.
+- Usá guantes, gafas y abrí las ventanas.
+- El cloro puede dañar superficies pintadas y telas.
+
+## ¿Por qué el moho vuelve después de limpiarlo?
+
+Si limpiás el moho pero no resolvés la causa de la humedad, va a volver. Garantizado. Las causas más comunes son:
+
+### Condensación
+
+La causa más frecuente en Medellín. Pasa cuando el aire húmedo del interior toca una superficie más fría (paredes exteriores, esquinas, detrás de muebles).
+
+**Solución**: Mejorar la ventilación. Abrí ventanas al menos 1 hora al día. Usá extractores en baños y cocinas. No sequés ropa adentro de la casa.
+
+### Filtración por el techo
+
+Si el moho está en el techo o en la parte alta de las paredes, probablemente hay una filtración desde arriba.
+
+**Solución**: Revisar y reparar el techo. Impermeabilizar si es necesario. Para más información, consultá nuestra guía de [impermeabilización de techos en Medellín](/blog/impermeabilizacion-techos-medellin-precios).
+
+### Fuga de tubería
+
+Si el moho está localizado en una zona específica de la pared, puede haber una tubería rota detrás.
+
+**Solución**: Llamar a un plomero para detectar y reparar la fuga. Lee nuestra guía de [fuga de agua en la pared](/blog/fuga-agua-pared-como-detectar).
+
+### Humedad por capilaridad
+
+Si el moho aparece en la parte baja de las paredes del primer piso, el agua puede estar subiendo desde el suelo.
+
+**Solución**: Barrera química o tratamiento impermeabilizante en la base. Consultá nuestra guía de [humedad en las paredes: causas y soluciones](/blog/humedad-paredes-causas-soluciones).
+
+## Cuándo llamar a un profesional
+
+Debés llamar a un profesional cuando:
+
+- **El moho cubre más de 1 metro cuadrado**: Un área grande requiere tratamiento profesional con productos industriales.
+- **El moho vuelve después de limpiarlo**: Hay un problema de humedad que no estás resolviendo.
+- **El moho está detrás de muebles empotrados o dentro de paredes**: No podés acceder ni tratarlo adecuadamente.
+- **Hay personas con problemas respiratorios en la casa**: No debés exponerlas a esporas durante la limpieza.
+- **El moho está en el cielo raso o el techo**: Puede indicar un problema estructural de humedad.
+
+## Tratamiento profesional del moho
+
+Un tratamiento profesional incluye:
+
+1. **Diagnóstico**: Se identifica la causa de la humedad que genera el moho.
+2. **Contención**: Se aísla la zona para evitar que las esporas se dispersen.
+3. **Remoción**: Se retira el moho con productos antifúngicos industriales.
+4. **Tratamiento de la causa**: Se repara la filtración, fuga o problema de ventilación.
+5. **Sellado**: Se aplica sellador anti-humedad en la superficie.
+6. **Pintura anti-moho**: Se pinta con pintura que contiene fungicida para prevenir reaparición.
+
+## ¿Cuánto cuesta quitar el moho en Medellín?
+
+| Servicio | Precio aproximado |
+|----------|------------------|
+| Tratamiento de humedad superficial | Desde $250.000 COP |
+| Limpieza y tratamiento anti-moho (por m²) | $20.000 - $35.000 COP/m² |
+| Sellado anti-humedad + pintura | Desde $400.000 COP |
+| Tratamiento completo (causa + moho + pintura) | Desde $600.000 COP |
+
+> Los precios dependen de la extensión del moho, la causa de la humedad y los materiales necesarios.
+
+## Cómo prevenir que el moho vuelva
+
+Una vez que eliminás el moho y resolvés la causa, seguí estos hábitos:
+
+- **Ventilá tu casa todos los días**: Abrí ventanas para que circule el aire, especialmente después de ducharte o cocinar.
+- **Usá extractores**: En baños sin ventana, un extractor es indispensable.
+- **No sequés ropa adentro**: Si no tenés otra opción, abrí las ventanas mientras la ropa se seca.
+- **Limpiá las paredes de baño y ducha regularmente**: Un trapo seco después de cada ducha evita que la humedad se acumule.
+- **Dejá espacio entre muebles y paredes**: Al menos 5-10 cm para que circule el aire.
+- **Revisá el techo y las tuberías periódicamente**: Prevenir fugas y filtraciones es prevenir el moho.
+
+## ¿Necesitás ayuda con el moho en tu casa?
+
+Si tenés moho en las paredes de tu casa en Medellín o el Valle de Aburrá, podemos ayudarte. Conoce nuestros [servicios de pintura y acabados](/servicios/pintura) para el tratamiento profesional. Si el problema viene del techo, revisá nuestros [servicios de techos y cubiertas](/servicios/techos). Identificamos la causa, eliminamos el moho y te damos garantía. La visita técnica es gratuita.`,
+  },
+
+  /* ---- ARTICLE 10 ---- */
+  {
+    slug: "tipos-tejas-casas-colombia-comparativa",
+    title: "Tipos de tejas para casas en Colombia: comparativa completa",
+    metaDescription:
+      "Comparativa de los 6 tipos de tejas más usados en Colombia: barro, fibrocemento, termoacústica, policarbonato, PVC y metálica. Precios, ventajas y cuál elegir.",
+    targetKeyword: "tipos de tejas para casas Colombia",
+    secondaryKeywords: [
+      "tejas para casas precios Colombia",
+      "mejor teja para clima Medellín",
+      "teja termoacústica vs fibrocemento",
+      "cambiar tejas casa precio",
+      "tipos cubiertas Colombia",
+    ],
+    category: "techos",
+    serviceLines: ["techos"],
+    relatedServiceIds: ["impermeabilizacion-cubiertas", "cambio-teja-puntual", "revision-techo"],
+    publishedAt: "2026-04-10",
+    updatedAt: "2026-04-10",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/blog/placeholder-techos.svg",
+    featuredImage: "/blog/placeholder-techos.svg",
+    featuredImageAlt: "Diferentes tipos de tejas para techos en Colombia",
+    readingTimeMinutes: 10,
+    isFeatured: false,
+    relatedSlugs: ["impermeabilizacion-techos-medellin-precios", "como-arreglar-gotera-techo", "preparar-casa-temporada-lluvias-medellin"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "Rionegro", "La Ceja", "Marinilla"],
+    tags: ["tejas", "techos", "cubiertas", "Colombia", "comparativa", "precios"],
+    body: `## ¿Cómo elegir la teja correcta para tu casa?
+
+Elegir la teja adecuada es una decisión importante. El techo protege tu casa de la lluvia, el sol y el ruido, y la teja que elijás determina qué tan bien cumple esa función y cuánto dura.
+
+En Colombia, y especialmente en el Valle de Aburrá, el clima es un factor decisivo: lluvias frecuentes, sol fuerte, cambios de temperatura durante el día. No todas las tejas se comportan igual bajo estas condiciones.
+
+Acá te presentamos los 6 tipos de teja más comunes en Colombia, con sus ventajas, desventajas y precios actualizados.
+
+## 1. Teja de barro (arcilla)
+
+La teja tradicional colombiana. Se fabrica con arcilla cocida y se encuentra en diversos perfiles: española, colonial, plana y media caña.
+
+### Ventajas
+
+- **Excelente aislamiento térmico**: Mantiene la casa más fresca en el día y más cálida en la noche.
+- **Durabilidad**: Con buen mantenimiento puede durar 50+ años.
+- **Estética**: Apariencia clásica y elegante. Ideal para casas de estilo colonial o campestre.
+- **Resistencia al fuego**: No se quema ni se deforma con el calor.
+- **Buena resistencia a la lluvia**: Las tejas de barro bien instaladas no dejan pasar agua.
+
+### Desventajas
+
+- **Peso**: Es la teja más pesada. Necesita una estructura de soporte fuerte.
+- **Fragilidad**: Se puede romper con golpes o si alguien camina sobre ellas.
+- **Mantenimiento**: Con el tiempo crece musgo y líquenes que hay que limpiar.
+- **Instalación más lenta**: Requiere mano de obra experimentada.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Teja de barro (unidad) | $2.500 - $5.000 COP |
+| Metro cuadrado instalado | $45.000 - $75.000 COP/m² |
+| Cambio puntual de teja | Desde $190.000 COP (incluye mano de obra) |
+
+### Ideal para
+
+Casas de uno o dos pisos, fincas, casas campestres, construcciones que buscan estética tradicional. Muy usada en municipios del oriente antioqueño como Rionegro, La Ceja y Marinilla.
+
+## 2. Teja de fibrocemento
+
+La más común en construcciones económicas y de interés social en Colombia. Se fabrica con cemento reforzado con fibras sintéticas.
+
+### Ventajas
+
+- **Precio accesible**: Es una de las opciones más económicas.
+- **Liviana**: Mucho más liviana que la teja de barro, necesita menos estructura.
+- **Fácil instalación**: Se instala rápido con ganchos y amarres simples.
+- **Variedad de tamaños**: Viene en láminas grandes que cubren más área con menos piezas.
+- **Resistencia a la intemperie**: Aguanta bien la lluvia y el sol.
+
+### Desventajas
+
+- **Aislamiento térmico regular**: Transmite el calor, la casa se calienta más.
+- **Ruido con la lluvia**: Las gotas de lluvia hacen mucho ruido sobre fibrocemento.
+- **Estética limitada**: Aspecto industrial, menos atractiva que otras opciones.
+- **Vida útil menor**: 15-25 años en condiciones normales.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Lámina de fibrocemento (2.44m x 1.22m) | $35.000 - $55.000 COP |
+| Metro cuadrado instalado | $35.000 - $55.000 COP/m² |
+
+### Ideal para
+
+Construcciones económicas, ampliaciones, techos de lavaderos, zonas de servicio. Muy usada en casas de Bello, Itagüí y Copacabana.
+
+## 3. Teja termoacústica
+
+Teja de metal (acero o aluminio) con un núcleo de poliuretano o poliestireno que le da aislamiento térmico y acústico.
+
+### Ventajas
+
+- **Aislamiento térmico y acústico**: Reduce significativamente el calor y el ruido de la lluvia.
+- **Liviana pero resistente**: Combina poco peso con alta resistencia.
+- **Larga vida útil**: 20-30 años con buen mantenimiento.
+- **No se quiebra**: A diferencia de la teja de barro, aguanta pisadas y golpes.
+- **Variedad de colores y perfiles**: Disponible en varios estilos.
+- **Fácil instalación**: Se fija con tornillos autorroscantes.
+
+### Desventajas
+
+- **Precio más alto**: Es más cara que el fibrocemento.
+- **Puede abollar**: Golpes fuertes (granizo grande, caída de ramas) pueden abollarla.
+- **Corrosión**: Si se raya y se expone el metal base, puede oxidarse.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Teja termoacústica (metro lineal) | $25.000 - $45.000 COP |
+| Metro cuadrado instalado | $55.000 - $85.000 COP/m² |
+
+### Ideal para
+
+Casas donde el ruido de la lluvia es un problema, ampliaciones con terraza, proyectos que buscan buen aislamiento sin el peso de la teja de barro. Muy popular en Medellín, Envigado y Sabaneta.
+
+## 4. Teja de policarbonato (transparente)
+
+Láminas translúcidas de policarbonato que dejan pasar la luz. Se usan principalmente en zonas que necesitan iluminación natural.
+
+### Ventajas
+
+- **Deja pasar la luz**: Ilumina espacios sin necesidad de electricidad durante el día.
+- **Muy liviana**: Facilísima de instalar y no requiere estructura pesada.
+- **Resistente a impactos**: Es prácticamente irrompible.
+- **No se oxida ni se pudre**: Resistente a la intemperie.
+
+### Desventajas
+
+- **Calor**: Deja pasar el sol y puede calentar mucho el espacio debajo.
+- **No aísla ruido**: El ruido de la lluvia puede ser fuerte.
+- **Se raya**: Con el tiempo puede perder transparencia.
+- **Se amarillea**: Después de varios años la exposición UV la pone amarillenta.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Lámina policarbonato (2.44m x 1.22m) | $50.000 - $90.000 COP |
+| Metro cuadrado instalado | $60.000 - $100.000 COP/m² |
+
+### Ideal para
+
+Patios interiores, zonas de lavadero, pasillos, tragaluces. Se combina frecuentemente con otro tipo de teja en el resto de la cubierta.
+
+## 5. Teja de PVC
+
+Teja sintética fabricada en PVC (policloruro de vinilo). Disponible en perfiles que imitan la teja de barro, la teja colonial o la ondulada.
+
+### Ventajas
+
+- **Muy liviana**: La más liviana de todas las opciones.
+- **No se rompe**: Flexible y resistente a impactos.
+- **No se oxida ni le sale moho**: Resistente a la humedad.
+- **Fácil de cortar e instalar**: Se trabaja con herramientas simples.
+- **Económica**: Buena relación calidad-precio.
+- **Variedad de estilos**: Imita otros materiales con buena apariencia.
+
+### Desventajas
+
+- **Aislamiento térmico limitado**: Similar al fibrocemento en transmisión de calor.
+- **Ruido con la lluvia**: Más ruidosa que la termoacústica y la de barro.
+- **Vida útil variable**: 15-20 años según la calidad y la exposición.
+- **Se decolora**: Con años de exposición al sol puede perder color.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Teja de PVC (unidad estándar) | $15.000 - $35.000 COP |
+| Metro cuadrado instalado | $40.000 - $65.000 COP/m² |
+
+### Ideal para
+
+Techos de bajo presupuesto que necesitan mejor apariencia que el fibrocemento, ampliaciones, kioscos y estructuras livianas.
+
+## 6. Teja metálica (zinc, acero galvanizado)
+
+Láminas de acero galvanizado o zinc. Es el material más básico y económico para techos.
+
+### Ventajas
+
+- **Precio bajo**: La opción más económica del mercado.
+- **Resistente**: Aguanta viento, lluvia y sol sin romperse.
+- **Fácil instalación**: Se fija con tornillos y se puede instalar rápidamente.
+- **Larga duración**: El acero galvanizado de buena calidad dura 20-30 años.
+- **Reciclable**: Se puede reciclar al final de su vida útil.
+
+### Desventajas
+
+- **Cero aislamiento**: Transmite todo el calor y todo el frío.
+- **Muy ruidosa**: El ruido de la lluvia puede ser insoportable.
+- **Estética básica**: Aspecto industrial.
+- **Corrosión**: Si se raya o pierde la capa de galvanizado, se oxida.
+- **Condensación**: En climas húmedos como Medellín, condensa agua en la cara inferior.
+
+### Precio aproximado
+
+| Concepto | Precio |
+|----------|--------|
+| Lámina de zinc calibre 33 (2.44m x 0.80m) | $25.000 - $40.000 COP |
+| Metro cuadrado instalado | $30.000 - $50.000 COP/m² |
+
+### Ideal para
+
+Techos de presupuesto muy ajustado, bodegas, zonas de servicio, construcciones temporales.
+
+## Comparativa general
+
+| Característica | Barro | Fibrocemento | Termoacústica | Policarbonato | PVC | Metálica |
+|---------------|-------|-------------|---------------|--------------|-----|---------|
+| Precio/m² | $$$ | $ | $$$$ | $$$ | $$ | $ |
+| Aislamiento térmico | Excelente | Regular | Muy bueno | Malo | Regular | Malo |
+| Aislamiento acústico | Bueno | Malo | Muy bueno | Malo | Regular | Muy malo |
+| Durabilidad | 50+ años | 15-25 años | 20-30 años | 15-20 años | 15-20 años | 20-30 años |
+| Peso | Pesada | Liviana | Liviana | Muy liviana | Muy liviana | Liviana |
+| Estética | Excelente | Básica | Buena | Funcional | Buena | Básica |
+| Mantenimiento | Medio | Bajo | Bajo | Bajo | Bajo | Medio |
+
+## ¿Cuál teja elegir para Medellín?
+
+Para el clima de Medellín y el Valle de Aburrá, estas son nuestras recomendaciones:
+
+- **Si buscás aislamiento y estética**: Teja de barro o termoacústica.
+- **Si el presupuesto es limitado**: Teja de PVC o fibrocemento.
+- **Si querés la mejor relación calidad-precio**: Teja termoacústica.
+- **Si necesitás luz natural**: Combiná tu teja principal con secciones de policarbonato.
+- **Para zonas de servicio o bodegas**: Teja metálica o fibrocemento.
+
+## ¿Necesitás revisar o cambiar el techo?
+
+Si estás pensando en cambiar las tejas de tu casa o necesitás reparar tu techo actual, podemos ayudarte. Conoce todos nuestros [servicios de techos y cubiertas](/servicios/techos) con precios de referencia. Si tu techo actual tiene goteras, lee nuestra guía de [cómo arreglar una gotera en el techo](/blog/como-arreglar-gotera-techo). Revisamos tu techo, te asesoramos sobre la mejor opción y te damos un precio claro. La visita técnica es gratuita.`,
   },
 ];
