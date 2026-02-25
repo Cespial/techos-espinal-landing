@@ -523,6 +523,24 @@ export function buildWaLinkAppointment(data: {
   return `${WA_BASE_URL}?text=${encodeURIComponent(parts.join(" "))}`;
 }
 
+/* ------------------------------------------------------------------ */
+/*  BLOG                                                               */
+/* ------------------------------------------------------------------ */
+
+export const BLOG_NAV_LINKS = [
+  { href: "/", label: "Inicio" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#agendar", label: "Agendar visita" },
+] as const;
+
+export function buildWaLinkBlog(serviceLine: ServiceLineId, postTitle: string) {
+  const lineLabel =
+    LINE_OPTIONS.find((l) => l.id === serviceLine)?.label ?? "multiservicios";
+  const msg = `Hola, estaba leyendo "${postTitle}" y necesito ayuda con ${lineLabel}. ¿Me pueden cotizar?`;
+  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
+}
+
 export function buildWaLinkEmergency() {
   const msg = "URGENTE: Tengo una emergencia y necesito atención lo antes posible. ¿Pueden ayudarme?";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;

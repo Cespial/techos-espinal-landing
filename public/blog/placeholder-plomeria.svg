@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#FFF7ED"/>
+  <path d="M500 200H700V250H650V400H550V250H500V200Z" fill="#EA580C" opacity="0.15"/>
+  <circle cx="600" cy="420" r="40" fill="#EA580C" opacity="0.1"/>
+  <path d="M560 420C560 397.9 577.9 380 600 380C622.1 380 640 397.9 640 420" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
+  <ellipse cx="520" cy="320" rx="8" ry="12" fill="#3B82F6" opacity="0.3"/>
+  <ellipse cx="540" cy="350" rx="6" ry="10" fill="#3B82F6" opacity="0.25"/>
+  <ellipse cx="560" cy="340" rx="7" ry="11" fill="#3B82F6" opacity="0.2"/>
+  <text x="600" y="540" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" fill="#9A3412" opacity="0.6">Plomeria</text>
+</svg>

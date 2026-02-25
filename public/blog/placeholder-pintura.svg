@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#FFF7ED"/>
+  <rect x="420" y="180" width="360" height="280" rx="12" fill="#EA580C" opacity="0.12"/>
+  <rect x="440" y="200" width="320" height="240" rx="8" fill="#EA580C" opacity="0.08"/>
+  <rect x="380" y="160" width="80" height="200" rx="6" fill="#EA580C" opacity="0.2" transform="rotate(-15 380 160)"/>
+  <circle cx="500" cy="320" r="30" fill="#F97316" opacity="0.2"/>
+  <circle cx="600" cy="280" r="25" fill="#FB923C" opacity="0.2"/>
+  <circle cx="700" cy="340" r="35" fill="#EA580C" opacity="0.15"/>
+  <text x="600" y="540" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" fill="#9A3412" opacity="0.6">Pintura y acabados</text>
+</svg>
