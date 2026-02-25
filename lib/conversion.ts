@@ -345,6 +345,30 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       "Efectivo, transferencia bancaria y Nequi. Si el trabajo es grande, podemos acordar pagos por partes.",
   },
+  {
+    id: "faq-7",
+    question: "¿Qué es Espinal Multiservicios?",
+    answer:
+      "Espinal Multiservicios es una empresa de servicios para el hogar en Medellín y Valle de Aburrá, Colombia. Nos especializamos en techos y cubiertas, pintura y acabados, y plomería. Hemos completado más de 350 trabajos con calificación promedio de 4.9/5. Atendemos en 12 municipios de Antioquia.",
+  },
+  {
+    id: "faq-8",
+    question: "¿En qué municipios atienden?",
+    answer:
+      "Atendemos en Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota, Rionegro, La Ceja y Marinilla. Todos en el departamento de Antioquia, Colombia.",
+  },
+  {
+    id: "faq-9",
+    question: "¿Cuánto cuesta un plomero en Medellín?",
+    answer:
+      "Nuestros servicios de plomería en Medellín empiezan desde $120.000 COP. Incluyen revisión de presión del agua, detección de fugas, reparación de llaves, destape de desagües, cambio de grifería y mantenimiento de tuberías. La visita técnica y la cotización son gratuitas.",
+  },
+  {
+    id: "faq-10",
+    question: "¿Cuánto cuesta pintar un apartamento en Medellín?",
+    answer:
+      "Pintar un apartamento en Medellín cuesta entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Incluye mano de obra, pintura de buena calidad, preparación de superficies y limpieza final. Cotización gratis.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */

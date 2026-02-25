@@ -44,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...coverageEntries,
     ...blogEntries,
     {
+      url: `${SITE_URL}/nosotros`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/terminos`,
       lastModified: new Date(),
       changeFrequency: "monthly",

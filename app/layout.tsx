@@ -109,6 +109,23 @@ export default function RootLayout({
                 addressRegion: "Antioquia",
                 addressCountry: "CO",
               },
+              sameAs: [
+                SITE_URL,
+                `https://wa.me/573007336333`,
+              ],
+              knowsAbout: [
+                "Reparación de techos",
+                "Impermeabilización de cubiertas",
+                "Reparación de goteras",
+                "Pintura interior y exterior",
+                "Resanes y acabados de paredes",
+                "Tratamiento de humedad en paredes",
+                "Reparación de fugas de agua",
+                "Destape de desagües",
+                "Cambio de grifería",
+                "Mantenimiento del hogar",
+                "Plomería residencial y comercial",
+              ],
             }),
           }}
         />

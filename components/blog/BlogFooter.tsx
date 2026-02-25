@@ -64,6 +64,9 @@ export default function BlogFooter() {
           <Link href="/cobertura/medellin" className="hover:text-slate-900">
             Cobertura
           </Link>
+          <Link href="/nosotros" className="hover:text-slate-900">
+            Nosotros
+          </Link>
           <Link href="/blog" className="hover:text-slate-900">
             Blog
           </Link>
