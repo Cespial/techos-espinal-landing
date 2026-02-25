@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
   if (!apiKey) {
     return NextResponse.json(
       { ok: false, message: "weather_service_unavailable" },
-      { status: 503 },
+      { status: 200 },
     );
   }
 
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     if (!weatherResponse.ok) {
       return NextResponse.json(
         { ok: false, message: "weather_upstream_error" },
-        { status: weatherResponse.status },
+        { status: 200 },
       );
     }
 
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { ok: false, message: "weather_fetch_failed" },
-      { status: 500 },
+      { status: 200 },
     );
   }
 }
