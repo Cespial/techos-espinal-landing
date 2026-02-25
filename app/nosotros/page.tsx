@@ -75,6 +75,24 @@ const LLM_FAQS = [
 export default function NosotrosPage() {
   const waLink = buildWaLinkHero();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Nosotros",
+      },
+    ],
+  };
+
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -459,6 +477,10 @@ export default function NosotrosPage() {
 
       <BlogFooter />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}

@@ -63,6 +63,30 @@ export default async function CoberturaPage({ params }: Props) {
   );
   const waLink = buildWaLinkCoverage(seo.name);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Cobertura",
+        item: `${SITE_URL}/cobertura/medellin`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: seo.name,
+      },
+    ],
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -281,6 +305,10 @@ export default async function CoberturaPage({ params }: Props) {
 
       <BlogFooter />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

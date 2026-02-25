@@ -59,6 +59,30 @@ export default async function ServicioPage({ params }: Props) {
   const testimonials = TESTIMONIAL_DATA.filter((t) => t.serviceLine === lineId);
   const waLink = buildWaLinkHero(undefined, seo.heroTitle);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Servicios",
+        item: `${SITE_URL}/servicios/techos`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: seo.heroTitle,
+      },
+    ],
+  };
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -282,6 +306,10 @@ export default async function ServicioPage({ params }: Props) {
 
       <BlogFooter />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
