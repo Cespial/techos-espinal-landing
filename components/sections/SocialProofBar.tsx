@@ -66,7 +66,7 @@ const STAT_CONFIG = [
   {
     target: SOCIAL_PROOF_STATS.avgRating,
     suffix: "/5",
-    label: "calificación de clientes",
+    label: "de clientes satisfechos",
     icon: Star,
     decimals: 1,
   },

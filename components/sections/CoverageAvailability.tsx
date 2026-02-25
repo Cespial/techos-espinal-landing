@@ -76,7 +76,7 @@ export default function CoverageAvailability({
           ¿Dónde atendemos?
         </h2>
         <p className="mt-3 text-sm text-slate-600 md:text-base">
-          Cubrimos Medellín y todo el Valle de Aburrá. Selecciona tu municipio para confirmar disponibilidad y agendar una visita.
+          Trabajamos en Medellín y los municipios cercanos. Toca tu municipio en el mapa o en los botones de abajo para ver si llegamos.
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -84,7 +84,7 @@ export default function CoverageAvailability({
           <div ref={mapSentinelRef} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
-                Mapa operativo Valle de Aburrá
+                Mapa de zonas donde trabajamos
               </p>
               <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
                 {selectedMunicipality}

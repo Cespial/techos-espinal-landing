@@ -25,7 +25,7 @@ const TAB_CONFIG: {
     id: "techos",
     icon: Wrench,
     shortLabel: "Techos",
-    description: "Goteras, filtraciones, canoas, impermeabilización y mantenimiento de cubiertas.",
+    description: "Goteras, techos que filtran, canales tapados.",
     activeClasses: "border-orange-500 bg-orange-50 text-orange-800",
     inactiveClasses: "border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:bg-orange-50/50",
   },
@@ -33,7 +33,7 @@ const TAB_CONFIG: {
     id: "pintura",
     icon: Paintbrush,
     shortLabel: "Pintura",
-    description: "Pintura interior, exterior, fachadas, resanes, estuco y retoques post-obra.",
+    description: "Pintar paredes, fachadas, arreglar grietas.",
     activeClasses: "border-cyan-500 bg-cyan-50 text-cyan-800",
     inactiveClasses: "border-slate-200 bg-white text-slate-600 hover:border-cyan-300 hover:bg-cyan-50/50",
   },
@@ -41,7 +41,7 @@ const TAB_CONFIG: {
     id: "plomeria",
     icon: Droplets,
     shortLabel: "Plomería",
-    description: "Fugas, destapes, grifería, sanitarios y mantenimiento de red hidráulica.",
+    description: "Fugas de agua, desagües tapados, llaves dañadas.",
     activeClasses: "border-emerald-500 bg-emerald-50 text-emerald-800",
     inactiveClasses: "border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:bg-emerald-50/50",
   },
@@ -68,10 +68,10 @@ export default function ServiceTabs() {
           NUESTROS SERVICIOS
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-          Nuestros servicios — elige el que necesitas
+          ¿Qué necesitas arreglar?
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
-          Tenemos tres áreas de servicio. Elige una pestaña para ver todos los servicios disponibles con precios de referencia. Puedes cotizar cualquiera directamente.
+          Toca el botón del servicio que necesitas para ver opciones y precios. Si no sabes cuál elegir, escríbenos y te ayudamos.
         </p>
 
         {/* Tabs */}

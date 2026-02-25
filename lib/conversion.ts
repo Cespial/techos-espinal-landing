@@ -35,26 +35,26 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
   techos: [
     {
       id: "impermeabilizacion-cubiertas",
-      name: "Impermeabilización de cubiertas",
-      summary: "Control de filtraciones y sellado en puntos críticos.",
+      name: "Protección contra goteras en el techo",
+      summary: "Sellamos el techo para que no entre agua.",
       basePrice: "$350.000 COP",
     },
     {
       id: "reparacion-goteras",
       name: "Reparación de goteras",
-      summary: "Intervención puntual según estado de la cubierta.",
+      summary: "Arreglamos la gotera sin cambiar todo el techo.",
       basePrice: "$180.000 COP",
     },
     {
       id: "mantenimiento-canoas",
-      name: "Mantenimiento de canoas y bajantes",
-      summary: "Limpieza y ajuste para mejorar evacuación de agua.",
+      name: "Limpieza de canales y bajantes",
+      summary: "Limpiamos los canales por donde baja el agua lluvia.",
       basePrice: "$150.000 COP",
     },
     {
       id: "sellado-fisuras",
       name: "Sellado de fisuras y juntas",
-      summary: "Corrección en puntos de filtración y uniones críticas.",
+      summary: "Sellamos las uniones del techo donde se mete el agua.",
       basePrice: "$210.000 COP",
     },
     {
@@ -72,13 +72,13 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
     {
       id: "limpieza-cubierta",
       name: "Limpieza de cubierta",
-      summary: "Retiro de residuos para reducir acumulación de humedad.",
+      summary: "Limpiamos hojas y suciedad del techo para evitar humedad.",
       basePrice: "$140.000 COP",
     },
     {
       id: "revision-puntos-criticos",
-      name: "Revisión de puntos críticos",
-      summary: "Inspección técnica para prevenir filtraciones recurrentes.",
+      name: "Revisión del techo",
+      summary: "Revisamos todo el techo para encontrar problemas antes de que empeoren.",
       basePrice: "$130.000 COP",
     },
   ],
@@ -98,19 +98,19 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
     {
       id: "resanes-acabados",
       name: "Resanes y acabados",
-      summary: "Nivelación y correcciones previas a pintura.",
+      summary: "Arreglamos las paredes antes de pintar (huecos, grietas, desniveles).",
       basePrice: "$210.000 COP",
     },
     {
       id: "estuco-pulido",
-      name: "Estuco y pulido de muros",
-      summary: "Preparación de superficie para acabado uniforme.",
+      name: "Alisado de paredes",
+      summary: "Dejamos las paredes lisas y parejas antes de pintar.",
       basePrice: "$240.000 COP",
     },
     {
       id: "correccion-humedad-superficial",
-      name: "Corrección de humedad superficial",
-      summary: "Tratamiento base según el estado visible del muro.",
+      name: "Tratamiento de humedad en paredes",
+      summary: "Tratamos las manchas de humedad en las paredes.",
       basePrice: "$250.000 COP",
     },
     {
@@ -142,19 +142,19 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
     {
       id: "destape-desagues",
       name: "Destape de desagües",
-      summary: "Atención de obstrucciones en redes internas.",
+      summary: "Destapamos desagües del baño, cocina o patio.",
       basePrice: "$160.000 COP",
     },
     {
       id: "ajustes-hidrosanitarios",
-      name: "Ajustes hidrosanitarios",
-      summary: "Cambio y reparación de piezas de uso frecuente.",
+      name: "Reparación de llaves y conexiones",
+      summary: "Arreglamos o cambiamos llaves, mangueras y conexiones del baño o cocina.",
       basePrice: "$140.000 COP",
     },
     {
       id: "deteccion-fuga-visible",
       name: "Detección de fuga visible",
-      summary: "Revisión de conexiones y zonas húmedas para ubicar origen.",
+      summary: "Buscamos de dónde viene la fuga revisando las tuberías y conexiones.",
       basePrice: "$130.000 COP",
     },
     {
@@ -171,14 +171,14 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
     },
     {
       id: "revision-presion",
-      name: "Revisión de presión y caudal",
-      summary: "Diagnóstico inicial para definir mejora en alimentación.",
+      name: "Revisión de presión del agua",
+      summary: "Revisamos por qué sale poca agua o con poca fuerza.",
       basePrice: "$120.000 COP",
     },
     {
       id: "mantenimiento-red-interna",
-      name: "Mantenimiento de red interna",
-      summary: "Ajustes preventivos en puntos de consumo frecuentes.",
+      name: "Mantenimiento de tuberías",
+      summary: "Revisamos las tuberías de la casa para prevenir fugas.",
       basePrice: "$200.000 COP",
     },
   ],
@@ -221,33 +221,33 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     id: "brief",
     step: 1,
-    title: "Brief de necesidad",
+    title: "Nos cuentas el problema",
     detail:
-      "Escuchamos el problema, validamos urgencia y definimos la línea de servicio adecuada para tu caso.",
+      "Nos escribes por WhatsApp o nos llamas. Nos cuentas qué pasa y te decimos qué servicio necesitas.",
     note: "Inicias por WhatsApp o llamada, sin formularios largos.",
   },
   {
     id: "diagnostic",
     step: 2,
-    title: "Diagnóstico en sitio",
+    title: "Vamos a tu casa a revisar",
     detail:
-      "Revisamos acceso, estado actual y puntos críticos para proponer una solución aterrizada.",
-    note: "Equipos de diagnóstico según el caso.",
+      "Vamos a tu casa o negocio, miramos el problema y te explicamos qué hay que hacer.",
+    note: "Sin costo. Solo vamos, miramos y te explicamos.",
   },
   {
     id: "proposal",
     step: 3,
-    title: "Alcance y valor base",
+    title: "Te damos el precio",
     detail:
-      "Definimos actividades, materiales y valor base para que tomes la decisión con claridad.",
-    note: "Siempre sujeto a inspección técnica y condiciones del sitio.",
+      "Te decimos exactamente qué vamos a hacer, qué materiales se usan y cuánto cuesta. Sin sorpresas.",
+    note: "El precio puede cambiar solo si encontramos algo extra que no se veía.",
   },
   {
     id: "execution",
     step: 4,
-    title: "Ejecución coordinada",
+    title: "Hacemos el trabajo",
     detail:
-      "Programamos, ejecutamos y dejamos el área limpia con cierre técnico y recomendaciones de cuidado.",
+      "Hacemos el trabajo, limpiamos todo y te damos garantía por escrito.",
     note: "Garantía por escrito según servicio y alcance.",
   },
 ];
@@ -261,33 +261,33 @@ export const LINE_STORY: Record<
   { title: string; summary: string; bullets: [string, string, string] }
 > = {
   techos: {
-    title: "Cubiertas preparadas para temporada de lluvias",
+    title: "Que no te entre agua por el techo",
     summary:
-      "Atendemos goteras, sellos, canoas y puntos de filtración para hogares y locales en el Valle de Aburrá.",
+      "Arreglamos goteras, sellamos techos y limpiamos canales para que tu casa o negocio quede seco.",
     bullets: [
-      "Diagnóstico de filtraciones visibles",
-      "Intervención según acceso y pendiente",
-      "Mantenimiento preventivo por zonas",
+      "Encontramos de dónde entra el agua",
+      "Arreglamos según lo que necesite tu techo",
+      "Revisamos todo para prevenir problemas",
     ],
   },
   pintura: {
-    title: "Acabados limpios para vivienda y comercio",
+    title: "Tu casa o negocio como nuevo",
     summary:
-      "Preparamos superficie, corregimos detalles y aplicamos acabados con enfoque en durabilidad y presentación.",
+      "Preparamos las paredes, arreglamos lo que haga falta y pintamos con buen acabado.",
     bullets: [
-      "Resanes y corrección de superficie",
-      "Pintura interior y exterior",
-      "Retoques de entrega post-obra",
+      "Arreglamos paredes antes de pintar",
+      "Pintamos por dentro y por fuera",
+      "Corregimos detalles al final",
     ],
   },
   plomeria: {
-    title: "Red hidráulica funcional y sin fugas recurrentes",
+    title: "Adiós a las fugas y desagües tapados",
     summary:
-      "Revisamos puntos críticos de cocina, baño y red interna para resolver fugas y obstrucciones.",
+      "Arreglamos fugas, destapamos desagües y reparamos lo que haga falta en baño y cocina.",
     bullets: [
-      "Detección de fugas visibles",
-      "Destapes y ajustes hidrosanitarios",
-      "Mantenimiento preventivo básico",
+      "Encontramos de dónde sale la fuga",
+      "Destapamos y reparamos lo que falle",
+      "Revisamos todo para que no se repita",
     ],
   },
 };
@@ -307,15 +307,15 @@ export type FaqItem = {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     id: "faq-1",
-    question: "¿Manejan garantía?",
+    question: "¿Me dan garantía?",
     answer:
-      "Sí. Entregamos garantía por escrito según servicio, alcance y condiciones del sitio.",
+      "Sí. Te damos garantía por escrito. El tiempo depende del trabajo que se haga.",
   },
   {
     id: "faq-2",
-    question: "¿Cómo hacen el diagnóstico?",
+    question: "¿Cómo revisan el problema?",
     answer:
-      "Primero revisamos el problema en sitio y, según el caso, usamos equipos de diagnóstico para precisar la solución.",
+      "Vamos a tu casa, miramos qué pasa y te explicamos qué hay que hacer. Si hace falta, usamos herramientas especiales para encontrar el problema.",
   },
   {
     id: "faq-3",
@@ -327,15 +327,15 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-4",
     question: "¿Cuánto tiempo toma una visita técnica?",
     answer:
-      "Dependiendo de la ubicación y el tipo de servicio, coordinamos visita en 24 a 72 horas hábiles después del primer contacto.",
+      "Después de que nos escribas, coordinamos la visita en 1 a 3 días hábiles.",
     ctaText: "Agendar visita ahora",
     ctaSource: "faq_visita",
   },
   {
     id: "faq-5",
-    question: "¿Puedo cotizar sin compromiso?",
+    question: "¿Cotizar es gratis?",
     answer:
-      "Sí. Puedes solicitar cotización orientativa por WhatsApp o llamada sin ningún compromiso. El valor final se confirma después de la visita técnica.",
+      "Sí. Nos escribes por WhatsApp o nos llamas, te damos un precio aproximado y si quieres confirmamos con una visita gratis. Sin compromiso.",
     ctaText: "Pedir cotización gratis",
     ctaSource: "faq_cotizar",
   },
@@ -343,7 +343,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-6",
     question: "¿Qué formas de pago aceptan?",
     answer:
-      "Efectivo, transferencia bancaria y Nequi. Dependiendo del alcance del proyecto, manejamos pagos parciales con acuerdo previo.",
+      "Efectivo, transferencia bancaria y Nequi. Si el trabajo es grande, podemos acordar pagos por partes.",
   },
 ];
 
