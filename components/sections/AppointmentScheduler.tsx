@@ -24,13 +24,11 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
   const [linea, setLinea] = useState<string>(SERVICE_OPTIONS[0]);
   const [descripcion, setDescripcion] = useState("");
   const [formError, setFormError] = useState("");
-  const [showCallFallback, setShowCallFallback] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormError("");
-    setShowCallFallback(false);
 
     if (!nombre.trim()) {
       setFormError("Por favor escribe tu nombre.");
@@ -50,13 +48,8 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
 
     track("cta_whatsapp_click", { source: "appointment_scheduler" });
 
-    const popup = window.open(waLink, "_blank", "noopener,noreferrer");
-
-    if (!popup) {
-      setShowCallFallback(true);
-    } else {
-      setFormSubmitted(true);
-    }
+    setFormSubmitted(true);
+    window.location.href = waLink;
   };
 
   const hasNombreError = formError.includes("nombre");
@@ -177,25 +170,6 @@ export default function AppointmentScheduler({ telLink }: AppointmentSchedulerPr
                 </p>
               ) : null}
 
-              {showCallFallback ? (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800"
-                >
-                  <p>Si WhatsApp no se abrió, puedes:</p>
-                  <ul className="mt-1 list-disc pl-4">
-                    <li>
-                      <a href={buildWaLinkAppointment({ nombre: nombre.trim(), linea, descripcion: descripcion.trim() || undefined })} className="underline">
-                        Abrir enlace de WhatsApp directamente
-                      </a>
-                    </li>
-                    <li>
-                      <a href={telLink} className="underline">Llamar al {PHONE_DISPLAY}</a>
-                    </li>
-                  </ul>
-                </div>
-              ) : null}
             </form>
           )}
         </div>

@@ -347,11 +347,25 @@ details > summary::-webkit-details-marker {
   font-weight: 600;
 }
 
+.blog-prose .table-wrapper {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-prose .table-wrapper table {
+  min-width: 480px;
+}
+
 .blog-prose table {
   margin-top: 1.5rem;
   width: 100%;
   border-collapse: collapse;
   font-size: 0.875rem;
+}
+
+.blog-prose .table-wrapper table {
+  margin-top: 0;
 }
 
 .blog-prose th,

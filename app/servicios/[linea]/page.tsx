@@ -10,6 +10,7 @@ import {
   COMPANY_NAME,
   SITE_URL,
   PHONE_DISPLAY,
+  WA_BASE_URL,
   SERVICE_DATA,
   TESTIMONIAL_DATA,
   SOCIAL_PROOF_STATS,
@@ -17,6 +18,7 @@ import {
   type ServiceLineId,
 } from "@/lib/conversion";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, getServiceLineSEO } from "@/lib/seo-data";
+import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 
 export function generateStaticParams() {
   return SERVICE_LINE_SEO.map((s) => ({ linea: s.slug }));
@@ -134,7 +136,7 @@ export default async function ServicioPage({ params }: Props) {
     <>
       <BlogHeader />
 
-      <main id="main-content" className="pt-20">
+      <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Hero */}
         <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -180,18 +182,30 @@ export default async function ServicioPage({ params }: Props) {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-orange-200 hover:bg-orange-50/50"
-                >
-                  <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
-                  <p className="mt-1 text-sm text-slate-600">{service.summary}</p>
-                  <p className="mt-3 text-sm font-semibold text-orange-700">
-                    Desde {service.basePrice}
-                  </p>
-                </div>
-              ))}
+              {services.map((service) => {
+                const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${seo.heroTitle}). ¿Me pueden dar precio y disponibilidad?`)}`;
+                return (
+                  <div
+                    key={service.id}
+                    className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-orange-200 hover:bg-orange-50/50"
+                  >
+                    <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
+                    <p className="mt-1 text-sm text-slate-600">{service.summary}</p>
+                    <p className="mt-3 text-sm font-semibold text-orange-700">
+                      Desde {service.basePrice}
+                    </p>
+                    <a
+                      href={serviceWaLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
+                    >
+                      <WhatsAppIcon className="h-4 w-4" />
+                      Cotizar esto
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -314,6 +328,7 @@ export default async function ServicioPage({ params }: Props) {
         </section>
       </main>
 
+      <MobileStickyBarGlobal />
       <BlogFooter />
 
       <script

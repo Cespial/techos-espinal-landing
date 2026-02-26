@@ -201,7 +201,7 @@ export default function ServiceTabs() {
                         servicio: service.id,
                       })
                     }
-                    className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
+                    className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Cotizar esto

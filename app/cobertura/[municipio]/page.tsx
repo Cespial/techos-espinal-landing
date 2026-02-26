@@ -9,6 +9,7 @@ import {
   COMPANY_NAME,
   SITE_URL,
   PHONE_DISPLAY,
+  WA_BASE_URL,
   SERVICE_DATA,
   TESTIMONIAL_DATA,
   SOCIAL_PROOF_STATS,
@@ -16,6 +17,7 @@ import {
   buildWaLinkCoverage,
 } from "@/lib/conversion";
 import { MUNICIPALITY_SEO, getMunicipalitySEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 import { getAllPosts } from "@/lib/blog-utils";
 
 export function generateStaticParams() {
@@ -122,7 +124,7 @@ export default async function CoberturaPage({ params }: Props) {
     <>
       <BlogHeader />
 
-      <main id="main-content" className="pt-20">
+      <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Hero */}
         <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -199,22 +201,34 @@ export default async function CoberturaPage({ params }: Props) {
                       {line.label}
                     </h3>
                     <div className="mt-3 grid gap-3 sm:grid-cols-3">
-                      {items.map((service) => (
-                        <div
-                          key={service.id}
-                          className="rounded-xl border border-slate-200 bg-white p-4"
-                        >
-                          <p className="text-sm font-semibold text-slate-900">
-                            {service.name}
-                          </p>
-                          <p className="mt-1 text-xs text-slate-600">
-                            {service.summary}
-                          </p>
-                          <p className="mt-2 text-sm font-semibold text-orange-700">
-                            Desde {service.basePrice}
-                          </p>
-                        </div>
-                      ))}
+                      {items.map((service) => {
+                        const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${line.label}) en ${seo.name}. ¿Me pueden dar precio y disponibilidad?`)}`;
+                        return (
+                          <div
+                            key={service.id}
+                            className="flex flex-col rounded-xl border border-slate-200 bg-white p-4"
+                          >
+                            <p className="text-sm font-semibold text-slate-900">
+                              {service.name}
+                            </p>
+                            <p className="mt-1 text-xs text-slate-600">
+                              {service.summary}
+                            </p>
+                            <p className="mt-2 text-sm font-semibold text-orange-700">
+                              Desde {service.basePrice}
+                            </p>
+                            <a
+                              href={serviceWaLink}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
+                            >
+                              <WhatsAppIcon className="h-4 w-4" />
+                              Cotizar esto
+                            </a>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );
@@ -329,6 +343,7 @@ export default async function CoberturaPage({ params }: Props) {
         </section>
       </main>
 
+      <MobileStickyBarGlobal />
       <BlogFooter />
 
       <script

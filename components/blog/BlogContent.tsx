@@ -1,4 +1,4 @@
-import { marked } from "marked";
+import { marked, type Tokens } from "marked";
 
 type BlogContentProps = {
   body: string;
@@ -6,6 +6,12 @@ type BlogContentProps = {
 
 export default function BlogContent({ body }: BlogContentProps) {
   const renderer = new marked.Renderer();
+
+  // Wrap tables in a scrollable container for mobile
+  const originalTable = renderer.table.bind(renderer);
+  renderer.table = (token: Tokens.Table) => {
+    return `<div class="table-wrapper">${originalTable(token)}</div>`;
+  };
 
   // Add IDs to headings for scroll-spy anchor links
   renderer.heading = ({ text, depth }: { text: string; depth: number }) => {

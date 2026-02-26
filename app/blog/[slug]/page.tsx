@@ -12,6 +12,7 @@ import BlogCTA from "@/components/blog/BlogCTA";
 import TableOfContents from "@/components/blog/TableOfContents";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import ShareButtons from "@/components/blog/ShareButtons";
+import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <BlogHeader />
 
-      <main id="main-content" className="pt-20 pb-16">
+      <main id="main-content" className="pt-20 pb-20 md:pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           {/* Breadcrumbs */}
           <Breadcrumbs category={post.category} postTitle={post.title} />
@@ -197,6 +198,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </main>
 
+      <MobileStickyBarGlobal />
       <BlogFooter />
     </>
   );

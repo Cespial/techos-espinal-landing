@@ -39,7 +39,7 @@ export default function BlogCTA({
           href={waLink}
           target="_blank"
           rel="noreferrer"
-          className="mt-3 inline-flex w-full min-h-10 items-center justify-center gap-2 rounded-lg bg-[#15803d] px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] active:scale-[0.98]"
+          className="mt-3 inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-lg bg-[#15803d] px-4 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] active:scale-[0.98]"
         >
           <WhatsAppIcon className="h-4 w-4" />
           Pedir cotización gratis
