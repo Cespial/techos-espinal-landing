@@ -3,8 +3,6 @@ import {
   FAQ_ITEMS,
   PHONE_DISPLAY,
   SITE_URL,
-  SOCIAL_PROOF_STATS,
-  TESTIMONIAL_DATA,
 } from "@/lib/conversion";
 
 const structuredData = {
@@ -45,23 +43,8 @@ const structuredData = {
     opens: "07:00",
     closes: "18:00",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: SOCIAL_PROOF_STATS.avgRating,
-    bestRating: 5,
-    ratingCount: SOCIAL_PROOF_STATS.jobsCompleted,
-  },
-  review: TESTIMONIAL_DATA.map((t) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: t.name },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: t.rating,
-      bestRating: 5,
-    },
-    reviewBody: t.text,
-    datePublished: t.date,
-  })),
+  // NOTA SEO: aggregateRating/review retirados — no hay reseñas reales verificables.
+  // Reintroducir SOLO cuando existan reseñas genuinas (idealmente Google Business Profile).
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Servicios de Espinal Multiservicios",

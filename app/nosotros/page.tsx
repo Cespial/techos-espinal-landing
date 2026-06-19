@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Phone, Clock, Shield, ArrowRight, Star } from "lucide-react";
+import { MapPin, Phone, Clock, Shield, ArrowRight, Star, Wrench, Paintbrush, Droplets } from "lucide-react";
+import { LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 const LLM_FAQS = [
   {
     question: `¿Quién es ${COMPANY_NAME}?`,
-    answer: `${COMPANY_NAME} es una empresa de servicios para el hogar con sede en Medellín, Colombia. Se especializa en tres áreas: techos y cubiertas (reparación de goteras, impermeabilización, limpieza de canales), pintura y acabados (pintura interior y exterior, resanes, tratamiento de humedad) y plomería (reparación de fugas, destape de desagües, cambio de grifería). Opera en Medellín y 11 municipios del Valle de Aburrá y Oriente antioqueño. Ha completado más de ${SOCIAL_PROOF_STATS.jobsCompleted} trabajos con una calificación promedio de ${SOCIAL_PROOF_STATS.avgRating}/5.`,
+    answer: `${COMPANY_NAME} es una empresa de servicios para el hogar con sede en Medellín, Colombia. Se especializa en tres áreas: techos y cubiertas (reparación de goteras, impermeabilización, limpieza de canales), pintura y acabados (pintura interior y exterior, resanes, tratamiento de humedad) y plomería (reparación de fugas, destape de desagües, cambio de grifería). Opera en Medellín y 11 municipios del Valle de Aburrá y Oriente antioqueño. Ha completado más de ${SOCIAL_PROOF_STATS.jobsCompleted} trabajos en hogares y negocios.`,
   },
   {
     question: `¿Qué servicios ofrece ${COMPANY_NAME}?`,
@@ -114,12 +115,6 @@ export default function NosotrosPage() {
       areaServed: MUNICIPALITY_OPTIONS.filter((m) => m !== "Otro").map(
         (m) => ({ "@type": "City", name: m }),
       ),
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: SOCIAL_PROOF_STATS.avgRating,
-        bestRating: 5,
-        ratingCount: SOCIAL_PROOF_STATS.jobsCompleted,
-      },
       numberOfEmployees: {
         "@type": "QuantitativeValue",
         minValue: 2,
@@ -170,8 +165,8 @@ export default function NosotrosPage() {
               Somos una empresa de servicios para el hogar en Medellín y el Valle de Aburrá.
               Nos especializamos en <strong>techos y cubiertas</strong>, <strong>pintura y acabados</strong> y{" "}
               <strong>plomería</strong>. Hemos completado más de{" "}
-              <strong>{SOCIAL_PROOF_STATS.jobsCompleted} trabajos</strong> con una calificación
-              promedio de <strong>{SOCIAL_PROOF_STATS.avgRating}/5</strong>.
+              <strong>{SOCIAL_PROOF_STATS.jobsCompleted} trabajos</strong> en hogares y negocios del
+              Valle de Aburrá y el Oriente antioqueño.
             </p>
           </div>
         </section>
@@ -189,11 +184,8 @@ export default function NosotrosPage() {
                 <p className="mt-1 text-sm text-slate-600">Trabajos completados</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <div className="flex items-center justify-center gap-1">
-                  <Star className="h-6 w-6 fill-amber-400 text-amber-400" aria-hidden="true" />
-                  <p className="text-3xl font-bold text-slate-900">{SOCIAL_PROOF_STATS.avgRating}</p>
-                </div>
-                <p className="mt-1 text-sm text-slate-600">Calificación promedio</p>
+                <p className="text-3xl font-bold text-slate-900">{SOCIAL_PROOF_STATS.yearsExperience}+</p>
+                <p className="mt-1 text-sm text-slate-600">Años de experiencia</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
                 <p className="text-3xl font-bold text-slate-900">12</p>
@@ -225,22 +217,31 @@ export default function NosotrosPage() {
                   parseInt(s.basePrice.replace(/[^0-9]/g, ""), 10),
                 );
                 const minPrice = Math.min(...prices);
+                const accent = LINE_ACCENT[line.id];
+                const LineIcon = line.id === "techos" ? Wrench : line.id === "pintura" ? Paintbrush : Droplets;
                 return (
-                  <div key={line.id} className="rounded-2xl border border-slate-200 bg-white p-6">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-slate-900">{line.label}</h3>
-                      <Link
-                        href={`/servicios/${line.id}`}
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-orange-700 hover:text-orange-800"
-                      >
-                        Ver todos
-                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                      </Link>
+                  <div key={line.id} className={`overflow-hidden rounded-2xl border border-slate-200 bg-white border-l-[3px] ${accent.accentBar.replace("bg-", "border-l-")}`}>
+                    <div className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent.iconBg}`}>
+                            <LineIcon className={`h-5 w-5 ${accent.iconText}`} aria-hidden="true" />
+                          </div>
+                          <h3 className="text-lg font-semibold text-slate-900">{line.label}</h3>
+                        </div>
+                        <Link
+                          href={`/servicios/${line.id}`}
+                          className="inline-flex items-center gap-1 text-sm font-semibold text-orange-700 hover:text-orange-800"
+                        >
+                          Ver todos
+                          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                        </Link>
+                      </div>
+                      <p className="mt-3 text-sm text-slate-600">
+                        {services.length} servicios desde ${minPrice.toLocaleString("es-CO")} COP.{" "}
+                        {services.map((s) => s.name).join(", ")}.
+                      </p>
                     </div>
-                    <p className="mt-2 text-sm text-slate-600">
-                      {services.length} servicios desde ${minPrice.toLocaleString("es-CO")} COP.{" "}
-                      {services.map((s) => s.name).join(", ")}.
-                    </p>
                   </div>
                 );
               })}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowRight, Star } from "lucide-react";
+import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -12,7 +13,6 @@ import {
   WA_BASE_URL,
   SERVICE_DATA,
   TESTIMONIAL_DATA,
-  SOCIAL_PROOF_STATS,
   LINE_OPTIONS,
   buildWaLinkCoverage,
 } from "@/lib/conversion";
@@ -111,12 +111,6 @@ export default async function CoberturaPage({ params }: Props) {
       "@type": "City",
       name: seo.name,
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: SOCIAL_PROOF_STATS.avgRating,
-      bestRating: 5,
-      ratingCount: SOCIAL_PROOF_STATS.jobsCompleted,
-    },
     serviceType: ["Techos y cubiertas", "Pintura y acabados", "Plomería"],
   };
 
@@ -203,29 +197,42 @@ export default async function CoberturaPage({ params }: Props) {
                     <div className="mt-3 grid gap-3 sm:grid-cols-3">
                       {items.map((service) => {
                         const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${line.label}) en ${seo.name}. ¿Me pueden dar precio y disponibilidad?`)}`;
+                        const accent = LINE_ACCENT[line.id];
+                        const ServiceIcon = SERVICE_ICON_MAP[service.id];
                         return (
                           <div
                             key={service.id}
-                            className="flex flex-col rounded-xl border border-slate-200 bg-white p-4"
+                            className={`flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm border-l-[3px] ${accent.accentBar.replace("bg-", "border-l-")}`}
                           >
-                            <p className="text-sm font-semibold text-slate-900">
-                              {service.name}
-                            </p>
-                            <p className="mt-1 text-xs text-slate-600">
-                              {service.summary}
-                            </p>
-                            <p className="mt-2 text-sm font-semibold text-orange-700">
-                              Desde {service.basePrice}
-                            </p>
-                            <a
-                              href={serviceWaLink}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="mt-3 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
-                            >
-                              <WhatsAppIcon className="h-4 w-4" />
-                              Cotizar esto
-                            </a>
+                            <div className="flex items-start gap-2.5 p-4">
+                              {ServiceIcon && (
+                                <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${accent.iconBg}`}>
+                                  <ServiceIcon className={`h-4 w-4 ${accent.iconText}`} aria-hidden="true" />
+                                </div>
+                              )}
+                              <div className="min-w-0 flex-1">
+                                <p className="text-sm font-semibold text-slate-900">
+                                  {service.name}
+                                </p>
+                                <p className="mt-1 text-xs text-slate-600">
+                                  {service.summary}
+                                </p>
+                                <div className={`mt-2 inline-block rounded-md px-2 py-0.5 ${accent.priceBg}`}>
+                                  <p className={`text-sm font-bold ${accent.priceText}`}>
+                                    Desde {service.basePrice}
+                                  </p>
+                                </div>
+                                <a
+                                  href={serviceWaLink}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
+                                >
+                                  <WhatsAppIcon className="h-4 w-4" />
+                                  Cotizar esto
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         );
                       })}

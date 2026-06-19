@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import BlogCTA from "@/components/blog/BlogCTA";
@@ -13,7 +14,6 @@ import {
   WA_BASE_URL,
   SERVICE_DATA,
   TESTIMONIAL_DATA,
-  SOCIAL_PROOF_STATS,
   buildWaLinkHero,
   type ServiceLineId,
 } from "@/lib/conversion";
@@ -122,12 +122,6 @@ export default async function CrossPage({ params }: Props) {
         "@type": "GeoCoordinates",
         latitude: muniSeo.lat,
         longitude: muniSeo.lng,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: SOCIAL_PROOF_STATS.avgRating,
-        bestRating: 5,
-        ratingCount: SOCIAL_PROOF_STATS.jobsCompleted,
       },
     },
     areaServed: {
@@ -254,29 +248,39 @@ export default async function CrossPage({ params }: Props) {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {services.map((service) => {
                 const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${cross.lineLabel}) en ${muniSeo.name}. ¿Me pueden dar precio y disponibilidad?`)}`;
+                const accent = LINE_ACCENT[lineId];
+                const ServiceIcon = SERVICE_ICON_MAP[service.id];
                 return (
                   <div
                     key={service.id}
-                    className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-orange-200 hover:bg-orange-50/50"
+                    className={`flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md border-l-[3px] ${accent.accentBar.replace("bg-", "border-l-")}`}
                   >
-                    <h3 className="text-base font-semibold text-slate-900">
-                      {service.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-600">
-                      {service.summary}
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-orange-700">
-                      Desde {service.basePrice}
-                    </p>
-                    <a
-                      href={serviceWaLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
-                    >
-                      <WhatsAppIcon className="h-4 w-4" />
-                      Cotizar esto
-                    </a>
+                    <div className="flex items-start gap-3 p-5">
+                      {ServiceIcon && (
+                        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent.iconBg}`}>
+                          <ServiceIcon className={`h-5 w-5 ${accent.iconText}`} aria-hidden="true" />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-3">
+                          <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
+                          <div className={`shrink-0 rounded-lg px-2.5 py-1 text-right ${accent.priceBg}`}>
+                            <p className="text-[10px] uppercase tracking-wider text-slate-500">Desde</p>
+                            <p className={`text-sm font-bold ${accent.priceText}`}>{service.basePrice}</p>
+                          </div>
+                        </div>
+                        <p className="mt-1 text-sm text-slate-600">{service.summary}</p>
+                        <a
+                          href={serviceWaLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
+                        >
+                          <WhatsAppIcon className="h-4 w-4" />
+                          Cotizar esto
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 );
               })}

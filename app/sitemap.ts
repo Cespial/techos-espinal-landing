@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/conversion";
+import { SITE_URL, LAST_CONTENT_UPDATE } from "@/lib/conversion";
 import { getAllPosts } from "@/lib/blog-utils";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, CROSS_PAGE_SEO } from "@/lib/seo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const contentDate = new Date(LAST_CONTENT_UPDATE);
   const blogPosts = getAllPosts();
 
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
@@ -15,21 +16,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const serviceEntries: MetadataRoute.Sitemap = SERVICE_LINE_SEO.map((s) => ({
     url: `${SITE_URL}/servicios/${s.slug}`,
-    lastModified: new Date(),
+    lastModified: contentDate,
     changeFrequency: "weekly",
     priority: 0.9,
   }));
 
   const coverageEntries: MetadataRoute.Sitemap = MUNICIPALITY_SEO.map((m) => ({
     url: `${SITE_URL}/cobertura/${m.slug}`,
-    lastModified: new Date(),
+    lastModified: contentDate,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const crossPageEntries: MetadataRoute.Sitemap = CROSS_PAGE_SEO.map((p) => ({
     url: `${SITE_URL}/servicios/${p.lineSlug}/${p.municipioSlug}`,
-    lastModified: new Date(),
+    lastModified: contentDate,
     changeFrequency: "monthly",
     priority: 0.75,
   }));
@@ -37,15 +38,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: new Date(),
+      lastModified: contentDate,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${SITE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: contentDate,
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/cobertura`,
+      lastModified: contentDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     ...serviceEntries,
     ...coverageEntries,
@@ -53,19 +60,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogEntries,
     {
       url: `${SITE_URL}/nosotros`,
-      lastModified: new Date(),
+      lastModified: contentDate,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/terminos`,
-      lastModified: new Date(),
+      lastModified: contentDate,
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/privacidad`,
-      lastModified: new Date(),
+      lastModified: contentDate,
       changeFrequency: "monthly",
       priority: 0.3,
     },

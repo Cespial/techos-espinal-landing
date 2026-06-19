@@ -7,7 +7,6 @@ import {
   COMPANY_NAME,
   FAQ_ITEMS,
   PHONE_DISPLAY,
-  SITE_URL,
   buildWaLinkFaq,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
@@ -137,30 +136,69 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-200 pt-4 text-xs text-slate-500">
-            <Link href="/servicios/techos" className="hover:text-slate-900">
-              Servicios
-            </Link>
-            <Link href="/cobertura/medellin" className="hover:text-slate-900">
-              Cobertura
-            </Link>
-            <Link href="/nosotros" className="hover:text-slate-900">
-              Nosotros
-            </Link>
-            <Link href="/blog" className="hover:text-slate-900">
-              Blog
-            </Link>
-            <Link href="/terminos" className="hover:text-slate-900">
-              Términos y condiciones
-            </Link>
-            <Link href="/privacidad" className="hover:text-slate-900">
-              Política de privacidad
-            </Link>
-            <a href={SITE_URL} className="hover:text-slate-900">
-              Sitio principal
-            </a>
-            <span>Teléfono: {PHONE_DISPLAY}</span>
-          </div>
+          <nav
+            aria-label="Mapa del sitio"
+            className="mt-6 grid gap-6 border-t border-slate-200 pt-6 text-xs text-slate-500 sm:grid-cols-3"
+          >
+            <div>
+              <p className="mb-2 font-semibold text-slate-700">Servicios</p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link href="/servicios/techos" className="hover:text-slate-900">
+                    Techos y cubiertas
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/servicios/pintura" className="hover:text-slate-900">
+                    Pintura y acabados
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/servicios/plomeria" className="hover:text-slate-900">
+                    Plomería
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-semibold text-slate-700">Cobertura</p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link href="/cobertura" className="hover:text-slate-900">
+                    Medellín y Valle de Aburrá
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/nosotros" className="hover:text-slate-900">
+                    Nosotros
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="hover:text-slate-900">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-semibold text-slate-700">Legal</p>
+              <ul className="space-y-1.5">
+                <li>
+                  <Link href="/terminos" className="hover:text-slate-900">
+                    Términos y condiciones
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacidad" className="hover:text-slate-900">
+                    Política de privacidad
+                  </Link>
+                </li>
+                <li>
+                  <span>Teléfono: {PHONE_DISPLAY}</span>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
       </footer>
     </>

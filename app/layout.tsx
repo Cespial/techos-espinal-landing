@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/video/slow-majestic-poster.jpg",
-        width: 1600,
-        height: 900,
+        width: 1280,
+        height: 720,
         alt: "Espinal Multiservicios en Medellín",
       },
     ],
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#ea580c",
   width: "device-width",
   initialScale: 1,
 };
@@ -131,10 +131,9 @@ export default function RootLayout({
                 addressRegion: "Antioquia",
                 addressCountry: "CO",
               },
-              sameAs: [
-                SITE_URL,
-                `https://wa.me/573007336333`,
-              ],
+              // sameAs: agregar aquí los perfiles autoritativos reales cuando existan
+              // (Google Business Profile, Instagram, Facebook). No se incluye la
+              // auto-referencia al propio dominio ni wa.me (no son perfiles sameAs válidos).
               knowsAbout: [
                 "Reparación de techos",
                 "Impermeabilización de cubiertas",

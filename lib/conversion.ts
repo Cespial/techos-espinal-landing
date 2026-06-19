@@ -1,6 +1,11 @@
 export const COMPANY_NAME = "Espinal Multiservicios";
 export const SITE_URL = "https://espinalservicios.com";
 
+// Fecha estable de última actualización de contenido (para sitemap.lastModified).
+// Evita que cada deploy marque todas las URLs como "actualizadas" con la hora de build.
+// Actualizar manualmente al revisar el contenido de las páginas estructurales.
+export const LAST_CONTENT_UPDATE = "2026-06-19";
+
 export const PHONE_DISPLAY = "(+57) 300 733 6333";
 export const PHONE_E164 = "+573007336333";
 export const WA_NUMBER = "573007336333";
