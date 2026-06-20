@@ -23,12 +23,12 @@ import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 export const metadata: Metadata = {
   title: "Sobre nosotros: quiénes somos y qué hacemos",
   description:
-    "Espinal Multiservicios: empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Más de 350 trabajos, calificación 4.9/5, visita técnica gratis.",
+    "Espinal Multiservicios: empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Visita técnica gratis, precio claro antes de empezar y garantía por escrito.",
   alternates: { canonical: `${SITE_URL}/nosotros` },
   openGraph: {
     title: "Sobre Espinal Multiservicios",
     description:
-      "Empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Más de 350 trabajos completados con calificación 4.9/5.",
+      "Empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Visita técnica gratis, precio claro y garantía por escrito.",
     url: `${SITE_URL}/nosotros`,
     type: "website",
     locale: "es_CO",

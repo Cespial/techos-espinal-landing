@@ -62,7 +62,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
           "Damos garantía por escrito en cada trabajo. El tiempo depende del tipo de reparación y los materiales usados. Te la explicamos antes de empezar.",
       },
     ],
-    ogImage: "/blog/placeholder-servicios.svg",
+    ogImage: "/og/og-techos.png",
   },
   {
     slug: "pintura",
@@ -107,7 +107,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
           "Sí. No pintamos encima de humedad sin resolver la causa primero. Diagnosticamos el origen, lo tratamos y luego pintamos con pintura anti-humedad para un resultado duradero.",
       },
     ],
-    ogImage: "/blog/placeholder-servicios.svg",
+    ogImage: "/og/og-pintura.png",
   },
   {
     slug: "plomeria",
@@ -152,7 +152,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
           "Sí. Destapamos desagües de baño, cocina, patio y sifones. El servicio de destape empieza desde $160.000 COP.",
       },
     ],
-    ogImage: "/blog/placeholder-servicios.svg",
+    ogImage: "/og/og-plomeria.png",
   },
 ];
 

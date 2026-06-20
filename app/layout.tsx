@@ -37,9 +37,9 @@ export const metadata: Metadata = {
       "Soluciones para hogares y negocios en Medellín, Valle de Aburrá y Antioquia según disponibilidad.",
     images: [
       {
-        url: "/video/slow-majestic-poster.jpg",
-        width: 1280,
-        height: 720,
+        url: "/og/og-default.png",
+        width: 1200,
+        height: 630,
         alt: "Espinal Multiservicios en Medellín",
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
     description:
       "Cotiza por WhatsApp o llamada. Cobertura en Medellín, Valle de Aburrá y Antioquia.",
-    images: ["/video/slow-majestic-poster.jpg"],
+    images: ["/og/og-default.png"],
   },
   robots: {
     index: true,
@@ -117,7 +117,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: COMPANY_NAME,
               url: SITE_URL,
-              logo: `${SITE_URL}/logo-espinal.svg`,
+              logo: `${SITE_URL}/logo-icon.png`,
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: PHONE_E164,

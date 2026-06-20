@@ -51,11 +51,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${SITE_URL}/servicios/${linea}/${municipio}`,
       type: "website",
       locale: "es_CO",
+      images: [{ url: `/og/og-${linea}.png`, width: 1200, height: 630, alt: data.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: data.title,
       description: data.metaDescription,
+      images: [`/og/og-${linea}.png`],
     },
   };
 }

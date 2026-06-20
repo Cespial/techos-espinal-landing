@@ -25,6 +25,20 @@
   --shadow-card-hover: 0 18px 35px -24px rgba(10,10,10,0.32);
   --shadow-lg: 0 20px 45px -30px rgba(10,10,10,0.35);
 
+  /* Acentos por línea de servicio (Espinal Design System) */
+  --color-line-techos: #ea580c;
+  --color-line-pintura: #0891b2;
+  --color-line-plomeria: #059669;
+  --color-line-techos-soft: #fff1ea;
+  --color-line-pintura-soft: #e6f6fa;
+  --color-line-plomeria-soft: #e7f6f0;
+
+  /* Sombra de marca para el CTA naranja */
+  --shadow-brand: 0 6px 18px rgba(234,88,12,0.28);
+
+  /* Radio del mosaico de marca (icono "La Casa") */
+  --radius-tile: 23%;
+
   --motion-duration-120: 120ms;
   --motion-duration-180: 180ms;
   --motion-duration-240: 240ms;
@@ -254,6 +268,11 @@ html {
 .section-perf {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
+}
+
+.section-divider-gradient {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
 }
 
 details > summary {

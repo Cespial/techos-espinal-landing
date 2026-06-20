@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     description:
       "Consejos prácticos sobre techos, pintura y plomería para tu casa o negocio en Medellín.",
     siteName: COMPANY_NAME,
+    images: [{ url: "/og/og-blog-servicios.png", width: 1200, height: 630, alt: `Blog | ${COMPANY_NAME}` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Blog — Consejos de techos, pintura y plomería | ${COMPANY_NAME}`,
+    description:
+      "Consejos prácticos sobre techos, pintura y plomería para tu casa o negocio en Medellín.",
+    images: ["/og/og-blog-servicios.png"],
   },
   alternates: {
     canonical: `${SITE_URL}/blog`,

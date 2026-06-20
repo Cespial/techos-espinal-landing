@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { COMPANY_NAME } from "@/lib/conversion";
 
-// Iconos referenciados (icon-192.png / icon-512.png / maskable-512.png) los entrega
-// el paquete de diseño y se ubican en /public. Hasta entonces, Next.js sirve el
-// manifest igual; los íconos faltantes solo afectan la instalación PWA.
+// Iconos de marca (icon-192/512, maskable-512) entregados por el Espinal Design System,
+// ubicados en /public. El favicon.ico, icon.svg y apple-icon.png viven en /app
+// (auto-detectados por Next.js como <link> en el <head>).
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: COMPANY_NAME,
