@@ -35,19 +35,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: data.title,
     description: data.metaDescription,
     alternates: { canonical: `${SITE_URL}/cobertura/${data.slug}` },
+    // og:image y twitter:image los provee app/cobertura/[municipio]/opengraph-image.tsx
+    // (OG dinámico por municipio, generado en build). No declarar images aquí.
     openGraph: {
       title: data.title,
       description: data.metaDescription,
       url: `${SITE_URL}/cobertura/${data.slug}`,
       type: "website",
       locale: "es_CO",
-      images: [{ url: "/og/og-default.png", width: 1200, height: 630, alt: data.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: data.title,
       description: data.metaDescription,
-      images: ["/og/og-default.png"],
     },
   };
 }
