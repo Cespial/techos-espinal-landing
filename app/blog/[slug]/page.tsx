@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <SiteHeader pageType="blog" />
 
-      <main id="main-content" className="pb-20 md:pb-16">
+      <main id="main-content" className="pb-8">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           {/* Breadcrumbs */}
           <Breadcrumbs category={post.category} postTitle={post.title} />
@@ -128,10 +128,10 @@ export default async function BlogPostPage({ params }: Props) {
             <span className="inline-flex rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
               {categoryLabel}
             </span>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               {post.title}
             </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-500">
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-600">
               <span>
                 <Link href="/nosotros" className="font-semibold text-slate-700 hover:underline">{post.author}</Link>, {post.authorRole.toLowerCase()}
               </span>

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { BRAND } from "@/lib/brand";
 import { Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ea580c",
+  themeColor: BRAND,
   width: "device-width",
   initialScale: 1,
 };

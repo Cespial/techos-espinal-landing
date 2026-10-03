@@ -86,7 +86,7 @@ export default function TrustSignals({
                 href={GBP_URL}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-colors hover:border-orange-400"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition-colors hover:border-orange-400"
               >
                 Ver reseñas en Google
               </a>
@@ -95,7 +95,7 @@ export default function TrustSignals({
                   href={GBP_REVIEW_URL}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-orange-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xl bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-orange-700" 
                 >
                   Déjanos tu reseña
                 </a>
@@ -103,7 +103,7 @@ export default function TrustSignals({
             </div>
           </div>
         ) : (
-          <p className="mt-8 text-sm text-slate-500">
+          <p className="mt-8 text-sm text-slate-600">
             ¿Ya trabajamos en tu casa?{" "}
             <Link href="/nosotros" className="font-semibold text-orange-700 hover:underline">
               Conoce al equipo

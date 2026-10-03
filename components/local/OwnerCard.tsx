@@ -17,7 +17,7 @@ type Props = {
 export default function OwnerCard({ variant = "hero", municipio }: Props) {
   if (variant === "compact") {
     return (
-      <div className="flex items-center gap-4 rounded-2xl bg-[#ea580c] p-4 text-slate-950">
+      <div className="flex items-center gap-4 rounded-2xl bg-brand p-4 text-slate-950">
         <Portrait size={56} />
         <p className="text-sm leading-snug">
           <span className="font-bold">{OWNER.name}</span>, {OWNER.role.toLowerCase()}.{" "}
@@ -34,7 +34,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
     return (
       <section className="py-16 md:py-24" aria-labelledby="owner-heading">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:items-center">
-          <div className="rounded-3xl bg-[#ea580c] p-8 text-slate-950">
+          <div className="rounded-3xl bg-brand p-8 text-slate-950">
             <Portrait size={96} />
             <p className="mt-6 text-3xl font-bold tracking-tight">{OWNER.name}</p>
             <p className="mt-1 text-slate-900">{OWNER.role}</p>
@@ -62,7 +62,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
   }
 
   return (
-    <aside className="rounded-3xl bg-[#ea580c] p-6 text-slate-950 shadow-[var(--shadow-brand)] md:p-8" aria-label={`Quién atiende: ${OWNER.name}`}>
+    <aside className="rounded-3xl bg-brand p-6 text-slate-950 shadow-[var(--shadow-brand)] md:p-8" aria-label={`Quién atiende: ${OWNER.name}`}>
       <div className="flex items-center gap-4">
         <Portrait size={72} />
         <div>
@@ -100,7 +100,7 @@ function Portrait({ size }: { size: number }) {
   }
   return (
     <span
-      className="flex shrink-0 items-center justify-center rounded-2xl bg-white text-[#ea580c]"
+      className="flex shrink-0 items-center justify-center rounded-2xl bg-white text-brand"
       style={{ width: size, height: size, fontSize: size * 0.42 }}
       aria-hidden="true"
     >

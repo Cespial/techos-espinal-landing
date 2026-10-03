@@ -27,7 +27,7 @@ export default function FaqSection({ items, heading = "Preguntas frecuentes", wi
             <details key={f.question} className="group">
               <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 text-left text-base font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
                 {f.question}
-                <ChevronDown className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-180" aria-hidden="true" />
+                <ChevronDown className="h-5 w-5 shrink-0 text-slate-600 transition-transform group-open:rotate-180" aria-hidden="true" />
               </summary>
               <p className="pb-5 text-base leading-relaxed text-slate-700">{f.answer}</p>
             </details>

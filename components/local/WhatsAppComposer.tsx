@@ -43,7 +43,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               autoComplete="given-name"
-              className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900 focus:outline-none"
+              className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900"
             />
           </label>
           <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800">
@@ -51,7 +51,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
             <select
               value={linea}
               onChange={(e) => setLinea(e.target.value as ServiceLineId)}
-              className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900 focus:outline-none"
+              className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900"
             >
               {LINE_OPTIONS.map((l) => (
                 <option key={l.id} value={l.id}>
@@ -69,7 +69,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
               placeholder="Ejemplo: gotea el techo del cuarto cuando llueve fuerte."
               aria-invalid={Boolean(error)}
               aria-describedby={error ? "composer-error" : undefined}
-              className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-base text-slate-900 focus:border-slate-900 focus:outline-none"
+              className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-base text-slate-900 focus:border-slate-900"
             />
             {error && (
               <span id="composer-error" role="alert" className="text-sm text-red-700">
@@ -80,7 +80,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-colors hover:bg-[#166d34] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#15803d]"
+              className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-wa px-6 text-base font-semibold text-white transition-colors hover:bg-wa-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wa"
             >
               <WhatsAppIcon className="h-5 w-5" />
               Abrir en WhatsApp

@@ -46,7 +46,7 @@ export default function Breadcrumbs({ category, postTitle }: BreadcrumbsProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="Breadcrumbs" className="text-sm text-slate-500">
+      <nav aria-label="Breadcrumbs" className="text-sm text-slate-600">
         <ol className="flex flex-wrap items-center gap-1">
           <li>
             <Link href="/" className="hover:text-slate-900">

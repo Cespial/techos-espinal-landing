@@ -68,7 +68,7 @@ export default async function CrossPage({ params }: Props) {
   return (
     <>
       <SiteHeader pageType={pageType} linea={lineId} municipio={muniSeo.name} />
-      <main id="main-content" className="pb-20 md:pb-0">
+      <main id="main-content">
         <Breadcrumbs
           items={[
             { name: "Inicio", href: "/" },
@@ -94,7 +94,7 @@ export default async function CrossPage({ params }: Props) {
           intro={`Precios de referencia para ${muniSeo.name}. El valor final te lo damos por escrito después de la visita gratis.`}
           tone="slate"
         />
-        {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="white" />}
+        {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="paper" />}
         <ProcessSteps pageType={pageType} municipio={muniSeo.name} linea={lineId} />
         <TrustSignals municipality={muniSeo.name} />
         <FaqSection

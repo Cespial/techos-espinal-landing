@@ -2,6 +2,8 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { MUNICIPALITY_SEO, getMunicipalitySEO } from "@/lib/seo-data";
+import { BRAND, BRAND_SOFT, INK } from "@/lib/brand";
+import { PHONE_DISPLAY } from "@/lib/conversion";
 
 // OG dinámico por municipio (1200×630), replica la plantilla del Espinal Design System
 // (og/og-render.js, línea "servicios" / "Cobertura local"). Se genera estáticamente:
@@ -15,9 +17,7 @@ export function generateStaticParams() {
   return MUNICIPALITY_SEO.map((m) => ({ municipio: m.slug }));
 }
 
-const BRAND = "#ea580c";
-const SOFT = "#fff1ea";
-const INK = "#0A0A0A";
+const SOFT = BRAND_SOFT;
 
 type Props = { params: Promise<{ municipio: string }> };
 
@@ -143,7 +143,7 @@ export default async function Image({ params }: Props) {
           <div style={{ marginTop: "auto", display: "flex", alignItems: "center", gap: "30px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "22px", fontWeight: 800, color: INK }}>
               <PhoneIcon />
-              300 733 6333
+              {PHONE_DISPLAY.replace("(+57) ", "")}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "22px", fontWeight: 800, color: INK }}>
               <PinIcon />

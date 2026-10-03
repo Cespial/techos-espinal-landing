@@ -1,0 +1,450 @@
+{
+  "/": {
+    "title": "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
+    "description": "Reparamos techos, pintamos y arreglamos la plomería de tu casa o negocio en Medellín y Valle de Aburrá. Equipo de Henrry Espinal: visita gratis, precio por escrito y garantía firmada. Escríbenos por WhatsApp.",
+    "h1": "Reparación de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá",
+    "internal": 51,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  },
+  "/nosotros": {
+    "title": "Quiénes somos: el equipo de Henrry Espinal en Espinal Multiservicios | Espinal Multiservicios",
+    "description": "Espinal Multiservicios es una empresa de techos, pintura y plomería a domicilio en Medellín y 11 municipios, fundada y dirigida por Henrry Espinal. Revisamos gratis, damos el precio por escrito y respondemos con garantía firmada.",
+    "h1": "Somos Espinal Multiservicios, el equipo de Henrry Espinal",
+    "internal": 15,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": ""
+  },
+  "/cobertura": {
+    "title": "Cobertura en Medellín y el Valle de Aburrá | Espinal Multiservicios",
+    "description": "Espinal Multiservicios atiende techos, pintura y plomería en Medellín y los municipios del Valle de Aburrá y el Oriente antioqueño. Encuentra tu municipio y cotiza por WhatsApp.",
+    "h1": "Cobertura en Medellín y el Valle de Aburrá",
+    "internal": 51,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  },
+  "/blog": {
+    "title": "Blog — Consejos de techos, pintura y plomería | Espinal Multiservicios",
+    "description": "Consejos prácticos sobre techos, pintura y plomería para tu casa o negocio en Medellín. Guías, precios y soluciones del equipo de Espinal Multiservicios.",
+    "h1": "Consejos para tu casa o negocio",
+    "internal": 3,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-blog-servicios.png"
+  },
+  "/blog/como-arreglar-gotera-techo": {
+    "title": "Cómo arreglar una gotera en el techo: guía completa | Espinal Multiservicios",
+    "description": "Aprende cómo arreglar una gotera en el techo paso a paso. Causas, soluciones temporales y cuándo llamar a un profesional en Medellín.",
+    "h1": "Cómo arreglar una gotera en el techo: guía completa",
+    "internal": 6,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-como-arreglar-gotera-techo.png"
+  },
+  "/servicios/techos": {
+    "title": "Techos y cubiertas en Medellín: reparación, impermeabilización y mantenimiento | Espinal Multiservicios",
+    "description": "Reparación de goteras, impermeabilización y mantenimiento de techos en Medellín y Valle de Aburrá. Visita técnica gratis. Cotiza por WhatsApp.",
+    "h1": "Que no te entre agua por el techo",
+    "internal": 15,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/pintura": {
+    "title": "Pintura y acabados en Medellín: interior, exterior y tratamiento de paredes | Espinal Multiservicios",
+    "description": "Pintura interior y exterior, resanes, estuco y tratamiento de humedad en Medellín y Valle de Aburrá. Cotización gratis. Escríbenos por WhatsApp.",
+    "h1": "Tu casa o negocio como nuevo",
+    "internal": 15,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/plomeria": {
+    "title": "Plomería en Medellín: reparación de fugas, destape y mantenimiento | Espinal Multiservicios",
+    "description": "Reparación de fugas, destape de desagües y mantenimiento de tuberías en Medellín y Valle de Aburrá. Respuesta rápida. Cotiza por WhatsApp.",
+    "h1": "Adiós a las fugas y desagües tapados",
+    "internal": 15,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/techos/medellin": {
+    "title": "Reparación de goteras y techos en Medellín | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por es",
+    "h1": "Reparación de techos y goteras en Medellín",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/envigado": {
+    "title": "Reparación de goteras y techos en Envigado | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
+    "h1": "Reparación de techos y goteras en Envigado",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/sabaneta": {
+    "title": "Reparación de goteras y techos en Sabaneta | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrit",
+    "h1": "Reparación de techos y goteras en Sabaneta",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/bello": {
+    "title": "Reparación de goteras y techos en Bello | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito",
+    "h1": "Reparación de techos y goteras en Bello",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/itagui": {
+    "title": "Reparación de goteras y techos en Itagüí | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escr",
+    "h1": "Reparación de techos y goteras en Itagüí",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/la-estrella": {
+    "title": "Reparación de goteras y techos en La Estrella | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito",
+    "h1": "Reparación de techos y goteras en La Estrella",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/caldas": {
+    "title": "Reparación de goteras y techos en Caldas | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escri",
+    "h1": "Reparación de techos y goteras en Caldas",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/copacabana": {
+    "title": "Reparación de goteras y techos en Copacabana | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por e",
+    "h1": "Reparación de techos y goteras en Copacabana",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/girardota": {
+    "title": "Reparación de goteras y techos en Girardota | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por",
+    "h1": "Reparación de techos y goteras en Girardota",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/rionegro": {
+    "title": "Reparación de goteras y techos en Rionegro | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por es",
+    "h1": "Reparación de techos y goteras en Rionegro",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/la-ceja": {
+    "title": "Reparación de goteras y techos en La Ceja | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Reparación de techos y goteras en La Ceja",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/marinilla": {
+    "title": "Reparación de goteras y techos en Marinilla | Visita gratis | Espinal Multiservicios",
+    "description": "Goteras, impermeabilización y mantenimiento de techos en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por esc",
+    "h1": "Reparación de techos y goteras en Marinilla",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/pintura/medellin": {
+    "title": "Pintores en Medellín: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Medellín",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/envigado": {
+    "title": "Pintores en Envigado: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Envigado",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/sabaneta": {
+    "title": "Pintores en Sabaneta: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Sabaneta",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/bello": {
+    "title": "Pintores en Bello: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Bello",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/itagui": {
+    "title": "Pintores en Itagüí: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Itagüí",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/la-estrella": {
+    "title": "Pintores en La Estrella: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en La Estrella",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/caldas": {
+    "title": "Pintores en Caldas: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Caldas",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/copacabana": {
+    "title": "Pintores en Copacabana: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Copacabana",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/girardota": {
+    "title": "Pintores en Girardota: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Girardota",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/rionegro": {
+    "title": "Pintores en Rionegro: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Rionegro",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/la-ceja": {
+    "title": "Pintores en La Ceja: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en La Ceja",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/marinilla": {
+    "title": "Pintores en Marinilla: pintura interior y exterior | Precio claro | Espinal Multiservicios",
+    "description": "Pintura interior, exterior y resanes en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Pintura de casas y apartamentos en Marinilla",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/plomeria/medellin": {
+    "title": "Plomero en Medellín: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Medellín",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/envigado": {
+    "title": "Plomero en Envigado: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Envigado",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/sabaneta": {
+    "title": "Plomero en Sabaneta: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Sabaneta",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/bello": {
+    "title": "Plomero en Bello: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Bello",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/itagui": {
+    "title": "Plomero en Itagüí: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Itagüí",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/la-estrella": {
+    "title": "Plomero en La Estrella: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en La Estrella",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/caldas": {
+    "title": "Plomero en Caldas: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Caldas",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/copacabana": {
+    "title": "Plomero en Copacabana: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Copacabana",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/girardota": {
+    "title": "Plomero en Girardota: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Girardota",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/rionegro": {
+    "title": "Plomero en Rionegro: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Rionegro",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/la-ceja": {
+    "title": "Plomero en La Ceja: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en La Ceja",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/marinilla": {
+    "title": "Plomero en Marinilla: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Fugas, destapes y grifería a domicilio en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Plomería a domicilio en Marinilla",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/cobertura/medellin": {
+    "title": "Techos, pintura y plomería en Medellín | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Medellín",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/medellin/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/envigado": {
+    "title": "Techos, pintura y plomería en Envigado | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Envigado",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/envigado/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/sabaneta": {
+    "title": "Techos, pintura y plomería en Sabaneta | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Sabaneta",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/sabaneta/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/bello": {
+    "title": "Techos, pintura y plomería en Bello | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Bello",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/bello/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/itagui": {
+    "title": "Techos, pintura y plomería en Itagüí | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Itagüí",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/itagui/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/la-estrella": {
+    "title": "Techos, pintura y plomería en La Estrella | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en La Estrella",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/la-estrella/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/caldas": {
+    "title": "Techos, pintura y plomería en Caldas | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Caldas",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/caldas/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/copacabana": {
+    "title": "Techos, pintura y plomería en Copacabana | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Copacabana",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/copacabana/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/girardota": {
+    "title": "Techos, pintura y plomería en Girardota | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Girardota",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/girardota/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/rionegro": {
+    "title": "Techos, pintura y plomería en Rionegro | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Rionegro",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/rionegro/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/la-ceja": {
+    "title": "Techos, pintura y plomería en La Ceja | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en La Ceja",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/la-ceja/opengraph-image?a720f102065ce7a5"
+  },
+  "/cobertura/marinilla": {
+    "title": "Techos, pintura y plomería en Marinilla | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Marinilla",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/marinilla/opengraph-image?a720f102065ce7a5"
+  }
+}

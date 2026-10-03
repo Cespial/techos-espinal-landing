@@ -31,7 +31,14 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/nosotros` },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${SITE_URL}/nosotros`, type: "profile", locale: "es_CO" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/nosotros`,
+    type: "profile",
+    locale: "es_CO",
+    images: [{ url: "/og/og-default.png", width: 1200, height: 630, alt: TITLE }],
+  },
 };
 
 const FAQS = [
@@ -76,7 +83,7 @@ export default function NosotrosPage() {
   return (
     <>
       <SiteHeader pageType={pageType} />
-      <main id="main-content" className="pb-20 md:pb-0">
+      <main id="main-content">
         <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: OWNER.name }]} />
 
         <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
@@ -126,7 +133,7 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-200 py-16 md:py-24" aria-labelledby="what-heading">
+        <section className="border-t border-slate-200 bg-paper py-16 md:py-24" aria-labelledby="what-heading">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 id="what-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Qué hacemos
@@ -148,7 +155,7 @@ export default function NosotrosPage() {
                       {SERVICE_DATA[line.id].map((s) => s.name).join(", ")}.
                     </p>
                     <p className="mt-3 text-sm text-slate-900">
-                      <span className="text-slate-500">desde </span>
+                      <span className="text-slate-600">desde </span>
                       <span className="font-semibold tabular-nums">${min}</span>
                     </p>
                   </div>

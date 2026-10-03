@@ -92,10 +92,10 @@ export default async function BlogListingPage({ searchParams }: Props) {
       />
       <SiteHeader pageType="blog_index" />
 
-      <main id="main-content" className="pb-20 md:pb-16">
+      <main id="main-content" className="pb-8">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           {/* Page header */}
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Consejos para tu casa o negocio
           </h1>
           <p className="mt-3 max-w-2xl text-base text-slate-600">
@@ -107,7 +107,7 @@ export default async function BlogListingPage({ searchParams }: Props) {
           <div className="mt-6 flex flex-wrap gap-2">
             <Link
               href="/blog"
-              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all duration-200 ${
+              className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium transition-all duration-200 ${
                 !validCategory
                   ? "border-orange-300 bg-orange-50 text-orange-700"
                   : "border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:text-orange-700"
@@ -119,7 +119,7 @@ export default async function BlogListingPage({ searchParams }: Props) {
               <Link
                 key={key}
                 href={`/blog?categoria=${key}`}
-                className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all duration-200 ${
+                className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium transition-all duration-200 ${
                   validCategory === key
                     ? "border-orange-300 bg-orange-50 text-orange-700"
                     : "border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:text-orange-700"
@@ -138,7 +138,7 @@ export default async function BlogListingPage({ searchParams }: Props) {
               ))}
             </div>
           ) : (
-            <p className="mt-12 text-center text-sm text-slate-500">
+            <p className="mt-12 text-center text-sm text-slate-600">
               No hay artículos en esta categoría todavía.
             </p>
           )}

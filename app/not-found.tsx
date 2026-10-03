@@ -38,7 +38,7 @@ export default function NotFound() {
               <WaButton source="final_cta" pageType="home" intent="duda" label="Escríbenos por WhatsApp" size="lg" />
               <Link
                 href="/"
-                className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 px-6 font-semibold text-slate-800 hover:border-slate-400"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300 px-6 font-semibold text-slate-800 hover:border-slate-400"
               >
                 Ir al inicio
               </Link>
@@ -53,7 +53,7 @@ export default function NotFound() {
               ))}
             </ul>
           </div>
-          <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl bg-[#f6f1e9]">
+          <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-3xl bg-paper">
             <Image src="/illustrations/404.webp" alt="" fill sizes="(min-width: 768px) 24rem, 100vw" className="object-cover" />
           </div>
         </div>
