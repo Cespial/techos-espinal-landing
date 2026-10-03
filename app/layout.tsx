@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
 import { buildOrganizationNode, buildPersonNode, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/business";
 
@@ -143,6 +145,8 @@ export default function RootLayout({
         {children}
         <GoogleAnalytics />
         <MicrosoftClarity />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
