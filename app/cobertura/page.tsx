@@ -81,15 +81,15 @@ export default function CoberturaIndexPage() {
 
       <main id="main-content" className="pb-24 md:pb-0">
         {/* Hero */}
-        <section className="border-b border-slate-200 bg-white py-12 md:py-20">
+        <section className="border-b border-slate-200 bg-white py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <nav aria-label="Ruta de navegación" className="mb-4 text-sm text-slate-500">
-              <Link href="/" className="hover:text-orange-600">
+            <nav aria-label="Ruta de navegación" className="mb-4 text-sm text-slate-600">
+              <Link href="/" className="hover:text-orange-700">
                 Inicio
               </Link>{" "}
               <span aria-hidden="true">/</span> <span className="text-slate-700">Cobertura</span>
             </nav>
-            <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               {TITLE}
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{DESCRIPTION}</p>
@@ -101,9 +101,9 @@ export default function CoberturaIndexPage() {
         </section>
 
         {/* Municipios */}
-        <section className="bg-slate-50 py-12 md:py-20">
+        <section className="bg-slate-50 py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Municipios donde trabajamos
             </h2>
             <p className="mt-2 text-slate-600">
@@ -123,7 +123,7 @@ export default function CoberturaIndexPage() {
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
                       {m.description}
                     </p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-orange-600">
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange-700">
                       Ver cobertura en {m.name}
                       <ArrowRight
                         className="h-4 w-4 transition group-hover:translate-x-0.5"
@@ -138,9 +138,9 @@ export default function CoberturaIndexPage() {
         </section>
 
         {/* Servicios */}
-        <section className="bg-white py-12 md:py-20">
+        <section className="bg-white py-16 md:py-24">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Qué hacemos
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -154,7 +154,7 @@ export default function CoberturaIndexPage() {
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
                       {s.heroDescription}
                     </p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-orange-600">
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange-700">
                       Ver servicio
                       <ArrowRight
                         className="h-4 w-4 transition group-hover:translate-x-0.5"

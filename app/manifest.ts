@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BRAND } from "@/lib/brand";
 import { COMPANY_NAME } from "@/lib/conversion";
 
 // Iconos de marca (icon-192/512, maskable-512) entregados por el Espinal Design System,
@@ -13,7 +14,7 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#ea580c",
+    theme_color: BRAND,
     lang: "es-CO",
     categories: ["business", "utilities"],
     icons: [

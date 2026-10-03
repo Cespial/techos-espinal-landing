@@ -73,6 +73,8 @@ export type LineAccent = {
   priceBg: string;
   priceText: string;
   accentBar: string;
+  /** Clase completa (Tailwind v4 no genera clases construidas en tiempo de ejecución). */
+  borderTop: string;
 };
 
 export const LINE_ACCENT: Record<ServiceLineId, LineAccent> = {
@@ -82,6 +84,7 @@ export const LINE_ACCENT: Record<ServiceLineId, LineAccent> = {
     priceBg: "bg-orange-50",
     priceText: "text-orange-700",
     accentBar: "bg-orange-500",
+    borderTop: "border-t-orange-600",
   },
   pintura: {
     iconBg: "bg-cyan-100",
@@ -89,6 +92,7 @@ export const LINE_ACCENT: Record<ServiceLineId, LineAccent> = {
     priceBg: "bg-cyan-50",
     priceText: "text-cyan-700",
     accentBar: "bg-cyan-500",
+    borderTop: "border-t-cyan-600",
   },
   plomeria: {
     iconBg: "bg-emerald-100",
@@ -96,5 +100,6 @@ export const LINE_ACCENT: Record<ServiceLineId, LineAccent> = {
     priceBg: "bg-emerald-50",
     priceText: "text-emerald-700",
     accentBar: "bg-emerald-500",
+    borderTop: "border-t-emerald-600",
   },
 };

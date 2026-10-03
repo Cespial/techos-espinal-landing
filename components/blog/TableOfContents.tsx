@@ -34,7 +34,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
 
   return (
     <nav aria-label="Tabla de contenidos" className="rounded-2xl border border-slate-200 bg-white p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-600">
         En este artículo
       </p>
       <ul className="mt-3 space-y-1">
@@ -42,7 +42,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
           <li key={h.id}>
             <a
               href={`#${h.id}`}
-              className={`block rounded-lg px-2 py-1.5 text-sm transition-colors duration-200 ${
+              className={`flex min-h-10 items-center rounded-xl px-2 py-1 text-sm transition-colors duration-200 ${
                 h.level === 3 ? "pl-5" : ""
               } ${
                 activeId === h.id

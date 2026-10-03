@@ -55,7 +55,7 @@ export default async function ServicioPage({ params }: Props) {
   return (
     <>
       <SiteHeader pageType={pageType} linea={lineId} />
-      <main id="main-content" className="pb-20 md:pb-0">
+      <main id="main-content">
         <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: seo.heroTitle }]} />
         <PageHero
           pageType={pageType}

@@ -20,13 +20,13 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
               href={`/blog/${post.slug}`}
               className="group block rounded-lg p-2 transition-colors duration-200 hover:bg-slate-50"
             >
-              <span className="text-xs font-medium text-orange-600">
+              <span className="text-xs font-semibold text-orange-700">
                 {BLOG_CATEGORIES[post.category].label}
               </span>
               <p className="mt-0.5 text-sm font-medium leading-snug text-slate-800 group-hover:text-orange-700 transition-colors duration-200">
                 {post.title}
               </p>
-              <p className="mt-0.5 text-xs text-slate-500">
+              <p className="mt-0.5 text-xs text-slate-600">
                 {post.readingTimeMinutes} min de lectura
               </p>
             </Link>

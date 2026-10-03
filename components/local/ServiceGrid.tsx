@@ -30,7 +30,7 @@ export default function ServiceGrid({ pageType, linea, services, heading, intro,
                 <h3 className="text-base font-bold tracking-tight text-slate-900">{s.name}</h3>
                 <p className="mt-1 text-sm text-slate-600">{s.summary}</p>
                 <p className="mt-2 text-sm text-slate-900">
-                  <span className="text-slate-500">desde </span>
+                  <span className="text-slate-600">desde </span>
                   <span className="font-semibold tabular-nums">{s.basePrice.replace(" COP", "")}</span>
                 </p>
               </div>

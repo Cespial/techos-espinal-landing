@@ -36,7 +36,7 @@ export default function HomeHero() {
           </dl>
         </div>
         <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#f6f1e9] md:aspect-[4/5]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-paper md:aspect-[4/5]">
             <Image
               src="/illustrations/hero-techo.webp"
               alt="Ilustración de un techo de teja de barro con canal y escalera, como los que reparamos en el Valle de Aburrá"

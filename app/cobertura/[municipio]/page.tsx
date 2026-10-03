@@ -48,7 +48,7 @@ export default async function CoberturaPage({ params }: Props) {
   return (
     <>
       <SiteHeader pageType={pageType} municipio={seo.name} />
-      <main id="main-content" className="pb-20 md:pb-0">
+      <main id="main-content">
         <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: "Cobertura", href: "/cobertura" }, { name: seo.name }]} />
         <PageHero
           pageType={pageType}
@@ -83,7 +83,7 @@ export default async function CoberturaPage({ params }: Props) {
                         <li key={s.id} className="flex items-baseline justify-between gap-3 py-2.5 text-sm">
                           <span className="text-slate-800">{s.name}</span>
                           <span className="shrink-0 font-semibold tabular-nums text-slate-900">
-                            <span className="font-normal text-slate-500">desde </span>
+                            <span className="font-normal text-slate-600">desde </span>
                             {s.basePrice.replace(" COP", "")}
                           </span>
                         </li>
@@ -100,7 +100,7 @@ export default async function CoberturaPage({ params }: Props) {
           </div>
         </section>
 
-        {profile && <LocalZones municipio={seo.name} profile={profile} tone="white" />}
+        {profile && <LocalZones municipio={seo.name} profile={profile} tone="paper" />}
         <TrustSignals municipality={seo.name} />
         <CtaBand
           pageType={pageType}

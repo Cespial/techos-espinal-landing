@@ -29,7 +29,7 @@ export default function ServiceCards({ pageType, municipio }: Props) {
             const services = SERVICE_DATA[id].slice(0, 4);
             return (
               <article key={id} className="flex flex-col rounded-3xl border border-slate-200 bg-white">
-                <div className={`border-b border-slate-200 p-6 border-t-4 rounded-t-3xl ${accent.accentBar.replace("bg-", "border-t-")}`}>
+                <div className={`border-b border-slate-200 p-6 border-t-4 rounded-t-3xl ${accent.borderTop}`}>
                   <Image
                     src={`/illustrations/icono-${id}.webp`}
                     alt=""
@@ -46,7 +46,7 @@ export default function ServiceCards({ pageType, municipio }: Props) {
                     <li key={service.id} className="flex items-baseline justify-between gap-3 py-3">
                       <span className="text-sm text-slate-800">{service.name}</span>
                       <span className="shrink-0 text-sm font-semibold tabular-nums text-slate-900">
-                        <span className="font-normal text-slate-500">desde </span>
+                        <span className="font-normal text-slate-600">desde </span>
                         {service.basePrice.replace(" COP", "")}
                       </span>
                     </li>

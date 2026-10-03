@@ -13,7 +13,6 @@ import LocalLinks from "@/components/local/LocalLinks";
 import FaqSection from "@/components/local/FaqSection";
 import WhatsAppComposer from "@/components/local/WhatsAppComposer";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
-import WhatsAppFab from "@/components/ui/WhatsAppFab";
 
 const businessSchema = {
   "@context": "https://schema.org",
@@ -49,7 +48,6 @@ export default function Home() {
       </main>
       <SiteFooter />
       <MobileStickyBar pageType="home" />
-      <WhatsAppFab pageType="home" />
       <JsonLd data={businessSchema} />
     </>
   );

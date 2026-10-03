@@ -14,11 +14,11 @@ type Props = WaLinkOptions & {
 };
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#15803d] active:scale-[0.99]";
+  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wa active:scale-[0.99]";
 const VARIANT = {
-  primary: "bg-[#15803d] text-white hover:bg-[#166d34] shadow-[0_8px_24px_-12px_rgba(21,128,61,0.6)]",
-  secondary: "border-2 border-[#15803d] bg-white text-[#166534] hover:bg-[#15803d] hover:text-white",
-  inline: "text-[#166534] underline decoration-[#15803d]/40 underline-offset-4 hover:decoration-[#15803d] rounded-none",
+  primary: "bg-wa text-white hover:bg-wa-hover shadow-[0_8px_24px_-12px_rgba(21,128,61,0.6)]",
+  secondary: "border-2 border-wa bg-white text-wa-hover hover:bg-wa hover:text-white",
+  inline: "text-wa-hover underline decoration-wa/40 underline-offset-4 hover:decoration-wa rounded-none",
 };
 const SIZE = { md: "min-h-11 px-4 text-sm", lg: "min-h-13 px-6 text-base" };
 

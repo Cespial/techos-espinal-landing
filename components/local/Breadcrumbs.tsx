@@ -6,7 +6,7 @@ import JsonLd from "./JsonLd";
 export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <nav aria-label="Ruta" className="mx-auto max-w-6xl px-4 pt-5 sm:px-6">
-      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500">
+      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-600">
         {items.map((c, i) => {
           const last = i === items.length - 1;
           return (
@@ -17,7 +17,7 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
                   {c.name}
                 </span>
               ) : (
-                <Link href={c.href} className="hover:text-slate-900 hover:underline">
+                <Link href={c.href} className="inline-flex min-h-10 items-center hover:text-slate-900 hover:underline">
                   {c.name}
                 </Link>
               )}

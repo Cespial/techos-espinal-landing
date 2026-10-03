@@ -36,13 +36,13 @@ export default function SiteFooter() {
           <ul className="mt-3 space-y-1 text-sm text-slate-700">
             {LINE_OPTIONS.map((line) => (
               <li key={line.id}>
-                <Link href={`/servicios/${line.id}`} className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+                <Link href={`/servicios/${line.id}`} className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                   {line.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/cobertura" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+              <Link href="/cobertura" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                 Los 12 municipios que atendemos
               </Link>
             </li>
@@ -53,36 +53,36 @@ export default function SiteFooter() {
           <p className="text-sm font-semibold">Más</p>
           <ul className="mt-3 space-y-1 text-sm text-slate-700">
             <li>
-              <Link href="/nosotros" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+              <Link href="/nosotros" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                 Quiénes somos
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+              <Link href="/blog" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                 Guías y precios
               </Link>
             </li>
             {GBP_URL && (
               <li>
-                <a href={GBP_URL} target="_blank" rel="noreferrer noopener" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+                <a href={GBP_URL} target="_blank" rel="noreferrer noopener" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                   Reseñas en Google
                 </a>
               </li>
             )}
             <li>
-              <Link href="/terminos" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+              <Link href="/terminos" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                 Términos y condiciones
               </Link>
             </li>
             <li>
-              <Link href="/privacidad" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
+              <Link href="/privacidad" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
                 Política de privacidad
               </Link>
             </li>
           </ul>
         </nav>
       </div>
-      <p className="mx-auto mt-10 max-w-6xl px-4 text-xs text-slate-500 sm:px-6">
+      <p className="mx-auto mt-10 max-w-6xl px-4 text-xs text-slate-600 sm:px-6">
         © {new Date().getFullYear()} {OWNER.name}. {NAP.area}.
       </p>
     </footer>

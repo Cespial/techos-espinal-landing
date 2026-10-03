@@ -51,7 +51,7 @@ export default function SiteHeader({ pageType, linea, municipio }: Props) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-slate-800 hover:bg-slate-50"
+                  className="flex min-h-11 items-center rounded-xl px-3 text-sm font-medium text-slate-800 hover:bg-slate-50"
                 >
                   {link.label}
                 </Link>

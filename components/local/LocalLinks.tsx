@@ -15,11 +15,11 @@ export default function LocalLinks({ tone = "white" }: Props) {
   const bg = tone === "white" ? "bg-white" : "bg-slate-50";
 
   return (
-    <section className={`border-t border-slate-200 ${bg} py-12 md:py-16`} aria-labelledby="local-links-heading">
+    <section className={`border-t border-slate-200 ${bg} py-16 md:py-24`} aria-labelledby="local-links-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
           <div>
-            <h2 id="local-links-heading" className="text-xl font-semibold tracking-tight text-slate-900 md:text-2xl">
+            <h2 id="local-links-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Servicios por municipio
             </h2>
             <p className="mt-2 max-w-3xl text-sm text-slate-600">
@@ -40,7 +40,7 @@ export default function LocalLinks({ tone = "white" }: Props) {
               ))}
             </ul>
           </div>
-          <div className="relative -order-1 aspect-[3/2] overflow-hidden rounded-3xl bg-[#f6f1e9] md:order-none">
+          <div className="relative -order-1 aspect-[3/2] overflow-hidden rounded-3xl bg-paper md:order-none">
             <Image
               src="/illustrations/mapa-valle.webp"
               alt="Ilustración del Valle de Aburrá: casas de techo de teja entre las montañas y el río Medellín"
@@ -72,7 +72,7 @@ export default function LocalLinks({ tone = "white" }: Props) {
                   <li key={`${p.lineSlug}-${p.municipioSlug}`}>
                     <Link
                       href={`/servicios/${p.lineSlug}/${p.municipioSlug}`}
-                      className="inline-flex min-h-8 items-center text-sm text-slate-600 hover:text-orange-700 hover:underline"
+                      className="inline-flex min-h-10 items-center text-sm text-slate-600 hover:text-orange-700 hover:underline"
                     >
                       {p.h1}
                     </Link>

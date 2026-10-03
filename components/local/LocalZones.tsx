@@ -1,12 +1,12 @@
 import type { MunicipalityProfile } from "@/lib/seo-data";
 import { joinSectors } from "@/lib/seo-data";
 
-type Props = { municipio: string; profile: MunicipalityProfile; tone?: "white" | "slate" };
+type Props = { municipio: string; profile: MunicipalityProfile; tone?: "white" | "slate" | "paper" };
 
 /** Sectores, vivienda y clima del municipio: el contenido propio de cada página local. */
 export default function LocalZones({ municipio, profile, tone = "slate" }: Props) {
   return (
-    <section className={`border-t border-slate-200 py-16 md:py-24 ${tone === "slate" ? "bg-slate-50" : "bg-white"}`} aria-labelledby="zones-heading">
+    <section className={`border-t border-slate-200 py-16 md:py-24 ${tone === "slate" ? "bg-slate-50" : tone === "paper" ? "bg-paper" : "bg-white"}`} aria-labelledby="zones-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="zones-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
           Zonas que atendemos en {municipio}

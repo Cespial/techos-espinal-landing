@@ -29,8 +29,8 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
       <a
         href={waShareLink}
         target="_blank"
-        rel="noreferrer"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-[#15803d] transition-all duration-200 hover:border-[#15803d] hover:bg-[#15803d]/5"
+        rel="noreferrer noopener"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-wa transition-all duration-200 hover:border-wa hover:bg-wa/5"
         aria-label="Compartir por WhatsApp"
       >
         <WhatsAppIcon className="h-4 w-4" />
@@ -38,7 +38,7 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-all duration-200 hover:border-slate-400 hover:bg-slate-50"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all duration-200 hover:border-slate-400 hover:bg-slate-50"
         aria-label="Copiar enlace"
       >
         {copied ? (
