@@ -20,8 +20,8 @@ export default function LocalLinks({ tone = "white" }: Props) {
           Servicios por municipio
         </h2>
         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-          Atiendo los 12 municipios con los mismos precios de referencia y la misma garantía. Elige el tuyo
-          para ver qué hago allí.
+          Atendemos los 12 municipios con los mismos precios de referencia y la misma garantía. Elige el tuyo
+          para ver qué hacemos allí.
         </p>
 
         <ul className="mt-5 flex flex-wrap gap-2" aria-label="Municipios">

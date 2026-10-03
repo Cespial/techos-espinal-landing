@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Espinal Multiservicios",
   },
   description:
-    "Henrry Espinal repara techos, pinta y arregla la plomería de tu casa o negocio en Medellín y Valle de Aburrá. Visita gratis, precio por escrito y garantía firmada. Escríbele por WhatsApp.",
+    "Reparamos techos, pintamos y arreglamos la plomería de tu casa o negocio en Medellín y Valle de Aburrá. Equipo de Henrry Espinal: visita gratis, precio por escrito y garantía firmada. Escríbenos por WhatsApp.",
   keywords: [
     "multiservicios Medellín",
     "techos y cubiertas Medellín",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Espinal Multiservicios",
     title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Henrry Espinal va a tu casa, revisa gratis y te da el precio por escrito. Medellín y 11 municipios.",
+      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín y 11 municipios.",
     images: [
       {
         url: "/og/og-default.png",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Henrry Espinal va a tu casa, revisa gratis y te da el precio por escrito. Medellín y 11 municipios.",
+      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín y 11 municipios.",
     images: ["/og/og-default.png"],
   },
   robots: {

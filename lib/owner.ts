@@ -11,18 +11,18 @@ export const OWNER = {
   givenName: "Henrry",
   familyName: "Espinal",
   /** Cómo se presenta en la página. */
-  role: "Dueño y técnico principal",
+  role: "Fundador y técnico principal",
   /** Foto retrato en /public. null hasta recibirla: la UI no muestra marcador. */
   photo: null as string | null,
   /** Año en que empezó en el oficio. null hasta confirmarlo: no se publica cifra. */
   since: null as number | null,
   /** Frases cortas en primera persona. Se muestran solo las que existan. */
   bio: [
-    "Voy yo mismo a tu casa o negocio, reviso el problema y te explico qué hay que hacer.",
-    "Te doy el precio por escrito antes de empezar y no lo cambio sin acordarlo contigo.",
+    "Nuestro equipo va a tu casa o negocio, revisa el problema y te explica qué hay que hacer.",
+    "Te damos el precio por escrito antes de empezar y no lo cambiamos sin acordarlo contigo.",
     "Cada trabajo queda con garantía firmada.",
   ],
-  promise: "Respondo yo mismo por WhatsApp, en menos de 2 horas en horario laboral.",
+  promise: "Henrry y su equipo responden por WhatsApp en menos de 2 horas en horario laboral.",
   city: "Medellín",
 } as const;
 

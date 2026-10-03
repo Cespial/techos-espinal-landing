@@ -19,7 +19,7 @@ export default function MobileStickyBar({ pageType, linea, municipio, servicio }
           linea={linea}
           municipio={municipio}
           servicio={servicio}
-          label="Escribir a Henrry"
+          label="Escríbenos por WhatsApp"
           size="lg"
           className="flex-1"
         />

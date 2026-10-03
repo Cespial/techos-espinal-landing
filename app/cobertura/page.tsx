@@ -104,7 +104,7 @@ export default function CoberturaIndexPage() {
         <section className="bg-slate-50 py-12 md:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Municipios donde trabajo
+              Municipios donde trabajamos
             </h2>
             <p className="mt-2 text-slate-600">
               Selecciona tu municipio para ver los servicios disponibles y precios de referencia.
@@ -141,7 +141,7 @@ export default function CoberturaIndexPage() {
         <section className="bg-white py-12 md:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Qué hago
+              Qué hacemos
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               {SERVICE_LINE_SEO.map((s) => (

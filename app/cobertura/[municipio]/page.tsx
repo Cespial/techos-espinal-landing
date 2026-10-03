@@ -62,10 +62,10 @@ export default async function CoberturaPage({ params }: Props) {
         <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24" aria-labelledby="lines-heading">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 id="lines-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Qué hago en {seo.name}
+              Qué hacemos en {seo.name}
             </h2>
             <p className="mt-3 max-w-2xl text-base text-slate-600">
-              Precios de referencia. El valor final te lo doy por escrito después de la visita gratis.
+              Precios de referencia. El valor final te lo damos por escrito después de la visita gratis.
             </p>
             <div className="mt-8 grid gap-5 lg:grid-cols-3">
               {LINE_OPTIONS.map((line) => {
@@ -106,7 +106,7 @@ export default async function CoberturaPage({ params }: Props) {
           pageType={pageType}
           municipio={seo.name}
           heading={`¿Necesitas ayuda en ${seo.name}?`}
-          body="Cuéntame qué pasa y coordinamos la visita gratis. Te doy el precio por escrito antes de empezar."
+          body="Cuéntanos qué pasa y coordinamos la visita gratis. Te damos el precio por escrito antes de empezar."
         />
         <RelatedLinks
           groups={[
@@ -115,7 +115,7 @@ export default async function CoberturaPage({ params }: Props) {
               links: getAllPosts().slice(0, 4).map((post) => ({ href: `/blog/${post.slug}`, label: post.title })),
             },
             {
-              heading: "También atiendo en",
+              heading: "También atendemos en",
               links: MUNICIPALITY_SEO.filter((m) => m.slug !== municipio).map((m) => ({ href: `/cobertura/${m.slug}`, label: m.name })),
             },
           ]}

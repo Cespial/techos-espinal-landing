@@ -21,7 +21,7 @@ export default function SiteHeader({ pageType, linea, municipio }: Props) {
           <Image src="/logo-espinal.svg" alt="" width={34} height={34} priority />
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="truncate text-[15px] font-bold tracking-tight text-slate-900">{COMPANY_NAME}</span>
-            <span className="truncate text-xs text-slate-600">de {OWNER.name}</span>
+            <span className="truncate text-xs text-slate-600">Equipo de {OWNER.name}</span>
           </span>
         </Link>
 

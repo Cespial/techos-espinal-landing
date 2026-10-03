@@ -10,7 +10,7 @@ export default function ProcessSteps({ pageType, municipio, linea, heading }: Pr
     <section className="py-16 md:py-24" aria-labelledby="process-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="process-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-          {heading ?? (municipio ? `Así trabajo en ${municipio}` : "Así trabajo")}
+          {heading ?? (municipio ? `Así trabajamos en ${municipio}` : "Así trabajamos")}
         </h2>
         <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS_STEPS.map((step) => (

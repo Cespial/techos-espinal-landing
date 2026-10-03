@@ -17,12 +17,12 @@ const PROMISES = [
   {
     icon: Search,
     title: "Visita técnica gratis",
-    text: "Voy, reviso el problema y te explico qué hay que hacer antes de cobrar.",
+    text: "Vamos, revisamos el problema y te explicamos qué hay que hacer antes de cobrar.",
   },
   {
     icon: ReceiptText,
     title: "Precio claro antes de empezar",
-    text: "Te doy la cotización por escrito. Si cambia el alcance, lo acordamos primero.",
+    text: "Te damos la cotización por escrito. Si cambia el alcance, lo acordamos primero.",
   },
   {
     icon: ShieldCheck,
@@ -39,7 +39,7 @@ const PROMISES = [
 export default function TrustSignals({
   municipality,
   tone = "slate",
-  heading = "Trabajo con reglas claras",
+  heading = "Trabajamos con reglas claras",
 }: Props) {
   const place = municipality ? ` en ${municipality}` : "";
   const bg = tone === "white" ? "bg-white" : "bg-slate-50";
@@ -52,7 +52,7 @@ export default function TrustSignals({
           {heading}
         </h2>
         <p className="mt-3 max-w-3xl text-base text-slate-600">
-          Así atiendo cada casa y negocio{place}: lo que prometo queda por escrito.
+          Así atendemos cada casa y negocio{place}: lo que prometemos queda por escrito.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -104,11 +104,11 @@ export default function TrustSignals({
           </div>
         ) : (
           <p className="mt-8 text-sm text-slate-500">
-            ¿Ya trabajé en tu casa?{" "}
+            ¿Ya trabajamos en tu casa?{" "}
             <Link href="/nosotros" className="font-semibold text-orange-700 hover:underline">
-              Conoce a Henrry
+              Conoce al equipo
             </Link>{" "}
-            y cuéntame cómo te fue por WhatsApp.
+            y cuéntanos cómo te fue por WhatsApp.
           </p>
         )}
       </div>

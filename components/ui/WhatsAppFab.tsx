@@ -24,7 +24,7 @@ export default function WhatsAppFab({ pageType = "home" }: { pageType?: PageType
       target="_blank"
       rel="noreferrer"
       onClick={() => trackWhatsApp({ source: "fab", page_type: pageType })}
-      aria-label="Escribir a Henrry por WhatsApp"
+      aria-label="Escríbenos por WhatsApp"
       className={`fixed bottom-6 right-6 z-[70] hidden items-center gap-2 rounded-full bg-[#15803d] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl md:flex ${
         visible
           ? "translate-y-0 opacity-100"
@@ -32,7 +32,7 @@ export default function WhatsAppFab({ pageType = "home" }: { pageType?: PageType
       }`}
     >
       <WhatsAppIcon className="h-6 w-6" />
-      <span>Escribir a Henrry</span>
+      <span>Escríbenos</span>
     </a>
   );
 }

@@ -24,8 +24,8 @@ import CtaBand from "@/components/local/CtaBand";
 import WaButton from "@/components/local/WaButton";
 import CallButton from "@/components/local/CallButton";
 
-const TITLE = `${OWNER.name}, el dueño de ${COMPANY_NAME}`;
-const DESCRIPTION = `${OWNER.name} repara techos, pinta y arregla la plomería de casas y negocios en Medellín y 11 municipios. Va él mismo, revisa gratis, da el precio por escrito y responde con garantía firmada.`;
+const TITLE = `Quiénes somos: el equipo de ${OWNER.name} en ${COMPANY_NAME}`;
+const DESCRIPTION = `${COMPANY_NAME} es una empresa de techos, pintura y plomería a domicilio en Medellín y 11 municipios, fundada y dirigida por ${OWNER.name}. Revisamos gratis, damos el precio por escrito y respondemos con garantía firmada.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -37,22 +37,22 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     question: `¿Quién es ${OWNER.name}?`,
-    answer: `${OWNER.name} es el dueño y técnico principal de ${COMPANY_NAME}. Él mismo va a las casas y negocios en Medellín y el Valle de Aburrá a revisar techos, pintura y plomería, da el precio por escrito antes de empezar y entrega cada trabajo con garantía firmada.`,
+    answer: `${OWNER.name} es el fundador y técnico principal de ${COMPANY_NAME}. Dirige el equipo que atiende casas y negocios en Medellín y el Valle de Aburrá en techos, pintura y plomería, con precio por escrito antes de empezar y garantía firmada en cada trabajo.`,
   },
   {
     question: `¿Qué hace ${COMPANY_NAME}?`,
     answer: `Tres cosas: techos y cubiertas (goteras, impermeabilización, canales, tejas), pintura y acabados (interior, exterior, resanes, humedad) y plomería (fugas, destapes, grifería, sanitarios). En total 24 servicios con precio de referencia publicado.`,
   },
   {
-    question: `¿En qué municipios atiende ${OWNER.givenName}?`,
+    question: `¿En qué municipios atiende ${COMPANY_NAME}?`,
     answer: `Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota, Rionegro, La Ceja y Marinilla, en Antioquia.`,
   },
   {
     question: "¿Cuánto cuesta la visita?",
-    answer: "Nada. Henrry va, revisa el problema y te explica qué hay que hacer. Cobra solo si decides hacer el trabajo, con el precio que te dio por escrito.",
+    answer: "Nada. Vamos, revisamos el problema y te explicamos qué hay que hacer. Cobramos solo si decides hacer el trabajo, con el precio que te dimos por escrito.",
   },
   {
-    question: `¿Cómo contactar a ${OWNER.givenName}?`,
+    question: `¿Cómo contactar a ${COMPANY_NAME}?`,
     answer: `Por WhatsApp o llamada al ${PHONE_DISPLAY}. Horario: ${COVERAGE_SCHEDULE.hours} ${COVERAGE_SCHEDULE.responseTime} ${COVERAGE_SCHEDULE.urgencyNote}`,
   },
   {
@@ -83,11 +83,11 @@ export default function NosotrosPage() {
           <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-start">
             <div>
               <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                {OWNER.name}, el dueño de {COMPANY_NAME}
+                Somos {COMPANY_NAME}, el equipo de {OWNER.name}
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-700">
-                Soy {OWNER.givenName}. Arreglo techos, pinto y reparo la plomería de casas y negocios en Medellín y el
-                Valle de Aburrá. Esta página la mantengo yo y el número que ves es el mío.
+                Arreglamos techos, pintamos y reparamos la plomería de casas y negocios en Medellín y el Valle de
+                Aburrá. {OWNER.givenName} fundó la empresa, dirige el equipo y sigue yendo a las visitas técnicas.
               </p>
               <ul className="mt-6 space-y-3 text-base leading-relaxed text-slate-700">
                 {OWNER.bio.map((line) => (
@@ -97,7 +97,7 @@ export default function NosotrosPage() {
                 ))}
               </ul>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <WaButton source="hero" pageType={pageType} label={`Escribirle a ${OWNER.givenName}`} size="lg" />
+                <WaButton source="hero" pageType={pageType} label="Escríbenos por WhatsApp" size="lg" />
                 <CallButton source="hero" pageType={pageType} size="lg" />
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function NosotrosPage() {
         <section className="border-t border-slate-200 py-16 md:py-24" aria-labelledby="what-heading">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 id="what-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Qué hago
+              Qué hacemos
             </h2>
             <div className="mt-8 grid gap-8 md:grid-cols-3">
               {LINE_OPTIONS.map((line) => {
@@ -158,13 +158,13 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <ProcessSteps pageType={pageType} heading="Así trabajo" />
-        <TrustSignals heading="Mis reglas" />
+        <ProcessSteps pageType={pageType} heading="Así trabajamos" />
+        <TrustSignals heading="Nuestras reglas" />
 
         <section className="border-t border-slate-200 bg-white py-16 md:py-24" aria-labelledby="where-heading">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 id="where-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Dónde trabajo
+              Dónde trabajamos
             </h2>
             <p className="mt-3 max-w-2xl text-base text-slate-600">
               Medellín, Valle de Aburrá y Oriente cercano. {COVERAGE_SCHEDULE.hours} {COVERAGE_SCHEDULE.urgencyNote}
@@ -181,8 +181,8 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <FaqSection items={FAQS} heading={`Preguntas sobre ${OWNER.givenName} y ${COMPANY_NAME}`} tone="slate" />
-        <CtaBand pageType={pageType} heading="¿Hablamos de tu casa?" body="Escríbeme por WhatsApp con una foto del problema y te digo qué servicio aplica y cuándo puedo ir." />
+        <FaqSection items={FAQS} heading={`Preguntas sobre ${COMPANY_NAME}`} tone="slate" />
+        <CtaBand pageType={pageType} heading="¿Hablamos de tu casa?" body="Escríbenos por WhatsApp con una foto del problema y te decimos qué servicio aplica y cuándo podemos ir." />
       </main>
       <SiteFooter />
       <MobileStickyBar pageType={pageType} />
