@@ -17,12 +17,12 @@ const PROMISES = [
   {
     icon: Search,
     title: "Visita técnica gratis",
-    text: "Vamos, revisamos el problema y te explicamos qué hay que hacer antes de cobrar.",
+    text: "Voy, reviso el problema y te explico qué hay que hacer antes de cobrar.",
   },
   {
     icon: ReceiptText,
     title: "Precio claro antes de empezar",
-    text: "Cotización por escrito. Si cambia el alcance, lo acordamos contigo primero.",
+    text: "Te doy la cotización por escrito. Si cambia el alcance, lo acordamos primero.",
   },
   {
     icon: ShieldCheck,
@@ -32,14 +32,14 @@ const PROMISES = [
   {
     icon: MapPin,
     title: "12 municipios",
-    text: "Medellín, Valle de Aburrá y Oriente cercano, con el mismo equipo y la misma garantía.",
+    text: "Medellín, Valle de Aburrá y Oriente cercano, con la misma garantía en todos.",
   },
 ] as const;
 
 export default function TrustSignals({
   municipality,
   tone = "slate",
-  heading = "Trabajamos con reglas claras",
+  heading = "Trabajo con reglas claras",
 }: Props) {
   const place = municipality ? ` en ${municipality}` : "";
   const bg = tone === "white" ? "bg-white" : "bg-slate-50";
@@ -48,14 +48,11 @@ export default function TrustSignals({
   return (
     <section className={`border-t border-slate-200 ${bg} py-16 md:py-24`} aria-labelledby="trust-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-          CONFIANZA
-        </p>
-        <h2 id="trust-heading" className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+        <h2 id="trust-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
           {heading}
         </h2>
         <p className="mt-3 max-w-3xl text-base text-slate-600">
-          Así atendemos cada casa y negocio{place}: lo que prometemos queda por escrito.
+          Así atiendo cada casa y negocio{place}: lo que prometo queda por escrito.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -107,11 +104,11 @@ export default function TrustSignals({
           </div>
         ) : (
           <p className="mt-8 text-sm text-slate-500">
-            ¿Ya trabajamos contigo?{" "}
+            ¿Ya trabajé en tu casa?{" "}
             <Link href="/nosotros" className="font-semibold text-orange-700 hover:underline">
-              Conoce al equipo
+              Conoce a Henrry
             </Link>{" "}
-            y cuéntanos cómo te fue por WhatsApp.
+            y cuéntame cómo te fue por WhatsApp.
           </p>
         )}
       </div>

@@ -5,6 +5,7 @@ import {
   COVERAGE_SCHEDULE,
 } from "./conversion";
 import { MUNICIPALITY_SEO } from "./seo-data";
+import { OWNER, PERSON_ID } from "./owner";
 
 /* ------------------------------------------------------------------ */
 /*  ENTIDAD DEL NEGOCIO (fuente única para JSON-LD y NAP visible)      */
@@ -24,10 +25,6 @@ export const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "";
 export const INSTAGRAM_URL = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "";
 
 export const SAME_AS = [GBP_URL, FACEBOOK_URL, INSTAGRAM_URL].filter(Boolean);
-
-// Dueño o responsable técnico que firma el blog (E-E-A-T). Si no está
-// definido, el autor sigue siendo la organización.
-export const OWNER_NAME = process.env.NEXT_PUBLIC_OWNER_NAME ?? "";
 
 export const PRICE_RANGE = "$$";
 
@@ -131,6 +128,8 @@ export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
     knowsAbout: KNOWS_ABOUT,
     openingHoursSpecification: OPENING_HOURS_SPECIFICATION,
     parentOrganization: { "@id": ORGANIZATION_ID },
+    founder: { "@id": PERSON_ID },
+    employee: [{ "@id": PERSON_ID }],
     // NOTA SEO: sin aggregateRating ni review. Solo se añaden cuando existan
     // reseñas reales verificables (Google Business Profile).
   };
@@ -170,22 +169,36 @@ export function buildOrganizationNode() {
     knowsAbout: KNOWS_ABOUT,
   };
   if (SAME_AS.length > 0) node.sameAs = SAME_AS;
-  if (OWNER_NAME) {
-    node.founder = { "@type": "Person", name: OWNER_NAME, url: `${SITE_URL}/nosotros` };
-  }
+  node.founder = { "@id": PERSON_ID };
   return node;
 }
 
-/** Autor de los artículos del blog: Person si hay dueño declarado, si no la organización. */
+/** Nodo Person de Henrry Espinal, dueño y técnico principal. Se emite en el layout raíz. */
+export function buildPersonNode() {
+  const node: Record<string, unknown> = {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: OWNER.name,
+    givenName: OWNER.givenName,
+    familyName: OWNER.familyName,
+    jobTitle: OWNER.role,
+    description: OWNER.bio.join(" "),
+    url: `${SITE_URL}/nosotros`,
+    telephone: PHONE_E164,
+    worksFor: { "@id": ORGANIZATION_ID },
+    knowsAbout: KNOWS_ABOUT,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: OWNER.city,
+      addressRegion: "Antioquia",
+      addressCountry: "CO",
+    },
+  };
+  if (OWNER.photo) node.image = `${SITE_URL}${OWNER.photo}`;
+  return node;
+}
+
+/** Autor de los artículos del blog: Henrry Espinal (Person). */
 export function buildBlogAuthorNode() {
-  if (OWNER_NAME) {
-    return {
-      "@type": "Person",
-      name: OWNER_NAME,
-      jobTitle: "Responsable técnico",
-      worksFor: { "@id": ORGANIZATION_ID },
-      url: `${SITE_URL}/nosotros`,
-    };
-  }
-  return { "@id": ORGANIZATION_ID, "@type": "Organization", name: COMPANY_NAME, url: SITE_URL };
+  return { "@id": PERSON_ID, "@type": "Person", name: OWNER.name, url: `${SITE_URL}/nosotros` };
 }

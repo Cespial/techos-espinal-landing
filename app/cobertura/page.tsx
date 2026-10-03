@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, ArrowRight, Phone } from "lucide-react";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
-import LocalLinks from "@/components/sections/LocalLinks";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
+import LocalLinks from "@/components/local/LocalLinks";
 import {
   COMPANY_NAME,
   SITE_URL,
@@ -82,7 +82,7 @@ export default function CoberturaIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
-      <BlogHeader />
+      <SiteHeader pageType="cobertura_index" />
 
       <main id="main-content" className="pt-20 pb-24 md:pb-0">
         {/* Hero */}
@@ -188,8 +188,8 @@ export default function CoberturaIndexPage() {
         <LocalLinks tone="slate" />
       </main>
 
-      <BlogFooter />
-      <MobileStickyBarGlobal />
+      <SiteFooter />
+      <MobileStickyBar pageType="cobertura_index" />
     </>
   );
 }

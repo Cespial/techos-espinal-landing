@@ -3,7 +3,7 @@ import { Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
-import { buildOrganizationNode, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/business";
+import { buildOrganizationNode, buildPersonNode, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/business";
 
 const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 import "./globals.css";
@@ -18,11 +18,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
+    default: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     template: "%s | Espinal Multiservicios",
   },
   description:
-    "Espinal Multiservicios en Medellín y Valle de Aburrá: techos y cubiertas, pintura y acabados, plomería. Cotiza por WhatsApp, llamada o formulario corto.",
+    "Henrry Espinal repara techos, pinta y arregla la plomería de tu casa o negocio en Medellín y Valle de Aburrá. Visita gratis, precio por escrito y garantía firmada. Escríbele por WhatsApp.",
   keywords: [
     "multiservicios Medellín",
     "techos y cubiertas Medellín",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: SITE_URL,
     siteName: "Espinal Multiservicios",
-    title: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
+    title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Soluciones para hogares y negocios en Medellín, Valle de Aburrá y Antioquia según disponibilidad.",
+      "Henrry Espinal va a tu casa, revisa gratis y te da el precio por escrito. Medellín y 11 municipios.",
     images: [
       {
         url: "/og/og-default.png",
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Espinal Multiservicios | Techos, Pintura y Plomería en Medellín",
+    title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Cotiza por WhatsApp o llamada. Cobertura en Medellín, Valle de Aburrá y Antioquia.",
+      "Henrry Espinal va a tu casa, revisa gratis y te da el precio por escrito. Medellín y 11 municipios.",
     images: ["/og/og-default.png"],
   },
   robots: {
@@ -92,7 +92,6 @@ export default function RootLayout({
         <meta name="geo.placename" content="Medellín" />
         <meta name="geo.position" content="6.2518;-75.5636" />
         <meta name="ICBM" content="6.2518, -75.5636" />
-        <link rel="preload" href="/video/slow-majestic-poster.jpg" as="image" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />
         <script
@@ -123,6 +122,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               ...buildOrganizationNode(),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              ...buildPersonNode(),
             }),
           }}
         />

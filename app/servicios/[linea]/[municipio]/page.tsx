@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import BlogCTA from "@/components/blog/BlogCTA";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import {
@@ -27,9 +27,9 @@ import {
   getMunicipalityProfile,
   joinSectors,
 } from "@/lib/seo-data";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 import { buildLocalBusinessNode } from "@/lib/business";
-import TrustSignals from "@/components/sections/TrustSignals";
+import TrustSignals from "@/components/local/TrustSignals";
 
 export function generateStaticParams() {
   return CROSS_PAGE_SEO.map((p) => ({
@@ -152,7 +152,7 @@ export default async function CrossPage({ params }: Props) {
 
   return (
     <>
-      <BlogHeader />
+      <SiteHeader pageType="servicio_municipio" />
 
       <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Breadcrumb nav */}
@@ -254,7 +254,7 @@ export default async function CrossPage({ params }: Props) {
                         <div className="flex items-start justify-between gap-3">
                           <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
                           <div className={`shrink-0 rounded-lg px-2.5 py-1 text-right ${accent.priceBg}`}>
-                            <p className="text-[10px] uppercase tracking-wider text-slate-500">Desde</p>
+                            <p className="text-xs text-slate-600">desde</p>
                             <p className={`text-sm font-bold ${accent.priceText}`}>{service.basePrice}</p>
                           </div>
                         </div>
@@ -408,8 +408,8 @@ export default async function CrossPage({ params }: Props) {
         <TrustSignals municipality={muniSeo.name} />
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="servicio_municipio" />
+      <SiteFooter />
 
       <script
         type="application/ld+json"

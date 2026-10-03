@@ -1,0 +1,41 @@
+import { OWNER } from "@/lib/owner";
+import WaButton from "./WaButton";
+import CallButton from "./CallButton";
+import OwnerCard from "./OwnerCard";
+
+const TRUST = [
+  { title: "Visita técnica gratis", text: "Reviso el problema y te explico qué hay que hacer." },
+  { title: "Precio por escrito", text: "Sabes cuánto cuesta antes de que empiece." },
+  { title: "Garantía firmada", text: "Cada trabajo queda respaldado por escrito." },
+];
+
+export default function HomeHero() {
+  return (
+    <section className="bg-white">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 sm:px-6 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center md:pb-24 md:pt-16">
+        <div>
+          <h1 className="text-[2rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl md:text-[3.4rem]">
+            Reparación de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá
+          </h1>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-700">
+            Soy {OWNER.name}. Voy a tu casa, reviso el problema sin costo y te doy el precio por escrito antes
+            de empezar.
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <WaButton source="hero" pageType="home" label={`Escribirle a ${OWNER.givenName} por WhatsApp`} size="lg" />
+            <CallButton source="hero" pageType="home" size="lg" />
+          </div>
+          <dl className="mt-9 grid gap-4 sm:grid-cols-3">
+            {TRUST.map((item) => (
+              <div key={item.title} className="border-t border-slate-200 pt-3">
+                <dt className="font-semibold text-slate-900">{item.title}</dt>
+                <dd className="mt-1 text-sm text-slate-600">{item.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <OwnerCard variant="hero" />
+      </div>
+    </section>
+  );
+}

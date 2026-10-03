@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Phone, Clock, Shield, ArrowRight, Wrench, Paintbrush, Droplets } from "lucide-react";
 import { LINE_ACCENT } from "@/lib/service-icons";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import {
   COMPANY_NAME,
@@ -16,9 +16,9 @@ import {
   LINE_OPTIONS,
   buildWaLinkHero,
 } from "@/lib/conversion";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 import { buildLocalBusinessNode } from "@/lib/business";
-import TrustSignals from "@/components/sections/TrustSignals";
+import TrustSignals from "@/components/local/TrustSignals";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros: quiénes somos y qué hacemos",
@@ -134,7 +134,7 @@ export default function NosotrosPage() {
 
   return (
     <>
-      <BlogHeader />
+      <SiteHeader pageType="nosotros" />
 
       <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Hero */}
@@ -433,8 +433,8 @@ export default function NosotrosPage() {
         <TrustSignals heading="Cómo trabajamos" />
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="nosotros" />
+      <SiteFooter />
 
       <script
         type="application/ld+json"

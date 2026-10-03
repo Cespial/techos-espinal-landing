@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
 import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import {
   COMPANY_NAME,
@@ -22,10 +22,10 @@ import {
   getMunicipalityProfile,
   joinSectors,
 } from "@/lib/seo-data";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 import { getAllPosts } from "@/lib/blog-utils";
 import { buildLocalBusinessNode } from "@/lib/business";
-import TrustSignals from "@/components/sections/TrustSignals";
+import TrustSignals from "@/components/local/TrustSignals";
 
 export function generateStaticParams() {
   return MUNICIPALITY_SEO.map((m) => ({ municipio: m.slug }));
@@ -108,7 +108,7 @@ export default async function CoberturaPage({ params }: Props) {
 
   return (
     <>
-      <BlogHeader />
+      <SiteHeader pageType="cobertura" />
 
       <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Hero */}
@@ -335,8 +335,8 @@ export default async function CoberturaPage({ params }: Props) {
         <TrustSignals municipality={seo.name} tone="white" />
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="cobertura" />
+      <SiteFooter />
 
       <script
         type="application/ld+json"

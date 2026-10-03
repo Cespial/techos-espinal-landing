@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import BlogCTA from "@/components/blog/BlogCTA";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import {
@@ -16,9 +16,9 @@ import {
   type ServiceLineId,
 } from "@/lib/conversion";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, getServiceLineSEO } from "@/lib/seo-data";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 import { buildLocalBusinessNode, AREA_SERVED } from "@/lib/business";
-import TrustSignals from "@/components/sections/TrustSignals";
+import TrustSignals from "@/components/local/TrustSignals";
 
 export function generateStaticParams() {
   return SERVICE_LINE_SEO.map((s) => ({ linea: s.slug }));
@@ -119,7 +119,7 @@ export default async function ServicioPage({ params }: Props) {
 
   return (
     <>
-      <BlogHeader />
+      <SiteHeader pageType="servicio" />
 
       <main id="main-content" className="pt-20 pb-20 md:pb-0">
         {/* Hero */}
@@ -278,8 +278,8 @@ export default async function ServicioPage({ params }: Props) {
         <TrustSignals />
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="servicio" />
+      <SiteFooter />
 
       <script
         type="application/ld+json"

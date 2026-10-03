@@ -6,15 +6,15 @@ import { buildBlogAuthorNode, ORGANIZATION_ID } from "@/lib/business";
 import RelatedServices from "@/components/blog/RelatedServices";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog-data";
 import { getPostBySlug, getAllPosts, extractHeadings } from "@/lib/blog-utils";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import Breadcrumbs from "@/components/blog/Breadcrumbs";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogCTA from "@/components/blog/BlogCTA";
 import TableOfContents from "@/components/blog/TableOfContents";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import ShareButtons from "@/components/blog/ShareButtons";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -114,7 +114,7 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BlogHeader />
+      <SiteHeader pageType="blog" />
 
       <main id="main-content" className="pt-20 pb-20 md:pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -201,8 +201,8 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="blog" />
+      <SiteFooter />
     </>
   );
 }
