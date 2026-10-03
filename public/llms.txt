@@ -1,16 +1,16 @@
 # Espinal Multiservicios
 
-> Empresa de servicios para el hogar en Medellín y Valle de Aburrá, Colombia.
+> Negocio de techos, pintura y plomería a domicilio de Henrry Espinal en Medellín y Valle de Aburrá, Colombia.
 
 ## Información general
 
 - Nombre: Espinal Multiservicios
+- Propietario y técnico responsable: Henrry Espinal
 - Sitio web: https://espinalservicios.com
 - Teléfono y WhatsApp: (+57) 300 733 6333
 - Ubicación: Medellín, Antioquia, Colombia
 - Horario: Lunes a sábado, 7:00 a.m. - 6:00 p.m.
-- Trabajos completados: 350+
-- Calificación promedio: 4.9/5
+- Condiciones: visita técnica gratis, precio por escrito antes de empezar, garantía firmada
 
 ## Servicios
 
