@@ -10,6 +10,7 @@ import {
   buildWaLinkFaq,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
+import { NAP, GBP_URL } from "@/lib/business";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 type FaqFooterProps = {
@@ -109,9 +110,17 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
               <p className="mt-1 text-sm text-slate-600">
                 Techos, pintura y plomería para casas y negocios en Medellín y el Valle de Aburrá.
               </p>
-              <p className="mt-1 text-xs text-slate-500">
-                Respondemos rápido por WhatsApp o llamada.
-              </p>
+              <address className="mt-3 space-y-0.5 text-xs not-italic text-slate-500">
+                <p>{NAP.area}</p>
+                <p>
+                  Tel.{" "}
+                  <a href={telLink} className="hover:text-slate-900">
+                    {PHONE_DISPLAY}
+                  </a>{" "}
+                  (WhatsApp y llamadas)
+                </p>
+                <p>{NAP.hours}</p>
+              </address>
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
@@ -178,6 +187,18 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
                     Blog
                   </Link>
                 </li>
+                {GBP_URL && (
+                  <li>
+                    <a
+                      href={GBP_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="hover:text-slate-900"
+                    >
+                      Reseñas en Google
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
             <div>

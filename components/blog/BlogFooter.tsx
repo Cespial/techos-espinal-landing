@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NAP, GBP_URL } from "@/lib/business";
 import { Phone } from "lucide-react";
 import {
   COMPANY_NAME,
@@ -32,9 +33,17 @@ export default function BlogFooter() {
               Techos, pintura y plomería para casas y negocios en Medellín y el
               Valle de Aburrá.
             </p>
-            <p className="mt-1 text-xs text-slate-500">
-              Respondemos rápido por WhatsApp o llamada.
-            </p>
+            <address className="mt-3 space-y-0.5 text-xs not-italic text-slate-500">
+              <p>{NAP.area}</p>
+              <p>
+                Tel.{" "}
+                <a href={telLink} className="hover:text-slate-900">
+                  {PHONE_DISPLAY}
+                </a>{" "}
+                (WhatsApp y llamadas)
+              </p>
+              <p>{NAP.hours}</p>
+            </address>
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row">
@@ -61,7 +70,7 @@ export default function BlogFooter() {
           <Link href="/servicios/techos" className="hover:text-slate-900">
             Servicios
           </Link>
-          <Link href="/cobertura/medellin" className="hover:text-slate-900">
+          <Link href="/cobertura" className="hover:text-slate-900">
             Cobertura
           </Link>
           <Link href="/nosotros" className="hover:text-slate-900">
@@ -79,7 +88,16 @@ export default function BlogFooter() {
           <a href={SITE_URL} className="hover:text-slate-900">
             Sitio principal
           </a>
-          <span>Teléfono: {PHONE_DISPLAY}</span>
+          {GBP_URL && (
+            <a
+              href={GBP_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:text-slate-900"
+            >
+              Reseñas en Google
+            </a>
+          )}
         </div>
       </div>
     </footer>

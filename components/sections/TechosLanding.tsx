@@ -13,10 +13,9 @@ import { track } from "@/lib/tracking";
 
 import StickyHeader from "@/components/sections/StickyHeader";
 import Hero from "@/components/sections/Hero";
-import SocialProofBar from "@/components/sections/SocialProofBar";
 import ServiceTabs from "@/components/sections/ServiceTabs";
 import HowWeWork from "@/components/sections/HowWeWork";
-import Testimonials from "@/components/sections/Testimonials";
+import TrustSignals from "@/components/sections/TrustSignals";
 import CoverageAvailability from "@/components/sections/CoverageAvailability";
 import AppointmentScheduler from "@/components/sections/AppointmentScheduler";
 import FaqFooter from "@/components/sections/FaqFooter";
@@ -203,8 +202,6 @@ export default function TechosLanding() {
           onCallClick={() => track("cta_call_click", { source: "hero" })}
         />
 
-        <SocialProofBar />
-
         <div className="section-perf">
           <ServiceTabs />
         </div>
@@ -214,7 +211,7 @@ export default function TechosLanding() {
         </div>
 
         <div className="section-perf">
-          <Testimonials />
+          <TrustSignals />
         </div>
 
         <div className="section-perf">

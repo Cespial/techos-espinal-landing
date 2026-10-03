@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import MicrosoftClarity from "@/components/analytics/MicrosoftClarity";
-import { SITE_URL, COMPANY_NAME, PHONE_E164 } from "@/lib/conversion";
+import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
+import { buildOrganizationNode, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/business";
+
+const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 import "./globals.css";
 
 const manrope = Manrope({
@@ -55,6 +58,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Etiqueta de Search Console (respaldo del registro TXT en el DNS de Vercel).
+  verification: GOOGLE_SITE_VERIFICATION ? { google: GOOGLE_SITE_VERIFICATION } : undefined,
   formatDetection: {
     telephone: false,
     email: false,
@@ -96,8 +101,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": WEBSITE_ID,
               name: COMPANY_NAME,
               url: SITE_URL,
+              inLanguage: "es-CO",
+              publisher: { "@id": ORGANIZATION_ID },
               potentialAction: {
                 "@type": "SearchAction",
                 target: {
@@ -114,39 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: COMPANY_NAME,
-              url: SITE_URL,
-              logo: `${SITE_URL}/logo-icon.png`,
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: PHONE_E164,
-                contactType: "customer service",
-                availableLanguage: "Spanish",
-                areaServed: "CO",
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Medellín",
-                addressRegion: "Antioquia",
-                addressCountry: "CO",
-              },
-              // sameAs: agregar aquí los perfiles autoritativos reales cuando existan
-              // (Google Business Profile, Instagram, Facebook). No se incluye la
-              // auto-referencia al propio dominio ni wa.me (no son perfiles sameAs válidos).
-              knowsAbout: [
-                "Reparación de techos",
-                "Impermeabilización de cubiertas",
-                "Reparación de goteras",
-                "Pintura interior y exterior",
-                "Resanes y acabados de paredes",
-                "Tratamiento de humedad en paredes",
-                "Reparación de fugas de agua",
-                "Destape de desagües",
-                "Cambio de grifería",
-                "Mantenimiento del hogar",
-                "Plomería residencial y comercial",
-              ],
+              ...buildOrganizationNode(),
             }),
           }}
         />

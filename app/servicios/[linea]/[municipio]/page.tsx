@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import { MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
@@ -13,7 +13,6 @@ import {
   PHONE_DISPLAY,
   WA_BASE_URL,
   SERVICE_DATA,
-  TESTIMONIAL_DATA,
   buildWaLinkHero,
   type ServiceLineId,
 } from "@/lib/conversion";
@@ -26,6 +25,8 @@ import {
   MUNICIPALITY_SEO,
 } from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import { buildLocalBusinessNode } from "@/lib/business";
+import TrustSignals from "@/components/sections/TrustSignals";
 
 export function generateStaticParams() {
   return CROSS_PAGE_SEO.map((p) => ({
@@ -73,11 +74,6 @@ export default async function CrossPage({ params }: Props) {
 
   const lineId = lineSeo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
-  const testimonials = TESTIMONIAL_DATA.filter(
-    (t) =>
-      t.serviceLine === lineId ||
-      t.municipality.toLowerCase() === muniSeo.name.toLowerCase(),
-  );
   const waLink = buildWaLinkHero(muniSeo.name, cross.lineLabel);
 
   const breadcrumbSchema = {
@@ -109,23 +105,10 @@ export default async function CrossPage({ params }: Props) {
     "@type": "Service",
     name: cross.h1,
     description: cross.metaDescription,
-    provider: {
-      "@type": "HomeAndConstructionBusiness",
-      name: COMPANY_NAME,
-      url: SITE_URL,
-      telephone: PHONE_DISPLAY,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: muniSeo.name,
-        addressRegion: "Antioquia",
-        addressCountry: "CO",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: muniSeo.lat,
-        longitude: muniSeo.lng,
-      },
-    },
+    provider: buildLocalBusinessNode({
+      url: `${SITE_URL}/servicios/${cross.lineSlug}/${cross.municipioSlug}`,
+      focusMunicipality: { name: muniSeo.name, lat: muniSeo.lat, lng: muniSeo.lng },
+    }),
     areaServed: {
       "@type": "City",
       name: muniSeo.name,
@@ -290,43 +273,6 @@ export default async function CrossPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Testimonials */}
-        {testimonials.length > 0 && (
-          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Lo que dicen nuestros clientes
-              </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {testimonials.map((t) => (
-                  <div
-                    key={t.id}
-                    className="rounded-2xl border border-slate-200 bg-white p-5"
-                  >
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-amber-400 text-amber-400"
-                          aria-hidden="true"
-                        />
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-slate-900">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      {t.municipality} &middot; {t.date}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* CTA */}
         <section className="border-t border-slate-200 bg-white py-16 md:py-24">
@@ -406,6 +352,8 @@ export default async function CrossPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <TrustSignals municipality={muniSeo.name} />
       </main>
 
       <MobileStickyBarGlobal />

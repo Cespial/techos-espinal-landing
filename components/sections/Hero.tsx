@@ -13,7 +13,7 @@ type HeroProps = {
   onCallClick: () => void;
 };
 
-const TRUST_BADGES = ["Precio claro", "Garantía por escrito", "350+ trabajos"];
+const TRUST_BADGES = ["Visita técnica gratis", "Precio claro", "Garantía por escrito"];
 
 function getSeasonalMessage(): string | null {
   const month = new Date().getMonth();

@@ -180,9 +180,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "medellin",
     name: "Medellín",
-    title: "Servicios en Medellín: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Medellín | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Medellín. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Medellín",
     secondaryKeywords: ["plomero Medellín", "pintor Medellín", "techos Medellín"],
     description:
@@ -193,9 +193,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "envigado",
     name: "Envigado",
-    title: "Servicios en Envigado: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Envigado | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Envigado. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Envigado",
     secondaryKeywords: ["plomero Envigado", "pintor Envigado", "techos Envigado"],
     description:
@@ -206,9 +206,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "sabaneta",
     name: "Sabaneta",
-    title: "Servicios en Sabaneta: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Sabaneta | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Sabaneta. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Sabaneta",
     secondaryKeywords: ["plomero Sabaneta", "pintor Sabaneta", "techos Sabaneta"],
     description:
@@ -219,9 +219,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "bello",
     name: "Bello",
-    title: "Servicios en Bello: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Bello | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Bello. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Bello",
     secondaryKeywords: ["plomero Bello", "pintor Bello", "techos Bello"],
     description:
@@ -232,9 +232,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "itagui",
     name: "Itagüí",
-    title: "Servicios en Itagüí: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Itagüí | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Itagüí. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Itagüí",
     secondaryKeywords: ["plomero Itagüí", "pintor Itagüí", "techos Itagüí"],
     description:
@@ -245,9 +245,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "la-estrella",
     name: "La Estrella",
-    title: "Servicios en La Estrella: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en La Estrella | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en La Estrella. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar La Estrella",
     secondaryKeywords: ["plomero La Estrella", "pintor La Estrella", "techos La Estrella"],
     description:
@@ -258,9 +258,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "caldas",
     name: "Caldas",
-    title: "Servicios en Caldas: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Caldas | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Caldas, Antioquia. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Caldas Antioquia",
     secondaryKeywords: ["plomero Caldas", "pintor Caldas", "techos Caldas"],
     description:
@@ -271,9 +271,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "copacabana",
     name: "Copacabana",
-    title: "Servicios en Copacabana: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Copacabana | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Copacabana. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Copacabana",
     secondaryKeywords: ["plomero Copacabana", "pintor Copacabana", "techos Copacabana"],
     description:
@@ -284,9 +284,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "girardota",
     name: "Girardota",
-    title: "Servicios en Girardota: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Girardota | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Girardota. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Girardota",
     secondaryKeywords: ["plomero Girardota", "pintor Girardota", "techos Girardota"],
     description:
@@ -297,9 +297,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "rionegro",
     name: "Rionegro",
-    title: "Servicios en Rionegro: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Rionegro | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Rionegro, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Rionegro",
     secondaryKeywords: ["plomero Rionegro", "pintor Rionegro", "techos Rionegro"],
     description:
@@ -310,9 +310,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "la-ceja",
     name: "La Ceja",
-    title: "Servicios en La Ceja: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en La Ceja | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en La Ceja, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar La Ceja",
     secondaryKeywords: ["plomero La Ceja", "pintor La Ceja", "techos La Ceja"],
     description:
@@ -323,9 +323,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "marinilla",
     name: "Marinilla",
-    title: "Servicios en Marinilla: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Marinilla | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Marinilla, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Marinilla",
     secondaryKeywords: ["plomero Marinilla", "pintor Marinilla", "techos Marinilla"],
     description:
@@ -359,6 +359,41 @@ const LINE_LABELS: Record<string, string> = {
   techos: "Techos y cubiertas",
   pintura: "Pintura y acabados",
   plomeria: "Plomería",
+};
+
+// Frase propia de cada municipio para que ninguna meta description se repita.
+export const MUNICIPALITY_HOOKS: Record<string, string> = {
+  "medellin": "Atendemos todas las comunas, de Belén a El Poblado.",
+  "envigado": "Del centro a Loma del Escobero y Las Palmas.",
+  "sabaneta": "Casas tradicionales y edificios nuevos del sur.",
+  "bello": "Niquía, Cabañas, Fontidueño y el centro de Bello.",
+  "itagui": "Viviendas, locales y bodegas del sector industrial.",
+  "la-estrella": "Pueblo Viejo, Suramérica y el casco urbano.",
+  "caldas": "Casco urbano y veredas cercanas del sur del Valle.",
+  "copacabana": "Casco urbano y zona campestre del norte del Valle.",
+  "girardota": "Casco urbano y fincas del norte del Valle de Aburrá.",
+  "rionegro": "Casco urbano, Llanogrande y San Antonio de Pereira.",
+  "la-ceja": "Casco urbano y parcelaciones del Oriente.",
+  "marinilla": "Casco urbano y veredas del altiplano del Oriente.",
+};
+
+// Título (etiqueta <title>) y H1 por línea, escritos como busca la gente.
+const LINE_TITLE: Record<string, (muni: string) => string> = {
+  techos: (m) => `Reparación de goteras y techos en ${m} | Visita gratis`,
+  pintura: (m) => `Pintores en ${m}: pintura interior y exterior | Precio claro`,
+  plomeria: (m) => `Plomero en ${m}: fugas y destapes a domicilio`,
+};
+
+const LINE_H1: Record<string, (muni: string) => string> = {
+  techos: (m) => `Reparación de techos y goteras en ${m}`,
+  pintura: (m) => `Pintura de casas y apartamentos en ${m}`,
+  plomeria: (m) => `Plomería a domicilio en ${m}`,
+};
+
+const LINE_SHORT: Record<string, string> = {
+  techos: "Goteras, impermeabilización y mantenimiento de techos",
+  pintura: "Pintura interior, exterior y resanes",
+  plomeria: "Fugas, destapes y grifería a domicilio",
 };
 
 const LINE_VERB: Record<string, string> = {
@@ -478,9 +513,12 @@ function buildCrossPages(): CrossPageSEO[] {
         municipioSlug: muni.slug,
         lineLabel,
         municipioName: muni.name,
-        title: `${lineLabel} en ${muni.name}: servicios y precios`,
-        metaDescription: `${lineLabel} en ${muni.name}: ${lineVerb}. Visita técnica gratis, precios claros y garantía. Cotiza por WhatsApp.`.slice(0, 155),
-        h1: `${lineLabel} en ${muni.name}`,
+        title: (LINE_TITLE[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
+        metaDescription: `${LINE_SHORT[line.slug] ?? lineLabel} en ${muni.name}. ${MUNICIPALITY_HOOKS[muni.slug] ?? ""} Visita técnica gratis y garantía por escrito.`
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 158),
+        h1: (LINE_H1[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
         intro,
         faqs,
       });
