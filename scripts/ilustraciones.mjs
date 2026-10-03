@@ -25,3 +25,17 @@ for (const f of readdirSync(dir).filter((f) => f.endsWith(".png")).sort()) {
 // La línea de techos reutiliza el hero existente.
 await sharp(out("illustrations/hero-techo.webp")).toFile(out("illustrations/linea-techos.webp"));
 console.log("linea-techos.webp (copia de hero-techo)");
+
+// Copias JPEG para las imágenes Open Graph generadas con Satori (no lee WebP).
+const ogDir = join(process.cwd(), "assets/og");
+const { mkdirSync } = await import("node:fs");
+mkdirSync(ogDir, { recursive: true });
+const ogJobs = [
+  ["og-fondo", 1456, 816], ["linea-techos", 960, 1200], ["linea-pintura", 960, 1200], ["linea-plomeria", 960, 1200],
+  ...["medellin","envigado","sabaneta","bello","itagui","la-estrella","caldas","copacabana","girardota","rionegro","la-ceja","marinilla"].map((m) => [`municipio-${m}`, 900, 600]),
+];
+for (const [name, w, h] of ogJobs) {
+  const dest = join(ogDir, `${name}.jpg`);
+  await sharp(out(`illustrations/${name}.webp`)).resize(w, h, { fit: "cover" }).jpeg({ quality: 82 }).toFile(dest);
+  console.log(`assets/og/${name}.jpg ${kb(dest)} KB`);
+}

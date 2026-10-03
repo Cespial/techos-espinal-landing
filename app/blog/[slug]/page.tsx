@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
@@ -163,7 +164,14 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Grid: content + sidebar */}
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_280px]">
             {/* Main content */}
-            <article>
+            <article className="min-w-0 lg:max-w-[68ch]">
+              <details className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 lg:hidden">
+                <summary className="flex min-h-10 cursor-pointer items-center justify-between text-sm font-semibold text-slate-900">
+                  En este artículo
+                  <ChevronDown className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                </summary>
+                <TableOfContents headings={headings} bare />
+              </details>
               <BlogContent body={post.body} />
               <RelatedServices
                 serviceLines={post.serviceLines}
@@ -177,16 +185,14 @@ export default async function BlogPostPage({ params }: Props) {
             </article>
 
             {/* Sidebar */}
-            <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <aside className="hidden space-y-6 lg:sticky lg:top-24 lg:block lg:self-start">
               <TableOfContents headings={headings} />
               <BlogCTA
                 serviceLine={primaryServiceLine}
                 postTitle={post.title}
                 variant="sticky"
               />
-              <div className="hidden lg:block">
-                <RelatedPosts posts={relatedPosts} />
-              </div>
+              <RelatedPosts posts={relatedPosts} />
             </aside>
           </div>
 
@@ -196,13 +202,15 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="lg:hidden">
               <RelatedPosts posts={relatedPosts} />
             </div>
-            <CtaBand
-              pageType="blog"
-              linea={primaryServiceLine}
-              heading="¿Quieres que lo revisemos?"
-              body="Escríbenos con una foto del problema: te decimos qué servicio aplica, cuánto cuesta y cuándo podemos ir."
-            />
           </div>
+        </div>
+        <div className="hidden md:block">
+          <CtaBand
+            pageType="blog"
+            linea={primaryServiceLine}
+            heading="¿Quieres que lo revisemos?"
+            body="Escríbenos con una foto del problema: te decimos qué servicio aplica, cuánto cuesta y cuándo podemos ir."
+          />
         </div>
       </main>
 

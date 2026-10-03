@@ -5,9 +5,11 @@ import type { HeadingItem } from "@/lib/blog-utils";
 
 type TableOfContentsProps = {
   headings: HeadingItem[];
+  /** Sin marco ni título: para usarla dentro de un <details> en móvil. */
+  bare?: boolean;
 };
 
-export default function TableOfContents({ headings }: TableOfContentsProps) {
+export default function TableOfContents({ headings, bare = false }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
@@ -33,10 +35,8 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <nav aria-label="Tabla de contenidos" className="rounded-2xl border border-slate-200 bg-white p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-600">
-        En este artículo
-      </p>
+    <nav aria-label="Tabla de contenidos" className={bare ? "" : "rounded-2xl border border-slate-200 bg-white p-4"}>
+      {!bare && <p className="text-sm font-semibold text-slate-900">En este artículo</p>}
       <ul className="mt-3 space-y-1">
         {headings.map((h) => (
           <li key={h.id}>

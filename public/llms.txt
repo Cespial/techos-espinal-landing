@@ -164,3 +164,8 @@ Cada servicio tiene una página específica por municipio con precios y FAQs loc
 - Destape de cañerías en Medellín — métodos y precios: https://espinalservicios.com/blog/destape-canerias-medellin-metodos-precios
 - Cómo quitar el moho de las paredes definitivamente: https://espinalservicios.com/blog/como-quitar-moho-paredes-definitivamente
 - Tipos de tejas para casas en Colombia — comparativa: https://espinalservicios.com/blog/tipos-tejas-casas-colombia-comparativa
+
+## Imágenes del sitio
+
+- Las ilustraciones (hero, pictogramas, mapa, portadas del blog y viñetas por municipio) son dibujos editoriales creados para la marca. No son fotografías ni representan personas, trabajos o lugares reales.
+- Las fotos reales del equipo y de los trabajos se publican solo cuando existen; nunca se simulan.

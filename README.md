@@ -25,6 +25,15 @@ npm run dev
 npm run build && npm run lint
 ```
 
+## Ilustraciones
+
+Las imágenes del sitio son ilustraciones editoriales planas generadas en Midjourney con una referencia de estilo única
+(paper white, tinta casi negra, naranja `#ea580c`, teal y verde por línea). Viven en `public/illustrations/` y se
+registran en `lib/illustrations.ts`. Regla: nunca fotos simuladas de personas, equipo ni trabajos; las fotos reales,
+cuando existan, van en `lib/owner.ts` (`photo`, `RECENT_WORK`). Conversión: `node scripts/ilustraciones.mjs <carpeta>`.
+Las imágenes Open Graph se generan en build con Satori (`app/opengraph-image.tsx`, `app/servicios/[linea]/opengraph-image.tsx`,
+`app/cobertura/[municipio]/opengraph-image.tsx`) a partir de las copias JPEG en `assets/og/`.
+
 ## Documentos
 
 - `docs/SEO-PLAN-2026-10-02.md` — diagnóstico, plan y checklist del negocio (ficha de Google, Search Console, fotos).
