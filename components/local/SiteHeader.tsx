@@ -15,7 +15,7 @@ type Props = { pageType: PageType; linea?: ServiceLineId; municipio?: string };
  */
 export default function SiteHeader({ pageType, linea, municipio }: Props) {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5 lg:flex-none">
           <Image src="/logo-espinal.svg" alt="" width={34} height={34} priority />
