@@ -1,22 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
-import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
-import SiteHeader from "@/components/local/SiteHeader";
-import SiteFooter from "@/components/local/SiteFooter";
-import BlogCTA from "@/components/blog/BlogCTA";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import {
-  COMPANY_NAME,
-  SITE_URL,
-  PHONE_DISPLAY,
-  WA_BASE_URL,
-  SERVICE_DATA,
-  buildWaLinkHero,
-  PROCESS_STEPS,
-  type ServiceLineId,
-} from "@/lib/conversion";
+import { SITE_URL, SERVICE_DATA, type ServiceLineId } from "@/lib/conversion";
 import {
   CROSS_PAGE_SEO,
   getCrossPageSEO,
@@ -25,17 +9,24 @@ import {
   SERVICE_LINE_SEO,
   MUNICIPALITY_SEO,
   getMunicipalityProfile,
-  joinSectors,
 } from "@/lib/seo-data";
+import { buildServiceSchema } from "@/lib/schema";
+import JsonLd from "@/components/local/JsonLd";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
-import { buildLocalBusinessNode } from "@/lib/business";
+import Breadcrumbs from "@/components/local/Breadcrumbs";
+import PageHero from "@/components/local/PageHero";
+import ServiceGrid from "@/components/local/ServiceGrid";
+import LocalZones from "@/components/local/LocalZones";
+import ProcessSteps from "@/components/local/ProcessSteps";
+import CtaBand from "@/components/local/CtaBand";
+import FaqSection from "@/components/local/FaqSection";
+import RelatedLinks from "@/components/local/RelatedLinks";
 import TrustSignals from "@/components/local/TrustSignals";
 
 export function generateStaticParams() {
-  return CROSS_PAGE_SEO.map((p) => ({
-    linea: p.lineSlug,
-    municipio: p.municipioSlug,
-  }));
+  return CROSS_PAGE_SEO.map((p) => ({ linea: p.lineSlug, municipio: p.municipioSlug }));
 }
 
 type Props = { params: Promise<{ linea: string; municipio: string }> };
@@ -44,384 +35,108 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { linea, municipio } = await params;
   const data = getCrossPageSEO(linea, municipio);
   if (!data) return {};
-
+  const url = `${SITE_URL}/servicios/${linea}/${municipio}`;
   return {
     title: data.title,
     description: data.metaDescription,
-    alternates: { canonical: `${SITE_URL}/servicios/${linea}/${municipio}` },
+    alternates: { canonical: url },
     openGraph: {
       title: data.title,
       description: data.metaDescription,
-      url: `${SITE_URL}/servicios/${linea}/${municipio}`,
+      url,
       type: "website",
       locale: "es_CO",
       images: [{ url: `/og/og-${linea}.png`, width: 1200, height: 630, alt: data.title }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: data.title,
-      description: data.metaDescription,
-      images: [`/og/og-${linea}.png`],
-    },
+    twitter: { card: "summary_large_image", title: data.title, description: data.metaDescription, images: [`/og/og-${linea}.png`] },
   };
 }
 
 export default async function CrossPage({ params }: Props) {
   const { linea, municipio } = await params;
   const cross = getCrossPageSEO(linea, municipio);
-  if (!cross) notFound();
-
   const lineSeo = getServiceLineSEO(linea);
   const muniSeo = getMunicipalitySEO(municipio);
-  if (!lineSeo || !muniSeo) notFound();
-  const profile = getMunicipalityProfile(muniSeo.slug);
+  if (!cross || !lineSeo || !muniSeo) notFound();
 
   const lineId = lineSeo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
-  const waLink = buildWaLinkHero(muniSeo.name, cross.lineLabel);
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Inicio",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: cross.lineLabel,
-        item: `${SITE_URL}/servicios/${linea}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: muniSeo.name,
-      },
-    ],
-  };
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: cross.h1,
-    description: cross.metaDescription,
-    provider: buildLocalBusinessNode({
-      url: `${SITE_URL}/servicios/${cross.lineSlug}/${cross.municipioSlug}`,
-      focusMunicipality: { name: muniSeo.name, lat: muniSeo.lat, lng: muniSeo.lng },
-    }),
-    areaServed: {
-      "@type": "City",
-      name: muniSeo.name,
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: cross.h1,
-      itemListElement: services.map((s) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: s.name,
-          description: s.summary,
-        },
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          priceCurrency: "COP",
-          price: s.basePrice.replace(/[^0-9]/g, ""),
-          priceType: "https://schema.org/MinPrice",
-        },
-      })),
-    },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: cross.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const profile = getMunicipalityProfile(muniSeo.slug);
+  const pageType = "servicio_municipio" as const;
+  const url = `${SITE_URL}/servicios/${linea}/${municipio}`;
 
   return (
     <>
-      <SiteHeader pageType="servicio_municipio" />
-
-      <main id="main-content" className="pt-20 pb-20 md:pb-0">
-        {/* Breadcrumb nav */}
-        <nav
-          aria-label="Breadcrumbs"
-          className="mx-auto max-w-5xl px-4 pt-6 sm:px-6"
-        >
-          <ol className="flex flex-wrap items-center gap-1 text-sm text-slate-500">
-            <li>
-              <Link href="/" className="hover:text-slate-900">
-                Inicio
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link
-                href={`/servicios/${linea}`}
-                className="hover:text-slate-900"
-              >
-                {cross.lineLabel}
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-slate-700" aria-current="page">
-              {muniSeo.name}
-            </li>
-          </ol>
-        </nav>
-
-        {/* Hero */}
-        <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
-              <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-              {muniSeo.name}
-            </div>
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-              {cross.h1}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-slate-600">
-              {cross.intro}
-            </p>
-            <ul className="mt-6 space-y-2">
-              {lineSeo.heroBullets.map((bullet) => (
-                <li
-                  key={bullet}
-                  className="flex items-start gap-2 text-slate-700"
-                >
-                  <CheckCircle2
-                    className="mt-0.5 h-5 w-5 shrink-0 text-green-600"
-                    aria-hidden="true"
-                  />
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                Cotizar en {muniSeo.name}
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Services and prices */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Servicios de {cross.lineLabel.toLowerCase()} en {muniSeo.name}
-            </h2>
-            <p className="mt-2 text-base text-slate-600">
-              Precios de referencia para {muniSeo.name}. El valor final se
-              define con visita técnica gratuita.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {services.map((service) => {
-                const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${cross.lineLabel}) en ${muniSeo.name}. ¿Me pueden dar precio y disponibilidad?`)}`;
-                const accent = LINE_ACCENT[lineId];
-                const ServiceIcon = SERVICE_ICON_MAP[service.id];
-                return (
-                  <div
-                    key={service.id}
-                    className={`flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md border-l-[3px] ${accent.accentBar.replace("bg-", "border-l-")}`}
-                  >
-                    <div className="flex items-start gap-3 p-5">
-                      {ServiceIcon && (
-                        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent.iconBg}`}>
-                          <ServiceIcon className={`h-5 w-5 ${accent.iconText}`} aria-hidden="true" />
-                        </div>
-                      )}
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
-                          <div className={`shrink-0 rounded-lg px-2.5 py-1 text-right ${accent.priceBg}`}>
-                            <p className="text-xs text-slate-600">desde</p>
-                            <p className={`text-sm font-bold ${accent.priceText}`}>{service.basePrice}</p>
-                          </div>
-                        </div>
-                        <p className="mt-1 text-sm text-slate-600">{service.summary}</p>
-                        <a
-                          href={serviceWaLink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
-                        >
-                          <WhatsAppIcon className="h-4 w-4" />
-                          Cotizar esto
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-        {/* Zonas y contexto local */}
-        {profile && (
-          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Zonas que atendemos en {muniSeo.name}
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
-                Cubrimos todo {muniSeo.name}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}.
-                Trabajamos sobre todo en {profile.housing}.
-              </p>
-              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">{profile.climate}</p>
-              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${muniSeo.name}`}>
-                {profile.sectors.map((sector) => (
-                  <li
-                    key={sector}
-                    className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700"
-                  >
-                    {sector}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        )}
-
-        {/* Cómo trabajamos */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Cómo trabajamos en {muniSeo.name}
-            </h2>
-            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {PROCESS_STEPS.map((step) => (
-                <li key={step.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-                    Paso {step.step}
-                  </p>
-                  <h3 className="mt-2 text-base font-semibold text-slate-900">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.detail}</p>
-                  <p className="mt-2 text-xs text-slate-500">{step.note}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-
-        {/* CTA */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6">
-            <BlogCTA
-              serviceLine={lineId}
-              postTitle={cross.h1}
-              variant="banner"
-            />
-          </div>
-        </section>
-
-        {/* FAQs */}
-        {cross.faqs.length > 0 && (
-          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-            <div className="mx-auto max-w-3xl px-4 sm:px-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Preguntas frecuentes sobre {cross.lineLabel.toLowerCase()} en{" "}
-                {muniSeo.name}
-              </h2>
-              <div className="mt-8 space-y-4">
-                {cross.faqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-slate-200 bg-white"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-slate-900 transition-all hover:bg-slate-50">
-                      {faq.question}
-                      <ArrowRight
-                        className="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-90"
-                        aria-hidden="true"
-                      />
-                    </summary>
-                    <div className="border-t border-slate-200 px-5 py-4 text-sm leading-relaxed text-slate-600">
-                      {faq.answer}
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Internal links */}
-        <section className="border-t border-slate-200 bg-white py-12">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-lg font-semibold text-slate-900">
-              Más servicios en {muniSeo.name}
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {SERVICE_LINE_SEO.filter((s) => s.slug !== linea).map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/servicios/${s.slug}/${municipio}`}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-                >
-                  {s.heroTitle} en {muniSeo.name}
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              ))}
-            </div>
-
-            <h2 className="mt-8 text-lg font-semibold text-slate-900">
-              {cross.lineLabel} en otros municipios
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {MUNICIPALITY_SEO.filter((m) => m.slug !== municipio).map((m) => (
-                <Link
-                  key={m.slug}
-                  href={`/servicios/${linea}/${m.slug}`}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-                >
-                  <MapPin className="h-3 w-3" aria-hidden="true" />
-                  {m.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
+      <SiteHeader pageType={pageType} linea={lineId} municipio={muniSeo.name} />
+      <main id="main-content" className="pb-20 md:pb-0">
+        <Breadcrumbs
+          items={[
+            { name: "Inicio", href: "/" },
+            { name: cross.lineLabel, href: `/servicios/${linea}` },
+            { name: muniSeo.name },
+          ]}
+        />
+        <PageHero
+          pageType={pageType}
+          h1={cross.h1}
+          intro={cross.intro}
+          bullets={lineSeo.heroBullets}
+          municipio={muniSeo.name}
+          linea={lineId}
+          ctaLabel={`Cotizar en ${muniSeo.name}`}
+        />
+        <ServiceGrid
+          pageType={pageType}
+          linea={lineId}
+          services={services}
+          municipio={muniSeo.name}
+          heading={`Servicios de ${cross.lineLabel.toLowerCase()} en ${muniSeo.name}`}
+          intro={`Precios de referencia para ${muniSeo.name}. El valor final te lo doy por escrito después de la visita gratis.`}
+          tone="slate"
+        />
+        {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="white" />}
+        <ProcessSteps pageType={pageType} municipio={muniSeo.name} linea={lineId} />
         <TrustSignals municipality={muniSeo.name} />
+        <FaqSection
+          items={cross.faqs}
+          heading={`Preguntas frecuentes sobre ${cross.lineLabel.toLowerCase()} en ${muniSeo.name}`}
+        />
+        <CtaBand
+          pageType={pageType}
+          linea={lineId}
+          municipio={muniSeo.name}
+          heading={`¿Necesitas ${cross.lineLabel.toLowerCase()} en ${muniSeo.name}?`}
+          body="Cuéntame qué pasa y coordinamos la visita gratis. Te doy el precio por escrito antes de empezar."
+        />
+        <RelatedLinks
+          groups={[
+            {
+              heading: `Más servicios en ${muniSeo.name}`,
+              links: SERVICE_LINE_SEO.filter((s) => s.slug !== linea).map((s) => ({
+                href: `/servicios/${s.slug}/${municipio}`,
+                label: `${s.heroTitle} en ${muniSeo.name}`,
+              })),
+            },
+            {
+              heading: `${cross.lineLabel} en otros municipios`,
+              links: MUNICIPALITY_SEO.filter((m) => m.slug !== municipio).map((m) => ({
+                href: `/servicios/${linea}/${m.slug}`,
+                label: m.name,
+              })),
+            },
+          ]}
+        />
       </main>
-
-      <MobileStickyBar pageType="servicio_municipio" />
       <SiteFooter />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <MobileStickyBar pageType={pageType} linea={lineId} municipio={muniSeo.name} />
+      <JsonLd
+        data={buildServiceSchema({
+          url,
+          name: cross.h1,
+          description: cross.metaDescription,
+          services,
+          municipio: { name: muniSeo.name, lat: muniSeo.lat, lng: muniSeo.lng },
+        })}
       />
     </>
   );

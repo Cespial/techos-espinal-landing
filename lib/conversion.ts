@@ -30,6 +30,13 @@ export const LINE_OPTIONS = [
 
 export type ServiceLineId = (typeof LINE_OPTIONS)[number]["id"];
 
+/** Servicios destacados por línea (páginas de municipio y resúmenes). */
+export const HIGHLIGHT_SERVICES: Record<ServiceLineId, string[]> = {
+  techos: ["impermeabilizacion-cubiertas", "reparacion-goteras", "mantenimiento-canoas"],
+  pintura: ["pintura-interior", "pintura-exterior", "correccion-humedad-superficial"],
+  plomeria: ["reparacion-fugas", "destape-desagues", "cambio-griferia"],
+};
+
 export type ServiceItem = {
   id: string;
   name: string;
@@ -446,24 +453,6 @@ export function buildWaLink(o: WaLinkOptions = {}) {
       }
   }
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-/* Compatibilidad con plantillas aún no migradas (se eliminan en la Fase B). */
-export function buildWaLinkHero(municipio?: string, linea?: string) {
-  const lineaId = (["techos", "pintura", "plomeria"] as const).find((l) => l === linea || LINE_OPTIONS.find((o) => o.id === l)?.label === linea);
-  return buildWaLink({ linea: lineaId, municipio: municipio && municipio !== DEFAULT_CITY ? municipio : undefined });
-}
-export function buildWaLinkCoverage(municipio?: string) {
-  return buildWaLink({ municipio: municipio && municipio !== DEFAULT_CITY ? municipio : undefined });
-}
-export function buildWaLinkFaq() {
-  return buildWaLink({ intent: "duda" });
-}
-export function buildWaLinkBlog(serviceLine: ServiceLineId, postTitle: string) {
-  return buildWaLink({ linea: serviceLine, intent: "blog", context: postTitle });
-}
-export function buildWaLinkEmergency() {
-  return buildWaLink({ intent: "urgencia" });
 }
 
 export function buildTelLink() {

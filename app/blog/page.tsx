@@ -92,12 +92,9 @@ export default async function BlogListingPage({ searchParams }: Props) {
       />
       <SiteHeader pageType="blog_index" />
 
-      <main id="main-content" className="pt-20 pb-20 md:pb-16">
+      <main id="main-content" className="pb-20 md:pb-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           {/* Page header */}
-          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-            BLOG
-          </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
             Consejos para tu casa o negocio
           </h1>

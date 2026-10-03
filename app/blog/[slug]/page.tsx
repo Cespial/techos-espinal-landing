@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
 import { buildBlogAuthorNode, ORGANIZATION_ID } from "@/lib/business";
@@ -11,6 +12,7 @@ import SiteFooter from "@/components/local/SiteFooter";
 import Breadcrumbs from "@/components/blog/Breadcrumbs";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogCTA from "@/components/blog/BlogCTA";
+import CtaBand from "@/components/local/CtaBand";
 import TableOfContents from "@/components/blog/TableOfContents";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import ShareButtons from "@/components/blog/ShareButtons";
@@ -116,7 +118,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <SiteHeader pageType="blog" />
 
-      <main id="main-content" className="pt-20 pb-20 md:pb-16">
+      <main id="main-content" className="pb-20 md:pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           {/* Breadcrumbs */}
           <Breadcrumbs category={post.category} postTitle={post.title} />
@@ -130,7 +132,9 @@ export default async function BlogPostPage({ params }: Props) {
               {post.title}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-              <span>{post.author}</span>
+              <span>
+                <Link href="/nosotros" className="font-semibold text-slate-700 hover:underline">{post.author}</Link>, {post.authorRole.toLowerCase()}
+              </span>
               <span aria-hidden="true">&middot;</span>
               <time dateTime={post.publishedAt}>
                 {new Date(post.publishedAt).toLocaleDateString("es-CO", {
@@ -192,10 +196,11 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="lg:hidden">
               <RelatedPosts posts={relatedPosts} />
             </div>
-            <BlogCTA
-              serviceLine={primaryServiceLine}
-              postTitle={post.title}
-              variant="banner"
+            <CtaBand
+              pageType="blog"
+              linea={primaryServiceLine}
+              heading="¿Quieres que lo revise yo?"
+              body="Escríbele a Henrry con una foto del problema: te dice qué servicio aplica, cuánto cuesta y cuándo puede ir."
             />
           </div>
         </div>

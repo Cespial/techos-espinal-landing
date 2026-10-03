@@ -1,453 +1,192 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Phone, Clock, Shield, ArrowRight, Wrench, Paintbrush, Droplets } from "lucide-react";
-import { LINE_ACCENT } from "@/lib/service-icons";
-import SiteHeader from "@/components/local/SiteHeader";
-import SiteFooter from "@/components/local/SiteFooter";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import {
   COMPANY_NAME,
   SITE_URL,
   PHONE_DISPLAY,
-  PHONE_E164,
   SERVICE_DATA,
-  COVERAGE_SCHEDULE,
-  MUNICIPALITY_OPTIONS,
   LINE_OPTIONS,
-  buildWaLinkHero,
+  COVERAGE_SCHEDULE,
 } from "@/lib/conversion";
+import { OWNER } from "@/lib/owner";
+import { BUSINESS_ID, buildPersonNode } from "@/lib/business";
+import { MUNICIPALITY_SEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import JsonLd from "@/components/local/JsonLd";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
-import { buildLocalBusinessNode } from "@/lib/business";
+import Breadcrumbs from "@/components/local/Breadcrumbs";
+import OwnerCard from "@/components/local/OwnerCard";
+import ProcessSteps from "@/components/local/ProcessSteps";
 import TrustSignals from "@/components/local/TrustSignals";
+import FaqSection from "@/components/local/FaqSection";
+import CtaBand from "@/components/local/CtaBand";
+import WaButton from "@/components/local/WaButton";
+import CallButton from "@/components/local/CallButton";
+
+const TITLE = `${OWNER.name}, el dueño de ${COMPANY_NAME}`;
+const DESCRIPTION = `${OWNER.name} repara techos, pinta y arregla la plomería de casas y negocios en Medellín y 11 municipios. Va él mismo, revisa gratis, da el precio por escrito y responde con garantía firmada.`;
 
 export const metadata: Metadata = {
-  title: "Sobre nosotros: quiénes somos y qué hacemos",
-  description:
-    "Espinal Multiservicios: empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Visita técnica gratis, precio claro antes de empezar y garantía por escrito.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/nosotros` },
-  openGraph: {
-    title: "Sobre Espinal Multiservicios",
-    description:
-      "Empresa de techos, pintura y plomería en Medellín y Valle de Aburrá. Visita técnica gratis, precio claro y garantía por escrito.",
-    url: `${SITE_URL}/nosotros`,
-    type: "website",
-    locale: "es_CO",
-  },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: `${SITE_URL}/nosotros`, type: "profile", locale: "es_CO" },
 };
 
-const LLM_FAQS = [
+const FAQS = [
   {
-    question: `¿Quién es ${COMPANY_NAME}?`,
-    answer: `${COMPANY_NAME} es una empresa de servicios para el hogar con sede en Medellín, Colombia. Se especializa en tres áreas: techos y cubiertas (reparación de goteras, impermeabilización, limpieza de canales), pintura y acabados (pintura interior y exterior, resanes, tratamiento de humedad) y plomería (reparación de fugas, destape de desagües, cambio de grifería). Opera en Medellín y 11 municipios del Valle de Aburrá y Oriente antioqueño. Trabaja con visita técnica gratuita, precio por escrito antes de empezar y garantía firmada.`,
+    question: `¿Quién es ${OWNER.name}?`,
+    answer: `${OWNER.name} es el dueño y técnico principal de ${COMPANY_NAME}. Él mismo va a las casas y negocios en Medellín y el Valle de Aburrá a revisar techos, pintura y plomería, da el precio por escrito antes de empezar y entrega cada trabajo con garantía firmada.`,
   },
   {
-    question: `¿Qué servicios ofrece ${COMPANY_NAME}?`,
-    answer: `Ofrece 24 servicios en tres categorías. Techos y cubiertas: impermeabilización (desde $350.000), reparación de goteras (desde $180.000), limpieza de canales (desde $150.000), sellado de fisuras (desde $210.000), cambio de teja (desde $190.000), ajuste de bajantes (desde $170.000), limpieza de cubierta (desde $140.000) y revisión del techo (desde $130.000). Pintura y acabados: pintura interior (desde $280.000), exterior (desde $320.000), resanes (desde $210.000), alisado de paredes (desde $240.000), tratamiento de humedad (desde $250.000), pintura de rejas (desde $160.000), retoques post-obra (desde $140.000) y acabado de fachada (desde $330.000). Plomería: reparación de fugas (desde $170.000), destape de desagües (desde $160.000), reparación de llaves (desde $140.000), detección de fuga (desde $130.000), cambio de grifería (desde $150.000), ajuste de sanitario (desde $165.000), revisión de presión (desde $120.000) y mantenimiento de tuberías (desde $200.000). Todos los precios son en pesos colombianos (COP) y son de referencia; el valor final se define con visita técnica gratuita.`,
+    question: `¿Qué hace ${COMPANY_NAME}?`,
+    answer: `Tres cosas: techos y cubiertas (goteras, impermeabilización, canales, tejas), pintura y acabados (interior, exterior, resanes, humedad) y plomería (fugas, destapes, grifería, sanitarios). En total 24 servicios con precio de referencia publicado.`,
   },
   {
-    question: `¿En qué ciudades y municipios atiende ${COMPANY_NAME}?`,
-    answer: `Atiende en 12 municipios: Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota, Rionegro, La Ceja y Marinilla. Todos están ubicados en el departamento de Antioquia, Colombia, en la región del Valle de Aburrá y el Oriente antioqueño.`,
+    question: `¿En qué municipios atiende ${OWNER.givenName}?`,
+    answer: `Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota, Rionegro, La Ceja y Marinilla, en Antioquia.`,
   },
   {
-    question: "¿Cuánto cuesta un plomero en Medellín?",
-    answer:
-      "Los servicios de plomería en Medellín con Espinal Multiservicios empiezan desde $120.000 COP. La revisión de presión del agua cuesta desde $120.000, la detección de fuga desde $130.000, la reparación de llaves desde $140.000, el cambio de grifería desde $150.000, el destape de desagües desde $160.000, el ajuste de sanitario desde $165.000, la reparación de fugas desde $170.000 y el mantenimiento de tuberías desde $200.000. La visita técnica y la cotización son gratuitas.",
+    question: "¿Cuánto cuesta la visita?",
+    answer: "Nada. Henrry va, revisa el problema y te explica qué hay que hacer. Cobra solo si decides hacer el trabajo, con el precio que te dio por escrito.",
   },
   {
-    question: "¿Cuánto cuesta pintar un apartamento en Medellín?",
-    answer:
-      "Pintar un apartamento en Medellín puede costar entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Un estudio: $800.000-$1.200.000. Apartamento de 2 habitaciones: $1.200.000-$2.000.000. Apartamento de 3 habitaciones: $1.800.000-$2.800.000. Apartamento grande (4+ habitaciones): $2.500.000-$3.500.000+. Incluye mano de obra, pintura y limpieza final.",
+    question: `¿Cómo contactar a ${OWNER.givenName}?`,
+    answer: `Por WhatsApp o llamada al ${PHONE_DISPLAY}. Horario: ${COVERAGE_SCHEDULE.hours} ${COVERAGE_SCHEDULE.responseTime} ${COVERAGE_SCHEDULE.urgencyNote}`,
   },
   {
-    question: "¿Cuánto cuesta impermeabilizar un techo en Medellín?",
-    answer:
-      "La impermeabilización de techos en Medellín empieza desde $350.000 COP. El costo por m² varía según el sistema: acrílico $18.000-$30.000/m², manto asfáltico $35.000-$55.000/m², poliuretano $40.000-$65.000/m², silicona elastomérica $45.000-$70.000/m². Un techo pequeño (30-50 m²) cuesta $700.000-$1.500.000; uno mediano (60-100 m²) $1.200.000-$3.000.000; uno grande (150+ m²) $3.000.000-$7.000.000+.",
-  },
-  {
-    question: `¿Cómo contactar a ${COMPANY_NAME}?`,
-    answer: `Se puede contactar por WhatsApp al ${PHONE_DISPLAY} o por llamada telefónica al mismo número. El horario de atención es ${COVERAGE_SCHEDULE.hours}. ${COVERAGE_SCHEDULE.responseTime} ${COVERAGE_SCHEDULE.urgencyNote} También se puede solicitar una cotización desde el sitio web ${SITE_URL}.`,
-  },
-  {
-    question: `¿${COMPANY_NAME} da garantía por los trabajos?`,
-    answer:
-      "Sí. Espinal Multiservicios entrega garantía por escrito en cada trabajo. El tiempo de garantía depende del tipo de servicio, los materiales utilizados y las condiciones del inmueble. La garantía se explica antes de iniciar el trabajo.",
+    question: "¿Dan garantía por los trabajos?",
+    answer: "Sí. Cada trabajo queda con garantía por escrito; el tiempo depende del servicio y del alcance acordado.",
   },
 ];
 
 export default function NosotrosPage() {
-  const waLink = buildWaLinkHero();
-
-  const breadcrumbSchema = {
+  const pageType = "nosotros" as const;
+  const profileSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Inicio",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Nosotros",
-      },
-    ],
-  };
-
-  const aboutSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: `Sobre ${COMPANY_NAME}`,
-    description: metadata.description,
+    "@type": "ProfilePage",
+    name: TITLE,
+    description: DESCRIPTION,
     url: `${SITE_URL}/nosotros`,
-    mainEntity: {
-      ...buildLocalBusinessNode({
-        url: `${SITE_URL}/nosotros`,
-        description:
-          "Empresa de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá, Colombia.",
-      }),
-      foundingLocation: {
-        "@type": "Place",
-        name: "Medellín, Antioquia, Colombia",
-      },
-      numberOfEmployees: {
-        "@type": "QuantitativeValue",
-        minValue: 2,
-        maxValue: 10,
-      },
-    },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: LLM_FAQS.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
+    mainEntity: buildPersonNode(),
+    about: { "@id": BUSINESS_ID },
   };
 
   return (
     <>
-      <SiteHeader pageType="nosotros" />
+      <SiteHeader pageType={pageType} />
+      <main id="main-content" className="pb-20 md:pb-0">
+        <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: OWNER.name }]} />
 
-      <main id="main-content" className="pt-20 pb-20 md:pb-0">
-        {/* Hero */}
-        <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-              SOBRE NOSOTROS
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-              {COMPANY_NAME}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-              Somos una empresa de servicios para el hogar en Medellín y el Valle de Aburrá.
-              Nos especializamos en <strong>techos y cubiertas</strong>, <strong>pintura y acabados</strong> y{" "}
-              <strong>plomería</strong> para hogares y negocios del Valle de Aburrá y el Oriente
-              antioqueño, con visita técnica gratis, precio por escrito y garantía firmada.
-            </p>
-          </div>
-        </section>
-
-        {/* Key facts */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Datos clave
-            </h2>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">$0</p>
-                <p className="mt-1 text-sm text-slate-600">Cuesta la visita técnica</p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">100%</p>
-                <p className="mt-1 text-sm text-slate-600">Trabajos con garantía escrita</p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">12</p>
-                <p className="mt-1 text-sm text-slate-600">Municipios de cobertura</p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">24</p>
-                <p className="mt-1 text-sm text-slate-600">Servicios disponibles</p>
+        <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-start">
+            <div>
+              <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+                {OWNER.name}, el dueño de {COMPANY_NAME}
+              </h1>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-700">
+                Soy {OWNER.givenName}. Arreglo techos, pinto y reparo la plomería de casas y negocios en Medellín y el
+                Valle de Aburrá. Esta página la mantengo yo y el número que ves es el mío.
+              </p>
+              <ul className="mt-6 space-y-3 text-base leading-relaxed text-slate-700">
+                {OWNER.bio.map((line) => (
+                  <li key={line} className="border-l-2 border-orange-600 pl-4">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <WaButton source="hero" pageType={pageType} label={`Escribirle a ${OWNER.givenName}`} size="lg" />
+                <CallButton source="hero" pageType={pageType} size="lg" />
               </div>
             </div>
+            <OwnerCard variant="hero" />
           </div>
         </section>
 
-        {/* Services summary */}
-        <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Nuestros servicios
+        <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24" aria-labelledby="facts-heading">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <h2 id="facts-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+              Lo que puedes esperar
             </h2>
-            <p className="mt-2 text-base text-slate-600">
-              Ofrecemos {Object.values(SERVICE_DATA).flat().length} servicios en tres categorías.
-              Todos incluyen visita técnica gratuita y cotización sin compromiso.
-            </p>
-
-            <div className="mt-8 space-y-6">
-              {LINE_OPTIONS.map((line) => {
-                const services = SERVICE_DATA[line.id];
-                const prices = services.map((s) =>
-                  parseInt(s.basePrice.replace(/[^0-9]/g, ""), 10),
-                );
-                const minPrice = Math.min(...prices);
-                const accent = LINE_ACCENT[line.id];
-                const LineIcon = line.id === "techos" ? Wrench : line.id === "pintura" ? Paintbrush : Droplets;
-                return (
-                  <div key={line.id} className={`overflow-hidden rounded-2xl border border-slate-200 bg-white border-l-[3px] ${accent.accentBar.replace("bg-", "border-l-")}`}>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${accent.iconBg}`}>
-                            <LineIcon className={`h-5 w-5 ${accent.iconText}`} aria-hidden="true" />
-                          </div>
-                          <h3 className="text-lg font-semibold text-slate-900">{line.label}</h3>
-                        </div>
-                        <Link
-                          href={`/servicios/${line.id}`}
-                          className="inline-flex items-center gap-1 text-sm font-semibold text-orange-700 hover:text-orange-800"
-                        >
-                          Ver todos
-                          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                        </Link>
-                      </div>
-                      <p className="mt-3 text-sm text-slate-600">
-                        {services.length} servicios desde ${minPrice.toLocaleString("es-CO")} COP.{" "}
-                        {services.map((s) => s.name).join(", ")}.
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Coverage */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Cobertura
-            </h2>
-            <p className="mt-2 text-base text-slate-600">
-              Atendemos hogares y negocios en 12 municipios de Antioquia, Colombia.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {MUNICIPALITY_OPTIONS.filter((m) => m !== "Otro").map((m) => {
-                const slug = m
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "")
-                  .replace(/\s+/g, "-");
-                return (
-                  <Link
-                    key={m}
-                    href={`/cobertura/${slug}`}
-                    className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-                  >
-                    <MapPin className="h-3 w-3" aria-hidden="true" />
-                    {m}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* How we work */}
-        <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Cómo trabajamos
-            </h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <p className="text-sm font-bold text-orange-700">Paso 1</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">Nos cuentas el problema</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Nos escribes por WhatsApp o nos llamas. Nos cuentas qué pasa y te decimos qué servicio necesitas.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <p className="text-sm font-bold text-orange-700">Paso 2</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">Vamos a revisar</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Vamos a tu casa o negocio, miramos el problema y te explicamos qué hay que hacer. Sin costo.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <p className="text-sm font-bold text-orange-700">Paso 3</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">Te damos el precio</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Te decimos exactamente qué vamos a hacer, qué materiales se usan y cuánto cuesta. Sin sorpresas.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <p className="text-sm font-bold text-orange-700">Paso 4</p>
-                <p className="mt-1 text-base font-semibold text-slate-900">Hacemos el trabajo</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Hacemos el trabajo, limpiamos todo y te damos garantía por escrito.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact info */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Contacto
-            </h2>
-            <div className="mt-6 space-y-4">
-              <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Teléfono y WhatsApp</p>
-                  <p className="text-sm text-slate-600">{PHONE_DISPLAY}</p>
+            <dl className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["$0", "cuesta la visita técnica"],
+                ["Por escrito", "el precio, antes de empezar"],
+                ["Firmada", "la garantía de cada trabajo"],
+                [`${MUNICIPALITY_SEO.length}`, "municipios de Antioquia"],
+              ].map(([value, label]) => (
+                <div key={label} className="border-t-2 border-slate-900 pt-3">
+                  <dt className="text-3xl font-bold tracking-tight text-slate-900">{value}</dt>
+                  <dd className="mt-1 text-sm text-slate-600">{label}</dd>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Horario</p>
-                  <p className="text-sm text-slate-600">{COVERAGE_SCHEDULE.hours}</p>
-                  <p className="text-sm text-slate-600">{COVERAGE_SCHEDULE.responseTime}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Ubicación</p>
-                  <p className="text-sm text-slate-600">Medellín, Antioquia, Colombia</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Shield className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Garantía</p>
-                  <p className="text-sm text-slate-600">Garantía por escrito en cada trabajo</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                Cotizar por WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
-
-
-        {/* LLM-targeted FAQ */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Preguntas frecuentes sobre {COMPANY_NAME}
-            </h2>
-            <div className="mt-8 space-y-4">
-              {LLM_FAQS.map((faq, i) => (
-                <details
-                  key={i}
-                  className="group rounded-2xl border border-slate-200 bg-slate-50"
-                  {...(i === 0 ? { open: true } : {})}
-                >
-                  <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-slate-900 transition-all hover:bg-white">
-                    {faq.question}
-                    <ArrowRight
-                      className="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-90"
-                      aria-hidden="true"
-                    />
-                  </summary>
-                  <div className="border-t border-slate-200 px-5 py-4 text-sm leading-relaxed text-slate-600">
-                    {faq.answer}
-                  </div>
-                </details>
               ))}
+            </dl>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-200 py-16 md:py-24" aria-labelledby="what-heading">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <h2 id="what-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+              Qué hago
+            </h2>
+            <div className="mt-8 grid gap-8 md:grid-cols-3">
+              {LINE_OPTIONS.map((line) => {
+                const seo = SERVICE_LINE_SEO.find((s) => s.slug === line.id);
+                const prices = SERVICE_DATA[line.id].map((s) => Number(s.basePrice.replace(/[^0-9]/g, "")));
+                const min = Math.min(...prices).toLocaleString("es-CO");
+                return (
+                  <div key={line.id} className="border-t-2 border-slate-900 pt-4">
+                    <h3 className="text-xl font-bold tracking-tight text-slate-900">
+                      <Link href={`/servicios/${line.id}`} className="hover:underline">
+                        {line.label}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600">{seo?.heroDescription}</p>
+                    <p className="mt-3 text-sm text-slate-700">
+                      {SERVICE_DATA[line.id].map((s) => s.name).join(", ")}.
+                    </p>
+                    <p className="mt-3 text-sm text-slate-900">
+                      <span className="text-slate-500">desde </span>
+                      <span className="font-semibold tabular-nums">${min}</span>
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Internal links */}
-        <section className="border-t border-slate-200 bg-slate-50 py-12">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-lg font-semibold text-slate-900">Explora más</h2>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <Link
-                href="/servicios/techos"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Techos y cubiertas
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/servicios/pintura"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Pintura y acabados
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/servicios/plomeria"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Plomería
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/cobertura/medellin"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Cobertura
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Blog
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-            </div>
+        <ProcessSteps pageType={pageType} heading="Así trabajo" />
+        <TrustSignals heading="Mis reglas" />
+
+        <section className="border-t border-slate-200 bg-white py-16 md:py-24" aria-labelledby="where-heading">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <h2 id="where-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+              Dónde trabajo
+            </h2>
+            <p className="mt-3 max-w-2xl text-base text-slate-600">
+              Medellín, Valle de Aburrá y Oriente cercano. {COVERAGE_SCHEDULE.hours} {COVERAGE_SCHEDULE.urgencyNote}
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {MUNICIPALITY_SEO.map((m) => (
+                <li key={m.slug}>
+                  <Link href={`/cobertura/${m.slug}`} className="inline-flex min-h-11 items-center rounded-full border border-slate-300 bg-white px-3.5 text-sm font-semibold text-slate-700 hover:border-orange-300 hover:text-orange-700">
+                    {m.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        <TrustSignals heading="Cómo trabajamos" />
+        <FaqSection items={FAQS} heading={`Preguntas sobre ${OWNER.givenName} y ${COMPANY_NAME}`} tone="slate" />
+        <CtaBand pageType={pageType} heading="¿Hablamos de tu casa?" body="Escríbeme por WhatsApp con una foto del problema y te digo qué servicio aplica y cuándo puedo ir." />
       </main>
-
-      <MobileStickyBar pageType="nosotros" />
       <SiteFooter />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <MobileStickyBar pageType={pageType} />
+      <JsonLd data={profileSchema} />
     </>
   );
 }

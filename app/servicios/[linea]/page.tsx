@@ -1,23 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
+import { SITE_URL, SERVICE_DATA, type ServiceLineId } from "@/lib/conversion";
+import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, getServiceLineSEO } from "@/lib/seo-data";
+import { buildServiceSchema } from "@/lib/schema";
+import JsonLd from "@/components/local/JsonLd";
 import SiteHeader from "@/components/local/SiteHeader";
 import SiteFooter from "@/components/local/SiteFooter";
-import BlogCTA from "@/components/blog/BlogCTA";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import {
-  COMPANY_NAME,
-  SITE_URL,
-  PHONE_DISPLAY,
-  WA_BASE_URL,
-  SERVICE_DATA,
-  buildWaLinkHero,
-  type ServiceLineId,
-} from "@/lib/conversion";
-import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, getServiceLineSEO } from "@/lib/seo-data";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
-import { buildLocalBusinessNode, AREA_SERVED } from "@/lib/business";
+import Breadcrumbs from "@/components/local/Breadcrumbs";
+import PageHero from "@/components/local/PageHero";
+import ServiceGrid from "@/components/local/ServiceGrid";
+import ProcessSteps from "@/components/local/ProcessSteps";
+import CtaBand from "@/components/local/CtaBand";
+import FaqSection from "@/components/local/FaqSection";
+import RelatedLinks from "@/components/local/RelatedLinks";
 import TrustSignals from "@/components/local/TrustSignals";
 
 export function generateStaticParams() {
@@ -30,24 +26,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { linea } = await params;
   const data = getServiceLineSEO(linea);
   if (!data) return {};
-
+  const url = `${SITE_URL}/servicios/${data.slug}`;
   return {
     title: data.title,
     description: data.metaDescription,
-    alternates: { canonical: `${SITE_URL}/servicios/${data.slug}` },
+    alternates: { canonical: url },
     openGraph: {
       title: data.title,
       description: data.metaDescription,
-      url: `${SITE_URL}/servicios/${data.slug}`,
+      url,
       type: "website",
       locale: "es_CO",
       images: [{ url: data.ogImage, width: 1200, height: 630, alt: data.title }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: data.title,
-      description: data.metaDescription,
-    },
+    twitter: { card: "summary_large_image", title: data.title, description: data.metaDescription },
   };
 }
 
@@ -55,244 +47,53 @@ export default async function ServicioPage({ params }: Props) {
   const { linea } = await params;
   const seo = getServiceLineSEO(linea);
   if (!seo) notFound();
-
   const lineId = seo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
-  const waLink = buildWaLinkHero(undefined, seo.heroTitle);
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Inicio",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: seo.heroTitle,
-      },
-    ],
-  };
-
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: seo.title,
-    description: seo.metaDescription,
-    provider: buildLocalBusinessNode({ url: `${SITE_URL}/servicios/${seo.slug}` }),
-    areaServed: AREA_SERVED,
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: seo.title,
-      itemListElement: services.map((s) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: s.name,
-          description: s.summary,
-        },
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "COP",
-          price: s.basePrice.replace(/[^0-9]/g, ""),
-        },
-      })),
-    },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: seo.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const pageType = "servicio" as const;
+  const url = `${SITE_URL}/servicios/${seo.slug}`;
 
   return (
     <>
-      <SiteHeader pageType="servicio" />
-
-      <main id="main-content" className="pt-20 pb-20 md:pb-0">
-        {/* Hero */}
-        <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-              {COMPANY_NAME}
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-              {seo.heroTitle}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-slate-600">
-              {seo.heroDescription}
-            </p>
-            <ul className="mt-6 space-y-2">
-              {seo.heroBullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2 text-slate-700">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-600" aria-hidden="true" />
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#15803d] px-6 text-base font-semibold text-white transition-all duration-300 ease-out hover:bg-[#166d34] hover:shadow-lg hover:shadow-[#15803d]/20 active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                Cotizar ahora por WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Service grid */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Servicios y precios de referencia
-            </h2>
-            <p className="mt-2 text-base text-slate-600">
-              Precios aproximados. El valor final se define con la visita técnica gratuita.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {services.map((service) => {
-                const serviceWaLink = `${WA_BASE_URL}?text=${encodeURIComponent(`Hola, necesito cotizar: ${service.name} (${seo.heroTitle}). ¿Me pueden dar precio y disponibilidad?`)}`;
-                return (
-                  <div
-                    key={service.id}
-                    className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-orange-200 hover:bg-orange-50/50"
-                  >
-                    <h3 className="text-base font-semibold text-slate-900">{service.name}</h3>
-                    <p className="mt-1 text-sm text-slate-600">{service.summary}</p>
-                    <p className="mt-3 text-sm font-semibold text-orange-700">
-                      Desde {service.basePrice}
-                    </p>
-                    <a
-                      href={serviceWaLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#15803d] bg-[#15803d]/10 px-4 text-sm font-semibold text-[#166534] transition-all duration-300 ease-out hover:bg-[#15803d] hover:text-white focus-visible:ring-2 focus-visible:ring-[#15803d] active:scale-[0.98]"
-                    >
-                      <WhatsAppIcon className="h-4 w-4" />
-                      Cotizar esto
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-        {/* CTA */}
-        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6">
-            <BlogCTA serviceLine={lineId} postTitle={seo.title} variant="banner" />
-          </div>
-        </section>
-
-        {/* FAQs */}
-        <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Preguntas frecuentes
-            </h2>
-            <div className="mt-8 space-y-4">
-              {seo.faqs.map((faq, i) => (
-                <details
-                  key={i}
-                  className="group rounded-2xl border border-slate-200 bg-white"
-                >
-                  <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-slate-900 transition-all hover:bg-slate-50">
-                    {faq.question}
-                    <ArrowRight
-                      className="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-90"
-                      aria-hidden="true"
-                    />
-                  </summary>
-                  <div className="border-t border-slate-200 px-5 py-4 text-sm leading-relaxed text-slate-600">
-                    {faq.answer}
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Internal links */}
-        <section className="border-t border-slate-200 bg-white py-12">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="text-lg font-semibold text-slate-900">
-              Explora más servicios
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {SERVICE_LINE_SEO.filter((s) => s.slug !== linea).map((s) => (
-                <Link
-                  key={s.slug}
-                  href={`/servicios/${s.slug}`}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-                >
-                  {s.heroTitle}
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              ))}
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-              >
-                Blog
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-            </div>
-
-            <h2 className="mt-8 text-lg font-semibold text-slate-900">
-              Cobertura por municipio
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {MUNICIPALITY_SEO.map((m) => (
-                <Link
-                  key={m.slug}
-                  href={`/servicios/${linea}/${m.slug}`}
-                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50"
-                >
-                  <MapPin className="h-3 w-3" aria-hidden="true" />
-                  {m.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
+      <SiteHeader pageType={pageType} linea={lineId} />
+      <main id="main-content" className="pb-20 md:pb-0">
+        <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: seo.heroTitle }]} />
+        <PageHero
+          pageType={pageType}
+          h1={seo.heroTitle}
+          intro={seo.heroDescription}
+          bullets={seo.heroBullets}
+          linea={lineId}
+          ctaLabel="Cotizar por WhatsApp"
+        />
+        <ServiceGrid pageType={pageType} linea={lineId} services={services} heading="Servicios y precios de referencia" tone="slate" />
+        <ProcessSteps pageType={pageType} linea={lineId} />
         <TrustSignals />
+        <FaqSection items={seo.faqs} />
+        <CtaBand
+          pageType={pageType}
+          linea={lineId}
+          heading={`¿Necesitas ${seo.heroTitle.toLowerCase().startsWith("que") ? "ayuda con el techo" : seo.heroTitle.toLowerCase()}?`}
+          body="Cuéntame qué pasa y coordinamos la visita gratis. Te doy el precio por escrito antes de empezar."
+        />
+        <RelatedLinks
+          groups={[
+            {
+              heading: "Otros servicios",
+              links: [
+                ...SERVICE_LINE_SEO.filter((s) => s.slug !== linea).map((s) => ({ href: `/servicios/${s.slug}`, label: s.heroTitle })),
+                { href: "/blog", label: "Guías y precios" },
+              ],
+            },
+            {
+              heading: `${seo.heroTitle} por municipio`,
+              links: MUNICIPALITY_SEO.map((m) => ({ href: `/servicios/${linea}/${m.slug}`, label: m.name })),
+            },
+          ]}
+        />
       </main>
-
-      <MobileStickyBar pageType="servicio" />
       <SiteFooter />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <MobileStickyBar pageType={pageType} linea={lineId} />
+      <JsonLd data={buildServiceSchema({ url, name: seo.title, description: seo.metaDescription, services })} />
     </>
   );
 }
