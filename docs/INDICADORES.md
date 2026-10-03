@@ -15,12 +15,17 @@ El sitio emite **dos eventos** a GA4 desde `lib/tracking.ts`, siempre a través 
 footer, blog_inline, blog_sticky, blog_banner, emergency. `page_type`: home, servicio, servicio_municipio,
 cobertura, cobertura_index, nosotros, blog, blog_index, legal.
 
-### Configuración en GA4 (una vez, 10 minutos)
-1. Admin → Flujos de datos → copiar el ID `G-…` → variable `NEXT_PUBLIC_GA_ID` en Vercel (Production) → redeploy.
-2. Admin → Eventos → marcar `cta_whatsapp_click` y `cta_call_click` como **eventos clave**.
-3. Admin → Definiciones personalizadas → dimensiones de evento: `source`, `page_type`, `linea`, `municipio`, `servicio`.
-4. Admin → Vínculos de producto → Search Console.
-5. Comprobar: Admin → DebugView, abrir el sitio con `?debug_mode=1`, hacer clic en un botón y ver el evento con sus parámetros.
+### Estado de la configuración (hecho el 3-oct-2026 con la cuenta cristianjosue07@gmail.com)
+- GA4: cuenta «Cristian Espinal» → propiedad **Espinal Multiservicios** (ID de propiedad 557166289), flujo web
+  `espinalservicios.com` (ID 15983192441), **ID de medición `G-SWZZ5QGHBB`**, ya cargado como `NEXT_PUBLIC_GA_ID`
+  en Vercel (Production) y desplegado: el HTML en vivo carga gtag.
+- Search Console: propiedad de dominio `espinalservicios.com` **verificada** por registro TXT en el DNS de
+  Vercel (`google-site-verification=0CnyjqpCP-…`, no borrar). Sitemap `https://espinalservicios.com/sitemap.xml`
+  enviado. GA4 vinculado con Search Console.
+- Pendiente en GA4: marcar `cta_whatsapp_click` y `cta_call_click` como **eventos clave** (Admin → Eventos →
+  estrella) cuando aparezcan en la lista, es decir, tras fusionar el PR #3 y recibir los primeros clics.
+  Comprobar antes en Admin → DebugView abriendo el sitio con `?debug_mode=1`.
+- Clarity: sin cuenta Microsoft; opcional.
 
 ## Tabla semanal
 
