@@ -14,11 +14,12 @@ export const DEFAULT_CITY = "Medellín / Valle de Aburrá";
 export const WA_BASE_URL = `https://wa.me/${WA_NUMBER}`;
 
 export const NAV_LINKS = [
-  { id: "servicios", label: "Servicios" },
-  { id: "proceso", label: "Cómo funciona" },
-  { id: "cobertura", label: "Cobertura" },
-  { id: "agendar", label: "Agendar visita" },
-  { id: "faq", label: "Preguntas" },
+  { href: "/servicios/techos", label: "Techos" },
+  { href: "/servicios/pintura", label: "Pintura" },
+  { href: "/servicios/plomeria", label: "Plomería" },
+  { href: "/cobertura", label: "Cobertura" },
+  { href: "/blog", label: "Blog" },
+  { href: "/nosotros", label: "Henrry" },
 ] as const;
 
 export const LINE_OPTIONS = [
@@ -28,6 +29,13 @@ export const LINE_OPTIONS = [
 ] as const;
 
 export type ServiceLineId = (typeof LINE_OPTIONS)[number]["id"];
+
+/** Servicios destacados por línea (páginas de municipio y resúmenes). */
+export const HIGHLIGHT_SERVICES: Record<ServiceLineId, string[]> = {
+  techos: ["impermeabilizacion-cubiertas", "reparacion-goteras", "mantenimiento-canoas"],
+  pintura: ["pintura-interior", "pintura-exterior", "correccion-humedad-superficial"],
+  plomeria: ["reparacion-fugas", "destape-desagues", "cambio-griferia"],
+};
 
 export type ServiceItem = {
   id: string;
@@ -226,33 +234,33 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     id: "brief",
     step: 1,
-    title: "Nos cuentas el problema",
+    title: "Me cuentas el problema",
     detail:
-      "Nos escribes por WhatsApp o nos llamas. Nos cuentas qué pasa y te decimos qué servicio necesitas.",
-    note: "Inicias por WhatsApp o llamada, sin formularios largos.",
+      "Me escribes por WhatsApp o me llamas. Me cuentas qué pasa, con una foto si puedes, y te digo qué servicio necesitas.",
+    note: "Sin formularios largos: un mensaje basta.",
   },
   {
     id: "diagnostic",
     step: 2,
-    title: "Vamos a tu casa a revisar",
+    title: "Voy a revisar",
     detail:
-      "Vamos a tu casa o negocio, miramos el problema y te explicamos qué hay que hacer.",
-    note: "Sin costo. Solo vamos, miramos y te explicamos.",
+      "Voy a tu casa o negocio, miro el problema y te explico qué hay que hacer.",
+    note: "La visita no tiene costo.",
   },
   {
     id: "proposal",
     step: 3,
-    title: "Te damos el precio",
+    title: "Te doy el precio por escrito",
     detail:
-      "Te decimos exactamente qué vamos a hacer, qué materiales se usan y cuánto cuesta. Sin sorpresas.",
-    note: "El precio puede cambiar solo si encontramos algo extra que no se veía.",
+      "Te digo exactamente qué voy a hacer, qué materiales uso y cuánto cuesta. Sin sorpresas.",
+    note: "El precio cambia solo si aparece algo que no se veía, y lo acordamos antes.",
   },
   {
     id: "execution",
     step: 4,
-    title: "Hacemos el trabajo",
+    title: "Hago el trabajo",
     detail:
-      "Hacemos el trabajo, limpiamos todo y te damos garantía por escrito.",
+      "Hago el trabajo, dejo todo limpio y te entrego la garantía por escrito.",
     note: "Garantía por escrito según servicio y alcance.",
   },
 ];
@@ -354,7 +362,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-7",
     question: "¿Qué es Espinal Multiservicios?",
     answer:
-      "Espinal Multiservicios es una empresa de servicios para el hogar en Medellín y Valle de Aburrá, Colombia. Nos especializamos en techos y cubiertas, pintura y acabados, y plomería, con visita técnica gratis, precio por escrito antes de empezar y garantía firmada. Atendemos en 12 municipios de Antioquia.",
+      "Espinal Multiservicios es el negocio de Henrry Espinal: techos y cubiertas, pintura y acabados, y plomería a domicilio en Medellín y Valle de Aburrá. Henrry va a tu casa, revisa gratis, te da el precio por escrito y responde con garantía firmada. Atiende 12 municipios de Antioquia.",
   },
   {
     id: "faq-8",
@@ -391,106 +399,59 @@ export const COVERAGE_SCHEDULE = {
 /*  CONTEXTUAL WHATSAPP MESSAGES                                      */
 /* ------------------------------------------------------------------ */
 
-export function buildWaLinkHero(municipio?: string, linea?: string) {
-  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
-  const safeLinea = linea?.trim() || "multiservicios";
-  const hour = new Date().getHours();
-  const greeting = hour < 12 ? "Buenos días" : hour < 18 ? "Buenas tardes" : "Buenas noches";
-  const msg = `${greeting}, quiero cotizar un servicio en ${safeMunicipio}. Es sobre ${safeLinea}.`;
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
+const LINE_NEED: Record<ServiceLineId, string> = {
+  techos: "un arreglo en el techo",
+  pintura: "pintar",
+  plomeria: "un plomero",
+};
 
-export function buildWaLinkTechos() {
-  const msg = "Tengo gotera/filtración. ¿Qué hago hoy y cuándo pueden venir?";
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
+const LINE_LABEL_SHORT: Record<ServiceLineId, string> = {
+  techos: "techos",
+  pintura: "pintura",
+  plomeria: "plomería",
+};
 
-export function buildWaLinkPintura() {
-  const msg = "Quiero pintar apto/casa. ¿Cómo cotizan?";
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkPlomeria() {
-  const msg = "Tengo fuga/sanitario. ¿Atienden hoy?";
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkProcess() {
-  const msg = "Quiero iniciar proceso de cotización.";
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkPricing(servicio?: string, municipio?: string) {
-  const safeServicio = servicio?.trim() || "servicio";
-  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
-  const msg = `Quiero confirmar valor para ${safeServicio} en ${safeMunicipio}.`;
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkCoverage(municipio?: string) {
-  const safeMunicipio = municipio?.trim() || DEFAULT_CITY;
-  const msg = `Quiero confirmar si atienden en ${safeMunicipio}.`;
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkFaq() {
-  const msg = "Tengo una duda sobre sus servicios.";
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-/* ------------------------------------------------------------------ */
-/*  APPOINTMENT WA LINK BUILDER                                       */
-/* ------------------------------------------------------------------ */
-
-export function buildWaLinkAppointment(data: {
-  nombre: string;
-  telefono?: string;
+export type WaLinkOptions = {
+  linea?: ServiceLineId;
   municipio?: string;
-  linea: string;
-  fecha?: string;
-  horario?: string;
-  descripcion?: string;
-}) {
-  const parts = [
-    "Quiero agendar una visita técnica.",
-    `Nombre: ${data.nombre}.`,
-  ];
+  /** Nombre del servicio puntual ("Reparación de goteras"). */
+  servicio?: string;
+  intent?: "cotizar" | "urgencia" | "duda" | "blog" | "composer";
+  /** Título del artículo (blog) o texto libre (composer). */
+  context?: string;
+};
 
-  if (data.telefono?.trim()) parts.push(`Teléfono: ${data.telefono}.`);
-  if (data.municipio?.trim()) parts.push(`Municipio: ${data.municipio}.`);
-  parts.push(`Servicio: ${data.linea}.`);
-  if (data.fecha?.trim()) parts.push(`Fecha preferida: ${data.fecha}.`);
-  if (data.horario?.trim()) parts.push(`Horario: ${data.horario}.`);
+/**
+ * Único constructor de enlaces de WhatsApp. El mensaje siempre se dirige a Henrry
+ * y no depende de la hora (evita diferencias entre servidor y cliente).
+ */
+export function buildWaLink(o: WaLinkOptions = {}) {
+  const where = o.municipio ? ` en ${o.municipio}` : "";
+  const label = o.linea ? LINE_LABEL_SHORT[o.linea] : "";
+  let msg: string;
 
-  if (data.descripcion?.trim()) {
-    parts.push(`Problema: ${data.descripcion.trim()}.`);
+  switch (o.intent) {
+    case "urgencia":
+      msg = `Hola Henrry, tengo una urgencia${label ? ` de ${label}` : ""}${where}. ¿Puedes venir hoy?`;
+      break;
+    case "blog":
+      msg = `Hola Henrry, leí "${o.context ?? "un artículo"}" en tu página y necesito ayuda${label ? ` con ${label}` : ""}${where}.`;
+      break;
+    case "composer":
+      msg = `Hola Henrry, ${o.context ?? "necesito una cotización"}${label ? ` Es sobre ${label}.` : ""}${where ? ` Estoy${where}.` : ""}`;
+      break;
+    case "duda":
+      msg = `Hola Henrry, tengo una duda${label ? ` sobre ${label}` : ""}${where}. ¿Me ayudas?`;
+      break;
+    default:
+      if (o.servicio) {
+        msg = `Hola Henrry, necesito cotizar: ${o.servicio}${where}. ¿Cuándo puedes venir a revisar?`;
+      } else if (o.linea) {
+        msg = `Hola Henrry, necesito ${LINE_NEED[o.linea]}${where}. ¿Cuándo puedes venir a revisar?`;
+      } else {
+        msg = `Hola Henrry, necesito una cotización para mi casa${where}. ¿Cuándo puedes venir a revisar?`;
+      }
   }
-
-  parts.push("¿Me confirman disponibilidad?");
-
-  return `${WA_BASE_URL}?text=${encodeURIComponent(parts.join(" "))}`;
-}
-
-/* ------------------------------------------------------------------ */
-/*  BLOG                                                               */
-/* ------------------------------------------------------------------ */
-
-export const BLOG_NAV_LINKS = [
-  { href: "/", label: "Inicio" },
-  { href: "/blog", label: "Blog" },
-  { href: "/#servicios", label: "Servicios" },
-  { href: "/#agendar", label: "Agendar visita" },
-] as const;
-
-export function buildWaLinkBlog(serviceLine: ServiceLineId, postTitle: string) {
-  const lineLabel =
-    LINE_OPTIONS.find((l) => l.id === serviceLine)?.label ?? "multiservicios";
-  const msg = `Hola, estaba leyendo "${postTitle}" y necesito ayuda con ${lineLabel}. ¿Me pueden cotizar?`;
-  return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
-
-export function buildWaLinkEmergency() {
-  const msg = "URGENTE: Tengo una emergencia y necesito atención lo antes posible. ¿Pueden ayudarme?";
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;
 }
 

@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, ArrowRight, Phone } from "lucide-react";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
-import LocalLinks from "@/components/sections/LocalLinks";
-import {
-  COMPANY_NAME,
-  SITE_URL,
-  PHONE_DISPLAY,
-  PHONE_E164,
-  WA_BASE_URL,
-} from "@/lib/conversion";
+import { MapPin, ArrowRight } from "lucide-react";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
+import WaButton from "@/components/local/WaButton";
+import CallButton from "@/components/local/CallButton";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
+import LocalLinks from "@/components/local/LocalLinks";
+import { COMPANY_NAME, SITE_URL } from "@/lib/conversion";
 import { MUNICIPALITY_SEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
 
 const TITLE = "Cobertura en Medellín y el Valle de Aburrá";
@@ -82,9 +77,9 @@ export default function CoberturaIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
-      <BlogHeader />
+      <SiteHeader pageType="cobertura_index" />
 
-      <main id="main-content" className="pt-20 pb-24 md:pb-0">
+      <main id="main-content" className="pb-24 md:pb-0">
         {/* Hero */}
         <section className="border-b border-slate-200 bg-white py-12 md:py-20">
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -98,21 +93,9 @@ export default function CoberturaIndexPage() {
               {TITLE}
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{DESCRIPTION}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={WA_BASE_URL}
-                className="inline-flex items-center gap-2 rounded-full bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-700"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                Cotizar por WhatsApp
-              </a>
-              <a
-                href={`tel:${PHONE_E164}`}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                {PHONE_DISPLAY}
-              </a>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <WaButton source="hero" pageType="cobertura_index" label="Cotizar por WhatsApp" size="lg" />
+              <CallButton source="hero" pageType="cobertura_index" size="lg" />
             </div>
           </div>
         </section>
@@ -121,7 +104,7 @@ export default function CoberturaIndexPage() {
         <section className="bg-slate-50 py-12 md:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Municipios donde trabajamos
+              Municipios donde trabajo
             </h2>
             <p className="mt-2 text-slate-600">
               Selecciona tu municipio para ver los servicios disponibles y precios de referencia.
@@ -158,7 +141,7 @@ export default function CoberturaIndexPage() {
         <section className="bg-white py-12 md:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Nuestros servicios
+              Qué hago
             </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               {SERVICE_LINE_SEO.map((s) => (
@@ -188,8 +171,8 @@ export default function CoberturaIndexPage() {
         <LocalLinks tone="slate" />
       </main>
 
-      <BlogFooter />
-      <MobileStickyBarGlobal />
+      <SiteFooter />
+      <MobileStickyBar pageType="cobertura_index" />
     </>
   );
 }

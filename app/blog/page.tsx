@@ -3,10 +3,10 @@ import Link from "next/link";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
 import { BLOG_CATEGORIES, type BlogCategory } from "@/lib/blog-data";
 import { getAllPosts, getPostsByCategory } from "@/lib/blog-utils";
-import BlogHeader from "@/components/blog/BlogHeader";
-import BlogFooter from "@/components/blog/BlogFooter";
+import SiteHeader from "@/components/local/SiteHeader";
+import SiteFooter from "@/components/local/SiteFooter";
 import BlogCard from "@/components/blog/BlogCard";
-import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import MobileStickyBar from "@/components/local/MobileStickyBar";
 
 export const metadata: Metadata = {
   title: "Blog — Consejos de techos, pintura y plomería",
@@ -90,14 +90,11 @@ export default async function BlogListingPage({ searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <BlogHeader />
+      <SiteHeader pageType="blog_index" />
 
-      <main id="main-content" className="pt-20 pb-20 md:pb-16">
+      <main id="main-content" className="pb-20 md:pb-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           {/* Page header */}
-          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
-            BLOG
-          </p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
             Consejos para tu casa o negocio
           </h1>
@@ -148,8 +145,8 @@ export default async function BlogListingPage({ searchParams }: Props) {
         </div>
       </main>
 
-      <MobileStickyBarGlobal />
-      <BlogFooter />
+      <MobileStickyBar pageType="blog_index" />
+      <SiteFooter />
     </>
   );
 }

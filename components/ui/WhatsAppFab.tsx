@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { buildWaLinkFaq } from "@/lib/conversion";
-import { track } from "@/lib/tracking";
+import { buildWaLink } from "@/lib/conversion";
+import { trackWhatsApp, type PageType } from "@/lib/tracking";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-export default function WhatsAppFab() {
+export default function WhatsAppFab({ pageType = "home" }: { pageType?: PageType }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ export default function WhatsAppFab() {
 
   return (
     <a
-      href={buildWaLinkFaq()}
+      href={buildWaLink({ intent: "duda" })}
       target="_blank"
       rel="noreferrer"
-      onClick={() => track("cta_whatsapp_click", { source: "fab_desktop" })}
-      aria-label="Escríbenos por WhatsApp"
+      onClick={() => trackWhatsApp({ source: "fab", page_type: pageType })}
+      aria-label="Escribir a Henrry por WhatsApp"
       className={`fixed bottom-6 right-6 z-[70] hidden items-center gap-2 rounded-full bg-[#15803d] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl md:flex ${
         visible
           ? "translate-y-0 opacity-100"
@@ -32,7 +32,7 @@ export default function WhatsAppFab() {
       }`}
     >
       <WhatsAppIcon className="h-6 w-6" />
-      <span>Escríbenos</span>
+      <span>Escribir a Henrry</span>
     </a>
   );
 }

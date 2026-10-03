@@ -20,8 +20,8 @@ export default function LocalLinks({ tone = "white" }: Props) {
           Servicios por municipio
         </h2>
         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-          Atendemos los 12 municipios con el mismo equipo, los mismos precios de referencia y la misma
-          garantía. Elige tu municipio para ver qué hacemos allí.
+          Atiendo los 12 municipios con los mismos precios de referencia y la misma garantía. Elige el tuyo
+          para ver qué hago allí.
         </p>
 
         <ul className="mt-5 flex flex-wrap gap-2" aria-label="Municipios">
@@ -40,7 +40,7 @@ export default function LocalLinks({ tone = "white" }: Props) {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {SERVICE_LINE_SEO.map((line) => (
             <div key={line.slug}>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.08em] text-orange-700">
+              <h3 className="text-base font-bold tracking-tight text-slate-900">
                 <Link href={`/servicios/${line.slug}`} className="hover:underline">
                   {line.heroTitle}
                 </Link>
