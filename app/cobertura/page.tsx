@@ -5,6 +5,7 @@ import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import LocalLinks from "@/components/sections/LocalLinks";
 import {
   COMPANY_NAME,
   SITE_URL,
@@ -183,6 +184,8 @@ export default function CoberturaIndexPage() {
             </ul>
           </div>
         </section>
+
+        <LocalLinks tone="slate" />
       </main>
 
       <BlogFooter />

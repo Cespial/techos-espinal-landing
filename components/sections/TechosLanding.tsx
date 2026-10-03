@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties } from "react";
 import {
   buildTelLink,
   buildWaLinkHero,
@@ -16,6 +16,7 @@ import Hero from "@/components/sections/Hero";
 import ServiceTabs from "@/components/sections/ServiceTabs";
 import HowWeWork from "@/components/sections/HowWeWork";
 import TrustSignals from "@/components/sections/TrustSignals";
+import LocalLinks from "@/components/sections/LocalLinks";
 import CoverageAvailability from "@/components/sections/CoverageAvailability";
 import AppointmentScheduler from "@/components/sections/AppointmentScheduler";
 import FaqFooter from "@/components/sections/FaqFooter";
@@ -62,16 +63,20 @@ export function Reveal({
 /*  Main orchestrator                                                 */
 /* ------------------------------------------------------------------ */
 
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+
+function subscribeReducedMotion(onChange: () => void) {
+  const mql = window.matchMedia(REDUCED_MOTION_QUERY);
+  mql.addEventListener("change", onChange);
+  return () => mql.removeEventListener("change", onChange);
+}
+
 function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-  return reduced;
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(REDUCED_MOTION_QUERY).matches,
+    () => false,
+  );
 }
 
 export default function TechosLanding() {
@@ -229,6 +234,7 @@ export default function TechosLanding() {
         </div>
 
         <div className="section-perf">
+          <LocalLinks />
           <FaqFooter waLink={heroWaLink} telLink={telLink} />
         </div>
       </main>

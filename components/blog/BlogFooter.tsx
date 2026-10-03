@@ -37,7 +37,7 @@ export default function BlogFooter() {
               <p>{NAP.area}</p>
               <p>
                 Tel.{" "}
-                <a href={telLink} className="hover:text-slate-900">
+                <a href={telLink} className="inline-flex min-h-11 items-center hover:text-slate-900">
                   {PHONE_DISPLAY}
                 </a>{" "}
                 (WhatsApp y llamadas)
@@ -67,25 +67,25 @@ export default function BlogFooter() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-slate-200 pt-4 text-xs text-slate-500">
-          <Link href="/servicios/techos" className="hover:text-slate-900">
+          <Link href="/servicios/techos" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Servicios
           </Link>
-          <Link href="/cobertura" className="hover:text-slate-900">
+          <Link href="/cobertura" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Cobertura
           </Link>
-          <Link href="/nosotros" className="hover:text-slate-900">
+          <Link href="/nosotros" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Nosotros
           </Link>
-          <Link href="/blog" className="hover:text-slate-900">
+          <Link href="/blog" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Blog
           </Link>
-          <Link href="/terminos" className="hover:text-slate-900">
+          <Link href="/terminos" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Términos y condiciones
           </Link>
-          <Link href="/privacidad" className="hover:text-slate-900">
+          <Link href="/privacidad" className="inline-flex min-h-11 items-center hover:text-slate-900">
             Política de privacidad
           </Link>
-          <a href={SITE_URL} className="hover:text-slate-900">
+          <a href={SITE_URL} className="inline-flex min-h-11 items-center hover:text-slate-900">
             Sitio principal
           </a>
           {GBP_URL && (
@@ -93,7 +93,7 @@ export default function BlogFooter() {
               href={GBP_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="hover:text-slate-900"
+              className="inline-flex min-h-11 items-center hover:text-slate-900"
             >
               Reseñas en Google
             </a>

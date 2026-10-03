@@ -1686,4 +1686,169 @@ Para el clima de Medellín y el Valle de Aburrá, estas son nuestras recomendaci
 
 Si estás pensando en cambiar las tejas de tu casa o necesitás reparar tu techo actual, podemos ayudarte. Conoce todos nuestros [servicios de techos y cubiertas](/servicios/techos) con precios de referencia. Si tu techo actual tiene goteras, lee nuestra guía de [cómo arreglar una gotera en el techo](/blog/como-arreglar-gotera-techo). Revisamos tu techo, te asesoramos sobre la mejor opción y te damos un precio claro. La visita técnica es gratuita.`,
   },
+  /* ---- ARTICLE 11 ---- */
+  {
+    slug: "segunda-temporada-lluvias-valle-aburra-revisar-techo",
+    title: "Segunda temporada de lluvias en el Valle de Aburrá: qué revisar en el techo antes de que llueva",
+    metaDescription:
+      "Octubre y noviembre traen los aguaceros más fuertes del año en Medellín y el Valle de Aburrá. Lista de revisión del techo, señales de alarma y precios de referencia.",
+    targetKeyword: "temporada de lluvias Medellín techo",
+    secondaryKeywords: [
+      "revisar techo antes de lluvias",
+      "goteras temporada de lluvias Valle de Aburrá",
+      "mantenimiento de techo octubre noviembre",
+      "limpieza de canales antes de lluvias",
+    ],
+    category: "techos",
+    serviceLines: ["techos"],
+    relatedServiceIds: ["revision-puntos-criticos", "mantenimiento-canoas", "reparacion-goteras", "sellado-fisuras"],
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/og/og-blog-techos.png",
+    featuredImage: "/blog/placeholder-techos.svg",
+    featuredImageAlt: "Revisión de techo antes de la temporada de lluvias en el Valle de Aburrá",
+    readingTimeMinutes: 7,
+    isFeatured: true,
+    relatedSlugs: ["como-arreglar-gotera-techo", "preparar-casa-temporada-lluvias-medellin", "impermeabilizacion-techos-medellin-precios"],
+    targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella", "Caldas", "Copacabana", "Girardota", "Rionegro", "La Ceja", "Marinilla"],
+    tags: ["lluvias", "techos", "mantenimiento", "goteras", "canales"],
+    body: `## Por qué octubre y noviembre son los meses críticos
+
+En el Valle de Aburrá llueve dos veces al año con fuerza: de abril a mayo y de septiembre a noviembre. La segunda temporada suele ser la más intensa, con aguaceros cortos pero muy fuertes al final de la tarde. Un techo que aguantó todo el año puede fallar en una sola tormenta si las canales están tapadas o un sellado se agrietó con el sol de julio y agosto.
+
+La buena noticia: casi todas las goteras de temporada se pueden evitar con una revisión de una hora antes de que empiece a llover en serio.
+
+## Lista de revisión en 15 minutos (desde el suelo)
+
+No hace falta subirse al techo para detectar la mayoría de los problemas. Con la casa seca, revisa esto:
+
+1. **Manchas nuevas en el cielo raso.** Una mancha amarilla o gris que no estaba en junio indica que ya entra agua, aunque todavía no gotee.
+2. **Canales con hojas o tierra visibles.** Si desde la calle ves plantas creciendo en la canal, está tapada.
+3. **Bajantes que escupen agua por arriba.** Cuando llueve y el agua rebosa por el borde en vez de bajar por el tubo, el bajante está obstruido.
+4. **Tejas corridas o rotas.** Mira la línea del techo: una teja desalineada se nota a simple vista.
+5. **Pintura ampollada en la parte alta de las paredes.** Es humedad que viene del techo o de la fachada, no de la pared.
+6. **Olor a humedad en cuartos del segundo piso.** Si el olor aparece después de las lluvias de septiembre, hay agua acumulada arriba.
+
+> Si marcaste dos o más puntos, pide una revisión antes de la próxima semana de lluvias. Es más barato sellar hoy que cambiar un cielo raso en noviembre.
+
+## Qué incluye una revisión profesional del techo
+
+Nuestra **revisión del techo (desde $130.000 COP)** recorre toda la cubierta y entrega un informe con fotos de los puntos críticos: tejas, traslapos, encuentros con paredes, chimeneas y ductos, canales y bajantes. Con eso sabes exactamente qué arreglar y qué puede esperar.
+
+Los trabajos que más se piden en octubre, con precio de referencia:
+
+| Trabajo | Para qué sirve | Desde |
+|---|---|---|
+| Limpieza de canales y bajantes | Que el agua baje por donde debe y no se devuelva | $150.000 COP |
+| Sellado de fisuras y juntas | Cerrar las uniones donde entra el agua | $210.000 COP |
+| Reparación de goteras | Arreglar el punto exacto sin cambiar el techo | $180.000 COP |
+| Cambio puntual de teja | Reponer piezas rotas o corridas | $190.000 COP |
+| Protección contra goteras (impermeabilización) | Capa continua para techos planos y terrazas | $350.000 COP |
+
+Los precios son de referencia y se confirman con la visita técnica gratuita.
+
+## Lo que cambia según tu municipio
+
+- **Envigado, Sabaneta y La Estrella**: en las lomas llueve más y hay más neblina. Revisa primero los encuentros entre techo y pared.
+- **Bello, Copacabana y Girardota**: el viento del norte corre tejas y llena las canales de hojas. La limpieza de canales es la prioridad.
+- **Itagüí**: en bodegas y locales el hollín tapa los bajantes. Un destape a tiempo evita que el agua se devuelva a la bodega.
+- **Caldas**: es de los municipios más lluviosos del Valle. Si el techo tiene más de 8 años sin impermeabilizar, hazlo antes de noviembre.
+- **Rionegro, La Ceja y Marinilla**: altiplano frío y húmedo. Las cubiertas con poca pendiente acumulan agua; revisa que no haya pozos.
+
+Mira qué hacemos en tu municipio: [Envigado](/servicios/techos/envigado), [Sabaneta](/servicios/techos/sabaneta), [Bello](/servicios/techos/bello), [Itagüí](/servicios/techos/itagui), [La Estrella](/servicios/techos/la-estrella), [Caldas](/servicios/techos/caldas), [Copacabana](/servicios/techos/copacabana), [Girardota](/servicios/techos/girardota), [Rionegro](/servicios/techos/rionegro), [La Ceja](/servicios/techos/la-ceja), [Marinilla](/servicios/techos/marinilla) y [Medellín](/servicios/techos/medellin).
+
+## Si ya está lloviendo y hay gotera
+
+1. Pon un balde y mueve lo que se pueda mojar.
+2. No subas al techo mojado. Nunca.
+3. Toma una foto de la mancha o del goteo y escríbenos: con la foto te decimos si es urgente o si puede esperar a que escampe.
+4. Cuando pare la lluvia, vamos, revisamos y te damos el precio antes de empezar.
+
+Toda reparación queda con garantía por escrito. Si quieres que revisemos tu techo antes de la próxima semana de lluvias, [agenda la visita gratis](/servicios/techos).
+`,
+  },
+  /* ---- ARTICLE 12 ---- */
+  {
+    slug: "cuanto-cuesta-impermeabilizar-techo-envigado-sabaneta-itagui",
+    title: "Cuánto cuesta impermeabilizar un techo en Envigado, Sabaneta e Itagüí (2026)",
+    metaDescription:
+      "Precios reales de impermeabilización de techos y terrazas en Envigado, Sabaneta e Itagüí: por m², por tamaño de techo y por sistema. Qué incluye y cuándo conviene.",
+    targetKeyword: "impermeabilizar techo Envigado precio",
+    secondaryKeywords: [
+      "impermeabilización techos Sabaneta",
+      "impermeabilización terraza Itagüí precio",
+      "cuánto cuesta impermeabilizar un techo",
+      "precio impermeabilización por metro cuadrado",
+    ],
+    category: "guias",
+    serviceLines: ["techos"],
+    relatedServiceIds: ["impermeabilizacion-cubiertas", "sellado-fisuras", "revision-puntos-criticos"],
+    publishedAt: "2026-10-03",
+    updatedAt: "2026-10-03",
+    author: "Espinal Multiservicios",
+    authorRole: "Equipo técnico",
+    ogImage: "/og/og-blog-servicios.png",
+    featuredImage: "/blog/placeholder-techos.svg",
+    featuredImageAlt: "Impermeabilización de techo en el sur del Valle de Aburrá",
+    readingTimeMinutes: 6,
+    isFeatured: false,
+    relatedSlugs: ["impermeabilizacion-techos-medellin-precios", "segunda-temporada-lluvias-valle-aburra-revisar-techo", "como-arreglar-gotera-techo"],
+    targetMunicipalities: ["Envigado", "Sabaneta", "Itagüí", "Medellín"],
+    tags: ["impermeabilización", "precios", "techos", "Envigado", "Sabaneta", "Itagüí"],
+    body: `## La respuesta corta
+
+Impermeabilizar un techo en el sur del Valle de Aburrá empieza **desde $350.000 COP** para áreas pequeñas (un balcón, una terraza chica o la franja de un encuentro con pared) y se cotiza por metro cuadrado cuando el área es mayor. Los rangos de 2026 que manejamos en Envigado, Sabaneta e Itagüí:
+
+| Sistema | Precio por m² | Dura | Para qué techo |
+|---|---|---|---|
+| Acrílico elastomérico | $18.000 – $30.000 | 3 a 5 años | Techos de teja de barro o fibrocemento con grietas finas |
+| Manto asfáltico | $35.000 – $55.000 | 8 a 10 años | Terrazas y losas planas que se pisan |
+| Poliuretano | $40.000 – $65.000 | 8 a 12 años | Losas con mucho sol y cambios de temperatura |
+| Silicona elastomérica | $45.000 – $70.000 | 10 a 15 años | Techos metálicos y cubiertas industriales |
+
+Los precios incluyen limpieza, preparación de la superficie, material y mano de obra. No incluyen reparar la estructura si está dañada; eso se cotiza aparte después de la visita.
+
+## Ejemplos por tamaño de techo
+
+| Tamaño | Área típica | Acrílico | Manto asfáltico |
+|---|---|---|---|
+| Balcón o terraza chica | 15 a 25 m² | $350.000 – $750.000 | $600.000 – $1.400.000 |
+| Techo de casa pequeña | 30 a 50 m² | $700.000 – $1.500.000 | $1.200.000 – $2.800.000 |
+| Techo de casa de dos pisos | 60 a 100 m² | $1.200.000 – $3.000.000 | $2.200.000 – $5.500.000 |
+| Local o bodega | 150 m² o más | desde $3.000.000 | desde $5.500.000 |
+
+## Qué cambia entre Envigado, Sabaneta e Itagüí
+
+**Envigado.** En La Paz, El Dorado y Zúñiga predominan casas de dos pisos con teja de barro: el acrílico sobre las juntas y los encuentros suele ser suficiente. En las lomas (Loma del Escobero, Las Palmas) llueve más y hay neblina: recomendamos manto o poliuretano en terrazas. Mira [reparación de techos y goteras en Envigado](/servicios/techos/envigado).
+
+**Sabaneta.** Muchos edificios nuevos ya cumplen 8 a 10 años y las terrazas comunes empiezan a filtrar hacia los últimos pisos. Ahí el manto asfáltico es la opción con mejor relación precio y duración. Mira [reparación de techos y goteras en Sabaneta](/servicios/techos/sabaneta).
+
+**Itagüí.** En locales y bodegas del sector industrial las cubiertas metálicas acumulan hollín y se oxidan en los traslapos. La silicona elastomérica dura más sobre metal y aguanta el tránsito de mantenimiento. Mira [reparación de techos y goteras en Itagüí](/servicios/techos/itagui).
+
+## Cuándo conviene impermeabilizar y cuándo no
+
+Conviene cuando:
+
+- Hay varias goteras en puntos distintos del mismo techo.
+- La capa anterior tiene más de 5 años (acrílico) o más de 10 (manto).
+- La terraza se pisa y tiene grietas finas en toda el área.
+
+No conviene cuando:
+
+- La gotera es una sola y se ubica bien: ahí basta una [reparación de gotera](/servicios/techos) desde $180.000 COP.
+- La estructura está podrida o las tejas rotas: primero se repara, después se impermeabiliza.
+- Está lloviendo: la superficie debe estar seca para que el material agarre.
+
+## Cómo cotizamos
+
+1. Nos escribes por WhatsApp con una foto del techo y el municipio.
+2. Vamos sin costo, medimos el área y revisamos la estructura.
+3. Te entregamos el precio por escrito con el sistema recomendado y la garantía.
+4. Hacemos el trabajo en 1 a 3 días según el área y el clima.
+
+Toda impermeabilización queda con garantía por escrito. Si quieres el precio exacto de tu techo, [pide la visita gratis](/servicios/techos).
+`,
+  },
 ];

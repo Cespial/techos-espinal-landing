@@ -340,6 +340,144 @@ export function getMunicipalitySEO(slug: string) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  PERFIL POR MUNICIPIO (sectores, vivienda, clima)                   */
+/* ------------------------------------------------------------------ */
+
+export type MunicipalityProfile = {
+  /** Sectores o barrios conocidos. Se redactan como "incluidos ..." porque cubrimos todo el municipio. */
+  sectors: string[];
+  /** Tipo de vivienda predominante. */
+  housing: string;
+  /** Nota de clima o entorno que afecta techos, pintura o plomería. */
+  climate: string;
+};
+
+export const MUNICIPALITY_PROFILE: Record<string, MunicipalityProfile> = {
+  "medellin": {
+    sectors: ["El Poblado", "Laureles y Estadio", "Belén", "Robledo", "Buenos Aires", "La América", "Castilla", "el Centro"],
+    housing:
+      "casas de barrio de uno y dos pisos, apartamentos en edificios de todas las épocas y locales comerciales",
+    climate:
+      "Medellín tiene dos temporadas de lluvia, abril–mayo y septiembre–noviembre, con aguaceros cortos y fuertes que ponen a prueba techos, canales y fachadas.",
+  },
+  "envigado": {
+    sectors: ["La Paz", "El Dorado", "Zúñiga", "Las Vegas", "San Marcos", "Alto de Misael", "Loma del Escobero", "Las Palmas"],
+    housing:
+      "casas de dos pisos con teja de barro en los barrios tradicionales y edificios nuevos en las lomas",
+    climate:
+      "En las lomas del oriente de Envigado llueve más y hay más neblina que en la parte plana, así que las cubiertas y fachadas sufren más humedad.",
+  },
+  "sabaneta": {
+    sectors: ["Aves María", "Calle Larga", "Las Lomitas", "Betania", "La Doctora", "San José", "Holanda", "Prados de Sabaneta"],
+    housing:
+      "casas tradicionales del centro y conjuntos de apartamentos nuevos que ya empiezan a necesitar mantenimiento",
+    climate:
+      "Sabaneta comparte el clima húmedo del sur del Valle de Aburrá, con lluvias frecuentes en la tarde que afectan sobre todo a terrazas y balcones.",
+  },
+  "bello": {
+    sectors: ["Niquía", "Cabañas", "Fontidueño", "Zamora", "Santa Ana", "El Trapiche", "París", "Navarra"],
+    housing:
+      "casas de barrio con cubiertas de teja y conjuntos residenciales nuevos en Niquía y Navarra",
+    climate:
+      "Bello, al norte del Valle, recibe lluvias fuertes y viento que levantan tejas y tapan canales con hojas y tierra.",
+  },
+  "itagui": {
+    sectors: ["el Centro", "Ditaires", "Santa María", "San Pío", "El Rosario", "San Gabriel", "Calatrava", "Yarumito"],
+    housing:
+      "viviendas de barrio, locales comerciales y bodegas del sector industrial",
+    climate:
+      "En Itagüí los techos de bodegas y locales acumulan hollín y sedimento que tapan bajantes, y las lluvias de la tarde los desbordan.",
+  },
+  "la-estrella": {
+    sectors: ["Pueblo Viejo", "Suramérica", "La Tablaza", "Ancón", "San Agustín", "El Pedrero", "Bellavista", "La Inmaculada"],
+    housing:
+      "casas tradicionales en el casco urbano y viviendas campestres en las lomas",
+    climate:
+      "La Estrella tiene lluvias constantes y zonas de ladera con mucha humedad, lo que acelera el moho en paredes y el deterioro de los sellados.",
+  },
+  "caldas": {
+    sectors: ["el Centro", "La Chuscala", "Mandalay", "Andalucía", "La Planta", "La Inmaculada", "Barrios Unidos", "El Porvenir"],
+    housing:
+      "casas de barrio con teja de barro o fibrocemento y fincas en las veredas cercanas",
+    climate:
+      "Caldas es de los municipios más lluviosos del Valle de Aburrá; los techos viejos y las canales sin mantenimiento fallan primero aquí.",
+  },
+  "copacabana": {
+    sectors: ["el Centro", "Machado", "Las Vegas", "El Recreo", "Villanueva", "Fátima", "La Misericordia", "Zarzal"],
+    housing:
+      "casas del casco urbano y viviendas campestres hacia las veredas",
+    climate:
+      "Copacabana, al norte del Valle, alterna sol fuerte y aguaceros, lo que agrieta los sellados de las cubiertas con el tiempo.",
+  },
+  "girardota": {
+    sectors: ["el Centro", "El Paraíso", "San Andrés", "El Totumo", "La Palma", "Aurelio Mejía", "Juan XXIII"],
+    housing:
+      "viviendas del casco urbano y fincas con techos amplios en las veredas",
+    climate:
+      "En Girardota las fincas tienen cubiertas grandes con mucha hoja encima; limpiar canales antes de las lluvias evita la mayoría de las goteras.",
+  },
+  "rionegro": {
+    sectors: ["el Centro", "San Antonio de Pereira", "Llanogrande", "El Porvenir", "Gualanday", "Cuatro Esquinas", "Alto Bonito", "El Tablazo"],
+    housing:
+      "casas campestres, parcelaciones y apartamentos nuevos en el casco urbano",
+    climate:
+      "Rionegro está a 2.100 metros: llueve más, hace más frío y la humedad se queda en las paredes, así que la pintura y los sellados duran menos si no se preparan bien.",
+  },
+  "la-ceja": {
+    sectors: ["el Centro", "Fátima", "San Cayetano", "La Floresta", "El Tambo", "Payuco", "La Milagrosa"],
+    housing:
+      "casas del casco urbano y parcelaciones campestres",
+    climate:
+      "La Ceja tiene clima frío y húmedo del altiplano; la humedad en paredes y el moho son los problemas más frecuentes.",
+  },
+  "marinilla": {
+    sectors: ["el Centro", "El Progreso", "La Ramada", "El Rosario", "Belén", "Santa Lucía"],
+    housing:
+      "casas tradicionales del casco urbano y viviendas en veredas cercanas",
+    climate:
+      "Marinilla, en el altiplano del Oriente, combina lluvia y frío; las cubiertas con pendiente baja acumulan agua y necesitan revisión periódica.",
+  },
+};
+
+export function getMunicipalityProfile(slug: string): MunicipalityProfile | undefined {
+  return MUNICIPALITY_PROFILE[slug];
+}
+
+/** "La Paz, El Dorado y Zúñiga" */
+export function joinSectors(sectors: string[], max = 3): string {
+  const list = sectors.slice(0, max);
+  if (list.length <= 1) return list.join("");
+  return `${list.slice(0, -1).join(", ")} y ${list[list.length - 1]}`;
+}
+
+// FAQ específicas por municipio y línea: usan el perfil y precios ya publicados.
+const LINE_LOCAL_FAQ: Record<string, (muni: string, p: MunicipalityProfile) => { question: string; answer: string }> = {
+  techos: (muni, p) => ({
+    question: `¿Qué pasa con las goteras en ${muni} cuando llegan las lluvias?`,
+    answer: `${p.climate} Por eso recomendamos una revisión del techo (desde $130.000 COP) antes de la temporada y reparar las goteras que aparezcan (desde $180.000 COP) sin esperar a que dañen el cielo raso.`,
+  }),
+  pintura: (muni, p) => ({
+    question: `¿Cuánto tarda pintar una casa o apartamento en ${muni}?`,
+    answer: `En ${muni} trabajamos sobre todo en ${p.housing}. Un apartamento de dos habitaciones toma 2 a 3 días; una casa de dos pisos, 4 a 6. La pintura interior empieza desde $280.000 COP e incluye preparación de paredes y limpieza final.`,
+  }),
+  plomeria: (muni, p) => ({
+    question: `¿Hacen plomería de urgencia en ${muni}?`,
+    answer: `Sí. En ${muni} atendemos de lunes a sábado de 7:00 a. m. a 6:00 p. m., y fuera de ese horario coordinamos por WhatsApp lo antes posible. ${p.climate} La reparación de fugas empieza desde $170.000 COP y el destape de desagües desde $160.000 COP.`,
+  }),
+};
+
+export function buildLocalFaqs(lineSlug: string, muni: { slug: string; name: string }) {
+  const p = MUNICIPALITY_PROFILE[muni.slug];
+  if (!p) return [];
+  const coverage = {
+    question: `¿Atienden en ${joinSectors(p.sectors)} (${muni.name})?`,
+    answer: `Sí. Cubrimos todo ${muni.name}, incluidos ${joinSectors(p.sectors, p.sectors.length)}. Si tu sector no aparece, escríbenos por WhatsApp: casi siempre llegamos el mismo día o al siguiente.`,
+  };
+  const local = LINE_LOCAL_FAQ[lineSlug]?.(muni.name, p);
+  return local ? [coverage, local] : [coverage];
+}
+
+/* ------------------------------------------------------------------ */
 /*  CROSS-PAGE SEO DATA (Service × Municipality)                       */
 /* ------------------------------------------------------------------ */
 
@@ -503,10 +641,13 @@ function buildCrossPages(): CrossPageSEO[] {
         MUNICIPALITY_INTROS[line.slug]?.[muni.slug] ??
         `Ofrecemos ${lineVerb} en ${muni.name} con visita técnica gratuita y garantía por escrito.`;
 
-      const faqs = (CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
-        question: faq.question.replace(/\{municipio\}/g, muni.name),
-        answer: faq.answer.replace(/\{municipio\}/g, muni.name),
-      }));
+      const faqs = [
+        ...(CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
+          question: faq.question.replace(/\{municipio\}/g, muni.name),
+          answer: faq.answer.replace(/\{municipio\}/g, muni.name),
+        })),
+        ...buildLocalFaqs(line.slug, muni),
+      ];
 
       pages.push({
         lineSlug: line.slug,

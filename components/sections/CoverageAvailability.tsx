@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Clock, CloudSun, Droplets, Thermometer, Zap, AlertTriangle } from "lucide-react";
 
 const CoverageMap = dynamic(() => import("@/components/sections/CoverageMap"), {
@@ -18,6 +19,11 @@ import {
   buildWaLinkEmergency,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
+import { MUNICIPALITY_SEO } from "@/lib/seo-data";
+
+const MUNICIPALITY_SLUG: Record<string, string> = Object.fromEntries(
+  MUNICIPALITY_SEO.map((m) => [m.name, m.slug]),
+);
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 type WeatherSnapshot = {
@@ -110,6 +116,14 @@ export default function CoverageAvailability({
               <p className="mt-2 text-sm text-slate-600">
                 Sí, atendemos en {selectedMunicipality}. Agenda tu visita técnica gratis.
               </p>
+              {MUNICIPALITY_SLUG[selectedMunicipality] && (
+                <Link
+                  href={`/cobertura/${MUNICIPALITY_SLUG[selectedMunicipality]}`}
+                  className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-orange-700 hover:underline"
+                >
+                  Ver servicios y precios en {selectedMunicipality} →
+                </Link>
+              )}
             </div>
 
             {/* Schedule */}
@@ -178,16 +192,36 @@ export default function CoverageAvailability({
                 Otros municipios
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {otherMunicipalities.map((municipio) => (
-                  <button
-                    key={municipio}
-                    type="button"
-                    onClick={() => onSelect(municipio, "chip")}
-                    className="min-h-[44px] rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-200 active:scale-[0.98]"
-                  >
-                    {municipio}
-                  </button>
-                ))}
+                {otherMunicipalities.map((municipio) => {
+                  const slug = MUNICIPALITY_SLUG[municipio];
+                  const className =
+                    "inline-flex min-h-[44px] items-center rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-semibold text-slate-700 transition-all duration-300 ease-out hover:border-orange-200 active:scale-[0.98]";
+                  // Enlace real a la página del municipio (rastreable); el clic sin
+                  // modificadores actualiza el mapa en vez de navegar.
+                  return slug ? (
+                    <Link
+                      key={municipio}
+                      href={`/cobertura/${slug}`}
+                      onClick={(e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+                        e.preventDefault();
+                        onSelect(municipio, "chip");
+                      }}
+                      className={className}
+                    >
+                      {municipio}
+                    </Link>
+                  ) : (
+                    <button
+                      key={municipio}
+                      type="button"
+                      onClick={() => onSelect(municipio, "chip")}
+                      className={className}
+                    >
+                      {municipio}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

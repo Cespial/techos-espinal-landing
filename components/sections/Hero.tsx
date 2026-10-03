@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, MapPin, ShieldCheck } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { PHONE_DISPLAY } from "@/lib/conversion";
@@ -31,7 +31,23 @@ export default function Hero({
   onCallClick,
 }: HeroProps) {
   const [videoFailed, setVideoFailed] = useState(false);
+  // El video (1,2 MB) solo se monta en pantallas anchas sin preferencia de
+  // movimiento reducido; en móvil el LCP es el póster JPG optimizado.
+  const [showVideo, setShowVideo] = useState(false);
   const seasonalMsg = getSeasonalMessage();
+
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 768px)");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setShowVideo(wide.matches && !reduced.matches);
+    update();
+    wide.addEventListener("change", update);
+    reduced.addEventListener("change", update);
+    return () => {
+      wide.removeEventListener("change", update);
+      reduced.removeEventListener("change", update);
+    };
+  }, []);
 
   return (
     <section
@@ -40,7 +56,7 @@ export default function Hero({
     >
       {/* Video background */}
       <div className="absolute inset-0">
-        {!videoFailed ? (
+        {showVideo && !videoFailed ? (
           <video
             className="h-full w-full object-cover"
             style={{ animation: "hero-zoom 20s ease-in-out infinite alternate" }}
@@ -50,8 +66,7 @@ export default function Hero({
             muted
             loop
             playsInline
-            preload="metadata"
-            {...{ fetchPriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>}
+            preload="none"
             onError={() => setVideoFailed(true)}
           />
         ) : (

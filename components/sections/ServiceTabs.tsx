@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Droplets, Info, Paintbrush, Wrench } from "lucide-react";
 import {
@@ -124,9 +125,17 @@ export default function ServiceTabs() {
 
         {/* Active tab description + story bullets */}
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
-          <p className="text-sm font-semibold text-slate-900">
-            {activeLineLabel}
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="text-sm font-semibold text-slate-900">
+              {activeLineLabel}
+            </p>
+            <Link
+              href={`/servicios/${activeTab}`}
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-orange-700 hover:underline"
+            >
+              Ver todo sobre {activeLineLabel.toLowerCase()} →
+            </Link>
+          </div>
           <p className="mt-1 text-sm text-slate-600">
             {activeConfig.description}
           </p>

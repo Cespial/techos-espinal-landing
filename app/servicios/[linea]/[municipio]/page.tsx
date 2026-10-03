@@ -14,6 +14,7 @@ import {
   WA_BASE_URL,
   SERVICE_DATA,
   buildWaLinkHero,
+  PROCESS_STEPS,
   type ServiceLineId,
 } from "@/lib/conversion";
 import {
@@ -23,6 +24,8 @@ import {
   getMunicipalitySEO,
   SERVICE_LINE_SEO,
   MUNICIPALITY_SEO,
+  getMunicipalityProfile,
+  joinSectors,
 } from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 import { buildLocalBusinessNode } from "@/lib/business";
@@ -71,6 +74,7 @@ export default async function CrossPage({ params }: Props) {
   const lineSeo = getServiceLineSEO(linea);
   const muniSeo = getMunicipalitySEO(municipio);
   if (!lineSeo || !muniSeo) notFound();
+  const profile = getMunicipalityProfile(muniSeo.slug);
 
   const lineId = lineSeo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
@@ -270,6 +274,54 @@ export default async function CrossPage({ params }: Props) {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+
+        {/* Zonas y contexto local */}
+        {profile && (
+          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+                Zonas que atendemos en {muniSeo.name}
+              </h2>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+                Cubrimos todo {muniSeo.name}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}.
+                Trabajamos sobre todo en {profile.housing}.
+              </p>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">{profile.climate}</p>
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${muniSeo.name}`}>
+                {profile.sectors.map((sector) => (
+                  <li
+                    key={sector}
+                    className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700"
+                  >
+                    {sector}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {/* Cómo trabajamos */}
+        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+              Cómo trabajamos en {muniSeo.name}
+            </h2>
+            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {PROCESS_STEPS.map((step) => (
+                <li key={step.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
+                    Paso {step.step}
+                  </p>
+                  <h3 className="mt-2 text-base font-semibold text-slate-900">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.detail}</p>
+                  <p className="mt-2 text-xs text-slate-500">{step.note}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

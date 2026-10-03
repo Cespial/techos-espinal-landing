@@ -15,7 +15,13 @@ import {
   LINE_OPTIONS,
   buildWaLinkCoverage,
 } from "@/lib/conversion";
-import { MUNICIPALITY_SEO, getMunicipalitySEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import {
+  MUNICIPALITY_SEO,
+  getMunicipalitySEO,
+  SERVICE_LINE_SEO,
+  getMunicipalityProfile,
+  joinSectors,
+} from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 import { getAllPosts } from "@/lib/blog-utils";
 import { buildLocalBusinessNode } from "@/lib/business";
@@ -63,6 +69,7 @@ export default async function CoberturaPage({ params }: Props) {
   const { municipio } = await params;
   const seo = getMunicipalitySEO(municipio);
   if (!seo) notFound();
+  const profile = getMunicipalityProfile(seo.slug);
 
   const waLink = buildWaLinkCoverage(seo.name);
 
@@ -112,7 +119,7 @@ export default async function CoberturaPage({ params }: Props) {
               {seo.name}
             </div>
             <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-              Servicios en {seo.name}
+              Techos, pintura y plomería en {seo.name}
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-slate-600">
               {seo.description}
@@ -159,6 +166,32 @@ export default async function CoberturaPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* Zonas y contexto local */}
+        {profile && (
+          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+                Zonas que atendemos en {seo.name}
+              </h2>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+                Cubrimos todo {seo.name}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}.
+                Trabajamos sobre todo en {profile.housing}.
+              </p>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">{profile.climate}</p>
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${seo.name}`}>
+                {profile.sectors.map((sector) => (
+                  <li
+                    key={sector}
+                    className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700"
+                  >
+                    {sector}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* Highlighted services with prices */}
         <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
