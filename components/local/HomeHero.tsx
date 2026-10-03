@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { OWNER } from "@/lib/owner";
 import WaButton from "./WaButton";
 import CallButton from "./CallButton";
@@ -34,7 +35,21 @@ export default function HomeHero() {
             ))}
           </dl>
         </div>
-        <OwnerCard variant="hero" />
+        <div className="relative">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#f6f1e9] md:aspect-[4/5]">
+            <Image
+              src="/illustrations/hero-techo.webp"
+              alt="Ilustración de un techo de teja de barro con canal y escalera, como los que reparamos en el Valle de Aburrá"
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="relative -mt-16 px-4 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:translate-y-10 md:px-6">
+            <OwnerCard variant="hero" />
+          </div>
+        </div>
       </div>
     </section>
   );

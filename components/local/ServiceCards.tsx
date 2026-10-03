@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SERVICE_DATA, LINE_OPTIONS, LINE_STORY, type ServiceLineId } from "@/lib/conversion";
 import { LINE_ACCENT } from "@/lib/service-icons";
@@ -29,6 +30,14 @@ export default function ServiceCards({ pageType, municipio }: Props) {
             return (
               <article key={id} className="flex flex-col rounded-3xl border border-slate-200 bg-white">
                 <div className={`border-b border-slate-200 p-6 border-t-4 rounded-t-3xl ${accent.accentBar.replace("bg-", "border-t-")}`}>
+                  <Image
+                    src={`/illustrations/icono-${id}.webp`}
+                    alt=""
+                    width={64}
+                    height={64}
+                    className="mb-3 h-16 w-16 mix-blend-multiply"
+                    aria-hidden="true"
+                  />
                   <h3 className="text-xl font-bold tracking-tight text-slate-900">{line.label}</h3>
                   <p className="mt-1 text-sm text-slate-600">{LINE_STORY[id].summary}</p>
                 </div>
