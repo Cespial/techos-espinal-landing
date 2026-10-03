@@ -4,7 +4,7 @@ export const SITE_URL = "https://espinalservicios.com";
 // Fecha estable de última actualización de contenido (para sitemap.lastModified).
 // Evita que cada deploy marque todas las URLs como "actualizadas" con la hora de build.
 // Actualizar manualmente al revisar el contenido de las páginas estructurales.
-export const LAST_CONTENT_UPDATE = "2026-06-19";
+export const LAST_CONTENT_UPDATE = "2026-10-03";
 
 export const PHONE_DISPLAY = "(+57) 300 733 6333";
 export const PHONE_E164 = "+573007336333";
@@ -354,7 +354,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-7",
     question: "¿Qué es Espinal Multiservicios?",
     answer:
-      "Espinal Multiservicios es una empresa de servicios para el hogar en Medellín y Valle de Aburrá, Colombia. Nos especializamos en techos y cubiertas, pintura y acabados, y plomería. Hemos completado más de 350 trabajos con calificación promedio de 4.9/5. Atendemos en 12 municipios de Antioquia.",
+      "Espinal Multiservicios es una empresa de servicios para el hogar en Medellín y Valle de Aburrá, Colombia. Nos especializamos en techos y cubiertas, pintura y acabados, y plomería, con visita técnica gratis, precio por escrito antes de empezar y garantía firmada. Atendemos en 12 municipios de Antioquia.",
   },
   {
     id: "faq-8",
@@ -373,87 +373,6 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "¿Cuánto cuesta pintar un apartamento en Medellín?",
     answer:
       "Pintar un apartamento en Medellín cuesta entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Incluye mano de obra, pintura de buena calidad, preparación de superficies y limpieza final. Cotización gratis.",
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  SOCIAL PROOF                                                      */
-/* ------------------------------------------------------------------ */
-
-export const SOCIAL_PROOF_STATS = {
-  jobsCompleted: 350,
-  avgRating: 4.9,
-  yearsExperience: 3,
-} as const;
-
-/* ------------------------------------------------------------------ */
-/*  TESTIMONIALS                                                      */
-/* ------------------------------------------------------------------ */
-
-export type Testimonial = {
-  id: string;
-  name: string;
-  municipality: string;
-  serviceLine: ServiceLineId;
-  text: string;
-  rating: number;
-  date: string;
-};
-
-export const TESTIMONIAL_DATA: Testimonial[] = [
-  {
-    id: "t1",
-    name: "Carlos M.",
-    municipality: "Envigado",
-    serviceLine: "techos",
-    text: "Teníamos goteras en toda la casa. Vinieron al otro día, revisaron todo el techo y lo dejaron perfecto. Precio justo y trabajo limpio.",
-    rating: 5,
-    date: "Noviembre 2025",
-  },
-  {
-    id: "t2",
-    name: "Andrea L.",
-    municipality: "Medellín",
-    serviceLine: "pintura",
-    text: "Pintaron todo el apartamento en dos días. Quedó como nuevo. Muy organizados y puntuales con los horarios.",
-    rating: 5,
-    date: "Diciembre 2025",
-  },
-  {
-    id: "t3",
-    name: "Jorge R.",
-    municipality: "Sabaneta",
-    serviceLine: "plomeria",
-    text: "Tenía una fuga que nadie encontraba. Ellos la detectaron rápido y la repararon el mismo día. Muy profesionales.",
-    rating: 5,
-    date: "Enero 2026",
-  },
-  {
-    id: "t4",
-    name: "María P.",
-    municipality: "Itagüí",
-    serviceLine: "techos",
-    text: "Impermeabilizaron la cubierta del negocio. Ya pasaron dos temporadas de lluvias y cero filtraciones. Recomendados.",
-    rating: 5,
-    date: "Octubre 2025",
-  },
-  {
-    id: "t5",
-    name: "Luis F.",
-    municipality: "Bello",
-    serviceLine: "pintura",
-    text: "Resanaron y pintaron la fachada completa. Los vecinos me preguntan quién lo hizo. Excelente acabado.",
-    rating: 5,
-    date: "Febrero 2026",
-  },
-  {
-    id: "t6",
-    name: "Sandra G.",
-    municipality: "La Estrella",
-    serviceLine: "plomeria",
-    text: "Cambiaron toda la grifería del baño y arreglaron el sanitario. Rápidos, limpios y con garantía. Muy satisfecha.",
-    rating: 5,
-    date: "Enero 2026",
   },
 ];
 

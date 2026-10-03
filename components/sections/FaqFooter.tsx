@@ -10,6 +10,7 @@ import {
   buildWaLinkFaq,
 } from "@/lib/conversion";
 import { track } from "@/lib/tracking";
+import { NAP, GBP_URL } from "@/lib/business";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 type FaqFooterProps = {
@@ -109,9 +110,17 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
               <p className="mt-1 text-sm text-slate-600">
                 Techos, pintura y plomería para casas y negocios en Medellín y el Valle de Aburrá.
               </p>
-              <p className="mt-1 text-xs text-slate-500">
-                Respondemos rápido por WhatsApp o llamada.
-              </p>
+              <address className="mt-3 space-y-0.5 text-xs not-italic text-slate-500">
+                <p>{NAP.area}</p>
+                <p>
+                  Tel.{" "}
+                  <a href={telLink} className="inline-flex min-h-11 items-center hover:text-slate-900">
+                    {PHONE_DISPLAY}
+                  </a>{" "}
+                  (WhatsApp y llamadas)
+                </p>
+                <p>{NAP.hours}</p>
+              </address>
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
@@ -144,17 +153,17 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
               <p className="mb-2 font-semibold text-slate-700">Servicios</p>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/servicios/techos" className="hover:text-slate-900">
+                  <Link href="/servicios/techos" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Techos y cubiertas
                   </Link>
                 </li>
                 <li>
-                  <Link href="/servicios/pintura" className="hover:text-slate-900">
+                  <Link href="/servicios/pintura" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Pintura y acabados
                   </Link>
                 </li>
                 <li>
-                  <Link href="/servicios/plomeria" className="hover:text-slate-900">
+                  <Link href="/servicios/plomeria" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Plomería
                   </Link>
                 </li>
@@ -164,32 +173,44 @@ export default function FaqFooter({ waLink, telLink }: FaqFooterProps) {
               <p className="mb-2 font-semibold text-slate-700">Cobertura</p>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/cobertura" className="hover:text-slate-900">
+                  <Link href="/cobertura" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Medellín y Valle de Aburrá
                   </Link>
                 </li>
                 <li>
-                  <Link href="/nosotros" className="hover:text-slate-900">
+                  <Link href="/nosotros" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Nosotros
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="hover:text-slate-900">
+                  <Link href="/blog" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Blog
                   </Link>
                 </li>
+                {GBP_URL && (
+                  <li>
+                    <a
+                      href={GBP_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex min-h-11 items-center hover:text-slate-900"
+                    >
+                      Reseñas en Google
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
             <div>
               <p className="mb-2 font-semibold text-slate-700">Legal</p>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/terminos" className="hover:text-slate-900">
+                  <Link href="/terminos" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Términos y condiciones
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacidad" className="hover:text-slate-900">
+                  <Link href="/privacidad" className="inline-flex min-h-11 items-center hover:text-slate-900">
                     Política de privacidad
                   </Link>
                 </li>

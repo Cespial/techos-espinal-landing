@@ -180,9 +180,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "medellin",
     name: "Medellín",
-    title: "Servicios en Medellín: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Medellín | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Medellín. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Medellín",
     secondaryKeywords: ["plomero Medellín", "pintor Medellín", "techos Medellín"],
     description:
@@ -193,9 +193,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "envigado",
     name: "Envigado",
-    title: "Servicios en Envigado: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Envigado | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Envigado. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Envigado",
     secondaryKeywords: ["plomero Envigado", "pintor Envigado", "techos Envigado"],
     description:
@@ -206,9 +206,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "sabaneta",
     name: "Sabaneta",
-    title: "Servicios en Sabaneta: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Sabaneta | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Sabaneta. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Sabaneta",
     secondaryKeywords: ["plomero Sabaneta", "pintor Sabaneta", "techos Sabaneta"],
     description:
@@ -219,9 +219,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "bello",
     name: "Bello",
-    title: "Servicios en Bello: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Bello | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Bello. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Bello",
     secondaryKeywords: ["plomero Bello", "pintor Bello", "techos Bello"],
     description:
@@ -232,9 +232,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "itagui",
     name: "Itagüí",
-    title: "Servicios en Itagüí: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Itagüí | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Itagüí. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Itagüí",
     secondaryKeywords: ["plomero Itagüí", "pintor Itagüí", "techos Itagüí"],
     description:
@@ -245,9 +245,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "la-estrella",
     name: "La Estrella",
-    title: "Servicios en La Estrella: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en La Estrella | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en La Estrella. Visita técnica gratis, precios claros y garantía por escrito. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar La Estrella",
     secondaryKeywords: ["plomero La Estrella", "pintor La Estrella", "techos La Estrella"],
     description:
@@ -258,9 +258,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "caldas",
     name: "Caldas",
-    title: "Servicios en Caldas: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Caldas | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Caldas, Antioquia. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Caldas Antioquia",
     secondaryKeywords: ["plomero Caldas", "pintor Caldas", "techos Caldas"],
     description:
@@ -271,9 +271,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "copacabana",
     name: "Copacabana",
-    title: "Servicios en Copacabana: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Copacabana | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Copacabana. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Copacabana",
     secondaryKeywords: ["plomero Copacabana", "pintor Copacabana", "techos Copacabana"],
     description:
@@ -284,9 +284,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "girardota",
     name: "Girardota",
-    title: "Servicios en Girardota: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Girardota | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Girardota. Visita técnica gratis, precios claros y garantía por escrito.",
+      "Reparación de techos, pintura y plomería en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Girardota",
     secondaryKeywords: ["plomero Girardota", "pintor Girardota", "techos Girardota"],
     description:
@@ -297,9 +297,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "rionegro",
     name: "Rionegro",
-    title: "Servicios en Rionegro: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Rionegro | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Rionegro, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Rionegro",
     secondaryKeywords: ["plomero Rionegro", "pintor Rionegro", "techos Rionegro"],
     description:
@@ -310,9 +310,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "la-ceja",
     name: "La Ceja",
-    title: "Servicios en La Ceja: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en La Ceja | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en La Ceja, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar La Ceja",
     secondaryKeywords: ["plomero La Ceja", "pintor La Ceja", "techos La Ceja"],
     description:
@@ -323,9 +323,9 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
   {
     slug: "marinilla",
     name: "Marinilla",
-    title: "Servicios en Marinilla: techos, pintura y plomería",
+    title: "Techos, pintura y plomería en Marinilla | Reparación a domicilio",
     metaDescription:
-      "Reparación de techos, pintura y plomería en Marinilla, Antioquia. Visita técnica gratis y precios claros. Cotiza por WhatsApp.",
+      "Reparación de techos, pintura y plomería en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
     targetKeyword: "servicios hogar Marinilla",
     secondaryKeywords: ["plomero Marinilla", "pintor Marinilla", "techos Marinilla"],
     description:
@@ -337,6 +337,144 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
 
 export function getMunicipalitySEO(slug: string) {
   return MUNICIPALITY_SEO.find((m) => m.slug === slug);
+}
+
+/* ------------------------------------------------------------------ */
+/*  PERFIL POR MUNICIPIO (sectores, vivienda, clima)                   */
+/* ------------------------------------------------------------------ */
+
+export type MunicipalityProfile = {
+  /** Sectores o barrios conocidos. Se redactan como "incluidos ..." porque cubrimos todo el municipio. */
+  sectors: string[];
+  /** Tipo de vivienda predominante. */
+  housing: string;
+  /** Nota de clima o entorno que afecta techos, pintura o plomería. */
+  climate: string;
+};
+
+export const MUNICIPALITY_PROFILE: Record<string, MunicipalityProfile> = {
+  "medellin": {
+    sectors: ["El Poblado", "Laureles y Estadio", "Belén", "Robledo", "Buenos Aires", "La América", "Castilla", "el Centro"],
+    housing:
+      "casas de barrio de uno y dos pisos, apartamentos en edificios de todas las épocas y locales comerciales",
+    climate:
+      "Medellín tiene dos temporadas de lluvia, abril–mayo y septiembre–noviembre, con aguaceros cortos y fuertes que ponen a prueba techos, canales y fachadas.",
+  },
+  "envigado": {
+    sectors: ["La Paz", "El Dorado", "Zúñiga", "Las Vegas", "San Marcos", "Alto de Misael", "Loma del Escobero", "Las Palmas"],
+    housing:
+      "casas de dos pisos con teja de barro en los barrios tradicionales y edificios nuevos en las lomas",
+    climate:
+      "En las lomas del oriente de Envigado llueve más y hay más neblina que en la parte plana, así que las cubiertas y fachadas sufren más humedad.",
+  },
+  "sabaneta": {
+    sectors: ["Aves María", "Calle Larga", "Las Lomitas", "Betania", "La Doctora", "San José", "Holanda", "Prados de Sabaneta"],
+    housing:
+      "casas tradicionales del centro y conjuntos de apartamentos nuevos que ya empiezan a necesitar mantenimiento",
+    climate:
+      "Sabaneta comparte el clima húmedo del sur del Valle de Aburrá, con lluvias frecuentes en la tarde que afectan sobre todo a terrazas y balcones.",
+  },
+  "bello": {
+    sectors: ["Niquía", "Cabañas", "Fontidueño", "Zamora", "Santa Ana", "El Trapiche", "París", "Navarra"],
+    housing:
+      "casas de barrio con cubiertas de teja y conjuntos residenciales nuevos en Niquía y Navarra",
+    climate:
+      "Bello, al norte del Valle, recibe lluvias fuertes y viento que levantan tejas y tapan canales con hojas y tierra.",
+  },
+  "itagui": {
+    sectors: ["el Centro", "Ditaires", "Santa María", "San Pío", "El Rosario", "San Gabriel", "Calatrava", "Yarumito"],
+    housing:
+      "viviendas de barrio, locales comerciales y bodegas del sector industrial",
+    climate:
+      "En Itagüí los techos de bodegas y locales acumulan hollín y sedimento que tapan bajantes, y las lluvias de la tarde los desbordan.",
+  },
+  "la-estrella": {
+    sectors: ["Pueblo Viejo", "Suramérica", "La Tablaza", "Ancón", "San Agustín", "El Pedrero", "Bellavista", "La Inmaculada"],
+    housing:
+      "casas tradicionales en el casco urbano y viviendas campestres en las lomas",
+    climate:
+      "La Estrella tiene lluvias constantes y zonas de ladera con mucha humedad, lo que acelera el moho en paredes y el deterioro de los sellados.",
+  },
+  "caldas": {
+    sectors: ["el Centro", "La Chuscala", "Mandalay", "Andalucía", "La Planta", "La Inmaculada", "Barrios Unidos", "El Porvenir"],
+    housing:
+      "casas de barrio con teja de barro o fibrocemento y fincas en las veredas cercanas",
+    climate:
+      "Caldas es de los municipios más lluviosos del Valle de Aburrá; los techos viejos y las canales sin mantenimiento fallan primero aquí.",
+  },
+  "copacabana": {
+    sectors: ["el Centro", "Machado", "Las Vegas", "El Recreo", "Villanueva", "Fátima", "La Misericordia", "Zarzal"],
+    housing:
+      "casas del casco urbano y viviendas campestres hacia las veredas",
+    climate:
+      "Copacabana, al norte del Valle, alterna sol fuerte y aguaceros, lo que agrieta los sellados de las cubiertas con el tiempo.",
+  },
+  "girardota": {
+    sectors: ["el Centro", "El Paraíso", "San Andrés", "El Totumo", "La Palma", "Aurelio Mejía", "Juan XXIII"],
+    housing:
+      "viviendas del casco urbano y fincas con techos amplios en las veredas",
+    climate:
+      "En Girardota las fincas tienen cubiertas grandes con mucha hoja encima; limpiar canales antes de las lluvias evita la mayoría de las goteras.",
+  },
+  "rionegro": {
+    sectors: ["el Centro", "San Antonio de Pereira", "Llanogrande", "El Porvenir", "Gualanday", "Cuatro Esquinas", "Alto Bonito", "El Tablazo"],
+    housing:
+      "casas campestres, parcelaciones y apartamentos nuevos en el casco urbano",
+    climate:
+      "Rionegro está a 2.100 metros: llueve más, hace más frío y la humedad se queda en las paredes, así que la pintura y los sellados duran menos si no se preparan bien.",
+  },
+  "la-ceja": {
+    sectors: ["el Centro", "Fátima", "San Cayetano", "La Floresta", "El Tambo", "Payuco", "La Milagrosa"],
+    housing:
+      "casas del casco urbano y parcelaciones campestres",
+    climate:
+      "La Ceja tiene clima frío y húmedo del altiplano; la humedad en paredes y el moho son los problemas más frecuentes.",
+  },
+  "marinilla": {
+    sectors: ["el Centro", "El Progreso", "La Ramada", "El Rosario", "Belén", "Santa Lucía"],
+    housing:
+      "casas tradicionales del casco urbano y viviendas en veredas cercanas",
+    climate:
+      "Marinilla, en el altiplano del Oriente, combina lluvia y frío; las cubiertas con pendiente baja acumulan agua y necesitan revisión periódica.",
+  },
+};
+
+export function getMunicipalityProfile(slug: string): MunicipalityProfile | undefined {
+  return MUNICIPALITY_PROFILE[slug];
+}
+
+/** "La Paz, El Dorado y Zúñiga" */
+export function joinSectors(sectors: string[], max = 3): string {
+  const list = sectors.slice(0, max);
+  if (list.length <= 1) return list.join("");
+  return `${list.slice(0, -1).join(", ")} y ${list[list.length - 1]}`;
+}
+
+// FAQ específicas por municipio y línea: usan el perfil y precios ya publicados.
+const LINE_LOCAL_FAQ: Record<string, (muni: string, p: MunicipalityProfile) => { question: string; answer: string }> = {
+  techos: (muni, p) => ({
+    question: `¿Qué pasa con las goteras en ${muni} cuando llegan las lluvias?`,
+    answer: `${p.climate} Por eso recomendamos una revisión del techo (desde $130.000 COP) antes de la temporada y reparar las goteras que aparezcan (desde $180.000 COP) sin esperar a que dañen el cielo raso.`,
+  }),
+  pintura: (muni, p) => ({
+    question: `¿Cuánto tarda pintar una casa o apartamento en ${muni}?`,
+    answer: `En ${muni} trabajamos sobre todo en ${p.housing}. Un apartamento de dos habitaciones toma 2 a 3 días; una casa de dos pisos, 4 a 6. La pintura interior empieza desde $280.000 COP e incluye preparación de paredes y limpieza final.`,
+  }),
+  plomeria: (muni, p) => ({
+    question: `¿Hacen plomería de urgencia en ${muni}?`,
+    answer: `Sí. En ${muni} atendemos de lunes a sábado de 7:00 a. m. a 6:00 p. m., y fuera de ese horario coordinamos por WhatsApp lo antes posible. ${p.climate} La reparación de fugas empieza desde $170.000 COP y el destape de desagües desde $160.000 COP.`,
+  }),
+};
+
+export function buildLocalFaqs(lineSlug: string, muni: { slug: string; name: string }) {
+  const p = MUNICIPALITY_PROFILE[muni.slug];
+  if (!p) return [];
+  const coverage = {
+    question: `¿Atienden en ${joinSectors(p.sectors)} (${muni.name})?`,
+    answer: `Sí. Cubrimos todo ${muni.name}, incluidos ${joinSectors(p.sectors, p.sectors.length)}. Si tu sector no aparece, escríbenos por WhatsApp: casi siempre llegamos el mismo día o al siguiente.`,
+  };
+  const local = LINE_LOCAL_FAQ[lineSlug]?.(muni.name, p);
+  return local ? [coverage, local] : [coverage];
 }
 
 /* ------------------------------------------------------------------ */
@@ -359,6 +497,41 @@ const LINE_LABELS: Record<string, string> = {
   techos: "Techos y cubiertas",
   pintura: "Pintura y acabados",
   plomeria: "Plomería",
+};
+
+// Frase propia de cada municipio para que ninguna meta description se repita.
+export const MUNICIPALITY_HOOKS: Record<string, string> = {
+  "medellin": "Atendemos todas las comunas, de Belén a El Poblado.",
+  "envigado": "Del centro a Loma del Escobero y Las Palmas.",
+  "sabaneta": "Casas tradicionales y edificios nuevos del sur.",
+  "bello": "Niquía, Cabañas, Fontidueño y el centro de Bello.",
+  "itagui": "Viviendas, locales y bodegas del sector industrial.",
+  "la-estrella": "Pueblo Viejo, Suramérica y el casco urbano.",
+  "caldas": "Casco urbano y veredas cercanas del sur del Valle.",
+  "copacabana": "Casco urbano y zona campestre del norte del Valle.",
+  "girardota": "Casco urbano y fincas del norte del Valle de Aburrá.",
+  "rionegro": "Casco urbano, Llanogrande y San Antonio de Pereira.",
+  "la-ceja": "Casco urbano y parcelaciones del Oriente.",
+  "marinilla": "Casco urbano y veredas del altiplano del Oriente.",
+};
+
+// Título (etiqueta <title>) y H1 por línea, escritos como busca la gente.
+const LINE_TITLE: Record<string, (muni: string) => string> = {
+  techos: (m) => `Reparación de goteras y techos en ${m} | Visita gratis`,
+  pintura: (m) => `Pintores en ${m}: pintura interior y exterior | Precio claro`,
+  plomeria: (m) => `Plomero en ${m}: fugas y destapes a domicilio`,
+};
+
+const LINE_H1: Record<string, (muni: string) => string> = {
+  techos: (m) => `Reparación de techos y goteras en ${m}`,
+  pintura: (m) => `Pintura de casas y apartamentos en ${m}`,
+  plomeria: (m) => `Plomería a domicilio en ${m}`,
+};
+
+const LINE_SHORT: Record<string, string> = {
+  techos: "Goteras, impermeabilización y mantenimiento de techos",
+  pintura: "Pintura interior, exterior y resanes",
+  plomeria: "Fugas, destapes y grifería a domicilio",
 };
 
 const LINE_VERB: Record<string, string> = {
@@ -468,19 +641,25 @@ function buildCrossPages(): CrossPageSEO[] {
         MUNICIPALITY_INTROS[line.slug]?.[muni.slug] ??
         `Ofrecemos ${lineVerb} en ${muni.name} con visita técnica gratuita y garantía por escrito.`;
 
-      const faqs = (CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
-        question: faq.question.replace(/\{municipio\}/g, muni.name),
-        answer: faq.answer.replace(/\{municipio\}/g, muni.name),
-      }));
+      const faqs = [
+        ...(CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
+          question: faq.question.replace(/\{municipio\}/g, muni.name),
+          answer: faq.answer.replace(/\{municipio\}/g, muni.name),
+        })),
+        ...buildLocalFaqs(line.slug, muni),
+      ];
 
       pages.push({
         lineSlug: line.slug,
         municipioSlug: muni.slug,
         lineLabel,
         municipioName: muni.name,
-        title: `${lineLabel} en ${muni.name}: servicios y precios`,
-        metaDescription: `${lineLabel} en ${muni.name}: ${lineVerb}. Visita técnica gratis, precios claros y garantía. Cotiza por WhatsApp.`.slice(0, 155),
-        h1: `${lineLabel} en ${muni.name}`,
+        title: (LINE_TITLE[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
+        metaDescription: `${LINE_SHORT[line.slug] ?? lineLabel} en ${muni.name}. ${MUNICIPALITY_HOOKS[muni.slug] ?? ""} Visita técnica gratis y garantía por escrito.`
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 158),
+        h1: (LINE_H1[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
         intro,
         faqs,
       });

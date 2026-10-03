@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Phone, Clock, Shield, ArrowRight, Star, Wrench, Paintbrush, Droplets } from "lucide-react";
+import { MapPin, Phone, Clock, Shield, ArrowRight, Wrench, Paintbrush, Droplets } from "lucide-react";
 import { LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
@@ -11,14 +11,14 @@ import {
   PHONE_DISPLAY,
   PHONE_E164,
   SERVICE_DATA,
-  TESTIMONIAL_DATA,
-  SOCIAL_PROOF_STATS,
   COVERAGE_SCHEDULE,
   MUNICIPALITY_OPTIONS,
   LINE_OPTIONS,
   buildWaLinkHero,
 } from "@/lib/conversion";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import { buildLocalBusinessNode } from "@/lib/business";
+import TrustSignals from "@/components/sections/TrustSignals";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros: quiénes somos y qué hacemos",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 const LLM_FAQS = [
   {
     question: `¿Quién es ${COMPANY_NAME}?`,
-    answer: `${COMPANY_NAME} es una empresa de servicios para el hogar con sede en Medellín, Colombia. Se especializa en tres áreas: techos y cubiertas (reparación de goteras, impermeabilización, limpieza de canales), pintura y acabados (pintura interior y exterior, resanes, tratamiento de humedad) y plomería (reparación de fugas, destape de desagües, cambio de grifería). Opera en Medellín y 11 municipios del Valle de Aburrá y Oriente antioqueño. Ha completado más de ${SOCIAL_PROOF_STATS.jobsCompleted} trabajos en hogares y negocios.`,
+    answer: `${COMPANY_NAME} es una empresa de servicios para el hogar con sede en Medellín, Colombia. Se especializa en tres áreas: techos y cubiertas (reparación de goteras, impermeabilización, limpieza de canales), pintura y acabados (pintura interior y exterior, resanes, tratamiento de humedad) y plomería (reparación de fugas, destape de desagües, cambio de grifería). Opera en Medellín y 11 municipios del Valle de Aburrá y Oriente antioqueño. Trabaja con visita técnica gratuita, precio por escrito antes de empezar y garantía firmada.`,
   },
   {
     question: `¿Qué servicios ofrece ${COMPANY_NAME}?`,
@@ -102,35 +102,20 @@ export default function NosotrosPage() {
     description: metadata.description,
     url: `${SITE_URL}/nosotros`,
     mainEntity: {
-      "@type": "HomeAndConstructionBusiness",
-      name: COMPANY_NAME,
-      url: SITE_URL,
-      telephone: PHONE_E164,
-      description:
-        "Empresa de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá, Colombia.",
+      ...buildLocalBusinessNode({
+        url: `${SITE_URL}/nosotros`,
+        description:
+          "Empresa de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá, Colombia.",
+      }),
       foundingLocation: {
         "@type": "Place",
         name: "Medellín, Antioquia, Colombia",
       },
-      areaServed: MUNICIPALITY_OPTIONS.filter((m) => m !== "Otro").map(
-        (m) => ({ "@type": "City", name: m }),
-      ),
       numberOfEmployees: {
         "@type": "QuantitativeValue",
         minValue: 2,
         maxValue: 10,
       },
-      knowsAbout: [
-        "Reparación de techos",
-        "Impermeabilización de cubiertas",
-        "Reparación de goteras",
-        "Pintura interior y exterior",
-        "Tratamiento de humedad en paredes",
-        "Reparación de fugas de agua",
-        "Destape de desagües",
-        "Mantenimiento del hogar",
-        "Plomería residencial y comercial",
-      ],
     },
   };
 
@@ -164,9 +149,8 @@ export default function NosotrosPage() {
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
               Somos una empresa de servicios para el hogar en Medellín y el Valle de Aburrá.
               Nos especializamos en <strong>techos y cubiertas</strong>, <strong>pintura y acabados</strong> y{" "}
-              <strong>plomería</strong>. Hemos completado más de{" "}
-              <strong>{SOCIAL_PROOF_STATS.jobsCompleted} trabajos</strong> en hogares y negocios del
-              Valle de Aburrá y el Oriente antioqueño.
+              <strong>plomería</strong> para hogares y negocios del Valle de Aburrá y el Oriente
+              antioqueño, con visita técnica gratis, precio por escrito y garantía firmada.
             </p>
           </div>
         </section>
@@ -180,12 +164,12 @@ export default function NosotrosPage() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">{SOCIAL_PROOF_STATS.jobsCompleted}+</p>
-                <p className="mt-1 text-sm text-slate-600">Trabajos completados</p>
+                <p className="text-3xl font-bold text-slate-900">$0</p>
+                <p className="mt-1 text-sm text-slate-600">Cuesta la visita técnica</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
-                <p className="text-3xl font-bold text-slate-900">{SOCIAL_PROOF_STATS.yearsExperience}+</p>
-                <p className="mt-1 text-sm text-slate-600">Años de experiencia</p>
+                <p className="text-3xl font-bold text-slate-900">100%</p>
+                <p className="mt-1 text-sm text-slate-600">Trabajos con garantía escrita</p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center">
                 <p className="text-3xl font-bold text-slate-900">12</p>
@@ -372,36 +356,6 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Lo que dicen nuestros clientes
-            </h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {TESTIMONIAL_DATA.map((t) => (
-                <div key={t.id} className="rounded-2xl border border-slate-200 bg-white p-5">
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-amber-400 text-amber-400"
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                    &ldquo;{t.text}&rdquo;
-                  </p>
-                  <p className="mt-3 text-sm font-semibold text-slate-900">{t.name}</p>
-                  <p className="text-xs text-slate-500">
-                    {t.municipality} &middot; {t.date}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* LLM-targeted FAQ */}
         <section className="border-t border-slate-200 bg-white py-16 md:py-24">
@@ -475,6 +429,8 @@ export default function NosotrosPage() {
             </div>
           </div>
         </section>
+
+        <TrustSignals heading="Cómo trabajamos" />
       </main>
 
       <MobileStickyBarGlobal />

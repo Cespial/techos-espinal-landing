@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import { MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
@@ -13,8 +13,8 @@ import {
   PHONE_DISPLAY,
   WA_BASE_URL,
   SERVICE_DATA,
-  TESTIMONIAL_DATA,
   buildWaLinkHero,
+  PROCESS_STEPS,
   type ServiceLineId,
 } from "@/lib/conversion";
 import {
@@ -24,8 +24,12 @@ import {
   getMunicipalitySEO,
   SERVICE_LINE_SEO,
   MUNICIPALITY_SEO,
+  getMunicipalityProfile,
+  joinSectors,
 } from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import { buildLocalBusinessNode } from "@/lib/business";
+import TrustSignals from "@/components/sections/TrustSignals";
 
 export function generateStaticParams() {
   return CROSS_PAGE_SEO.map((p) => ({
@@ -70,14 +74,10 @@ export default async function CrossPage({ params }: Props) {
   const lineSeo = getServiceLineSEO(linea);
   const muniSeo = getMunicipalitySEO(municipio);
   if (!lineSeo || !muniSeo) notFound();
+  const profile = getMunicipalityProfile(muniSeo.slug);
 
   const lineId = lineSeo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
-  const testimonials = TESTIMONIAL_DATA.filter(
-    (t) =>
-      t.serviceLine === lineId ||
-      t.municipality.toLowerCase() === muniSeo.name.toLowerCase(),
-  );
   const waLink = buildWaLinkHero(muniSeo.name, cross.lineLabel);
 
   const breadcrumbSchema = {
@@ -109,23 +109,10 @@ export default async function CrossPage({ params }: Props) {
     "@type": "Service",
     name: cross.h1,
     description: cross.metaDescription,
-    provider: {
-      "@type": "HomeAndConstructionBusiness",
-      name: COMPANY_NAME,
-      url: SITE_URL,
-      telephone: PHONE_DISPLAY,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: muniSeo.name,
-        addressRegion: "Antioquia",
-        addressCountry: "CO",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: muniSeo.lat,
-        longitude: muniSeo.lng,
-      },
-    },
+    provider: buildLocalBusinessNode({
+      url: `${SITE_URL}/servicios/${cross.lineSlug}/${cross.municipioSlug}`,
+      focusMunicipality: { name: muniSeo.name, lat: muniSeo.lat, lng: muniSeo.lng },
+    }),
     areaServed: {
       "@type": "City",
       name: muniSeo.name,
@@ -290,43 +277,54 @@ export default async function CrossPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Testimonials */}
-        {testimonials.length > 0 && (
+
+        {/* Zonas y contexto local */}
+        {profile && (
           <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-4 sm:px-6">
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Lo que dicen nuestros clientes
+                Zonas que atendemos en {muniSeo.name}
               </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {testimonials.map((t) => (
-                  <div
-                    key={t.id}
-                    className="rounded-2xl border border-slate-200 bg-white p-5"
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+                Cubrimos todo {muniSeo.name}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}.
+                Trabajamos sobre todo en {profile.housing}.
+              </p>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">{profile.climate}</p>
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${muniSeo.name}`}>
+                {profile.sectors.map((sector) => (
+                  <li
+                    key={sector}
+                    className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700"
                   >
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-amber-400 text-amber-400"
-                          aria-hidden="true"
-                        />
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-slate-900">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      {t.municipality} &middot; {t.date}
-                    </p>
-                  </div>
+                    {sector}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </section>
         )}
+
+        {/* Cómo trabajamos */}
+        <section className="border-t border-slate-200 bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+              Cómo trabajamos en {muniSeo.name}
+            </h2>
+            <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {PROCESS_STEPS.map((step) => (
+                <li key={step.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-orange-700">
+                    Paso {step.step}
+                  </p>
+                  <h3 className="mt-2 text-base font-semibold text-slate-900">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.detail}</p>
+                  <p className="mt-2 text-xs text-slate-500">{step.note}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
 
         {/* CTA */}
         <section className="border-t border-slate-200 bg-white py-16 md:py-24">
@@ -406,6 +404,8 @@ export default async function CrossPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <TrustSignals municipality={muniSeo.name} />
       </main>
 
       <MobileStickyBarGlobal />

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, Star, MapPin } from "lucide-react";
+import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import BlogCTA from "@/components/blog/BlogCTA";
@@ -12,13 +12,13 @@ import {
   PHONE_DISPLAY,
   WA_BASE_URL,
   SERVICE_DATA,
-  TESTIMONIAL_DATA,
-  SOCIAL_PROOF_STATS,
   buildWaLinkHero,
   type ServiceLineId,
 } from "@/lib/conversion";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, getServiceLineSEO } from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
+import { buildLocalBusinessNode, AREA_SERVED } from "@/lib/business";
+import TrustSignals from "@/components/sections/TrustSignals";
 
 export function generateStaticParams() {
   return SERVICE_LINE_SEO.map((s) => ({ linea: s.slug }));
@@ -58,7 +58,6 @@ export default async function ServicioPage({ params }: Props) {
 
   const lineId = seo.lineId as ServiceLineId;
   const services = SERVICE_DATA[lineId];
-  const testimonials = TESTIMONIAL_DATA.filter((t) => t.serviceLine === lineId);
   const waLink = buildWaLinkHero(undefined, seo.heroTitle);
 
   const breadcrumbSchema = {
@@ -84,22 +83,8 @@ export default async function ServicioPage({ params }: Props) {
     "@type": "Service",
     name: seo.title,
     description: seo.metaDescription,
-    provider: {
-      "@type": "HomeAndConstructionBusiness",
-      name: COMPANY_NAME,
-      url: SITE_URL,
-      telephone: PHONE_DISPLAY,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Medellín",
-        addressRegion: "Antioquia",
-        addressCountry: "CO",
-      },
-    },
-    areaServed: {
-      "@type": "City",
-      name: "Medellín",
-    },
+    provider: buildLocalBusinessNode({ url: `${SITE_URL}/servicios/${seo.slug}` }),
+    areaServed: AREA_SERVED,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: seo.title,
@@ -210,43 +195,6 @@ export default async function ServicioPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Testimonials */}
-        {testimonials.length > 0 && (
-          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Lo que dicen nuestros clientes
-              </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {testimonials.map((t) => (
-                  <div
-                    key={t.id}
-                    className="rounded-2xl border border-slate-200 bg-white p-5"
-                  >
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-amber-400 text-amber-400"
-                          aria-hidden="true"
-                        />
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-slate-900">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      {t.municipality} &middot; {t.date}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* CTA */}
         <section className="border-t border-slate-200 bg-white py-16 md:py-24">
@@ -326,6 +274,8 @@ export default async function ServicioPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <TrustSignals />
       </main>
 
       <MobileStickyBarGlobal />

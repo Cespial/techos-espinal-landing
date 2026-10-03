@@ -1,50 +1,13 @@
 import TechosLanding from "@/components/sections/TechosLanding";
-import {
-  FAQ_ITEMS,
-  PHONE_DISPLAY,
-  SITE_URL,
-} from "@/lib/conversion";
+import { FAQ_ITEMS, SITE_URL } from "@/lib/conversion";
+import { buildLocalBusinessNode } from "@/lib/business";
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  name: "Espinal Multiservicios",
-  description:
-    "Servicios de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá.",
-  url: SITE_URL,
-  telephone: PHONE_DISPLAY,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Medellín",
-    addressRegion: "Antioquia",
-    addressCountry: "CO",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 6.2442,
-    longitude: -75.5812,
-  },
-  areaServed: ["Medellín", "Valle de Aburrá", "Antioquia"],
-  serviceType: [
-    "Techos y cubiertas",
-    "Pintura y acabados",
-    "Plomería",
-  ],
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ],
-    opens: "07:00",
-    closes: "18:00",
-  },
-  // NOTA SEO: aggregateRating/review retirados — no hay reseñas reales verificables.
-  // Reintroducir SOLO cuando existan reseñas genuinas (idealmente Google Business Profile).
+  ...buildLocalBusinessNode({
+    description:
+      "Servicios de techos y cubiertas, pintura y acabados, y plomería para hogares y negocios en Medellín y Valle de Aburrá.",
+  }),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Servicios de Espinal Multiservicios",
@@ -52,18 +15,21 @@ const structuredData = {
       {
         "@type": "OfferCatalog",
         name: "Techos y cubiertas",
+        url: `${SITE_URL}/servicios/techos`,
         description:
           "Impermeabilización, reparación de goteras, mantenimiento de canoas y cubiertas.",
       },
       {
         "@type": "OfferCatalog",
         name: "Pintura y acabados",
+        url: `${SITE_URL}/servicios/pintura`,
         description:
           "Pintura interior y exterior, resanes, estuco y acabado de fachadas.",
       },
       {
         "@type": "OfferCatalog",
         name: "Plomería",
+        url: `${SITE_URL}/servicios/plomeria`,
         description:
           "Reparación de fugas, destape de desagües, cambio de grifería y mantenimiento hidráulico.",
       },

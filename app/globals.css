@@ -201,17 +201,17 @@ html {
 
 .motion-fade-up {
   opacity: 0;
-  animation: motion-fade-up-keyframe var(--motion-duration-320) var(--motion-ease-premium) forwards;
+  animation: motion-fade-up-keyframe var(--motion-duration-320, 320ms) var(--motion-ease-premium, ease-out) forwards;
 }
 
 .animate-fade-up {
   opacity: 0;
-  animation: motion-fade-up-keyframe var(--motion-duration-320) var(--motion-ease-premium) forwards;
+  animation: motion-fade-up-keyframe var(--motion-duration-320, 320ms) var(--motion-ease-premium, ease-out) forwards;
 }
 
 .motion-fade-in {
   opacity: 0;
-  animation: motion-fade-in-keyframe var(--motion-duration-240) var(--motion-ease-premium) forwards;
+  animation: motion-fade-in-keyframe var(--motion-duration-240, 240ms) var(--motion-ease-premium, ease-out) forwards;
 }
 
 .motion-delay-40 {
@@ -434,5 +434,18 @@ details > summary::-webkit-details-marker {
   .section-perf {
     content-visibility: visible !important;
     contain-intrinsic-size: auto !important;
+  }
+}
+
+/* Salvaguarda: ningún contenido depende de JavaScript ni de animaciones para verse.
+   Sin scripting (rastreadores, lectores, fallos de hidratación) todo queda visible. */
+@media (scripting: none) {
+  .reveal-item,
+  .motion-fade-up,
+  .animate-fade-up,
+  .motion-fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

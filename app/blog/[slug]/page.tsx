@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
+import { buildBlogAuthorNode, ORGANIZATION_ID } from "@/lib/business";
+import RelatedServices from "@/components/blog/RelatedServices";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog-data";
 import { getPostBySlug, getAllPosts, extractHeadings } from "@/lib/blog-utils";
 import BlogHeader from "@/components/blog/BlogHeader";
@@ -85,13 +87,10 @@ export default async function BlogPostPage({ params }: Props) {
     image: `${SITE_URL}${post.ogImage}`,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-      url: SITE_URL,
-    },
+    author: buildBlogAuthorNode(),
     publisher: {
       "@type": "Organization",
+      "@id": ORGANIZATION_ID,
       name: COMPANY_NAME,
       url: SITE_URL,
       logo: {
@@ -162,6 +161,10 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Main content */}
             <article>
               <BlogContent body={post.body} />
+              <RelatedServices
+                serviceLines={post.serviceLines}
+                municipalities={post.targetMunicipalities}
+              />
               <BlogCTA
                 serviceLine={primaryServiceLine}
                 postTitle={post.title}

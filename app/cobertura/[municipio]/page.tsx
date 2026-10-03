@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, ArrowRight, Star } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { SERVICE_ICON_MAP, LINE_ACCENT } from "@/lib/service-icons";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
@@ -12,13 +12,20 @@ import {
   PHONE_DISPLAY,
   WA_BASE_URL,
   SERVICE_DATA,
-  TESTIMONIAL_DATA,
   LINE_OPTIONS,
   buildWaLinkCoverage,
 } from "@/lib/conversion";
-import { MUNICIPALITY_SEO, getMunicipalitySEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import {
+  MUNICIPALITY_SEO,
+  getMunicipalitySEO,
+  SERVICE_LINE_SEO,
+  getMunicipalityProfile,
+  joinSectors,
+} from "@/lib/seo-data";
 import MobileStickyBarGlobal from "@/components/sections/MobileStickyBarGlobal";
 import { getAllPosts } from "@/lib/blog-utils";
+import { buildLocalBusinessNode } from "@/lib/business";
+import TrustSignals from "@/components/sections/TrustSignals";
 
 export function generateStaticParams() {
   return MUNICIPALITY_SEO.map((m) => ({ municipio: m.slug }));
@@ -62,10 +69,8 @@ export default async function CoberturaPage({ params }: Props) {
   const { municipio } = await params;
   const seo = getMunicipalitySEO(municipio);
   if (!seo) notFound();
+  const profile = getMunicipalityProfile(seo.slug);
 
-  const testimonials = TESTIMONIAL_DATA.filter(
-    (t) => t.municipality.toLowerCase() === seo.name.toLowerCase(),
-  );
   const waLink = buildWaLinkCoverage(seo.name);
 
   const breadcrumbSchema = {
@@ -82,7 +87,7 @@ export default async function CoberturaPage({ params }: Props) {
         "@type": "ListItem",
         position: 2,
         name: "Cobertura",
-        item: `${SITE_URL}/cobertura/medellin`,
+        item: `${SITE_URL}/cobertura`,
       },
       {
         "@type": "ListItem",
@@ -94,26 +99,11 @@ export default async function CoberturaPage({ params }: Props) {
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: `${COMPANY_NAME} en ${seo.name}`,
-    url: `${SITE_URL}/cobertura/${seo.slug}`,
-    telephone: PHONE_DISPLAY,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: seo.name,
-      addressRegion: "Antioquia",
-      addressCountry: "CO",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: seo.lat,
-      longitude: seo.lng,
-    },
-    areaServed: {
-      "@type": "City",
-      name: seo.name,
-    },
-    serviceType: ["Techos y cubiertas", "Pintura y acabados", "Plomería"],
+    ...buildLocalBusinessNode({
+      url: `${SITE_URL}/cobertura/${seo.slug}`,
+      focusMunicipality: { name: seo.name, lat: seo.lat, lng: seo.lng },
+      description: seo.metaDescription,
+    }),
   };
 
   return (
@@ -129,7 +119,7 @@ export default async function CoberturaPage({ params }: Props) {
               {seo.name}
             </div>
             <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-              Servicios en {seo.name}
+              Techos, pintura y plomería en {seo.name}
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-slate-600">
               {seo.description}
@@ -176,6 +166,32 @@ export default async function CoberturaPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        {/* Zonas y contexto local */}
+        {profile && (
+          <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+                Zonas que atendemos en {seo.name}
+              </h2>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+                Cubrimos todo {seo.name}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}.
+                Trabajamos sobre todo en {profile.housing}.
+              </p>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">{profile.climate}</p>
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${seo.name}`}>
+                {profile.sectors.map((sector) => (
+                  <li
+                    key={sector}
+                    className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700"
+                  >
+                    {sector}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* Highlighted services with prices */}
         <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
@@ -246,41 +262,6 @@ export default async function CoberturaPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Testimonials */}
-        {testimonials.length > 0 && (
-          <section className="border-t border-slate-200 bg-white py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Clientes en {seo.name}
-              </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {testimonials.map((t) => (
-                  <div
-                    key={t.id}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5"
-                  >
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-amber-400 text-amber-400"
-                          aria-hidden="true"
-                        />
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <p className="mt-3 text-sm font-semibold text-slate-900">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-slate-500">{t.date}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* CTA */}
         <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-24">
@@ -350,6 +331,8 @@ export default async function CoberturaPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <TrustSignals municipality={seo.name} tone="white" />
       </main>
 
       <MobileStickyBarGlobal />
