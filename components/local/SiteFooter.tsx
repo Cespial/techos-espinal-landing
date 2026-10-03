@@ -16,8 +16,8 @@ export default function SiteFooter() {
             <p className="text-lg font-bold tracking-tight">{COMPANY_NAME}</p>
           </div>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-700">
-            {COMPANY_NAME} es el oficio de {OWNER.name}: techos, pintura y plomería a domicilio para casas y
-            negocios en {NAP.area}.
+            {COMPANY_NAME} es una empresa de techos, pintura y plomería a domicilio para casas y negocios en{" "}
+            {NAP.area}, fundada y dirigida por {OWNER.name}.
           </p>
           <address className="mt-4 space-y-1 text-sm not-italic text-slate-700">
             <p>
@@ -54,7 +54,7 @@ export default function SiteFooter() {
           <ul className="mt-3 space-y-1 text-sm text-slate-700">
             <li>
               <Link href="/nosotros" className="inline-flex min-h-9 items-center hover:text-slate-950 hover:underline">
-                Quién es {OWNER.givenName}
+                Quiénes somos
               </Link>
             </li>
             <li>

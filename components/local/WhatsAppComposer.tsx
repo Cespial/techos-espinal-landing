@@ -18,7 +18,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!problema.trim()) {
-      setError("Cuéntame en una frase qué pasa, así te respondo con más precisión.");
+      setError("Cuéntanos en una frase qué pasa, así te respondemos con más precisión.");
       return;
     }
     setError("");
@@ -31,10 +31,10 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
     <section id="contacto" className="border-t border-slate-200 bg-slate-50 py-16 md:py-24" aria-labelledby="composer-heading">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h2 id="composer-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-          Cuéntame tu problema
+          Cuéntanos tu problema
         </h2>
         <p className="mt-3 text-base text-slate-600">
-          Escribe aquí y el mensaje se abre en WhatsApp listo para enviármelo. Te respondo yo, {OWNER.givenName}.
+          Escribe aquí y el mensaje se abre en WhatsApp listo para enviar. Te responde el equipo de {OWNER.givenName}.
         </p>
         <form onSubmit={onSubmit} noValidate className="mt-8 grid gap-4 sm:grid-cols-2">
           <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800">

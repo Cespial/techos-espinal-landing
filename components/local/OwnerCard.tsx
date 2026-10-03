@@ -21,9 +21,9 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
         <Portrait size={56} />
         <p className="text-sm leading-snug">
           <span className="font-bold">{OWNER.name}</span>, {OWNER.role.toLowerCase()}.{" "}
-          {municipio ? `En ${municipio} voy yo mismo a revisar, sin costo.` : "Voy yo mismo a revisar, sin costo."}{" "}
+          {municipio ? `Su equipo revisa en ${municipio} sin costo.` : "Su equipo revisa sin costo y responde con garantía."}{" "}
           <Link href="/nosotros" className="font-semibold underline decoration-slate-950/40 underline-offset-4 hover:decoration-slate-950">
-            Conóceme
+            Conoce al equipo
           </Link>
         </p>
       </div>
@@ -42,7 +42,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
           </div>
           <div>
             <h2 id="owner-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Quién va a tu casa
+              Quién está detrás
             </h2>
             <ul className="mt-5 space-y-3 text-base leading-relaxed text-slate-700">
               {OWNER.bio.map((line) => (
@@ -53,7 +53,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
             </ul>
             <p className="mt-5 text-sm text-slate-600">{COVERAGE_SCHEDULE.hours} {COVERAGE_SCHEDULE.urgencyNote}</p>
             <Link href="/nosotros" className="mt-6 inline-flex min-h-11 items-center font-semibold text-orange-700 underline-offset-4 hover:underline">
-              Conocer a {OWNER.givenName}
+              Conocer a {OWNER.givenName} y al equipo
             </Link>
           </div>
         </div>

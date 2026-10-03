@@ -1,5 +1,4 @@
 import type { ServiceLineId } from "@/lib/conversion";
-import { OWNER } from "@/lib/owner";
 import WaButton from "@/components/local/WaButton";
 
 type BlogCTAProps = {
@@ -11,15 +10,15 @@ type BlogCTAProps = {
 const COPY_BY_LINE: Record<ServiceLineId, { heading: string; body: string }> = {
   techos: {
     heading: "¿Tienes un problema con el techo?",
-    body: "Reviso tu techo, te digo qué pasa y cuánto cuesta arreglarlo. Sin compromiso.",
+    body: "Revisamos tu techo, te decimos qué pasa y cuánto cuesta arreglarlo. Sin compromiso.",
   },
   pintura: {
     heading: "¿Necesitas pintar o tratar tus paredes?",
-    body: "Voy, miro el estado de las paredes y te doy un precio claro. Sin compromiso.",
+    body: "Vamos, miramos el estado de las paredes y te damos un precio claro. Sin compromiso.",
   },
   plomeria: {
     heading: "¿Tienes una fuga o un desagüe tapado?",
-    body: "Voy a tu casa, encuentro el problema y te digo cuánto cuesta. Sin compromiso.",
+    body: "Vamos a tu casa, encontramos el problema y te decimos cuánto cuesta. Sin compromiso.",
   },
 };
 
@@ -36,7 +35,7 @@ export default function BlogCTA({ serviceLine, postTitle, variant = "inline" }: 
         linea={serviceLine}
         intent="blog"
         context={postTitle}
-        label={`Escribirle a ${OWNER.givenName}`}
+        label="Escríbenos por WhatsApp"
         className={`mt-3 ${sticky ? "w-full" : ""}`}
       />
     </div>

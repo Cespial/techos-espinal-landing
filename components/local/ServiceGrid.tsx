@@ -21,7 +21,7 @@ export default function ServiceGrid({ pageType, linea, services, heading, intro,
           {heading}
         </h2>
         <p className="mt-3 max-w-2xl text-base text-slate-600">
-          {intro ?? "Precios de referencia. El valor final te lo doy por escrito después de revisar."}
+          {intro ?? "Precios de referencia. El valor final te lo damos por escrito después de revisar."}
         </p>
         <ul className="mt-8 grid gap-x-8 md:grid-cols-2">
           {services.map((s) => (

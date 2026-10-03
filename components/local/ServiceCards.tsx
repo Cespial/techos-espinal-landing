@@ -18,7 +18,7 @@ export default function ServiceCards({ pageType, municipio }: Props) {
           ¿Qué necesitas arreglar?
         </h2>
         <p className="mt-3 max-w-2xl text-base text-slate-600">
-          Precios de referencia por servicio. El valor final te lo doy por escrito después de revisar.
+          Precios de referencia por servicio. El valor final te lo damos por escrito después de revisar.
         </p>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -57,7 +57,7 @@ export default function ServiceCards({ pageType, municipio }: Props) {
         <p className="mt-6 text-sm text-slate-600">
           ¿No sabes qué es?{" "}
           <WaButton source="service_card" pageType={pageType} intent="duda" municipio={municipio} label="Descríbeme el problema por WhatsApp" variant="inline" />{" "}
-          y te digo qué servicio aplica.
+          y te decimos qué servicio aplica.
         </p>
       </div>
     </section>

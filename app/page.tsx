@@ -19,7 +19,7 @@ const businessSchema = {
   "@context": "https://schema.org",
   ...buildLocalBusinessNode({
     description:
-      "Henrry Espinal repara techos, pinta y arregla la plomería de casas y negocios en Medellín y Valle de Aburrá. Visita gratis, precio por escrito y garantía firmada.",
+      "Empresa de techos, pintura y plomería a domicilio para casas y negocios en Medellín y Valle de Aburrá, dirigida por Henrry Espinal. Visita gratis, precio por escrito y garantía firmada.",
   }),
   hasOfferCatalog: {
     "@type": "OfferCatalog",

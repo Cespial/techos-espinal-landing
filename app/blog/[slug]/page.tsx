@@ -199,8 +199,8 @@ export default async function BlogPostPage({ params }: Props) {
             <CtaBand
               pageType="blog"
               linea={primaryServiceLine}
-              heading="¿Quieres que lo revise yo?"
-              body="Escríbele a Henrry con una foto del problema: te dice qué servicio aplica, cuánto cuesta y cuándo puede ir."
+              heading="¿Quieres que lo revisemos?"
+              body="Escríbenos con una foto del problema: te decimos qué servicio aplica, cuánto cuesta y cuándo podemos ir."
             />
           </div>
         </div>

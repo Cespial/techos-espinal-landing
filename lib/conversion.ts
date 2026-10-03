@@ -234,33 +234,33 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     id: "brief",
     step: 1,
-    title: "Me cuentas el problema",
+    title: "Nos cuentas el problema",
     detail:
-      "Me escribes por WhatsApp o me llamas. Me cuentas qué pasa, con una foto si puedes, y te digo qué servicio necesitas.",
+      "Nos escribes por WhatsApp o nos llamas. Nos cuentas qué pasa, con una foto si puedes, y te decimos qué servicio necesitas.",
     note: "Sin formularios largos: un mensaje basta.",
   },
   {
     id: "diagnostic",
     step: 2,
-    title: "Voy a revisar",
+    title: "Vamos a revisar",
     detail:
-      "Voy a tu casa o negocio, miro el problema y te explico qué hay que hacer.",
+      "Vamos a tu casa o negocio, miramos el problema y te explicamos qué hay que hacer.",
     note: "La visita no tiene costo.",
   },
   {
     id: "proposal",
     step: 3,
-    title: "Te doy el precio por escrito",
+    title: "Te damos el precio por escrito",
     detail:
-      "Te digo exactamente qué voy a hacer, qué materiales uso y cuánto cuesta. Sin sorpresas.",
+      "Te decimos exactamente qué vamos a hacer, qué materiales usamos y cuánto cuesta. Sin sorpresas.",
     note: "El precio cambia solo si aparece algo que no se veía, y lo acordamos antes.",
   },
   {
     id: "execution",
     step: 4,
-    title: "Hago el trabajo",
+    title: "Hacemos el trabajo",
     detail:
-      "Hago el trabajo, dejo todo limpio y te entrego la garantía por escrito.",
+      "Hacemos el trabajo, dejamos todo limpio y te entregamos la garantía por escrito.",
     note: "Garantía por escrito según servicio y alcance.",
   },
 ];
@@ -362,7 +362,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-7",
     question: "¿Qué es Espinal Multiservicios?",
     answer:
-      "Espinal Multiservicios es el negocio de Henrry Espinal: techos y cubiertas, pintura y acabados, y plomería a domicilio en Medellín y Valle de Aburrá. Henrry va a tu casa, revisa gratis, te da el precio por escrito y responde con garantía firmada. Atiende 12 municipios de Antioquia.",
+      "Espinal Multiservicios es una empresa de techos y cubiertas, pintura y acabados, y plomería a domicilio en Medellín y Valle de Aburrá, fundada y dirigida por Henrry Espinal. Nuestro equipo va a tu casa, revisa gratis, te da el precio por escrito y responde con garantía firmada. Atendemos 12 municipios de Antioquia.",
   },
   {
     id: "faq-8",
@@ -422,8 +422,7 @@ export type WaLinkOptions = {
 };
 
 /**
- * Único constructor de enlaces de WhatsApp. El mensaje siempre se dirige a Henrry
- * y no depende de la hora (evita diferencias entre servidor y cliente).
+ * Único constructor de enlaces de WhatsApp. El mensaje no depende de la hora (evita diferencias entre servidor y cliente).
  */
 export function buildWaLink(o: WaLinkOptions = {}) {
   const where = o.municipio ? ` en ${o.municipio}` : "";
@@ -432,24 +431,24 @@ export function buildWaLink(o: WaLinkOptions = {}) {
 
   switch (o.intent) {
     case "urgencia":
-      msg = `Hola Henrry, tengo una urgencia${label ? ` de ${label}` : ""}${where}. ¿Puedes venir hoy?`;
+      msg = `Hola, tengo una urgencia${label ? ` de ${label}` : ""}${where}. ¿Puedes venir hoy?`;
       break;
     case "blog":
-      msg = `Hola Henrry, leí "${o.context ?? "un artículo"}" en tu página y necesito ayuda${label ? ` con ${label}` : ""}${where}.`;
+      msg = `Hola, leí "${o.context ?? "un artículo"}" en tu página y necesito ayuda${label ? ` con ${label}` : ""}${where}.`;
       break;
     case "composer":
-      msg = `Hola Henrry, ${o.context ?? "necesito una cotización"}${label ? ` Es sobre ${label}.` : ""}${where ? ` Estoy${where}.` : ""}`;
+      msg = `Hola, ${o.context ?? "necesito una cotización"}${label ? ` Es sobre ${label}.` : ""}${where ? ` Estoy${where}.` : ""}`;
       break;
     case "duda":
-      msg = `Hola Henrry, tengo una duda${label ? ` sobre ${label}` : ""}${where}. ¿Me ayudas?`;
+      msg = `Hola, tengo una duda${label ? ` sobre ${label}` : ""}${where}. ¿Me ayudas?`;
       break;
     default:
       if (o.servicio) {
-        msg = `Hola Henrry, necesito cotizar: ${o.servicio}${where}. ¿Cuándo puedes venir a revisar?`;
+        msg = `Hola, necesito cotizar: ${o.servicio}${where}. ¿Cuándo puedes venir a revisar?`;
       } else if (o.linea) {
-        msg = `Hola Henrry, necesito ${LINE_NEED[o.linea]}${where}. ¿Cuándo puedes venir a revisar?`;
+        msg = `Hola, necesito ${LINE_NEED[o.linea]}${where}. ¿Cuándo puedes venir a revisar?`;
       } else {
-        msg = `Hola Henrry, necesito una cotización para mi casa${where}. ¿Cuándo puedes venir a revisar?`;
+        msg = `Hola, necesito una cotización para mi casa${where}. ¿Cuándo puedes venir a revisar?`;
       }
   }
   return `${WA_BASE_URL}?text=${encodeURIComponent(msg)}`;

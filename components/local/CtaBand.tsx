@@ -1,5 +1,4 @@
 import type { ServiceLineId } from "@/lib/conversion";
-import { OWNER } from "@/lib/owner";
 import type { CtaSource, PageType } from "@/lib/tracking";
 import WaButton from "./WaButton";
 import CallButton from "./CallButton";
@@ -24,7 +23,7 @@ export default function CtaBand({ pageType, heading, body, linea, municipio, sou
             <p className="mt-2 text-base text-slate-700">{body}</p>
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row md:mt-0 md:shrink-0">
-            <WaButton source={source} pageType={pageType} linea={linea} municipio={municipio} label={`Escribirle a ${OWNER.givenName}`} size="lg" />
+            <WaButton source={source} pageType={pageType} linea={linea} municipio={municipio} label="Escríbenos por WhatsApp" size="lg" />
             <CallButton source={source} pageType={pageType} linea={linea} municipio={municipio} size="lg" />
           </div>
         </div>

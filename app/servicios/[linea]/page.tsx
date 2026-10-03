@@ -73,7 +73,7 @@ export default async function ServicioPage({ params }: Props) {
           pageType={pageType}
           linea={lineId}
           heading={`¿Necesitas ${seo.heroTitle.toLowerCase().startsWith("que") ? "ayuda con el techo" : seo.heroTitle.toLowerCase()}?`}
-          body="Cuéntame qué pasa y coordinamos la visita gratis. Te doy el precio por escrito antes de empezar."
+          body="Cuéntanos qué pasa y coordinamos la visita gratis. Te damos el precio por escrito antes de empezar."
         />
         <RelatedLinks
           groups={[
