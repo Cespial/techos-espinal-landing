@@ -1,5 +1,11 @@
 # Plan de ilustraciones con Midjourney — espinalservicios.com
 
+> **Estado 3-oct-2026:** ejecutado. Generado en Midjourney v8.2 (ancla + style reference), 18 cuadrículas en
+> `~/Downloads/mj/`, selección por hojas de contacto, conversión con sharp y publicado en `main` (commit 9f1b418).
+> Lighthouse móvil local tras integrar: rendimiento 100, LCP 1,4 s, CLS 0, SEO 100. Pendiente: `og-default.png`
+> compuesto con logo y las fotos reales de Henrry y del equipo (no se sustituyen con ilustraciones).
+
+
 Objetivo: dar altura y profesionalismo a una página que debe seguir siendo simple y minimalista. Una sola
 familia visual, pocas piezas, bien colocadas. Las imágenes generadas son **ilustraciones editoriales**, nunca
 fotos simuladas.
