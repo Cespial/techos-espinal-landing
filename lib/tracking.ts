@@ -6,6 +6,7 @@ import type { ServiceLineId } from "./conversion";
 
 export type CtaSource =
   | "hero"
+  | "page_hero"
   | "header"
   | "sticky_bar"
   | "fab"

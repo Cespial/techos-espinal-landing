@@ -17,6 +17,8 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import OwnerCard from "@/components/local/OwnerCard";
+import Image from "next/image";
+import { WORKBENCH, VALLEY_MAP, lineIcon } from "@/lib/illustrations";
 import ProcessSteps from "@/components/local/ProcessSteps";
 import TrustSignals from "@/components/local/TrustSignals";
 import FaqSection from "@/components/local/FaqSection";
@@ -87,7 +89,7 @@ export default function NosotrosPage() {
         <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: OWNER.name }]} />
 
         <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-start">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-center">
             <div>
               <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                 Somos {COMPANY_NAME}, el equipo de {OWNER.name}
@@ -108,7 +110,14 @@ export default function NosotrosPage() {
                 <CallButton source="hero" pageType={pageType} size="lg" />
               </div>
             </div>
-            <OwnerCard variant="hero" />
+            <div className="relative">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-3xl bg-paper">
+                <Image src={WORKBENCH.src} alt={WORKBENCH.alt} fill priority sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
+              </div>
+              <div className="relative -mt-16 px-4 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:translate-y-10 md:px-6">
+                <OwnerCard variant="hero" />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -144,7 +153,8 @@ export default function NosotrosPage() {
                 const prices = SERVICE_DATA[line.id].map((s) => Number(s.basePrice.replace(/[^0-9]/g, "")));
                 const min = Math.min(...prices).toLocaleString("es-CO");
                 return (
-                  <div key={line.id} className="border-t-2 border-slate-900 pt-4">
+                  <div key={line.id} className="rounded-2xl border border-slate-200 bg-white p-6">
+                    <Image src={lineIcon(line.id)} alt="" width={64} height={64} className="mb-4 h-16 w-16 mix-blend-multiply" aria-hidden="true" />
                     <h3 className="text-xl font-bold tracking-tight text-slate-900">
                       <Link href={`/servicios/${line.id}`} className="hover:underline">
                         {line.label}
@@ -169,7 +179,8 @@ export default function NosotrosPage() {
         <TrustSignals heading="Nuestras reglas" />
 
         <section className="border-t border-slate-200 bg-white py-16 md:py-24" aria-labelledby="where-heading">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
+            <div>
             <h2 id="where-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
               Dónde trabajamos
             </h2>
@@ -185,6 +196,10 @@ export default function NosotrosPage() {
                 </li>
               ))}
             </ul>
+            </div>
+            <div className="relative aspect-[3/2] overflow-hidden rounded-3xl bg-paper">
+              <Image src={VALLEY_MAP.src} alt={VALLEY_MAP.alt} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
+            </div>
           </div>
         </section>
 

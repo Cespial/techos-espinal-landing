@@ -4,7 +4,9 @@ import { useState, type FormEvent } from "react";
 import { LINE_OPTIONS, buildWaLink, type ServiceLineId } from "@/lib/conversion";
 import { OWNER } from "@/lib/owner";
 import { trackWhatsApp, type PageType } from "@/lib/tracking";
+import Image from "next/image";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { lineIcon } from "@/lib/illustrations";
 
 type Props = { pageType: PageType; municipio?: string };
 
@@ -37,7 +39,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
           Escribe aquí y el mensaje se abre en WhatsApp listo para enviar. Te responde el equipo de {OWNER.givenName}.
         </p>
         <form onSubmit={onSubmit} noValidate className="mt-8 grid gap-4 sm:grid-cols-2">
-          <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800">
+          <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800 sm:col-span-2">
             Tu nombre (opcional)
             <input
               value={nombre}
@@ -46,27 +48,40 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
               className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900"
             />
           </label>
-          <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800">
-            ¿De qué se trata?
-            <select
-              value={linea}
-              onChange={(e) => setLinea(e.target.value as ServiceLineId)}
-              className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900"
-            >
-              {LINE_OPTIONS.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <fieldset className="sm:col-span-2">
+            <legend className="text-sm font-medium text-slate-800">¿De qué se trata?</legend>
+            <div className="mt-1.5 grid grid-cols-3 gap-2">
+              {LINE_OPTIONS.map((l) => {
+                const active = linea === l.id;
+                return (
+                  <label
+                    key={l.id}
+                    className={`flex min-h-12 cursor-pointer items-center gap-2 rounded-xl border bg-white px-3 text-sm font-medium transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink ${
+                      active ? "border-slate-900 text-slate-900" : "border-slate-300 text-slate-700 hover:border-slate-500"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="linea"
+                      value={l.id}
+                      checked={active}
+                      onChange={() => setLinea(l.id)}
+                      className="sr-only"
+                    />
+                    <Image src={lineIcon(l.id)} alt="" width={32} height={32} className="h-8 w-8 shrink-0 mix-blend-multiply" aria-hidden="true" />
+                    <span className="leading-tight">{l.label}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </fieldset>
           <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800 sm:col-span-2">
             ¿Qué pasa?
             <textarea
               value={problema}
               onChange={(e) => setProblema(e.target.value)}
               rows={3}
-              placeholder="Ejemplo: gotea el techo del cuarto cuando llueve fuerte."
+              placeholder="Ejemplo: se moja la pared del cuarto cuando llueve; casa de dos pisos en Envigado."
               aria-invalid={Boolean(error)}
               aria-describedby={error ? "composer-error" : undefined}
               className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-base text-slate-900 focus:border-slate-900"
@@ -77,7 +92,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
               </span>
             )}
           </label>
-          <div className="sm:col-span-2">
+          <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center">
             <button
               type="submit"
               className="inline-flex min-h-13 items-center justify-center gap-2 rounded-xl bg-wa px-6 text-base font-semibold text-white transition-colors hover:bg-wa-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wa"
@@ -85,6 +100,7 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
               <WhatsAppIcon className="h-5 w-5" />
               Abrir en WhatsApp
             </button>
+            <p className="text-sm text-slate-600">Si puedes, manda una foto del problema por el mismo chat.</p>
           </div>
         </form>
       </div>

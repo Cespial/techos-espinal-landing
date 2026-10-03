@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
-    image: `${SITE_URL}${post.ogImage}`,
+    image: { "@type": "ImageObject", url: `${SITE_URL}${post.ogImage}`, width: 1200, height: 630 },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     author: buildBlogAuthorNode(),

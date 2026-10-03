@@ -22,6 +22,8 @@ type ServiceSchemaOptions = {
   description: string;
   services: ServiceItem[];
   municipio?: { name: string; lat: number; lng: number };
+  /** Ilustración de la página, relativa al sitio. */
+  image?: string;
 };
 
 /** Nodo Service con su catálogo de ofertas, para páginas de línea y cruzadas. */
@@ -32,7 +34,8 @@ export function buildServiceSchema(o: ServiceSchemaOptions) {
     name: o.name,
     description: o.description,
     url: o.url,
-    provider: buildLocalBusinessNode({ url: o.url, focusMunicipality: o.municipio }),
+    ...(o.image ? { image: `${SITE_URL}${o.image}` } : {}),
+    provider: buildLocalBusinessNode({ url: o.url, focusMunicipality: o.municipio, image: o.image }),
     areaServed: o.municipio ? { "@type": "City", name: o.municipio.name } : AREA_SERVED,
     hasOfferCatalog: {
       "@type": "OfferCatalog",

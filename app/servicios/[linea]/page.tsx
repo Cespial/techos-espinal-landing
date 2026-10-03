@@ -9,6 +9,7 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import PageHero from "@/components/local/PageHero";
+import { lineIllustration } from "@/lib/illustrations";
 import ServiceGrid from "@/components/local/ServiceGrid";
 import ProcessSteps from "@/components/local/ProcessSteps";
 import CtaBand from "@/components/local/CtaBand";
@@ -64,6 +65,7 @@ export default async function ServicioPage({ params }: Props) {
           bullets={seo.heroBullets}
           linea={lineId}
           ctaLabel="Cotizar por WhatsApp"
+          illustration={lineIllustration(lineId)}
         />
         <ServiceGrid pageType={pageType} linea={lineId} services={services} heading="Servicios y precios de referencia" tone="slate" />
         <ProcessSteps pageType={pageType} linea={lineId} />
@@ -93,7 +95,7 @@ export default async function ServicioPage({ params }: Props) {
       </main>
       <SiteFooter />
       <MobileStickyBar pageType={pageType} linea={lineId} />
-      <JsonLd data={buildServiceSchema({ url, name: seo.title, description: seo.metaDescription, services })} />
+      <JsonLd data={buildServiceSchema({ url, name: seo.title, description: seo.metaDescription, services, image: lineIllustration(lineId).src })} />
     </>
   );
 }

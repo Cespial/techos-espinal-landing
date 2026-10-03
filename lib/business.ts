@@ -80,6 +80,8 @@ type LocalBusinessOptions = {
   focusMunicipality?: { name: string; lat: number; lng: number };
   /** Descripción específica de la página. */
   description?: string;
+  /** Imagen representativa de la página (ruta absoluta o relativa al sitio). */
+  image?: string;
 };
 
 /**
@@ -87,7 +89,7 @@ type LocalBusinessOptions = {
  * Mismo @id en todo el sitio; cambia solo la URL emisora y el municipio foco.
  */
 export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
-  const { url = SITE_URL, focusMunicipality, description } = options;
+  const { url = SITE_URL, focusMunicipality, description, image } = options;
 
   const areaServed = focusMunicipality
     ? [
@@ -107,7 +109,7 @@ export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
     url,
     mainEntityOfPage: url,
     telephone: PHONE_E164,
-    image: DEFAULT_IMAGE_URL,
+    image: image ? (image.startsWith("http") ? image : `${SITE_URL}${image}`) : DEFAULT_IMAGE_URL,
     logo: LOGO_URL,
     priceRange: PRICE_RANGE,
     currenciesAccepted: "COP",

@@ -11,6 +11,8 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import PageHero from "@/components/local/PageHero";
+import { municipioIllustration, lineIcon } from "@/lib/illustrations";
+import Image from "next/image";
 import LocalZones from "@/components/local/LocalZones";
 import CtaBand from "@/components/local/CtaBand";
 import RelatedLinks from "@/components/local/RelatedLinks";
@@ -56,6 +58,7 @@ export default async function CoberturaPage({ params }: Props) {
           intro={seo.description}
           municipio={seo.name}
           ctaLabel={`Cotizar en ${seo.name}`}
+          illustration={municipioIllustration(seo.slug, seo.name)}
         />
 
         {/* Las tres líneas con sus servicios más pedidos en este municipio */}
@@ -72,7 +75,8 @@ export default async function CoberturaPage({ params }: Props) {
                 const lineSeo = SERVICE_LINE_SEO.find((s) => s.slug === line.id);
                 const items = SERVICE_DATA[line.id].filter((s) => HIGHLIGHT_SERVICES[line.id].includes(s.id));
                 return (
-                  <article key={line.id} className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6">
+                  <article key={line.id} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6">
+                    <Image src={lineIcon(line.id)} alt="" width={56} height={56} className="mb-3 h-14 w-14 mix-blend-multiply" aria-hidden="true" />
                     <h3 className="text-xl font-bold tracking-tight text-slate-900">
                       <Link href={`/servicios/${line.id}/${seo.slug}`} className="hover:underline">
                         {lineSeo?.heroTitle ?? line.label}
@@ -100,7 +104,7 @@ export default async function CoberturaPage({ params }: Props) {
           </div>
         </section>
 
-        {profile && <LocalZones municipio={seo.name} profile={profile} tone="paper" />}
+        {profile && <LocalZones municipio={seo.name} profile={profile} />}
         <TrustSignals municipality={seo.name} />
         <CtaBand
           pageType={pageType}
@@ -130,6 +134,7 @@ export default async function CoberturaPage({ params }: Props) {
             url: `${SITE_URL}/cobertura/${seo.slug}`,
             focusMunicipality: { name: seo.name, lat: seo.lat, lng: seo.lng },
             description: seo.metaDescription,
+            image: municipioIllustration(seo.slug, seo.name).src,
           }),
         }}
       />

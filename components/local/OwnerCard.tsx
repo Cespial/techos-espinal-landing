@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { OWNER } from "@/lib/owner";
 import { COVERAGE_SCHEDULE } from "@/lib/conversion";
+import { WORKBENCH } from "@/lib/illustrations";
 
 type Props = {
   variant?: "hero" | "full" | "compact";
@@ -32,13 +33,22 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
 
   if (variant === "full") {
     return (
-      <section className="py-16 md:py-24" aria-labelledby="owner-heading">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:items-center">
-          <div className="rounded-3xl bg-brand p-8 text-slate-950">
-            <Portrait size={96} />
-            <p className="mt-6 text-3xl font-bold tracking-tight">{OWNER.name}</p>
-            <p className="mt-1 text-slate-900">{OWNER.role}</p>
-            {OWNER.since && <p className="mt-4 text-sm text-slate-900">En el oficio desde {OWNER.since}.</p>}
+      <section className="border-t border-slate-200 bg-paper py-16 md:py-24" aria-labelledby="owner-heading">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:items-center">
+          <div className="relative">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-3xl">
+              <Image src={WORKBENCH.src} alt={WORKBENCH.alt} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" />
+            </div>
+            <div className="relative -mt-12 mx-4 rounded-3xl bg-brand p-6 text-slate-950 shadow-[var(--shadow-brand)] md:mx-6">
+              <div className="flex items-center gap-4">
+                <Portrait size={64} />
+                <div>
+                  <p className="text-2xl font-bold tracking-tight">{OWNER.name}</p>
+                  <p className="text-sm text-slate-900">{OWNER.role}</p>
+                  {OWNER.since && <p className="mt-1 text-sm text-slate-900">En el oficio desde {OWNER.since}.</p>}
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <h2 id="owner-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
@@ -46,7 +56,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
             </h2>
             <ul className="mt-5 space-y-3 text-base leading-relaxed text-slate-700">
               {OWNER.bio.map((line) => (
-                <li key={line} className="border-l-2 border-orange-600 pl-4">
+                <li key={line} className="border-l-2 border-brand pl-4">
                   {line}
                 </li>
               ))}

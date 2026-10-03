@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { municipioIllustration, lineIcon } from "@/lib/illustrations";
 import SiteHeader from "@/components/local/SiteHeader";
 import SiteFooter from "@/components/local/SiteFooter";
 import WaButton from "@/components/local/WaButton";
@@ -114,12 +116,19 @@ export default function CoberturaIndexPage() {
                 <li key={m.slug}>
                   <Link
                     href={`/cobertura/${m.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-orange-300 hover:shadow-sm"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-orange-300 hover:shadow-[var(--shadow-card-hover)]"
                   >
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-orange-600" aria-hidden="true" />
-                      <span className="text-lg font-semibold text-slate-900">{m.name}</span>
+                    <div className="relative aspect-[3/2] bg-paper">
+                      <Image
+                        src={municipioIllustration(m.slug, m.name, "sm").src}
+                        alt={municipioIllustration(m.slug, m.name, "sm").alt}
+                        fill
+                        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                        className="object-cover"
+                      />
                     </div>
+                    <div className="flex flex-1 flex-col p-5">
+                    <span className="text-lg font-bold tracking-tight text-slate-900">{m.name}</span>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
                       {m.description}
                     </p>
@@ -130,6 +139,7 @@ export default function CoberturaIndexPage() {
                         aria-hidden="true"
                       />
                     </span>
+                    </div>
                   </Link>
                 </li>
               ))}
@@ -148,9 +158,10 @@ export default function CoberturaIndexPage() {
                 <li key={s.slug}>
                   <Link
                     href={`/servicios/${s.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-orange-300 hover:shadow-sm"
+                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 transition hover:border-orange-300 hover:shadow-[var(--shadow-card-hover)]"
                   >
-                    <span className="text-lg font-semibold text-slate-900">{s.heroTitle}</span>
+                    <Image src={lineIcon(s.slug as "techos" | "pintura" | "plomeria")} alt="" width={48} height={48} className="mb-3 h-12 w-12 mix-blend-multiply" aria-hidden="true" />
+                    <span className="text-lg font-bold tracking-tight text-slate-900">{s.heroTitle}</span>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
                       {s.heroDescription}
                     </p>

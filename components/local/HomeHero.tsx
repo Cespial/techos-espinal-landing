@@ -26,6 +26,10 @@ export default function HomeHero() {
             <WaButton source="hero" pageType="home" label="Escríbenos por WhatsApp" size="lg" />
             <CallButton source="hero" pageType="home" size="lg" />
           </div>
+          <p className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-wa" aria-hidden="true" />
+            {OWNER.promise}
+          </p>
           <dl className="mt-9 grid gap-4 sm:grid-cols-3">
             {TRUST.map((item) => (
               <div key={item.title} className="border-t border-slate-200 pt-3">
