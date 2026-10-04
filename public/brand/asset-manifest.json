@@ -1,0 +1,275 @@
+{
+  "version": "2.1.0",
+  "files": [
+    {
+      "source": "logos/espinal-horizontal-color.svg",
+      "destination": "public/brand/espinal-horizontal-color.svg",
+      "bytes": 7930,
+      "sha256": "6783c0d9b4c92ed52307bf303587127f7afc3d9b5b42cc0dcecd8146c603e9fd"
+    },
+    {
+      "source": "logos/espinal-horizontal-black.svg",
+      "destination": "public/brand/espinal-horizontal-black.svg",
+      "bytes": 7930,
+      "sha256": "9c508cd118ea07d9f2c0cb898f48988b9373cf2eeb6b2037f17a48ed620be696"
+    },
+    {
+      "source": "logos/espinal-horizontal-white.svg",
+      "destination": "public/brand/espinal-horizontal-white.svg",
+      "bytes": 7930,
+      "sha256": "d00961ac80826cdafbdf414c24aa5e3ce6c5c7ef670e3539e778d074a8905401"
+    },
+    {
+      "source": "logos/espinal-compact-color.svg",
+      "destination": "public/brand/espinal-compact-color.svg",
+      "bytes": 3414,
+      "sha256": "5b5c08685288146e1b6b7f4e012845d8e07e8ee474036d51737c98dbc0930075"
+    },
+    {
+      "source": "logos/espinal-compact-black.svg",
+      "destination": "public/brand/espinal-compact-black.svg",
+      "bytes": 3414,
+      "sha256": "0852dd7481b38f3daf345723c5948be6b17548045ebb51853e69bc7af27b2911"
+    },
+    {
+      "source": "logos/espinal-compact-white.svg",
+      "destination": "public/brand/espinal-compact-white.svg",
+      "bytes": 3414,
+      "sha256": "ce256c7605f0164cdd08ebf0d484dd7c97611d05d74f88533b69ed6019f9895b"
+    },
+    {
+      "source": "logos/espinal-stacked-color.svg",
+      "destination": "public/brand/espinal-stacked-color.svg",
+      "bytes": 7948,
+      "sha256": "202a3c79b8a1907ea06fb3be1ebf4ec1c09b3187b8a8e381b8149fea769af717"
+    },
+    {
+      "source": "logos/espinal-stacked-black.svg",
+      "destination": "public/brand/espinal-stacked-black.svg",
+      "bytes": 7948,
+      "sha256": "a99e1604f03ff227a4ac15df56032dbf34dd2e221481b1ddeaf9676289db7b97"
+    },
+    {
+      "source": "logos/espinal-stacked-white.svg",
+      "destination": "public/brand/espinal-stacked-white.svg",
+      "bytes": 7948,
+      "sha256": "ee0c92610874d5e03390e318a191a9c48880391d5237f2e224275719082d2f67"
+    },
+    {
+      "source": "logos/espinal-wordmark-color.svg",
+      "destination": "public/brand/espinal-wordmark-color.svg",
+      "bytes": 3132,
+      "sha256": "dca1061c1ca03bb789cba1b21ca1e57797daba5e47464b7227ca82c873ba7db7"
+    },
+    {
+      "source": "logos/espinal-wordmark-black.svg",
+      "destination": "public/brand/espinal-wordmark-black.svg",
+      "bytes": 3132,
+      "sha256": "ac576159f931ad6fedc30c97f0383ceea1c508db6a94c8d6a6db901717e39696"
+    },
+    {
+      "source": "logos/espinal-wordmark-white.svg",
+      "destination": "public/brand/espinal-wordmark-white.svg",
+      "bytes": 3132,
+      "sha256": "c08165dc9529eb7fb659d32f428c9b3f2e66a767545102c0e8e12668fffc6fe4"
+    },
+    {
+      "source": "logos/espinal-symbol-color.svg",
+      "destination": "public/brand/espinal-symbol-color.svg",
+      "bytes": 437,
+      "sha256": "4024fd1c613a3231b5eb60c49658c3e0758b33e9c093bba6330dadb25794928a"
+    },
+    {
+      "source": "logos/espinal-symbol-black.svg",
+      "destination": "public/brand/espinal-symbol-black.svg",
+      "bytes": 437,
+      "sha256": "bf7c65bd3158770e37bb3d7de8422e5a7183ef4f2bb6b67037750cbe1346980d"
+    },
+    {
+      "source": "logos/espinal-symbol-white.svg",
+      "destination": "public/brand/espinal-symbol-white.svg",
+      "bytes": 437,
+      "sha256": "648172edfd2ad5a8ddfb17c795d41e92a3f643ec7f32267d8bc9e2749b492163"
+    },
+    {
+      "source": "icons/techos.svg",
+      "destination": "public/brand/icons/techos.svg",
+      "bytes": 270,
+      "sha256": "d280b66a43b487018cc176d0498c825a8dcb2bca3acada58b7fb70c543ec32a0"
+    },
+    {
+      "source": "icons/pintura.svg",
+      "destination": "public/brand/icons/pintura.svg",
+      "bytes": 269,
+      "sha256": "3cb08e19c5771190ca8dd4b8ac87b86ff72e6e7b569a64e7716b447e09d8b659"
+    },
+    {
+      "source": "icons/plomeria.svg",
+      "destination": "public/brand/icons/plomeria.svg",
+      "bytes": 311,
+      "sha256": "110b6ab1393791eb958b6415316711f09e1e710af2edb3040ab068b36de1062a"
+    },
+    {
+      "source": "icons/visita.svg",
+      "destination": "public/brand/icons/visita.svg",
+      "bytes": 273,
+      "sha256": "dd3195fbcbbc28b02c6dac61cf77f26ff03893462a222d740b3c4a6340f16e40"
+    },
+    {
+      "source": "icons/cotizacion.svg",
+      "destination": "public/brand/icons/cotizacion.svg",
+      "bytes": 275,
+      "sha256": "7d196f3fc3fe06085e68031fd37e21be3a358cdf9bc7e90247841c7710cdf83d"
+    },
+    {
+      "source": "icons/garantia.svg",
+      "destination": "public/brand/icons/garantia.svg",
+      "bytes": 283,
+      "sha256": "2918608dd2c99c4658200422abbd65b738dcaacaeb8a5efd84d21b9f8bfa01d9"
+    },
+    {
+      "source": "icons/cobertura.svg",
+      "destination": "public/brand/icons/cobertura.svg",
+      "bytes": 311,
+      "sha256": "8018cfa810825c4384a75001d157a5fe7504075a6a69facc287a86da94271ea4"
+    },
+    {
+      "source": "icons/telefono.svg",
+      "destination": "public/brand/icons/telefono.svg",
+      "bytes": 296,
+      "sha256": "fb8c9bf547651b96d7426ed1ac8f91675592c3a85b9c4175cb86f99eced2819d"
+    },
+    {
+      "source": "icons/equipo.svg",
+      "destination": "public/brand/icons/equipo.svg",
+      "bytes": 346,
+      "sha256": "958f0fcab98b89439ca4888d5035bd44f6f4317c2becf5644d3dd0fe6028b036"
+    },
+    {
+      "source": "favicons/icon.svg",
+      "destination": "app/icon.svg",
+      "bytes": 451,
+      "sha256": "fb91d65c4703dde3375130db9b0234b291a19807ca1626a9b5fb9d01c62c2177"
+    },
+    {
+      "source": "favicons/favicon.ico",
+      "destination": "app/favicon.ico",
+      "bytes": 2019,
+      "sha256": "2a756f0cc5d40a0cdffac7e505ae3f6062b784a1e4ab6522c81b9b138f306366"
+    },
+    {
+      "source": "favicons/apple-touch-icon.png",
+      "destination": "app/apple-icon.png",
+      "bytes": 1678,
+      "sha256": "3cb987de1a40f45188f9ef28fc146dbd8554d3359dd6b63f8fdecf5e95bc9cb2"
+    },
+    {
+      "source": "favicons/icon-192.png",
+      "destination": "public/icon-192.png",
+      "bytes": 1949,
+      "sha256": "7acd56024f41a568aa90ac0030dba791743e11207943f03ffb3ddceba8553e32"
+    },
+    {
+      "source": "favicons/icon-512.png",
+      "destination": "public/icon-512.png",
+      "bytes": 5214,
+      "sha256": "a0c4ed58f99ccb42c8bcda42b673bc2809c47ed582cd45ab639f8168285dcbdc"
+    },
+    {
+      "source": "favicons/maskable-512.png",
+      "destination": "public/maskable-512.png",
+      "bytes": 4519,
+      "sha256": "d52c5cd9d3c7604c114a54ab29f1bac3edafaae6391c01961a50d564aba51642"
+    },
+    {
+      "source": "favicons/logo-512.png",
+      "destination": "public/logo-icon.png",
+      "bytes": 4858,
+      "sha256": "305a48cd29fdcf0541077fcca5dafa91497a1775f332a761403b86675df66666"
+    },
+    {
+      "source": "favicons/favicon-16.png",
+      "destination": "public/favicon-16.png",
+      "bytes": 379,
+      "sha256": "81e8af28ad47e874d68d884192cf68d9116d9d559145b0977c6ca34744ccc046"
+    },
+    {
+      "source": "favicons/favicon-20.png",
+      "destination": "public/favicon-20.png",
+      "bytes": 415,
+      "sha256": "1b570b6084cb5510f1739fbb176da355a28d0a44bf09b25d0963acb813c9aaa5"
+    },
+    {
+      "source": "favicons/favicon-24.png",
+      "destination": "public/favicon-24.png",
+      "bytes": 506,
+      "sha256": "503efb526ac484e747ec3fba2f64bc46ce71b02eb374ac4b139b12ec22798d2b"
+    },
+    {
+      "source": "favicons/favicon-32.png",
+      "destination": "public/favicon-32.png",
+      "bytes": 635,
+      "sha256": "b90b85899452dc14f510118c888977ce2d57c8475bd3e5d30ff15d7b8417aef6"
+    },
+    {
+      "source": "favicons/favicon-48.png",
+      "destination": "public/favicon-48.png",
+      "bytes": 951,
+      "sha256": "e9a954d4d8ea573d6adc4776c23aeccdff211bd37889dcebe3de68f0ed3a1e58"
+    },
+    {
+      "source": "favicons/favicon-96.png",
+      "destination": "public/favicon-96.png",
+      "bytes": 1786,
+      "sha256": "bf2bb0f0d1bd28ae66faf9216a778f6ddda8f27e7d35bed42f4fee68701b94ca"
+    },
+    {
+      "source": "preview/og-general.png",
+      "destination": "public/og/og-default.png",
+      "bytes": 50649,
+      "sha256": "8fa199d302f8fba94295652a9817f2ba77a27c8664ce0d9f4edaa0e290978423"
+    },
+    {
+      "source": "preview/og-techos.png",
+      "destination": "public/og/og-techos.png",
+      "bytes": 41703,
+      "sha256": "9f468656a2a1b57d9e30be1d8076019e5efcf5877a442526c5a9eed58a4e782b"
+    },
+    {
+      "source": "preview/og-pintura.png",
+      "destination": "public/og/og-pintura.png",
+      "bytes": 46928,
+      "sha256": "9895bb6e72cf8bad53863eb12a30bdae4bc85abd7f6468da8c5dc5326d98e275"
+    },
+    {
+      "source": "preview/og-plomeria.png",
+      "destination": "public/og/og-plomeria.png",
+      "bytes": 46852,
+      "sha256": "3d76e7daecb4164eec2b781d4e9cb29b3f0ff79ee60128010f0e4026aa018d19"
+    },
+    {
+      "source": "logos/espinal-symbol-color.svg",
+      "destination": "public/logo-espinal.svg",
+      "bytes": 437,
+      "sha256": "4024fd1c613a3231b5eb60c49658c3e0758b33e9c093bba6330dadb25794928a"
+    },
+    {
+      "source": "logos/espinal-horizontal-color.svg",
+      "destination": "public/logo-espinal-horizontal.svg",
+      "bytes": 7930,
+      "sha256": "6783c0d9b4c92ed52307bf303587127f7afc3d9b5b42cc0dcecd8146c603e9fd"
+    },
+    {
+      "source": "tokens/brand.json",
+      "destination": "public/brand/brand.json",
+      "bytes": 796,
+      "sha256": "02b73d40d53cee386c51f2e9fcae86fadf6ac8765870e3aa12b46ba605d98213"
+    },
+    {
+      "source": "release/og-blog-servicios.png",
+      "destination": "public/og/og-blog-servicios.png",
+      "bytes": 45329,
+      "sha256": "3c1ac9afce408cddc24e6024c95eba858d742f5975fdcb1a95276715e29ab0d8"
+    }
+  ]
+}

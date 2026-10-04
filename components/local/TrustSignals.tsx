@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ShieldCheck, Search, ReceiptText, MapPin, Star } from "lucide-react";
+import Image from "next/image";
+import { Star } from "lucide-react";
 import { GBP_URL, GBP_REVIEW_URL } from "@/lib/business";
 
 type Props = {
@@ -15,22 +16,22 @@ type Props = {
 // las reseñas reales viven en Google y se enlazan cuando existe la ficha.
 const PROMISES = [
   {
-    icon: Search,
+    icon: "visita",
     title: "Visita técnica gratis",
     text: "Vamos, revisamos el problema y te explicamos qué hay que hacer antes de cobrar.",
   },
   {
-    icon: ReceiptText,
+    icon: "cotizacion",
     title: "Precio claro antes de empezar",
     text: "Te damos la cotización por escrito. Si cambia el alcance, lo acordamos primero.",
   },
   {
-    icon: ShieldCheck,
+    icon: "garantia",
     title: "Garantía por escrito",
     text: "Cada trabajo queda con garantía firmada, según el servicio y el alcance.",
   },
   {
-    icon: MapPin,
+    icon: "cobertura",
     title: "12 municipios",
     text: "Medellín, Valle de Aburrá y Oriente cercano, con la misma garantía en todos.",
   },
@@ -56,12 +57,12 @@ export default function TrustSignals({
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {PROMISES.map(({ icon: Icon, title, text }) => (
+          {PROMISES.map(({ icon, title, text }) => (
             <article
               key={title}
-              className={`rounded-2xl border border-slate-200 ${card} p-5 shadow-sm`}
+              className={`rounded-2xl border border-slate-200 ${card} p-5`}
             >
-              <Icon className="h-6 w-6 text-orange-600" aria-hidden="true" />
+              <Image src={`/brand/icons/${icon}.svg`} alt="" width={24} height={24} aria-hidden="true" />
               <h3 className="mt-3 text-base font-semibold text-slate-900">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
             </article>

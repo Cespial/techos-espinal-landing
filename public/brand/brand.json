@@ -1,0 +1,65 @@
+{
+  "version": "2.1.0",
+  "identity": "Emblema de oficio",
+  "color": {
+    "orange": "#B94B24",
+    "ink": "#17232B",
+    "ivory": "#FAF7F2",
+    "white": "#FFFFFF",
+    "sand": "#F6E5D9",
+    "muted": "#5C646B",
+    "whatsapp": "#15803D",
+    "line": "#D8D4CE"
+  },
+  "font": {
+    "family": "Manrope",
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ]
+  },
+  "space": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "radius": {
+    "control": 10,
+    "card": 16,
+    "pill": 999
+  },
+  "motion": {
+    "fast": 150,
+    "base": 220
+  },
+  "type": {
+    "body": [
+      16,
+      25
+    ],
+    "small": [
+      14,
+      21
+    ],
+    "h3": [
+      24,
+      30
+    ],
+    "h2": [
+      36,
+      43
+    ],
+    "h1": [
+      56,
+      61
+    ]
+  }
+}

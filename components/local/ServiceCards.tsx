@@ -29,13 +29,13 @@ export default function ServiceCards({ pageType, municipio }: Props) {
             const services = SERVICE_DATA[id].slice(0, 4);
             return (
               <article key={id} className="flex flex-col rounded-3xl border border-slate-200 bg-white">
-                <div className={`border-b border-slate-200 p-6 border-t-4 rounded-t-3xl ${accent.borderTop}`}>
+                <div className={`border-b border-slate-200 p-6 border-t-2 rounded-t-3xl ${accent.borderTop}`}>
                   <Image
-                    src={`/illustrations/icono-${id}.webp`}
+                    src={`/brand/icons/${id}.svg`}
                     alt=""
-                    width={64}
-                    height={64}
-                    className="mb-3 h-16 w-16 mix-blend-multiply"
+                    width={40}
+                    height={40}
+                    className="mb-4 h-10 w-10"
                     aria-hidden="true"
                   />
                   <h3 className="text-xl font-bold tracking-tight text-slate-900">{line.label}</h3>
@@ -43,7 +43,7 @@ export default function ServiceCards({ pageType, municipio }: Props) {
                 </div>
                 <ul className="flex-1 divide-y divide-slate-100 px-6">
                   {services.map((service) => (
-                    <li key={service.id} className="flex items-baseline justify-between gap-3 py-3">
+                    <li key={service.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 py-3">
                       <span className="text-sm text-slate-800">{service.name}</span>
                       <span className="shrink-0 text-sm font-semibold tabular-nums text-slate-900">
                         <span className="font-normal text-slate-600">desde </span>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BRAND_COMPACT } from "@/lib/brand-layout";
 import Link from "next/link";
 import { COMPANY_NAME, PHONE_DISPLAY, PHONE_E164 } from "@/lib/conversion";
 import { NAP, GBP_URL } from "@/lib/business";
@@ -11,10 +12,10 @@ export default function SiteFooter() {
     <footer className="border-t border-slate-200 bg-slate-50 pb-24 pt-12 text-slate-900 md:pb-12">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <div className="flex items-center gap-2.5">
-            <Image src="/logo-espinal.svg" alt="" width={30} height={30} />
-            <p className="text-lg font-bold tracking-tight">{COMPANY_NAME}</p>
-          </div>
+          <Link href="/" aria-label={`${COMPANY_NAME}, inicio`} className="inline-flex flex-col items-start rounded-sm">
+            <Image src="/brand/espinal-compact-color.svg" alt="" width={BRAND_COMPACT.width} height={BRAND_COMPACT.height} className="h-12 w-auto" />
+            <span style={{ marginLeft: BRAND_COMPACT.wordmarkOffset * 48 / BRAND_COMPACT.height }} className="text-xs font-medium uppercase leading-5 tracking-[0.12em] text-ink">Multiservicios</span>
+          </Link>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-700">
             {COMPANY_NAME} es una empresa de techos, pintura y plomería a domicilio para casas y negocios en{" "}
             {NAP.area}, fundada y dirigida por {OWNER.name}.

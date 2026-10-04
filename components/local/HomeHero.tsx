@@ -13,7 +13,7 @@ const TRUST = [
 export default function HomeHero() {
   return (
     <section className="bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 sm:px-6 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-center md:pb-24 md:pt-16">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-center md:pb-24 md:pt-16">
         <div>
           <h1 className="text-[2rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl md:text-[3.4rem]">
             Reparación de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá
@@ -36,17 +36,17 @@ export default function HomeHero() {
           </dl>
         </div>
         <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-paper md:aspect-[4/5]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-paper lg:aspect-[4/5]">
             <Image
               src="/illustrations/hero-techo.webp"
               alt="Ilustración de un techo de teja de barro con canal y escalera, como los que reparamos en el Valle de Aburrá"
               fill
               priority
-              sizes="(min-width: 768px) 40vw, 100vw"
+              sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover object-top"
             />
           </div>
-          <div className="relative -mt-16 px-4 md:absolute md:inset-x-0 md:bottom-0 md:mt-0 md:translate-y-10 md:px-6">
+          <div className="relative -mt-16 px-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:mt-0 lg:translate-y-10 lg:px-6">
             <OwnerCard variant="hero" />
           </div>
         </div>

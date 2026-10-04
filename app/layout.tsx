@@ -20,6 +20,15 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      ...[16, 20, 24, 32, 48, 96].map((size) => ({
+        url: `/favicon-${size}.png`, type: "image/png", sizes: `${size}x${size}`,
+      })),
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   title: {
     default: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     template: "%s | Espinal Multiservicios",

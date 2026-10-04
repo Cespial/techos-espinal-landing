@@ -1,7 +1,7 @@
-/** Colores de marca: una sola fuente para CSS (@theme en globals.css), theme-color y las imágenes OG. */
-export const BRAND = "#ea580c";
-export const BRAND_SOFT = "#fff1ea";
-export const PAPER = "#f6f1e9";
-export const INK = "#0A0A0A";
-export const WA_GREEN = "#15803d";
-export const LINE_COLORS = { techos: "#ea580c", pintura: "#0891b2", plomeria: "#059669" } as const;
+/** Espinal Brand Kit v2.1 · roles compartidos con app/globals.css. */
+export const BRAND = "#B94B24";
+export const BRAND_SOFT = "#F6E5D9";
+export const PAPER = "#FAF7F2";
+export const INK = "#17232B";
+export const WA_GREEN = "#15803D";
+export const LINE_COLORS = { techos: BRAND, pintura: BRAND, plomeria: BRAND } as const;
