@@ -14,8 +14,8 @@ export default function ProcessSteps({ pageType, municipio, linea, heading }: Pr
         </h2>
         <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS_STEPS.map((step) => (
-            <li key={step.id} className="border-t-2 border-slate-900 pt-4">
-              <span className="text-sm font-semibold tabular-nums text-slate-600">Paso {step.step}</span>
+            <li key={step.id} className="border-t-2 border-brand pt-4">
+              <span className="text-sm font-semibold tabular-nums text-brand">Paso {step.step}</span>
               <h3 className="mt-1 text-lg font-bold tracking-tight text-slate-900">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.detail}</p>
               <p className="mt-2 text-xs text-slate-600">{step.note}</p>

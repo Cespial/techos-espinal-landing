@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { type ServiceItem, type ServiceLineId } from "@/lib/conversion";
 import type { PageType } from "@/lib/tracking";
 import WaButton from "./WaButton";
@@ -17,7 +18,8 @@ export default function ServiceGrid({ pageType, linea, services, heading, intro,
   return (
     <section className={`border-t border-slate-200 py-16 md:py-24 ${tone === "slate" ? "bg-slate-50" : "bg-white"}`} aria-labelledby={`services-${linea}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 id={`services-${linea}`} className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+        <Image src={`/brand/icons/${linea}.svg`} alt="" width={40} height={40} className="h-10 w-10" aria-hidden="true" />
+        <h2 id={`services-${linea}`} className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
           {heading}
         </h2>
         <p className="mt-3 max-w-2xl text-base text-slate-600">
@@ -25,15 +27,15 @@ export default function ServiceGrid({ pageType, linea, services, heading, intro,
         </p>
         <ul className="mt-8 grid gap-x-8 md:grid-cols-2">
           {services.map((s) => (
-            <li key={s.id} className="flex flex-col gap-3 border-t border-slate-200 py-5 sm:flex-row sm:items-start sm:justify-between">
-              <div className="min-w-0">
+            <li key={s.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-5 gap-y-4 border-t border-slate-200 py-5">
+              <div className="col-span-2 min-w-0">
                 <h3 className="text-base font-bold tracking-tight text-slate-900">{s.name}</h3>
                 <p className="mt-1 text-sm text-slate-600">{s.summary}</p>
-                <p className="mt-2 text-sm text-slate-900">
-                  <span className="text-slate-600">desde </span>
-                  <span className="font-semibold tabular-nums">{s.basePrice.replace(" COP", "")}</span>
-                </p>
               </div>
+              <p className="text-sm text-slate-900">
+                <span className="text-slate-600">desde </span>
+                <span className="font-semibold tabular-nums">{s.basePrice.replace(" COP", "")}</span>
+              </p>
               <WaButton
                 source="service_card"
                 pageType={pageType}

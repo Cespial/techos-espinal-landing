@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { BRAND } from "@/lib/brand";
+import { BRAND, PAPER } from "@/lib/brand";
 import { COMPANY_NAME } from "@/lib/conversion";
 
 // Iconos de marca (icon-192/512, maskable-512) entregados por el Espinal Design System,
@@ -12,8 +12,9 @@ export default function manifest(): MetadataRoute.Manifest {
     description:
       "Servicios para el hogar en Medellín y el Valle de Aburrá: techos y cubiertas, pintura y acabados, plomería.",
     start_url: "/",
+    scope: "/",
     display: "standalone",
-    background_color: "#ffffff",
+    background_color: PAPER,
     theme_color: BRAND,
     lang: "es-CO",
     categories: ["business", "utilities"],

@@ -1,8 +1,8 @@
 import Image from "next/image";
+import { BRAND_COMPACT } from "@/lib/brand-layout";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { COMPANY_NAME, NAV_LINKS, type ServiceLineId } from "@/lib/conversion";
-import { OWNER } from "@/lib/owner";
 import type { PageType } from "@/lib/tracking";
 import WaButton from "./WaButton";
 import CallButton from "./CallButton";
@@ -16,16 +16,13 @@ type Props = { pageType: PageType; linea?: ServiceLineId; municipio?: string };
 export default function SiteHeader({ pageType, linea, municipio }: Props) {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/95">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5 lg:flex-none">
-          <Image src="/logo-espinal.svg" alt="" width={34} height={34} priority />
-          <span className="flex min-w-0 flex-col leading-tight">
-            <span className="truncate text-[15px] font-bold tracking-tight text-slate-900">{COMPANY_NAME}</span>
-            <span className="truncate text-xs text-slate-600">Equipo de {OWNER.name}</span>
-          </span>
+      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+        <Link href="/" aria-label={`${COMPANY_NAME}, inicio`} className="flex shrink-0 flex-col items-start rounded-sm">
+          <Image src="/brand/espinal-compact-color.svg" alt="" width={BRAND_COMPACT.width} height={BRAND_COMPACT.height} priority className="h-10 w-auto max-w-[190px]" />
+          <span style={{ marginLeft: BRAND_COMPACT.wordmarkOffset * 40 / BRAND_COMPACT.height }} className="hidden text-[11px] font-medium uppercase leading-4 tracking-[0.12em] text-ink lg:block">Multiservicios</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Navegación principal">
+        <nav className="hidden items-center gap-4 lg:flex" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="text-sm text-slate-700 hover:text-slate-950">
               {link.label}
@@ -34,12 +31,16 @@ export default function SiteHeader({ pageType, linea, municipio }: Props) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <CallButton source="header" pageType={pageType} linea={linea} municipio={municipio} variant="ghost" label="Llamar" className="hidden md:inline-flex" />
-          <WaButton source="header" pageType={pageType} linea={linea} municipio={municipio} label="WhatsApp" className="hidden sm:inline-flex" />
+          <div className="hidden xl:block">
+            <CallButton source="header" pageType={pageType} linea={linea} municipio={municipio} variant="ghost" label="Llamar" />
+          </div>
+          <div className="hidden md:block">
+            <WaButton source="header" pageType={pageType} linea={linea} municipio={municipio} label="WhatsApp" />
+          </div>
           <details className="relative lg:hidden">
             <summary
               className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-slate-300 text-slate-800 hover:border-slate-900 [&::-webkit-details-marker]:hidden"
-              aria-label="Abrir menú"
+              aria-label="Menú de navegación"
             >
               <Menu className="h-5 w-5" aria-hidden="true" />
             </summary>

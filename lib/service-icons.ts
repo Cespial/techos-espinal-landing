@@ -77,29 +77,18 @@ export type LineAccent = {
   borderTop: string;
 };
 
+const BRAND_ACCENT: LineAccent = {
+  iconBg: "bg-brand-soft",
+  iconText: "text-brand",
+  priceBg: "bg-paper",
+  priceText: "text-ink",
+  accentBar: "bg-brand",
+  borderTop: "border-t-brand",
+};
+
+/** La familia de servicio se distingue por nombre e icono, no por otra marca. */
 export const LINE_ACCENT: Record<ServiceLineId, LineAccent> = {
-  techos: {
-    iconBg: "bg-orange-100",
-    iconText: "text-orange-600",
-    priceBg: "bg-orange-50",
-    priceText: "text-orange-700",
-    accentBar: "bg-orange-500",
-    borderTop: "border-t-orange-600",
-  },
-  pintura: {
-    iconBg: "bg-cyan-100",
-    iconText: "text-cyan-600",
-    priceBg: "bg-cyan-50",
-    priceText: "text-cyan-700",
-    accentBar: "bg-cyan-500",
-    borderTop: "border-t-cyan-600",
-  },
-  plomeria: {
-    iconBg: "bg-emerald-100",
-    iconText: "text-emerald-600",
-    priceBg: "bg-emerald-50",
-    priceText: "text-emerald-700",
-    accentBar: "bg-emerald-500",
-    borderTop: "border-t-emerald-600",
-  },
+  techos: BRAND_ACCENT,
+  pintura: BRAND_ACCENT,
+  plomeria: BRAND_ACCENT,
 };

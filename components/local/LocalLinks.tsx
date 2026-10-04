@@ -56,7 +56,7 @@ export default function LocalLinks({ tone = "white" }: Props) {
             <div key={line.slug}>
               <h3 className="flex items-center gap-2 text-base font-bold tracking-tight text-slate-900">
                 <Image
-                  src={`/illustrations/icono-${line.slug}.webp`}
+                  src={`/brand/icons/${line.slug}.svg`}
                   alt=""
                   width={36}
                   height={36}
