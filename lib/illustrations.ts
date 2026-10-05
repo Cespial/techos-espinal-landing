@@ -15,6 +15,9 @@ export function lineIllustration(linea: ServiceLineId): Illustration {
 
 /** Paisajes decorativos junto al nombre del municipio; no son mapas ni vistas exactas. */
 export function municipioIllustration(slug: string, size: "md" | "sm" = "md"): Illustration {
+  if (slug === "barbosa") {
+    return { src: "/illustrations/mapa-valle.webp", alt: "", width: 1200, height: 800 };
+  }
   return {
     src: `/illustrations/municipio-${slug}${size === "sm" ? "-sm" : ""}.webp`,
     alt: "",

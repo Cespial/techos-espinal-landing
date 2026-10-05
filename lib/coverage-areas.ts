@@ -9,7 +9,7 @@ export const COVERAGE_AREAS = [
   { slug: "caldas", name: "Caldas", region: "valle", hasLocalPage: true },
   { slug: "copacabana", name: "Copacabana", region: "valle", hasLocalPage: true },
   { slug: "girardota", name: "Girardota", region: "valle", hasLocalPage: true },
-  { slug: "barbosa", name: "Barbosa", region: "valle", hasLocalPage: false },
+  { slug: "barbosa", name: "Barbosa", region: "valle", hasLocalPage: true },
   { slug: "rionegro", name: "Rionegro", region: "oriente", hasLocalPage: true },
   { slug: "la-ceja", name: "La Ceja", region: "oriente", hasLocalPage: true },
   { slug: "marinilla", name: "Marinilla", region: "oriente", hasLocalPage: true },
