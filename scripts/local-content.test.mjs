@@ -6,6 +6,7 @@ import {
   MUNICIPALITY_SEO,
   SERVICE_LINE_SEO,
 } from '../lib/seo-data.ts';
+import { COVERAGE_AREAS } from '../lib/coverage-areas.ts';
 
 test('every service and municipality combination has complete unique metadata', () => {
   assert.equal(CROSS_PAGE_SEO.length, SERVICE_LINE_SEO.length * MUNICIPALITY_SEO.length);
@@ -60,4 +61,14 @@ test('municipality profiles describe coordination instead of inferred local dama
     assert.equal('climate' in profile, false, slug);
     assert.equal('housing' in profile, false, slug);
   }
+});
+
+test('every declared local coverage area has a complete page set', () => {
+  const localAreas = COVERAGE_AREAS.filter((area) => area.hasLocalPage);
+  assert.deepEqual(
+    localAreas.map((area) => area.slug).sort(),
+    MUNICIPALITY_SEO.map((item) => item.slug).sort(),
+  );
+  assert.ok(MUNICIPALITY_SEO.some((item) => item.slug === 'barbosa'));
+  assert.equal(CROSS_PAGE_SEO.filter((page) => page.municipioSlug === 'barbosa').length, SERVICE_LINE_SEO.length);
 });

@@ -295,6 +295,19 @@ export const MUNICIPALITY_SEO: MunicipalitySEO[] = [
     lng: -75.4488,
   },
   {
+    slug: "barbosa",
+    name: "Barbosa",
+    title: "Techos, pintura y plomería en Barbosa | Reparación a domicilio",
+    metaDescription:
+      "Reparación de techos, pintura y plomería en Barbosa. Consulta atención en el casco urbano, El Hatillo, Popalito y veredas. Cotización por escrito.",
+    targetKeyword: "servicios hogar Barbosa Antioquia",
+    secondaryKeywords: ["plomero Barbosa Antioquia", "pintor Barbosa Antioquia", "techos Barbosa Antioquia"],
+    description:
+      "Consulta atención en Barbosa para techos, pintura y plomería. Confirmamos el sector, el acceso y la disponibilidad antes de programar.",
+    lat: 6.4381,
+    lng: -75.3314,
+  },
+  {
     slug: "rionegro",
     name: "Rionegro",
     title: "Techos, pintura y plomería en Rionegro | Reparación a domicilio",
@@ -398,6 +411,11 @@ export const MUNICIPALITY_PROFILE: Record<string, MunicipalityProfile> = {
     propertyTypes: "viviendas, negocios y fincas",
     bookingNote: "Si la propiedad está en una vereda, indica el punto de referencia y las condiciones de acceso.",
   },
+  "barbosa": {
+    sectors: ["el Centro", "El Hatillo", "Popalito", "Buenos Aires", "Altamira", "Potrerito", "Mocorongo", "Aguas Claras"],
+    propertyTypes: "casas, negocios, fincas y propiedades en sectores rurales",
+    bookingNote: "Indica el barrio o la vereda y comparte una referencia de acceso para confirmar cobertura y desplazamiento.",
+  },
   "rionegro": {
     sectors: ["el Centro", "San Antonio de Pereira", "Llanogrande", "El Porvenir", "Gualanday", "Cuatro Esquinas", "Alto Bonito", "El Tablazo"],
     propertyTypes: "casas, apartamentos, locales, parcelaciones y propiedades campestres",
@@ -486,6 +504,7 @@ export const MUNICIPALITY_HOOKS: Record<string, string> = {
   "caldas": "el casco urbano y sectores rurales",
   "copacabana": "el casco urbano y sectores rurales",
   "girardota": "el casco urbano y sectores rurales",
+  "barbosa": "el casco urbano, El Hatillo, Popalito y sectores rurales",
   "rionegro": "el casco urbano, Llanogrande y San Antonio de Pereira",
   "la-ceja": "el casco urbano y sectores rurales",
   "marinilla": "el casco urbano y sectores rurales",

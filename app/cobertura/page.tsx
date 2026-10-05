@@ -158,14 +158,6 @@ export default function CoberturaIndexPage() {
                 );
               })}
             </ul>
-            <article id="barbosa" className="mt-6 scroll-mt-28 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand">Valle de Aburrá · zona norte</p>
-              <h3 className="mt-2 text-2xl font-semibold text-ink">También atendemos Barbosa</h3>
-              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
-                Puedes solicitar techos, pintura o plomería en Barbosa. Comparte tu barrio o sector y describe el trabajo para confirmar acceso, alcance y disponibilidad. La cobertura no corresponde a una oficina abierta al público.
-              </p>
-              <WaButton source="coverage" pageType="cobertura_index" municipio="Barbosa" label="Consultar atención en Barbosa" className="mt-5" />
-            </article>
           </div>
         </section>
 

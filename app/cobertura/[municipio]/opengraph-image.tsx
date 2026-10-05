@@ -12,12 +12,13 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ municipio: string }> };
 
-/** The twelve illustrated cards are rendered statically at build time. */
+/** The municipality cards are rendered statically at build time. */
 export default async function Image({ params }: Props) {
   const { municipio } = await params;
   const seo = getMunicipalitySEO(municipio);
   const name = seo?.name ?? "Medellín";
-  const { fonts, ...artwork } = await loadOgAssets(`municipio-${seo?.slug ?? "medellin"}`);
+  const imageName = seo?.slug === "barbosa" ? "og-fondo" : `municipio-${seo?.slug ?? "medellin"}`;
+  const { fonts, ...artwork } = await loadOgAssets(imageName);
   return new ImageResponse(
     <OgFrame
       {...artwork}
