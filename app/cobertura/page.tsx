@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { municipioIllustration, VALLEY_MAP } from "@/lib/illustrations";
 import SiteHeader from "@/components/local/SiteHeader";
 import SiteFooter from "@/components/local/SiteFooter";
 import WaButton from "@/components/local/WaButton";
@@ -82,21 +84,31 @@ export default function CoberturaIndexPage() {
       <main id="main-content" className="pb-24 md:pb-0">
         {/* Hero */}
         <section className="border-b border-slate-200 bg-white py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6">
-            <nav aria-label="Ruta de navegación" className="mb-4 text-sm text-slate-600">
-              <Link href="/" className="hover:text-orange-700">
-                Inicio
-              </Link>{" "}
-              <span aria-hidden="true">/</span> <span className="text-slate-700">Cobertura</span>
-            </nav>
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              {TITLE}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{DESCRIPTION}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <WaButton source="hero" pageType="cobertura_index" label="Cotizar por WhatsApp" size="lg" />
-              <CallButton source="hero" pageType="cobertura_index" size="lg" />
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-center">
+            <div>
+              <nav aria-label="Ruta de navegación" className="mb-4 text-sm text-slate-600">
+                <Link href="/" className="hover:text-orange-700">
+                  Inicio
+                </Link>{" "}
+                <span aria-hidden="true">/</span> <span className="text-slate-700">Cobertura</span>
+              </nav>
+              <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+                {TITLE}
+              </h1>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{DESCRIPTION}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <WaButton source="hero" pageType="cobertura_index" label="Cotizar por WhatsApp" size="lg" />
+                <CallButton source="hero" pageType="cobertura_index" size="lg" />
+              </div>
             </div>
+            <Image
+              src={VALLEY_MAP.src}
+              alt={VALLEY_MAP.alt}
+              width={VALLEY_MAP.width}
+              height={VALLEY_MAP.height}
+              sizes="(min-width: 1152px) 464px, (min-width: 1024px) 42vw, calc(100vw - 32px)"
+              className="h-auto w-full rounded-3xl"
+            />
           </div>
         </section>
 
@@ -110,29 +122,39 @@ export default function CoberturaIndexPage() {
               Selecciona tu municipio para ver los servicios disponibles y precios de referencia.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {MUNICIPALITY_SEO.map((m) => (
-                <li key={m.slug}>
-                  <Link
-                    href={`/cobertura/${m.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-orange-300 hover:shadow-sm"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-orange-600" aria-hidden="true" />
-                      <span className="text-lg font-semibold text-slate-900">{m.name}</span>
-                    </div>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                      {m.description}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange-700">
-                      Ver cobertura en {m.name}
-                      <ArrowRight
-                        className="h-4 w-4 transition group-hover:translate-x-0.5"
-                        aria-hidden="true"
+              {MUNICIPALITY_SEO.map((m) => {
+                const illustration = municipioIllustration(m.slug, "sm");
+                return (
+                  <li key={m.slug}>
+                    <Link
+                      href={`/cobertura/${m.slug}`}
+                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-orange-300 hover:shadow-sm"
+                    >
+                      <Image
+                        src={illustration.src}
+                        alt={illustration.alt}
+                        width={illustration.width}
+                        height={illustration.height}
+                        sizes="(min-width: 1024px) 310px, (min-width: 640px) calc((100vw - 64px) / 2), calc(100vw - 32px)"
+                        className="h-auto w-full"
                       />
-                    </span>
-                  </Link>
-                </li>
-              ))}
+                      <div className="flex flex-1 flex-col p-5">
+                        <span className="text-lg font-semibold text-slate-900">{m.name}</span>
+                        <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                          {m.description}
+                        </p>
+                        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange-700">
+                          Ver cobertura en {m.name}
+                          <ArrowRight
+                            className="h-4 w-4 transition group-hover:translate-x-0.5"
+                            aria-hidden="true"
+                          />
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>

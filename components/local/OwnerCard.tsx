@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { OWNER } from "@/lib/owner";
 import { COVERAGE_SCHEDULE } from "@/lib/conversion";
+import { WORKBENCH } from "@/lib/illustrations";
 
 type Props = {
   variant?: "hero" | "full" | "compact";
@@ -34,11 +35,21 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
     return (
       <section className="py-16 md:py-24" aria-labelledby="owner-heading">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] md:items-center">
-          <div className="rounded-3xl border border-slate-200 bg-paper p-8 text-ink">
-            <Portrait size={96} />
-            <p className={`${OWNER.photo ? "mt-6 " : ""}text-3xl font-bold tracking-tight`}>{OWNER.name}</p>
-            <p className="mt-1 text-slate-900">{OWNER.role}</p>
-            {OWNER.since && <p className="mt-4 text-sm text-slate-900">En el oficio desde {OWNER.since}.</p>}
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-paper text-ink">
+            <Image
+              src={WORKBENCH.src}
+              alt={WORKBENCH.alt}
+              width={WORKBENCH.width}
+              height={WORKBENCH.height}
+              sizes="(min-width: 1152px) 464px, (min-width: 768px) 42vw, calc(100vw - 32px)"
+              className="h-auto w-full"
+            />
+            <div className="p-6 sm:p-8">
+              <Portrait size={96} />
+              <p className={`${OWNER.photo ? "mt-6 " : ""}text-3xl font-bold tracking-tight`}>{OWNER.name}</p>
+              <p className="mt-1 text-slate-900">{OWNER.role}</p>
+              {OWNER.since && <p className="mt-4 text-sm text-slate-900">En el oficio desde {OWNER.since}.</p>}
+            </div>
           </div>
           <div>
             <h2 id="owner-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">

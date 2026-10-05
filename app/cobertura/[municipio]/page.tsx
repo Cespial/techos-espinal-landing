@@ -11,6 +11,7 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import PageHero from "@/components/local/PageHero";
+import { municipioIllustration } from "@/lib/illustrations";
 import LocalZones from "@/components/local/LocalZones";
 import CtaBand from "@/components/local/CtaBand";
 import RelatedLinks from "@/components/local/RelatedLinks";
@@ -56,6 +57,7 @@ export default async function CoberturaPage({ params }: Props) {
           intro={seo.description}
           municipio={seo.name}
           ctaLabel={`Cotizar en ${seo.name}`}
+          illustration={municipioIllustration(seo.slug)}
         />
 
         {/* Las tres líneas con sus servicios más pedidos en este municipio */}
