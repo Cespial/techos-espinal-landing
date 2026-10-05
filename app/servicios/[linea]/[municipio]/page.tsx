@@ -93,7 +93,7 @@ export default async function CrossPage({ params }: Props) {
           services={services}
           municipio={muniSeo.name}
           heading={`Servicios de ${cross.lineLabel.toLowerCase()} en ${muniSeo.name}`}
-          intro={`Precios de referencia para ${muniSeo.name}. El valor final te lo damos por escrito después de la visita gratis.`}
+          intro={`Precios de referencia para ${muniSeo.name}. El alcance y el valor final quedan por escrito después de la visita inicial para cotizar.`}
           tone="slate"
         />
         {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="paper" illustration={municipioIllustration(muniSeo.slug)} />}
@@ -108,7 +108,7 @@ export default async function CrossPage({ params }: Props) {
           linea={lineId}
           municipio={muniSeo.name}
           heading={`¿Necesitas ${cross.lineLabel.toLowerCase()} en ${muniSeo.name}?`}
-          body="Cuéntanos qué pasa y coordinamos la visita gratis. Te damos el precio por escrito antes de empezar."
+          body="Cuéntanos qué pasa y coordinamos la visita inicial para cotizar. Te damos el alcance y el precio por escrito antes de empezar."
         />
         <RelatedLinks
           groups={[

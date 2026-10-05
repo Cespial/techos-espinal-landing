@@ -5,7 +5,7 @@ import { joinSectors } from "@/lib/seo-data";
 
 type Props = { municipio: string; profile: MunicipalityProfile; tone?: "white" | "slate" | "paper"; illustration?: Illustration };
 
-/** Sectores, vivienda y clima del municipio: el contenido propio de cada página local. */
+/** Sectores de referencia y datos que ayudan a coordinar una visita. */
 export default function LocalZones({ municipio, profile, tone = "slate", illustration }: Props) {
   return (
     <section className={`border-t border-slate-200 py-16 md:py-24 ${tone === "slate" ? "bg-slate-50" : tone === "paper" ? "bg-paper" : "bg-white"}`} aria-labelledby="zones-heading">
@@ -15,10 +15,10 @@ export default function LocalZones({ municipio, profile, tone = "slate", illustr
             Zonas que atendemos en {municipio}
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700">
-            Cubrimos todo {municipio}, incluidos {joinSectors(profile.sectors, profile.sectors.length)}. Trabajamos sobre todo en{" "}
-            {profile.housing}.
+            Cubrimos todo {municipio}. Algunos sectores de referencia son {joinSectors(profile.sectors, profile.sectors.length)}.
+            Puedes consultar atención para {profile.propertyTypes}.
           </p>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-700">{profile.climate}</p>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-700">{profile.bookingNote}</p>
           <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Sectores de ${municipio}`}>
             {profile.sectors.map((sector) => (
               <li key={sector} className="rounded-full border border-slate-300 bg-white px-3.5 py-2 text-sm font-medium text-slate-700">

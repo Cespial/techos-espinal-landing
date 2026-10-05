@@ -49,12 +49,12 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
       {
         question: "¿Cada cuánto se debe impermeabilizar el techo?",
         answer:
-          "Depende del sistema usado: los acrílicos duran 3-5 años, el manto asfáltico de 5-10 años y la silicona elastomérica de 7-12 años. Lo ideal es revisar antes de que aparezcan goteras.",
+          "No hay un único intervalo para todas las cubiertas. Depende del material, la preparación, el estado del techo, la exposición y la intervención anterior. Si observas una filtración o deterioro visible, solicita una revisión y conserva la garantía o ficha del trabajo anterior si existe.",
       },
       {
         question: "¿Atienden emergencias de goteras los fines de semana?",
         answer:
-          "Atendemos lunes a sábado de 7 a.m. a 6 p.m. Para urgencias fuera de horario, escríbenos por WhatsApp y coordinamos lo antes posible.",
+          "Atendemos mensajes de lunes a sábado, de 7:00 a. m. a 6:00 p. m. Fuera de ese horario puedes dejar la información por WhatsApp; confirmamos la disponibilidad antes de programar una visita.",
       },
       {
         question: "¿Qué garantía dan en reparación de techos?",
@@ -94,17 +94,17 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
       {
         question: "¿El precio incluye materiales?",
         answer:
-          "Sí. Nuestras cotizaciones incluyen mano de obra, pintura de buena calidad, preparación de superficies y limpieza final. Si necesitás una pintura específica, también la conseguimos.",
+          "La cotización indica quién suministra la pintura, qué producto se acuerda y cuáles materiales, preparación y limpieza quedan incluidos. La referencia inicial del catálogo no permite dar por incluidos materiales o trabajos que no aparezcan en la propuesta.",
       },
       {
         question: "¿Cuánto tiempo toma pintar un apartamento?",
         answer:
-          "Un apartamento de 2 habitaciones se pinta en 2-3 días. Si hay resanes o tratamiento de humedad previo, puede tomar 1-2 días más.",
+          "La duración depende de los espacios y superficies, su estado, los resanes, los materiales, el acceso y si el inmueble está ocupado. Esos datos se revisan para definir el alcance y la programación antes de empezar.",
       },
       {
         question: "¿Tratan la humedad antes de pintar?",
         answer:
-          "Sí. No pintamos encima de humedad sin resolver la causa primero. Diagnosticamos el origen, lo tratamos y luego pintamos con pintura anti-humedad para un resultado duradero.",
+          "Una mancha no confirma por sí sola el origen de la humedad. Revisamos lo visible y explicamos si hace falta cotizar por separado una fuga, filtración u otra intervención antes de pintar. La propuesta distingue la corrección de la causa, la preparación y el acabado.",
       },
     ],
     ogImage: "/og/og-pintura.png",
@@ -114,7 +114,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
     lineId: "plomeria",
     title: "Plomería en Medellín: reparación de fugas, destape y mantenimiento",
     metaDescription:
-      "Reparación de fugas, destape de desagües y mantenimiento de tuberías en Medellín y Valle de Aburrá. Respuesta rápida. Cotiza por WhatsApp.",
+      "Reparación de fugas, destape de desagües y mantenimiento de tuberías en Medellín y Valle de Aburrá. Consulta disponibilidad por WhatsApp.",
     targetKeyword: "plomería Medellín",
     secondaryKeywords: [
       "plomero Medellín",
@@ -128,7 +128,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
     heroBullets: [
       "Encontramos de dónde sale la fuga",
       "Destapamos y reparamos lo que falle",
-      "Revisamos todo para que no se repita",
+      "Acordamos el alcance antes de intervenir",
     ],
     faqs: [
       {
@@ -137,14 +137,14 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
           "La detección de fuga empieza desde $130.000 COP y la reparación desde $170.000 COP. El precio final depende de la ubicación de la fuga y la dificultad del acceso.",
       },
       {
-        question: "¿Atienden el mismo día?",
+        question: "¿Cómo confirman la disponibilidad?",
         answer:
-          "Hacemos lo posible por atender urgencias el mismo día. Escríbenos por WhatsApp, te confirmamos disponibilidad y coordinamos la visita lo antes posible.",
+          "Escríbenos por WhatsApp con tu municipio, sector y una descripción del problema. Atendemos mensajes de lunes a sábado, de 7:00 a. m. a 6:00 p. m., y confirmamos la disponibilidad antes de programar.",
       },
       {
         question: "¿Cómo detectan una fuga oculta en la pared?",
         answer:
-          "Revisamos tuberías, conexiones y puntos críticos. Verificamos presión del agua y revisamos señales visibles como manchas de humedad, pintura ampollada o sonido de agua corriendo.",
+          "Una mancha no permite confirmar por sí sola una fuga oculta. Revisamos las señales y las conexiones accesibles, y antes de realizar una revisión específica o abrir una superficie explicamos su alcance y si tiene costo.",
       },
       {
         question: "¿Destapan desagües de cocina y baño?",
@@ -340,102 +340,78 @@ export function getMunicipalitySEO(slug: string) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  PERFIL POR MUNICIPIO (sectores, vivienda, clima)                   */
+/*  PERFIL POR MUNICIPIO (sectores y datos útiles para coordinar)      */
 /* ------------------------------------------------------------------ */
 
 export type MunicipalityProfile = {
-  /** Sectores o barrios conocidos. Se redactan como "incluidos ..." porque cubrimos todo el municipio. */
+  /** Sectores de referencia dentro del área de cobertura. */
   sectors: string[];
-  /** Tipo de vivienda predominante. */
-  housing: string;
-  /** Nota de clima o entorno que afecta techos, pintura o plomería. */
-  climate: string;
+  /** Inmuebles para los que se puede consultar atención; no implica experiencia previa allí. */
+  propertyTypes: string;
+  /** Dato operativo que ayuda a coordinar la visita sin inferir daños locales. */
+  bookingNote: string;
 };
 
 export const MUNICIPALITY_PROFILE: Record<string, MunicipalityProfile> = {
   "medellin": {
     sectors: ["El Poblado", "Laureles y Estadio", "Belén", "Robledo", "Buenos Aires", "La América", "Castilla", "el Centro"],
-    housing:
-      "casas de barrio de uno y dos pisos, apartamentos en edificios de todas las épocas y locales comerciales",
-    climate:
-      "Medellín tiene dos temporadas de lluvia, abril–mayo y septiembre–noviembre, con aguaceros cortos y fuertes que ponen a prueba techos, canales y fachadas.",
+    propertyTypes: "casas, apartamentos y locales comerciales",
+    bookingNote: "Indica la comuna, el barrio y si el ingreso debe coordinarse con una administración.",
   },
   "envigado": {
     sectors: ["La Paz", "El Dorado", "Zúñiga", "Las Vegas", "San Marcos", "Alto de Misael", "Loma del Escobero", "Las Palmas"],
-    housing:
-      "casas de dos pisos con teja de barro en los barrios tradicionales y edificios nuevos en las lomas",
-    climate:
-      "En las lomas del oriente de Envigado llueve más y hay más neblina que en la parte plana, así que las cubiertas y fachadas sufren más humedad.",
+    propertyTypes: "casas, apartamentos, locales y propiedades en zonas de loma",
+    bookingNote: "Comparte el barrio y las condiciones de acceso para confirmar cobertura y desplazamiento.",
   },
   "sabaneta": {
     sectors: ["Aves María", "Calle Larga", "Las Lomitas", "Betania", "La Doctora", "San José", "Holanda", "Prados de Sabaneta"],
-    housing:
-      "casas tradicionales del centro y conjuntos de apartamentos nuevos que ya empiezan a necesitar mantenimiento",
-    climate:
-      "Sabaneta comparte el clima húmedo del sur del Valle de Aburrá, con lluvias frecuentes en la tarde que afectan sobre todo a terrazas y balcones.",
+    propertyTypes: "casas, apartamentos y locales",
+    bookingNote: "Si es un edificio o conjunto, indícanos los requisitos de ingreso y quién autoriza el trabajo.",
   },
   "bello": {
     sectors: ["Niquía", "Cabañas", "Fontidueño", "Zamora", "Santa Ana", "El Trapiche", "París", "Navarra"],
-    housing:
-      "casas de barrio con cubiertas de teja y conjuntos residenciales nuevos en Niquía y Navarra",
-    climate:
-      "Bello, al norte del Valle, recibe lluvias fuertes y viento que levantan tejas y tapan canales con hojas y tierra.",
+    propertyTypes: "casas, apartamentos, conjuntos residenciales y negocios",
+    bookingNote: "Comparte el barrio, el tipo de inmueble y fotografías tomadas desde un lugar seguro.",
   },
   "itagui": {
     sectors: ["el Centro", "Ditaires", "Santa María", "San Pío", "El Rosario", "San Gabriel", "Calatrava", "Yarumito"],
-    housing:
-      "viviendas de barrio, locales comerciales y bodegas del sector industrial",
-    climate:
-      "En Itagüí los techos de bodegas y locales acumulan hollín y sedimento que tapan bajantes, y las lluvias de la tarde los desbordan.",
+    propertyTypes: "viviendas, locales comerciales y bodegas",
+    bookingNote: "Para locales o bodegas, indica horarios de ingreso, altura aproximada y restricciones del lugar.",
   },
   "la-estrella": {
     sectors: ["Pueblo Viejo", "Suramérica", "La Tablaza", "Ancón", "San Agustín", "El Pedrero", "Bellavista", "La Inmaculada"],
-    housing:
-      "casas tradicionales en el casco urbano y viviendas campestres en las lomas",
-    climate:
-      "La Estrella tiene lluvias constantes y zonas de ladera con mucha humedad, lo que acelera el moho en paredes y el deterioro de los sellados.",
+    propertyTypes: "casas, apartamentos y viviendas campestres",
+    bookingNote: "Indica el sector y las condiciones de acceso para confirmar la agenda antes del desplazamiento.",
   },
   "caldas": {
     sectors: ["el Centro", "La Chuscala", "Mandalay", "Andalucía", "La Planta", "La Inmaculada", "Barrios Unidos", "El Porvenir"],
-    housing:
-      "casas de barrio con teja de barro o fibrocemento y fincas en las veredas cercanas",
-    climate:
-      "Caldas es de los municipios más lluviosos del Valle de Aburrá; los techos viejos y las canales sin mantenimiento fallan primero aquí.",
+    propertyTypes: "casas, negocios y propiedades en sectores urbanos o rurales",
+    bookingNote: "Para veredas o sectores alejados, comparte una referencia de ubicación para confirmar el desplazamiento.",
   },
   "copacabana": {
     sectors: ["el Centro", "Machado", "Las Vegas", "El Recreo", "Villanueva", "Fátima", "La Misericordia", "Zarzal"],
-    housing:
-      "casas del casco urbano y viviendas campestres hacia las veredas",
-    climate:
-      "Copacabana, al norte del Valle, alterna sol fuerte y aguaceros, lo que agrieta los sellados de las cubiertas con el tiempo.",
+    propertyTypes: "casas, apartamentos, negocios y viviendas campestres",
+    bookingNote: "Comparte el sector y una referencia de acceso para confirmar disponibilidad y desplazamiento.",
   },
   "girardota": {
     sectors: ["el Centro", "El Paraíso", "San Andrés", "El Totumo", "La Palma", "Aurelio Mejía", "Juan XXIII"],
-    housing:
-      "viviendas del casco urbano y fincas con techos amplios en las veredas",
-    climate:
-      "En Girardota las fincas tienen cubiertas grandes con mucha hoja encima; limpiar canales antes de las lluvias evita la mayoría de las goteras.",
+    propertyTypes: "viviendas, negocios y fincas",
+    bookingNote: "Si la propiedad está en una vereda, indica el punto de referencia y las condiciones de acceso.",
   },
   "rionegro": {
     sectors: ["el Centro", "San Antonio de Pereira", "Llanogrande", "El Porvenir", "Gualanday", "Cuatro Esquinas", "Alto Bonito", "El Tablazo"],
-    housing:
-      "casas campestres, parcelaciones y apartamentos nuevos en el casco urbano",
-    climate:
-      "Rionegro está a 2.100 metros: llueve más, hace más frío y la humedad se queda en las paredes, así que la pintura y los sellados duran menos si no se preparan bien.",
+    propertyTypes: "casas, apartamentos, locales, parcelaciones y propiedades campestres",
+    bookingNote: "Indica el sector y si la parcelación o copropiedad exige autorización previa para el ingreso.",
   },
   "la-ceja": {
     sectors: ["el Centro", "Fátima", "San Cayetano", "La Floresta", "El Tambo", "Payuco", "La Milagrosa"],
-    housing:
-      "casas del casco urbano y parcelaciones campestres",
-    climate:
-      "La Ceja tiene clima frío y húmedo del altiplano; la humedad en paredes y el moho son los problemas más frecuentes.",
+    propertyTypes: "casas, apartamentos, negocios y propiedades campestres",
+    bookingNote: "Comparte el sector y los requisitos de ingreso para confirmar cobertura y disponibilidad.",
   },
   "marinilla": {
     sectors: ["el Centro", "El Progreso", "La Ramada", "El Rosario", "Belén", "Santa Lucía"],
-    housing:
-      "casas tradicionales del casco urbano y viviendas en veredas cercanas",
-    climate:
-      "Marinilla, en el altiplano del Oriente, combina lluvia y frío; las cubiertas con pendiente baja acumulan agua y necesitan revisión periódica.",
+    propertyTypes: "casas, apartamentos, negocios y propiedades en sectores rurales",
+    bookingNote: "Si la dirección está fuera del casco urbano, envía una referencia de acceso antes de programar la visita.",
   },
 };
 
@@ -451,18 +427,18 @@ export function joinSectors(sectors: string[], max = 3): string {
 }
 
 // FAQ específicas por municipio y línea: usan el perfil y precios ya publicados.
-const LINE_LOCAL_FAQ: Record<string, (muni: string, p: MunicipalityProfile) => { question: string; answer: string }> = {
-  techos: (muni, p) => ({
-    question: `¿Qué pasa con las goteras en ${muni} cuando llegan las lluvias?`,
-    answer: `${p.climate} Por eso recomendamos una revisión del techo (desde $130.000 COP) antes de la temporada y reparar las goteras que aparezcan (desde $180.000 COP) sin esperar a que dañen el cielo raso.`,
+const LINE_LOCAL_FAQ: Record<string, (muni: string) => { question: string; answer: string }> = {
+  techos: (muni) => ({
+    question: `¿Qué información necesitan para revisar un techo en ${muni}?`,
+    answer: `Indica el sector de ${muni}, el tipo de cubierta, dónde aparece el agua y cómo se accede al techo. Puedes enviar fotografías desde un lugar seguro; no necesitas subir. La revisión del techo figura desde $130.000 COP y la reparación puntual de goteras desde $180.000 COP como referencias de catálogo. Confirmamos el alcance y el precio antes de realizar el trabajo.`,
   }),
-  pintura: (muni, p) => ({
-    question: `¿Cuánto tarda pintar una casa o apartamento en ${muni}?`,
-    answer: `En ${muni} trabajamos sobre todo en ${p.housing}. Un apartamento de dos habitaciones toma 2 a 3 días; una casa de dos pisos, 4 a 6. La pintura interior empieza desde $280.000 COP e incluye preparación de paredes y limpieza final.`,
+  pintura: (muni) => ({
+    question: `¿Cómo cotizan pintura en ${muni}?`,
+    answer: `Para cotizar en ${muni} necesitamos saber qué espacios y superficies quieres pintar, su estado y quién suministra los materiales. La pintura interior figura desde $280.000 COP como referencia inicial, no como el precio de una casa o apartamento completo. La preparación, los resanes y el tiempo se definen en la propuesta.`,
   }),
-  plomeria: (muni, p) => ({
-    question: `¿Hacen plomería de urgencia en ${muni}?`,
-    answer: `Sí. En ${muni} atendemos de lunes a sábado de 7:00 a. m. a 6:00 p. m., y fuera de ese horario coordinamos por WhatsApp lo antes posible. ${p.climate} La reparación de fugas empieza desde $170.000 COP y el destape de desagües desde $160.000 COP.`,
+  plomeria: (muni) => ({
+    question: `¿Cómo coordinan plomería en ${muni}?`,
+    answer: `Atendemos solicitudes en ${muni} de lunes a sábado, de 7:00 a. m. a 6:00 p. m. Comparte el sector, dónde aparece el agua o qué desagüe está afectado; confirmamos disponibilidad antes de programar. La reparación de fugas figura desde $170.000 COP y el destape de desagües desde $160.000 COP como referencias de catálogo.`,
   }),
 };
 
@@ -473,7 +449,7 @@ export function buildLocalFaqs(lineSlug: string, muni: { slug: string; name: str
     question: `¿Atienden en ${joinSectors(p.sectors)} (${muni.name})?`,
     answer: `Sí. Cubrimos todo ${muni.name}, incluidos ${joinSectors(p.sectors, p.sectors.length)}. Si tu sector no aparece, escríbenos por WhatsApp: confirmamos cobertura y disponibilidad antes de programar la visita.`,
   };
-  const local = LINE_LOCAL_FAQ[lineSlug]?.(muni.name, p);
+  const local = LINE_LOCAL_FAQ[lineSlug]?.(muni.name);
   return local ? [coverage, local] : [coverage];
 }
 
@@ -501,24 +477,24 @@ const LINE_LABELS: Record<string, string> = {
 
 // Frase propia de cada municipio para que ninguna meta description se repita.
 export const MUNICIPALITY_HOOKS: Record<string, string> = {
-  "medellin": "Atendemos todas las comunas, de Belén a El Poblado.",
-  "envigado": "Del centro a Loma del Escobero y Las Palmas.",
-  "sabaneta": "Casas tradicionales y edificios nuevos del sur.",
-  "bello": "Niquía, Cabañas, Fontidueño y el centro de Bello.",
-  "itagui": "Viviendas, locales y bodegas del sector industrial.",
-  "la-estrella": "Pueblo Viejo, Suramérica y el casco urbano.",
-  "caldas": "Casco urbano y veredas cercanas del sur del Valle.",
-  "copacabana": "Casco urbano y zona campestre del norte del Valle.",
-  "girardota": "Casco urbano y fincas del norte del Valle de Aburrá.",
-  "rionegro": "Casco urbano, Llanogrande y San Antonio de Pereira.",
-  "la-ceja": "Casco urbano y parcelaciones del Oriente.",
-  "marinilla": "Casco urbano y veredas del altiplano del Oriente.",
+  "medellin": "todas las comunas, de Belén a El Poblado",
+  "envigado": "el centro, Zúñiga y sectores de las lomas",
+  "sabaneta": "el centro, Aves María y La Doctora",
+  "bello": "Niquía, Cabañas, Fontidueño y el centro",
+  "itagui": "el centro, Ditaires y Santa María",
+  "la-estrella": "Pueblo Viejo, Suramérica y el casco urbano",
+  "caldas": "el casco urbano y sectores rurales",
+  "copacabana": "el casco urbano y sectores rurales",
+  "girardota": "el casco urbano y sectores rurales",
+  "rionegro": "el casco urbano, Llanogrande y San Antonio de Pereira",
+  "la-ceja": "el casco urbano y sectores rurales",
+  "marinilla": "el casco urbano y sectores rurales",
 };
 
 // Título (etiqueta <title>) y H1 por línea, escritos como busca la gente.
 const LINE_TITLE: Record<string, (muni: string) => string> = {
-  techos: (m) => `Reparación de goteras y techos en ${m} | Visita gratis`,
-  pintura: (m) => `Pintores en ${m}: pintura interior y exterior | Precio claro`,
+  techos: (m) => `Reparación de techos y goteras en ${m}`,
+  pintura: (m) => `Pintores en ${m}: interior y exterior`,
   plomeria: (m) => `Plomero en ${m}: fugas y destapes a domicilio`,
 };
 
@@ -528,76 +504,25 @@ const LINE_H1: Record<string, (muni: string) => string> = {
   plomeria: (m) => `Plomería a domicilio en ${m}`,
 };
 
-const LINE_SHORT: Record<string, string> = {
-  techos: "Goteras, impermeabilización y mantenimiento de techos",
-  pintura: "Pintura interior, exterior y resanes",
-  plomeria: "Fugas, destapes y grifería a domicilio",
-};
-
-const LINE_VERB: Record<string, string> = {
-  techos: "reparación de techos, impermeabilización y mantenimiento de cubiertas",
-  pintura: "pintura interior y exterior, resanes y tratamiento de humedad",
-  plomeria: "reparación de fugas, destape de desagües y cambio de grifería",
-};
-
-const MUNICIPALITY_INTROS: Record<string, Record<string, string>> = {
-  techos: {
-    medellin: "Medellín, con su clima de lluvias frecuentes y temperaturas cambiantes, exige techos en buen estado. Las cubiertas expuestas al sol y a la lluvia del Valle de Aburrá necesitan mantenimiento regular para evitar filtraciones.",
-    envigado: "Las lluvias del sur del Valle de Aburrá afectan directamente las cubiertas en Envigado. Ya sea en casas del centro o edificios residenciales, un techo bien sellado es clave para evitar daños.",
-    sabaneta: "Sabaneta, con su crecimiento urbano acelerado, tiene tanto casas antiguas con tejas de barro como edificios nuevos. Ambos tipos de cubierta necesitan revisión y mantenimiento periódico.",
-    bello: "Bello, al norte del Valle de Aburrá, recibe lluvias fuertes que ponen a prueba los techos. Ofrecemos impermeabilización, reparación de goteras y limpieza de canales en todo el municipio.",
-    itagui: "En Itagüí, las zonas industriales y residenciales requieren cubiertas en buen estado. Atendemos bodegas, locales comerciales y viviendas con servicio profesional y garantía.",
-    "la-estrella": "La Estrella, ubicada al sur del Valle de Aburrá, tiene viviendas expuestas a lluvias constantes. Sellamos, impermeabilizamos y reparamos techos con materiales de calidad.",
-    caldas: "Caldas, al sur del Valle de Aburrá, tiene un clima húmedo que exige techos bien protegidos. Atendemos casas y negocios con reparación de goteras e impermeabilización.",
-    copacabana: "Copacabana, al norte del Valle de Aburrá, presenta condiciones de humedad que afectan las cubiertas. Ofrecemos mantenimiento preventivo y reparaciones rápidas.",
-    girardota: "Girardota combina zona rural y urbana, con techos de diferentes materiales. Atendemos desde fincas hasta viviendas del casco urbano con servicio profesional.",
-    rionegro: "Rionegro, en el Oriente antioqueño, tiene un clima frío y lluvioso que exige techos impermeabilizados. Atendemos viviendas, fincas y locales comerciales.",
-    "la-ceja": "La Ceja tiene un clima frío y húmedo que deteriora rápidamente las cubiertas sin mantenimiento. Reparamos goteras, sellamos juntas e impermeabilizamos con garantía.",
-    marinilla: "Marinilla, con lluvias frecuentes en el Oriente antioqueño, necesita techos bien protegidos. Ofrecemos impermeabilización, reparación y mantenimiento de cubiertas.",
-  },
-  pintura: {
-    medellin: "En Medellín, el clima templado y la humedad del Valle de Aburrá exigen pinturas de calidad que resistan. Ya sea un apartamento en El Poblado o una casa en Robledo, pintamos con acabado profesional.",
-    envigado: "Envigado tiene viviendas y apartamentos que necesitan pintura de calidad. Preparamos las superficies, tratamos la humedad si la hay, y dejamos el acabado impecable.",
-    sabaneta: "En Sabaneta, los apartamentos nuevos y las casas antiguas necesitan diferentes tratamientos. Nos adaptamos al tipo de superficie y te damos un acabado limpio y duradero.",
-    bello: "Bello tiene barrios residenciales grandes donde la pintura se deteriora por la humedad y el sol. Preparamos las paredes, resanamos y pintamos con materiales que duran.",
-    itagui: "En Itagüí, atendemos viviendas y locales comerciales con pintura interior y exterior. Tratamos humedad, resanamos paredes y dejamos el espacio como nuevo.",
-    "la-estrella": "La Estrella tiene conjuntos residenciales y casas que necesitan mantenimiento de pintura. Hacemos resanes, tratamiento de humedad y pintura con acabado profesional.",
-    caldas: "En Caldas, las condiciones de humedad pueden afectar la pintura de las paredes. Tratamos el origen de la humedad antes de pintar para un resultado que dure.",
-    copacabana: "Copacabana tiene viviendas que necesitan renovación periódica de pintura. Desde interiores hasta fachadas completas, pintamos con calidad y limpieza.",
-    girardota: "En Girardota, las fincas y viviendas del casco urbano necesitan pintura que resista el clima. Atendemos interiores, exteriores y fachadas con garantía.",
-    rionegro: "Rionegro tiene un crecimiento urbano fuerte, con apartamentos y casas que necesitan pintura de calidad. Atendemos desde estudios hasta fincas del Oriente antioqueño.",
-    "la-ceja": "La Ceja tiene condiciones de humedad que afectan la pintura. Tratamos las paredes, resanamos y pintamos con productos anti-humedad para un acabado duradero.",
-    marinilla: "En Marinilla, la humedad del Oriente antioqueño exige pinturas resistentes. Preparamos las superficies y usamos materiales que soporten las condiciones climáticas.",
-  },
-  plomeria: {
-    medellin: "En Medellín, los problemas de plomería son frecuentes por la antigüedad de muchas instalaciones. Atendemos fugas, desagües tapados y cambio de grifería en todo el Valle de Aburrá.",
-    envigado: "Envigado tiene edificios y casas con instalaciones que necesitan mantenimiento. Detectamos fugas, destapamos desagües y reparamos conexiones con servicio rápido.",
-    sabaneta: "En Sabaneta, los apartamentos nuevos y las casas antiguas presentan diferentes problemas de plomería. Nos adaptamos y solucionamos desde fugas hasta instalación de grifería.",
-    bello: "Bello tiene barrios con tuberías antiguas que presentan fugas y obstrucciones. Atendemos el mismo día cuando es posible y reparamos con garantía.",
-    itagui: "En Itagüí, atendemos hogares y negocios con problemas de plomería. Desde una fuga simple hasta reparaciones más complejas de tuberías.",
-    "la-estrella": "La Estrella tiene viviendas que necesitan mantenimiento de plomería regular. Reparamos fugas, destapamos desagües y cambiamos grifería con servicio profesional.",
-    caldas: "En Caldas, atendemos problemas de plomería en casas y negocios. Detección de fugas, destape de desagües y mantenimiento de tuberías con garantía.",
-    copacabana: "Copacabana tiene instalaciones que necesitan atención profesional de plomería. Llegamos rápido, diagnosticamos el problema y lo reparamos el mismo día cuando es posible.",
-    girardota: "En Girardota, atendemos plomería en viviendas urbanas y fincas. Reparamos fugas, destapamos cañerías y hacemos mantenimiento preventivo de tuberías.",
-    rionegro: "Rionegro tiene un crecimiento urbano que exige servicios de plomería confiables. Atendemos fugas, desagües y grifería en viviendas y locales del Oriente antioqueño.",
-    "la-ceja": "En La Ceja, ofrecemos servicio de plomería profesional para hogares y negocios. Detección de fugas, destape de desagües y reparación de conexiones.",
-    marinilla: "Marinilla necesita plomeros confiables. Atendemos fugas, desagües tapados, cambio de grifería y mantenimiento de tuberías con servicio profesional.",
-  },
+const LINE_INTRO: Record<string, (muni: string) => string> = {
+  techos: (muni) => `Solicita en ${muni} reparación de goteras, impermeabilización o mantenimiento de cubiertas. Cuéntanos dónde aparece el agua, qué tipo de techo tienes y cómo se accede; definimos el alcance antes de cotizar.`,
+  pintura: (muni) => `Solicita en ${muni} pintura interior o exterior, resanes y acabados. Indica los espacios, las superficies y su estado para preparar una propuesta con materiales y trabajos claramente definidos.`,
+  plomeria: (muni) => `Solicita en ${muni} reparación de fugas, destape de desagües o cambio de grifería. Describe dónde aparece el agua o qué punto está afectado; confirmamos cobertura y disponibilidad antes de programar.`,
 };
 
 const CROSS_PAGE_FAQS: Record<string, { question: string; answer: string }[]> = {
   techos: [
     {
       question: "¿Cuánto cuesta reparar una gotera en {municipio}?",
-      answer: "La reparación de una gotera puntual en {municipio} empieza desde $180.000 COP. El precio final depende de la causa y extensión del daño. Ofrecemos visita técnica gratuita en {municipio} para dar un precio exacto.",
+      answer: "La reparación puntual de goteras figura desde $180.000 COP como referencia del catálogo. En {municipio}, el precio final depende del origen, el acceso y el sector de la cubierta que se acuerde intervenir. La visita inicial para cotizar no tiene costo; si hace falta una revisión específica, confirmamos su alcance y precio antes.",
     },
     {
       question: "¿Impermeabilizan techos en {municipio}?",
-      answer: "Sí. Impermeabilizamos techos en {municipio} desde $350.000 COP. Usamos sistemas acrílicos, manto asfáltico, poliuretano y silicona elastomérica según las necesidades del techo.",
+      answer: "Puedes solicitar impermeabilización de techos en {municipio}. La referencia del catálogo parte de $350.000 COP y no representa una cubierta completa. El material, la superficie, la preparación y el acceso se definen después de revisar el caso y quedan por escrito en la cotización.",
     },
     {
-      question: "¿Cuánto tarda una reparación de techo en {municipio}?",
-      answer: "Una reparación puntual de gotera toma entre medio día y un día. Una impermeabilización completa puede tomar 1 a 3 días dependiendo del área. Coordinamos horarios flexibles en {municipio}.",
+      question: "¿Cómo programan una reparación de techo en {municipio}?",
+      answer: "Primero confirmamos el sector de {municipio}, el acceso y el trabajo que necesita la cubierta. La duración depende del área, los materiales, la preparación y las condiciones del sitio; la propuesta indica el alcance y la disponibilidad antes de programar.",
     },
   ],
   pintura: [
@@ -607,25 +532,25 @@ const CROSS_PAGE_FAQS: Record<string, { question: string; answer: string }[]> = 
     },
     {
       question: "¿Pintan fachadas en {municipio}?",
-      answer: "Sí. Pintamos fachadas de casas, edificios y locales en {municipio}. El acabado de fachada empieza desde $330.000 COP. Incluimos preparación, resanes y pintura exterior resistente.",
+      answer: "Puedes solicitar pintura de fachadas en {municipio}. El acabado de fachada figura desde $330.000 COP como referencia del catálogo. La cotización debe indicar la superficie, la preparación, los resanes, los materiales y las condiciones de acceso incluidos.",
     },
     {
       question: "¿Tratan humedad en paredes en {municipio}?",
-      answer: "Sí. Antes de pintar, diagnosticamos y tratamos el origen de la humedad. El tratamiento de humedad en paredes empieza desde $250.000 COP en {municipio}. No pintamos encima de humedad sin resolver la causa.",
+      answer: "Una mancha no permite confirmar por sí sola el origen de la humedad. En {municipio} puedes solicitar la revisión del caso y pintura cuando la superficie esté en condiciones. La corrección de humedad superficial figura desde $250.000 COP como referencia; cualquier fuga, filtración o reparación adicional se cotiza por separado.",
     },
   ],
   plomeria: [
     {
       question: "¿Cuánto cuesta un plomero en {municipio}?",
-      answer: "Los servicios de plomería en {municipio} empiezan desde $120.000 COP (revisión de presión). Reparación de fugas desde $170.000, destape de desagües desde $160.000, cambio de grifería desde $150.000. Visita técnica gratis.",
+      answer: "El catálogo de plomería incluye referencias desde $120.000 COP para revisión de presión, $170.000 para reparación de fugas, $160.000 para destape de desagües y $150.000 para cambio de grifería. En {municipio}, cada referencia corresponde a un servicio distinto; confirmamos el alcance y precio antes de realizarlo.",
     },
     {
-      question: "¿Atienden emergencias de plomería en {municipio}?",
-      answer: "Hacemos lo posible por atender urgencias el mismo día en {municipio}. Escríbenos por WhatsApp, confirmamos disponibilidad y coordinamos la visita lo antes posible. Horario: lunes a sábado 7 a.m. a 6 p.m.",
+      question: "¿Cómo confirman la disponibilidad de plomería en {municipio}?",
+      answer: "Escríbenos por WhatsApp con el sector de {municipio} y una descripción del problema. Atendemos mensajes de lunes a sábado, de 7:00 a. m. a 6:00 p. m., y confirmamos la disponibilidad antes de programar. Fuera del horario puedes dejar el mensaje para revisión posterior.",
     },
     {
       question: "¿Destapan desagües en {municipio}?",
-      answer: "Sí. Destapamos desagües de baño, cocina, patio y sifones en {municipio}. El servicio empieza desde $160.000 COP. Usamos herramientas profesionales para un resultado efectivo.",
+      answer: "Puedes solicitar destape de desagües de baño, cocina, patio o sifones en {municipio}. La referencia del catálogo parte de $160.000 COP. Indica qué punto está afectado, desde cuándo y si el problema se repite; confirmamos el alcance y el precio antes de intervenir.",
     },
   ],
 };
@@ -635,11 +560,8 @@ function buildCrossPages(): CrossPageSEO[] {
   for (const line of SERVICE_LINE_SEO) {
     for (const muni of MUNICIPALITY_SEO) {
       const lineLabel = LINE_LABELS[line.slug] ?? line.slug;
-      const lineVerb = LINE_VERB[line.slug] ?? line.slug;
-
-      const intro =
-        MUNICIPALITY_INTROS[line.slug]?.[muni.slug] ??
-        `Ofrecemos ${lineVerb} en ${muni.name} con visita técnica gratuita y garantía por escrito.`;
+      const intro = LINE_INTRO[line.slug]?.(muni.name) ??
+        `Consulta ${lineLabel.toLowerCase()} en ${muni.name}. Confirmamos cobertura, alcance y disponibilidad antes de programar.`;
 
       const faqs = [
         ...(CROSS_PAGE_FAQS[line.slug] ?? []).map((faq) => ({
@@ -655,10 +577,7 @@ function buildCrossPages(): CrossPageSEO[] {
         lineLabel,
         municipioName: muni.name,
         title: (LINE_TITLE[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
-        metaDescription: `${LINE_SHORT[line.slug] ?? lineLabel} en ${muni.name}. ${MUNICIPALITY_HOOKS[muni.slug] ?? ""} Visita técnica gratis y garantía por escrito.`
-          .replace(/\s+/g, " ")
-          .trim()
-          .slice(0, 158),
+        metaDescription: `${lineLabel} en ${muni.name}. Consulta atención en ${MUNICIPALITY_HOOKS[muni.slug] ?? muni.name}. Alcance y precio por escrito.`,
         h1: (LINE_H1[line.slug] ?? ((m: string) => `${lineLabel} en ${m}`))(muni.name),
         intro,
         faqs,
