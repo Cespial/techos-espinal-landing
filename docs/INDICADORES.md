@@ -1,49 +1,45 @@
-# Indicadores — espinalservicios.com
+# Indicadores de Espinal — revisión del 4 de octubre de 2026
 
-Revisión semanal (viernes, 15 minutos). Una fila por semana en la hoja de Henrry; aquí, qué mirar y dónde.
+## Cuentas verificadas en esta revisión
 
-## Cómo se mide la conversión
+- Search Console: propiedad de dominio `espinalservicios.com` accesible. Sitemap existente correcto; leído el 4 de octubre, 69 páginas descubiertas antes de esta entrega. El nuevo sitemap contiene 73 URL indexables. Descubiertas no significa indexadas.
+- GA4: propiedad **Espinal Multiservicios**, ID `557166289`; flujo `15983192441`; medición pública `G-SWZZ5QGHBB` instalada.
+- Google Business Profile: existe una ficha, pendiente de verificación y todavía no visible públicamente. No crear otra. Henrry debe realizar la verificación física que solicite Google.
 
-El sitio emite **dos eventos** a GA4 desde `lib/tracking.ts`, siempre a través de `WaButton` y `CallButton`:
+## Línea base real (ventanas distintas)
 
-| Evento | Cuándo | Parámetros |
+| Fuente | Periodo consultado | Observado |
 |---|---|---|
-| `cta_whatsapp_click` | clic en cualquier botón o enlace de WhatsApp | `source`, `page_type`, `linea`, `municipio`, `servicio` |
-| `cta_call_click` | clic en cualquier botón de llamada | `source`, `page_type`, `linea`, `municipio` |
+| Search Console, búsqueda Web | 30-sep a 2-oct | 2 clics, 151 impresiones, CTR 1,3 %, posición media 4,9 |
+| GA4 | 27-sep a 3-oct | 5 usuarios, 50 eventos, 0 eventos clave |
+| Search Console, páginas | consulta 4-oct | informe todavía procesando datos |
+| Experiencia de página | consulta 4-oct | sin datos suficientes de campo |
 
-`source`: hero, header, sticky_bar, fab, service_card, process, owner, trust, coverage, faq, composer, final_cta,
-footer, blog_inline, blog_sticky, blog_banner, emergency. `page_type`: home, servicio, servicio_municipio,
-cobertura, cobertura_index, nosotros, blog, blog_index, legal.
+La posición media procede de una muestra pequeña y no demuestra liderazgo para todas las soluciones. Las cifras agregadas por página pueden diferir del total de la propiedad. No usar diagnósticos anteriores que decían que no existían cuentas.
 
-### Estado de la configuración (hecho el 3-oct-2026 con la cuenta cristianjosue07@gmail.com)
-- GA4: cuenta «Cristian Espinal» → propiedad **Espinal Multiservicios** (ID de propiedad 557166289), flujo web
-  `espinalservicios.com` (ID 15983192441), **ID de medición `G-SWZZ5QGHBB`**, ya cargado como `NEXT_PUBLIC_GA_ID`
-  en Vercel (Production) y desplegado: el HTML en vivo carga gtag.
-- Search Console: propiedad de dominio `espinalservicios.com` **verificada** por registro TXT en el DNS de
-  Vercel (`google-site-verification=0CnyjqpCP-…`, no borrar). Sitemap `https://espinalservicios.com/sitemap.xml`
-  enviado. GA4 vinculado con Search Console.
-- Pendiente en GA4: marcar `cta_whatsapp_click` y `cta_call_click` como **eventos clave** (Admin → Eventos →
-  estrella) cuando aparezcan en la lista, es decir, tras fusionar el PR #3 y recibir los primeros clics.
-  Comprobar antes en Admin → DebugView abriendo el sitio con `?debug_mode=1`.
-- Clarity: sin cuenta Microsoft; opcional.
+## Medición de contactos
 
-## Tabla semanal
+El sitio emite `cta_whatsapp_click` y `cta_call_click`. Ambos quedaron registrados en GA4 como eventos clave el 4-oct por el método **Crear con código**, sin regla que duplique el evento ya emitido. Recuento del evento clave: **una vez por sesión**. Sin valor monetario predeterminado. Los eventos brutos conservan el recuento de clics.
 
-| KPI | Fuente | Meta 90 días |
-|---|---|---|
-| Impresiones y clics orgánicos (28 días) | Search Console → Rendimiento | +20 % mes a mes |
-| Posición media: «espinal multiservicios», «reparación de techos envigado», «plomero sabaneta», «pintores bello» | Search Console → Rendimiento → Consultas | marca #1; municipios top 10 |
-| Páginas indexadas | Search Console → Páginas | 69 de 69 |
-| Sesiones por canal | GA4 → Adquisición de tráfico | — |
-| Clics a WhatsApp y llamada, por `page_type` y `source` | GA4 → Interacción → Eventos | identificar las 5 páginas que más convierten |
-| Tasa de conversión = eventos clave ÷ sesiones | GA4 → Exploración | ≥ 8 % |
-| Visitas sin bloqueadores | Vercel → Analytics | si GA4 < 60 % de Vercel, hay bloqueo alto |
-| LCP p75 móvil | Vercel → Speed Insights | ≤ 2,5 s |
-| Vistas de la ficha, llamadas, clics al sitio | Google Business Profile → Rendimiento | — |
-| Reseñas: número y promedio | Google Business Profile → Reseñas | 15 reseñas en 60 días, ≥ 4,7 |
-| Chats → cotizaciones → trabajos cerrados | Hoja de Henrry (a mano) | cerrar el embudo que GA4 no ve |
+Un clic NO demuestra que se haya enviado un mensaje, completado una llamada o contratado. Una sesión que use ambos canales puede contabilizar ambos eventos clave; no sumar los dos para afirmar clientes únicos. Para tasa de intención usar la proporción de sesiones con al menos uno de los dos eventos, por canal de adquisición.
 
-## Línea base (3 de octubre de 2026)
-- Search Console: sin propiedad. GA4: sin ID en producción. Ficha de Google: no existe.
-- Google: la marca ya sale primera con enlaces de sitio. «reparación de techos Envigado»: mapa con negocios de 1, 35 y 0 reseñas; el sitio no aparece.
-- Lighthouse móvil local tras el rediseño: home 93–98 rendimiento, LCP 2,4–2,5 s; cruzada 100, LCP 1,7 s. Causa del NO_FCP anterior: animación de opacidad del `body`, ya retirada en producción.
+Parámetros controlados: `source`, `page_type`, `linea`, `municipio`, `servicio`. Los dos últimos usan slugs/IDs permitidos. No enviar nombre, teléfono del visitante, dirección, mensaje libre, ni texto del formulario. El teléfono del footer también registra su contexto. Ver `docs/seo/measurement-2026-10-05.md` para taxonomía y pruebas.
+
+Registro de eventos clave confirmado en la interfaz. Medición mejorada y vistas ante cambios del historial confirmadas activas en la configuración; se conservaron sin añadir pageviews manuales. La recepción de los eventos de contacto, las dimensiones personalizadas y la ausencia de duplicados durante navegación real necesitan comprobación independiente: estar registrados no prueba recepción. El parámetro `?debug_mode=1` por sí solo no activa actualmente el modo depuración del sitio; no darlo por validado.
+
+## Revisión semanal: 20 minutos
+
+1. Search Console: comparar periodos completos equivalentes (28 días cuando existan); consultas sin marca, páginas de soluciones y Medellín/Bello por separado. Anotar clics e impresiones, sin objetivos de posición garantizados.
+2. Indexación: revisar exclusiones y errores de las páginas que sí queremos posicionar. Legales noindex fuera del sitemap. No esperar que Google indexe todas las URL por tenerlas en un sitemap.
+3. GA4: sesiones orgánicas y sesiones con contacto; distinguir pruebas internas y muestras pequeñas. Verificar recepción antes de interpretar cero como ausencia de interés.
+4. Registro comercial: solicitudes reales → cotizaciones → trabajos confirmados. Duplicados entre canales se resuelven con ID interno, sin publicar datos personales.
+5. Perfil de Google: verificar estado; una vez visible, rendimiento y reseñas reales. Solicitud neutral para todos los clientes atendidos, sin cuotas, estrellas mínimas, incentivos ni palabras prescritas.
+6. Rendimiento: Core Web Vitals de campo cuando haya muestra (p75 LCP ≤2,5 s, INP ≤200 ms y CLS ≤0,1). Las mediciones locales no sustituyen datos reales.
+
+## Decisiones al disponer de datos
+
+- Impresiones relevantes sin clics: revisar intención, título y descripción antes de duplicar páginas.
+- Clics sin contactos: revisar claridad de alcance, presupuesto, CTA y funcionamiento; no concluir con dos visitas.
+- Contactos fuera de cobertura: revisar mensajes, zonas y condiciones de atención.
+- Solicitudes que sí cierran: priorizar contenido de esa necesidad usando casos y fotografías reales autorizadas.
+- Costos: herramientas gratuitas; presupuesto máximo acordado 100.000 COP/mes, sin compras ejecutadas en esta jornada.

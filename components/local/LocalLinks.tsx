@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CROSS_PAGE_SEO, MUNICIPALITY_SEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+import { CROSS_PAGE_SEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
+
+import { COVERAGE_AREAS, coverageHref } from "@/lib/coverage-areas";
 
 type Props = {
   /** Fondo de la sección. */
@@ -23,15 +25,15 @@ export default function LocalLinks({ tone = "white" }: Props) {
               Servicios por municipio
             </h2>
             <p className="mt-2 max-w-3xl text-sm text-slate-600">
-              Atendemos los 12 municipios con los mismos precios de referencia y la misma garantía. Elige el tuyo
-              para ver qué hacemos allí.
+              Atendemos los diez municipios del Valle de Aburrá, además de Rionegro, La Ceja y Marinilla.
+              Elige tu zona y confirma la disponibilidad para tu dirección.
             </p>
 
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Municipios">
-              {MUNICIPALITY_SEO.map((m) => (
+              {COVERAGE_AREAS.map((m) => (
                 <li key={m.slug}>
                   <Link
-                    href={`/cobertura/${m.slug}`}
+                    href={coverageHref(m)}
                     className="inline-flex min-h-11 items-center rounded-full border border-slate-300 bg-white px-3.5 text-sm font-semibold text-slate-700 hover:border-orange-300 hover:text-orange-700"
                   >
                     {m.name}

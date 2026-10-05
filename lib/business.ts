@@ -4,7 +4,7 @@ import {
   PHONE_E164,
   COVERAGE_SCHEDULE,
 } from "./conversion";
-import { MUNICIPALITY_SEO } from "./seo-data";
+import { COVERAGE_AREAS } from "./coverage-areas";
 import { OWNER, PERSON_ID } from "./owner";
 
 /* ------------------------------------------------------------------ */
@@ -66,17 +66,17 @@ export const KNOWS_ABOUT = [
   "Plomería residencial y comercial",
 ] as const;
 
-// Los 12 municipios como nodos City con coordenadas (areaServed real).
-export const AREA_SERVED = MUNICIPALITY_SEO.map((m) => ({
+// Municipios de cobertura como áreas de servicio, no como sedes del negocio.
+export const AREA_SERVED = COVERAGE_AREAS.map((m) => ({
   "@type": "City",
   name: m.name,
   containedInPlace: { "@type": "AdministrativeArea", name: "Antioquia" },
 }));
 
 type LocalBusinessOptions = {
-  /** URL de la página que emite el nodo (por defecto, el home). */
+  /** Compatibilidad con las llamadas existentes. La entidad conserva su URL principal. */
   url?: string;
-  /** Municipio foco de la página; si se da, va primero en areaServed y en address. */
+  /** Municipio ya atendido que se muestra primero en areaServed; no cambia la sede. */
   focusMunicipality?: { name: string; lat: number; lng: number };
   /** Descripción específica de la página. */
   description?: string;
@@ -84,19 +84,17 @@ type LocalBusinessOptions = {
 
 /**
  * Nodo HomeAndConstructionBusiness completo y consistente para cualquier página.
- * Mismo @id en todo el sitio; cambia solo la URL emisora y el municipio foco.
+ * Mismo @id, URL y localidad pública en todo el sitio. Los municipios son áreas
+ * de servicio. No publicamos una dirección privada ni coordenadas sin verificar.
  */
 export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
-  const { url = SITE_URL, focusMunicipality, description } = options;
+  const { focusMunicipality, description } = options;
 
-  const areaServed = focusMunicipality
+  const focusedArea = AREA_SERVED.find((area) => area.name === focusMunicipality?.name);
+  const areaServed = focusedArea
     ? [
-        {
-          "@type": "City",
-          name: focusMunicipality.name,
-          containedInPlace: { "@type": "AdministrativeArea", name: "Antioquia" },
-        },
-        ...AREA_SERVED.filter((a) => a.name !== focusMunicipality.name),
+        focusedArea,
+        ...AREA_SERVED.filter((area) => area.name !== focusedArea.name),
       ]
     : AREA_SERVED;
 
@@ -104,8 +102,8 @@ export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
     "@type": "HomeAndConstructionBusiness",
     "@id": BUSINESS_ID,
     name: COMPANY_NAME,
-    url,
-    mainEntityOfPage: url,
+    url: SITE_URL,
+    mainEntityOfPage: SITE_URL,
     telephone: PHONE_E164,
     image: DEFAULT_IMAGE_URL,
     logo: LOGO_URL,
@@ -114,14 +112,9 @@ export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
     paymentAccepted: "Efectivo, transferencia bancaria, Nequi",
     address: {
       "@type": "PostalAddress",
-      addressLocality: focusMunicipality?.name ?? "Medellín",
+      addressLocality: "Medellín",
       addressRegion: "Antioquia",
       addressCountry: "CO",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: focusMunicipality?.lat ?? 6.2518,
-      longitude: focusMunicipality?.lng ?? -75.5636,
     },
     areaServed,
     serviceType: SERVICE_TYPES,
@@ -130,8 +123,8 @@ export function buildLocalBusinessNode(options: LocalBusinessOptions = {}) {
     parentOrganization: { "@id": ORGANIZATION_ID },
     founder: { "@id": PERSON_ID },
     employee: [{ "@id": PERSON_ID }],
-    // NOTA SEO: sin aggregateRating ni review. Solo se añaden cuando existan
-    // reseñas reales verificables (Google Business Profile).
+    // Las reseñas propias no se marcan como review/aggregateRating del negocio.
+    // Obtener reseñas reales en Google no habilita estrellas autorreferenciales.
   };
 
   if (description) node.description = description;

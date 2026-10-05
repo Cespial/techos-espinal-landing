@@ -22,7 +22,7 @@ export const OWNER = {
     "Te damos el precio por escrito antes de empezar y no lo cambiamos sin acordarlo contigo.",
     "Cada trabajo queda con garantía firmada.",
   ],
-  promise: "Henrry y su equipo responden por WhatsApp en menos de 2 horas en horario laboral.",
+  promise: "Habla por WhatsApp con Henrry y su equipo. Confirmamos contigo el alcance y la disponibilidad de visita.",
   city: "Medellín",
 } as const;
 

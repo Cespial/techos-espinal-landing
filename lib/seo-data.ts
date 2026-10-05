@@ -89,7 +89,7 @@ export const SERVICE_LINE_SEO: ServiceLineSEO[] = [
       {
         question: "¿Cuánto cuesta pintar un apartamento en Medellín?",
         answer:
-          "Un apartamento estándar puede costar entre $800.000 y $3.500.000 COP dependiendo del tamaño, estado de las paredes y tipo de pintura. Visitamos tu espacio para darte un precio exacto sin costo.",
+          "El catálogo de pintura interior parte de $280.000 COP como referencia inicial, no como precio de un apartamento completo ni tarifa por metro cuadrado. El valor depende de superficies, preparación y materiales; te damos una cotización para el alcance que necesitas.",
       },
       {
         question: "¿El precio incluye materiales?",
@@ -471,7 +471,7 @@ export function buildLocalFaqs(lineSlug: string, muni: { slug: string; name: str
   if (!p) return [];
   const coverage = {
     question: `¿Atienden en ${joinSectors(p.sectors)} (${muni.name})?`,
-    answer: `Sí. Cubrimos todo ${muni.name}, incluidos ${joinSectors(p.sectors, p.sectors.length)}. Si tu sector no aparece, escríbenos por WhatsApp: casi siempre llegamos el mismo día o al siguiente.`,
+    answer: `Sí. Cubrimos todo ${muni.name}, incluidos ${joinSectors(p.sectors, p.sectors.length)}. Si tu sector no aparece, escríbenos por WhatsApp: confirmamos cobertura y disponibilidad antes de programar la visita.`,
   };
   const local = LINE_LOCAL_FAQ[lineSlug]?.(muni.name, p);
   return local ? [coverage, local] : [coverage];
@@ -603,7 +603,7 @@ const CROSS_PAGE_FAQS: Record<string, { question: string; answer: string }[]> = 
   pintura: [
     {
       question: "¿Cuánto cuesta pintar un apartamento en {municipio}?",
-      answer: "Pintar un apartamento en {municipio} cuesta entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Incluye mano de obra, pintura, preparación y limpieza. Cotización gratis.",
+      answer: "Para pintar un apartamento en {municipio} revisamos las superficies, su estado y los materiales. El catálogo de pintura interior parte de $280.000 COP como referencia inicial; no es el precio de un apartamento completo. El alcance y valor final quedan en la cotización.",
     },
     {
       question: "¿Pintan fachadas en {municipio}?",

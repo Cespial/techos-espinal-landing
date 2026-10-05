@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Espinal Multiservicios",
     title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín y 11 municipios.",
+      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín, Bello y Valle de Aburrá.",
     images: [
       {
         url: "/og/og-default.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
     description:
-      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín y 11 municipios.",
+      "Vamos a tu casa, revisamos gratis y te damos el precio por escrito. Equipo de Henrry Espinal, Medellín, Bello y Valle de Aburrá.",
     images: ["/og/og-default.png"],
   },
   robots: {
@@ -102,8 +102,6 @@ export default function RootLayout({
       <head>
         <meta name="geo.region" content="CO-ANT" />
         <meta name="geo.placename" content="Medellín" />
-        <meta name="geo.position" content="6.2518;-75.5636" />
-        <meta name="ICBM" content="6.2518, -75.5636" />
         <link rel="dns-prefetch" href="https://wa.me" />
         <link rel="preconnect" href="https://wa.me" />
         <script
@@ -117,14 +115,6 @@ export default function RootLayout({
               url: SITE_URL,
               inLanguage: "es-CO",
               publisher: { "@id": ORGANIZATION_ID },
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
-                },
-                "query-input": "required name=search_term_string",
-              },
             }),
           }}
         />

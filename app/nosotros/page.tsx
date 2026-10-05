@@ -27,7 +27,7 @@ import WaButton from "@/components/local/WaButton";
 import CallButton from "@/components/local/CallButton";
 
 const TITLE = `Quiénes somos: el equipo de ${OWNER.name} en ${COMPANY_NAME}`;
-const DESCRIPTION = `${COMPANY_NAME} es una empresa de techos, pintura y plomería a domicilio en Medellín y 11 municipios, fundada y dirigida por ${OWNER.name}. Revisamos gratis, damos el precio por escrito y respondemos con garantía firmada.`;
+const DESCRIPTION = `${COMPANY_NAME} es una empresa de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá, fundada y dirigida por ${OWNER.name}. Revisamos gratis, damos el precio por escrito y respondemos con garantía firmada.`;
 
 export const metadata: Metadata = {
   title: TITLE,

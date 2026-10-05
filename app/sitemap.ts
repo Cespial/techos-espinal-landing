@@ -3,6 +3,8 @@ import { SITE_URL, LAST_CONTENT_UPDATE } from "@/lib/conversion";
 import { getAllPosts } from "@/lib/blog-utils";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO, CROSS_PAGE_SEO } from "@/lib/seo-data";
 
+import { SOLUTIONS, SOLUTIONS_UPDATED_AT } from "@/lib/solutions";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const contentDate = new Date(LAST_CONTENT_UPDATE);
   const blogPosts = getAllPosts();
@@ -54,6 +56,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    { url: `${SITE_URL}/soluciones`, lastModified: new Date(SOLUTIONS_UPDATED_AT), changeFrequency: "monthly", priority: 0.8 },
+    ...SOLUTIONS.map((solution) => ({ url: `${SITE_URL}/soluciones/${solution.slug}`, lastModified: new Date(SOLUTIONS_UPDATED_AT), changeFrequency: "monthly" as const, priority: 0.8 })),
     ...serviceEntries,
     ...coverageEntries,
     ...crossPageEntries,
@@ -63,18 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: contentDate,
       changeFrequency: "monthly",
       priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/terminos`,
-      lastModified: contentDate,
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/privacidad`,
-      lastModified: contentDate,
-      changeFrequency: "monthly",
-      priority: 0.3,
     },
   ];
 }

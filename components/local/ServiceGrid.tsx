@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { SOLUTIONS } from "@/lib/solutions";
 import { type ServiceItem, type ServiceLineId } from "@/lib/conversion";
 import type { PageType } from "@/lib/tracking";
 import WaButton from "./WaButton";
@@ -31,6 +33,9 @@ export default function ServiceGrid({ pageType, linea, services, heading, intro,
               <div className="col-span-2 min-w-0">
                 <h3 className="text-base font-bold tracking-tight text-slate-900">{s.name}</h3>
                 <p className="mt-1 text-sm text-slate-600">{s.summary}</p>
+                {SOLUTIONS.find((solution) => solution.serviceId === s.id) && (
+                  <Link href={`/soluciones/${SOLUTIONS.find((solution) => solution.serviceId === s.id)!.slug}`} className="mt-2 inline-flex min-h-10 items-center text-sm font-semibold text-brand hover:underline">Ver alcance y qué cambia el precio</Link>
+                )}
               </div>
               <p className="text-sm text-slate-900">
                 <span className="text-slate-600">desde </span>

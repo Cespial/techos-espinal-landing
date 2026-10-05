@@ -12,6 +12,8 @@ import LocalLinks from "@/components/local/LocalLinks";
 import { COMPANY_NAME, SITE_URL } from "@/lib/conversion";
 import { MUNICIPALITY_SEO, SERVICE_LINE_SEO } from "@/lib/seo-data";
 
+import { COVERAGE_AREAS, coverageHref } from "@/lib/coverage-areas";
+
 const TITLE = "Cobertura en Medellín y el Valle de Aburrá";
 const DESCRIPTION =
   "Espinal Multiservicios atiende techos, pintura y plomería en Medellín y los municipios del Valle de Aburrá y el Oriente antioqueño. Encuentra tu municipio y cotiza por WhatsApp.";
@@ -59,11 +61,11 @@ export default function CoberturaIndexPage() {
     url: `${SITE_URL}/cobertura`,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: MUNICIPALITY_SEO.map((m, i) => ({
+      itemListElement: COVERAGE_AREAS.map((m, i) => ({
         "@type": "ListItem",
         position: i + 1,
         name: m.name,
-        url: `${SITE_URL}/cobertura/${m.slug}`,
+        url: `${SITE_URL}${coverageHref(m)}`,
       })),
     },
   };
@@ -119,10 +121,10 @@ export default function CoberturaIndexPage() {
               Municipios donde trabajamos
             </h2>
             <p className="mt-2 text-slate-600">
-              Selecciona tu municipio para ver los servicios disponibles y precios de referencia.
+              Priorizamos Medellín y Bello y cubrimos los diez municipios del Valle de Aburrá. También atendemos Rionegro, La Ceja y Marinilla en el Oriente cercano. Confirma barrio, acceso y disponibilidad antes de programar.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {MUNICIPALITY_SEO.map((m) => {
+              {[...MUNICIPALITY_SEO].sort((a, b) => COVERAGE_AREAS.findIndex((area) => area.slug === a.slug) - COVERAGE_AREAS.findIndex((area) => area.slug === b.slug)).map((m) => {
                 const illustration = municipioIllustration(m.slug, "sm");
                 return (
                   <li key={m.slug}>
@@ -156,6 +158,14 @@ export default function CoberturaIndexPage() {
                 );
               })}
             </ul>
+            <article id="barbosa" className="mt-6 scroll-mt-28 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-wider text-brand">Valle de Aburrá · zona norte</p>
+              <h3 className="mt-2 text-2xl font-semibold text-ink">También atendemos Barbosa</h3>
+              <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+                Puedes solicitar techos, pintura o plomería en Barbosa. Comparte tu barrio o sector y describe el trabajo para confirmar acceso, alcance y disponibilidad. La cobertura no corresponde a una oficina abierta al público.
+              </p>
+              <WaButton source="coverage" pageType="cobertura_index" municipio="Barbosa" label="Consultar atención en Barbosa" className="mt-5" />
+            </article>
           </div>
         </section>
 
