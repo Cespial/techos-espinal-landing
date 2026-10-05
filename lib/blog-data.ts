@@ -611,10 +611,14 @@ Consulta [techos en Medellín](/servicios/techos/medellin), [techos en Bello](/s
   /* ---- ARTICLE 7 ---- */
   {
     slug: "cuanto-cobra-plomero-medellin-precios",
-    title: "¿Cuánto cobra un plomero en Medellín? Precios de referencia",
-    metaDescription: "Precios base de plomería publicados por Espinal: fugas, destapes, grifería y sanitarios. Qué cambia el valor y qué confirmar antes de contratar.",
-    targetKeyword: "cuanto cobra un plomero en Medellín",
+    title: "Precios de plomería en Medellín 2026: tabla y alcances",
+    metaDescription: "Tabla de precios base de plomería 2026 publicada por Espinal en Medellín: fugas, destapes, grifería y sanitarios. Compara alcances antes de contratar.",
+    targetKeyword: "precios de plomería en Medellín 2026",
     secondaryKeywords: [
+      "lista de precios de plomería en Colombia 2026",
+      "cuanto cobra un plomero por hora",
+      "cuanto cobra un plomero por día",
+      "cuanto cuesta la plomería de un baño",
       "precio plomero Medellín",
       "plomero Medellín precio",
       "cuanto cuesta un plomero en Medellín",
@@ -631,7 +635,7 @@ Consulta [techos en Medellín](/servicios/techos/medellin), [techos en Bello](/s
     ogImage: "/og/blog-cuanto-cobra-plomero-medellin-precios.png",
     featuredImage: "/blog/cuanto-cobra-plomero-medellin-precios.webp",
     featuredImageAlt: "Plomero profesional reparando tubería en Medellín",
-    readingTimeMinutes: 4,
+    readingTimeMinutes: 6,
     isFeatured: true,
     relatedSlugs: ["fuga-agua-pared-como-detectar", "destape-canerias-medellin-metodos-precios", "preparar-casa-temporada-lluvias-medellin"],
     targetMunicipalities: ["Medellín", "Envigado", "Sabaneta", "Bello", "Itagüí", "La Estrella", "Copacabana"],
@@ -656,6 +660,24 @@ No son un estudio del mercado de Medellín ni tarifas cerradas para todos los ca
 | Mantenimiento de tuberías | $200.000 COP |
 
 Son referencias del [catálogo de plomería](/servicios/plomeria). “Desde” identifica un punto de partida, no un máximo. No se afirma que cada valor incluya todos los repuestos, equipos, aperturas o acabados de cualquier instalación. Pide ese detalle antes de aceptar.
+
+## ¿Es una lista de precios de plomería para toda Colombia?
+
+No. La tabla reúne los precios base que **Espinal Multiservicios publica para su propia atención** en Medellín y las zonas indicadas en la página de [cobertura](/cobertura). No representa un promedio nacional, una tarifa oficial ni el precio de todos los plomeros de Colombia.
+
+Si comparas listas de distintas empresas, confirma la ciudad, la fecha, el servicio exacto y lo que incluye cada valor. Dos filas con el mismo nombre pueden contemplar actividades, repuestos y condiciones de acceso diferentes.
+
+## ¿Se cobra por hora, por día o por servicio?
+
+Espinal publica referencias por servicio. Cobrar por hora o por día también puede ser válido cuando el alcance no puede definirse de antemano, pero la propuesta debe explicar la unidad, el valor, el tiempo que se facturará y los materiales o desplazamientos que se cobran aparte.
+
+Para una reparación concreta, compara el resultado acordado y no solo la unidad de tiempo. Pregunta qué ocurre si el trabajo toma más de lo previsto y quién debe autorizar una actividad adicional. Esta guía no publica una tarifa universal por hora o por día porque no existe un único alcance comparable.
+
+## ¿Cuánto cuesta la plomería de un baño?
+
+“La plomería de un baño” puede referirse a una fuga, un sanitario, una grifería, un desagüe o a renovar varias conexiones. La tabla no permite sumar esos precios y asumir el valor de un baño completo.
+
+Para cotizar, indica qué aparatos existen, qué falla, si hay que abrir paredes o pisos, quién aporta los repuestos y qué acabado debe recuperarse. Si se trata de una remodelación, pide una propuesta separada para redes, aparatos, obra civil y acabados. Así evitas comparar una reparación puntual con una renovación completa.
 
 ## Visita para cotizar y diagnóstico: qué aclarar
 
