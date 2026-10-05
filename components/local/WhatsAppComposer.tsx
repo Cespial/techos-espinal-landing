@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { LINE_OPTIONS, buildWaLink, type ServiceLineId } from "@/lib/conversion";
+import { LINE_OPTIONS, MUNICIPALITY_OPTIONS, buildWaLink, type ServiceLineId } from "@/lib/conversion";
 import { OWNER } from "@/lib/owner";
 import { trackWhatsApp, type PageType } from "@/lib/tracking";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 type Props = { pageType: PageType; municipio?: string };
 
-/** Redacta el mensaje de WhatsApp por el cliente: tres campos y se abre el chat. */
+/** Redacta el mensaje de WhatsApp por el cliente: se abre el chat con el municipio elegido. */
 export default function WhatsAppComposer({ pageType, municipio }: Props) {
   const [nombre, setNombre] = useState("");
   const [linea, setLinea] = useState<ServiceLineId>("techos");
+  const [municipioElegido, setMunicipioElegido] = useState(municipio ?? "");
   const [problema, setProblema] = useState("");
   const [error, setError] = useState("");
 
@@ -23,8 +24,8 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
     }
     setError("");
     const context = `${nombre.trim() ? `soy ${nombre.trim()}. ` : ""}${problema.trim()}`;
-    trackWhatsApp({ source: "composer", page_type: pageType, linea, municipio: municipio ?? "general" });
-    window.location.href = buildWaLink({ intent: "composer", linea, municipio, context });
+    trackWhatsApp({ source: "composer", page_type: pageType, linea, municipio: municipioElegido || "general" });
+    window.location.href = buildWaLink({ intent: "composer", linea, municipio: municipioElegido || undefined, context });
   };
 
   return (
@@ -58,6 +59,13 @@ export default function WhatsAppComposer({ pageType, municipio }: Props) {
                   {l.label}
                 </option>
               ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800 sm:col-span-2">
+            ¿En qué municipio? (opcional)
+            <select value={municipioElegido} onChange={(e) => setMunicipioElegido(e.target.value)} className="min-h-12 rounded-xl border border-slate-300 bg-white px-3 text-base text-slate-900 focus:border-slate-900">
+              <option value="">Selecciona el municipio</option>
+              {MUNICIPALITY_OPTIONS.map((name) => <option key={name} value={name}>{name}</option>)}
             </select>
           </label>
           <label className="flex flex-col gap-1.5 text-sm font-medium text-slate-800 sm:col-span-2">

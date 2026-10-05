@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { GBP_URL, GBP_REVIEW_URL } from "@/lib/business";
 
+import { COVERAGE_COUNT } from "@/lib/coverage-areas";
+
 type Props = {
   /** Municipio para personalizar el texto ("en Envigado"). */
   municipality?: string;
@@ -17,8 +19,8 @@ type Props = {
 const PROMISES = [
   {
     icon: "visita",
-    title: "Visita técnica gratis",
-    text: "Vamos, revisamos el problema y te explicamos qué hay que hacer antes de cobrar.",
+    title: "Visita para cotizar gratis",
+    text: "La visita inicial para cotizar no tiene costo. Una revisión específica o reparación se acuerda y cotiza antes de realizarla.",
   },
   {
     icon: "cotizacion",
@@ -32,8 +34,8 @@ const PROMISES = [
   },
   {
     icon: "cobertura",
-    title: "12 municipios",
-    text: "Medellín, Valle de Aburrá y Oriente cercano, con la misma garantía en todos.",
+    title: `${COVERAGE_COUNT} municipios`,
+    text: "Todo el Valle de Aburrá y Oriente cercano. Confirmamos agenda y acceso para tu ubicación.",
   },
 ] as const;
 

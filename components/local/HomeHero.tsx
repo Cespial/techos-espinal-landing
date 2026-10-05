@@ -5,7 +5,7 @@ import CallButton from "./CallButton";
 import OwnerCard from "./OwnerCard";
 
 const TRUST = [
-  { title: "Visita técnica gratis", text: "Revisamos el problema y te explicamos qué hay que hacer." },
+  { title: "Visita para cotizar gratis", text: "Si hace falta un diagnóstico adicional, acordamos su alcance y precio antes." },
   { title: "Precio por escrito", text: "Sabes cuánto cuesta antes de que empiece." },
   { title: "Garantía firmada", text: "Cada trabajo queda respaldado por escrito." },
 ];
@@ -19,7 +19,7 @@ export default function HomeHero() {
             Reparación de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-700">
-            Somos el equipo de {OWNER.name}. Vamos a tu casa, revisamos el problema sin costo y te damos el
+            Somos el equipo de {OWNER.name}. Vamos a tu casa para cotizar sin costo y te damos el
             precio por escrito antes de empezar.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">

@@ -1,10 +1,12 @@
+import { COVERAGE_AREAS } from "./coverage-areas";
+
 export const COMPANY_NAME = "Espinal Multiservicios";
 export const SITE_URL = "https://espinalservicios.com";
 
 // Fecha estable de última actualización de contenido (para sitemap.lastModified).
 // Evita que cada deploy marque todas las URLs como "actualizadas" con la hora de build.
 // Actualizar manualmente al revisar el contenido de las páginas estructurales.
-export const LAST_CONTENT_UPDATE = "2026-10-03";
+export const LAST_CONTENT_UPDATE = "2026-10-05";
 
 export const PHONE_DISPLAY = "(+57) 300 733 6333";
 export const PHONE_E164 = "+573007336333";
@@ -199,21 +201,7 @@ export const SERVICE_DATA: Record<ServiceLineId, ServiceItem[]> = {
 
 export const URGENCY_OPTIONS = ["Hoy", "Esta semana", "Solo cotización"] as const;
 
-export const MUNICIPALITY_OPTIONS = [
-  "Medellín",
-  "Envigado",
-  "Sabaneta",
-  "Bello",
-  "Itagüí",
-  "La Estrella",
-  "Caldas",
-  "Copacabana",
-  "Girardota",
-  "Rionegro",
-  "La Ceja",
-  "Marinilla",
-  "Otro",
-] as const;
+export const MUNICIPALITY_OPTIONS = [...COVERAGE_AREAS.map((area) => area.name), "Otro"] as const;
 
 export type UrgencyOption = (typeof URGENCY_OPTIONS)[number];
 export type MunicipalityOption = (typeof MUNICIPALITY_OPTIONS)[number];
@@ -245,7 +233,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     title: "Vamos a revisar",
     detail:
       "Vamos a tu casa o negocio, miramos el problema y te explicamos qué hay que hacer.",
-    note: "La visita no tiene costo.",
+    note: "La visita para cotizar no tiene costo. Una revisión específica o reparación se cotiza antes de realizarla.",
   },
   {
     id: "proposal",
@@ -328,7 +316,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-2",
     question: "¿Cómo revisan el problema?",
     answer:
-      "Vamos a tu casa, miramos qué pasa y te explicamos qué hay que hacer. Si hace falta, usamos herramientas especiales para encontrar el problema.",
+      "Vamos a tu casa, miramos qué pasa y te explicamos qué hay que hacer. Si hace falta una revisión adicional, te explicamos su alcance antes de realizarla.",
   },
   {
     id: "faq-3",
@@ -338,9 +326,9 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     id: "faq-4",
-    question: "¿Cuánto tiempo toma una visita técnica?",
+    question: "¿Cómo programamos una visita técnica?",
     answer:
-      "Después de que nos escribas, coordinamos la visita en 1 a 3 días hábiles.",
+      "Comparte el municipio, el barrio y lo que necesitas. Confirmamos la disponibilidad y acordamos contigo la fecha y el horario de visita.",
     ctaText: "Agendar visita ahora",
     ctaSource: "faq_visita",
   },
@@ -362,25 +350,25 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: "faq-7",
     question: "¿Qué es Espinal Multiservicios?",
     answer:
-      "Espinal Multiservicios es una empresa de techos y cubiertas, pintura y acabados, y plomería a domicilio en Medellín y Valle de Aburrá, fundada y dirigida por Henrry Espinal. Nuestro equipo va a tu casa, revisa gratis, te da el precio por escrito y responde con garantía firmada. Atendemos 12 municipios de Antioquia.",
+      "Espinal Multiservicios es una empresa de techos y cubiertas, pintura y acabados, y plomería a domicilio en Medellín y Valle de Aburrá, fundada y dirigida por Henrry Espinal. Nuestro equipo va a tu casa, revisa gratis, te da el precio por escrito y responde con garantía firmada. Atendemos el Valle de Aburrá y municipios del Oriente cercano, según disponibilidad.",
   },
   {
     id: "faq-8",
     question: "¿En qué municipios atienden?",
     answer:
-      "Atendemos en Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota, Rionegro, La Ceja y Marinilla. Todos en el departamento de Antioquia, Colombia.",
+      "Atendemos en Medellín, Envigado, Sabaneta, Bello, Itagüí, La Estrella, Caldas, Copacabana, Girardota y Barbosa, además de Rionegro, La Ceja y Marinilla en el Oriente cercano. Todos en el departamento de Antioquia, Colombia.",
   },
   {
     id: "faq-9",
     question: "¿Cuánto cuesta un plomero en Medellín?",
     answer:
-      "Nuestros servicios de plomería en Medellín empiezan desde $120.000 COP. Incluyen revisión de presión del agua, detección de fugas, reparación de llaves, destape de desagües, cambio de grifería y mantenimiento de tuberías. La visita técnica y la cotización son gratuitas.",
+      "El catálogo de plomería tiene referencias desde $120.000 COP para revisión de presión. Cada servicio se cotiza por separado: ese valor no incluye todos los arreglos. La cotización es gratuita; antes de autorizar una revisión específica o reparación, confirma su alcance y precio.",
   },
   {
     id: "faq-10",
     question: "¿Cuánto cuesta pintar un apartamento en Medellín?",
     answer:
-      "Pintar un apartamento en Medellín cuesta entre $800.000 y $3.500.000 COP dependiendo del tamaño y estado de las paredes. Incluye mano de obra, pintura de buena calidad, preparación de superficies y limpieza final. Cotización gratis.",
+      "La pintura interior tiene una referencia inicial de $280.000 COP en nuestro catálogo; no es una tarifa por metro cuadrado ni el precio de un apartamento completo. El presupuesto depende de las superficies, su estado y los materiales acordados. Cotización gratis.",
   },
 ];
 
@@ -390,9 +378,9 @@ export const FAQ_ITEMS: FaqItem[] = [
 
 export const COVERAGE_SCHEDULE = {
   hours: "Lunes a sábado, 7:00 a.m. - 6:00 p.m.",
-  responseTime: "Respuesta en menos de 2 horas en horario laboral.",
+  responseTime: "Atendemos tus mensajes en horario laboral y confirmamos la disponibilidad de visita.",
   urgencyNote:
-    "Urgencias fuera de horario: escríbenos por WhatsApp y coordinamos lo antes posible.",
+    "Fuera de horario puedes dejar tu mensaje por WhatsApp. La atención queda sujeta a disponibilidad confirmada.",
 } as const;
 
 /* ------------------------------------------------------------------ */

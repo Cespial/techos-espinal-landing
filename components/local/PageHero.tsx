@@ -14,6 +14,7 @@ type Props = {
   bullets?: readonly string[];
   municipio?: string;
   linea?: ServiceLineId;
+  servicio?: string;
   ctaLabel: string;
   illustration?: Illustration;
   /** Muestra la franja de Henrry debajo de la acción principal. */
@@ -21,7 +22,7 @@ type Props = {
 };
 
 /** El contacto precede a la ilustración también en el orden de lectura móvil. */
-export default function PageHero({ pageType, h1, intro, bullets, municipio, linea, ctaLabel, illustration, withOwner = true }: Props) {
+export default function PageHero({ pageType, h1, intro, bullets, municipio, linea, servicio, ctaLabel, illustration, withOwner = true }: Props) {
   const portrait = illustration ? illustration.height > illustration.width : false;
   return (
     <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
@@ -47,7 +48,7 @@ export default function PageHero({ pageType, h1, intro, bullets, municipio, line
             </ul>
           )}
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <WaButton source="hero" pageType={pageType} linea={linea} municipio={municipio} label={ctaLabel} size="lg" />
+            <WaButton source="hero" pageType={pageType} linea={linea} municipio={municipio} servicio={servicio} label={ctaLabel} size="lg" />
             <CallButton source="hero" pageType={pageType} linea={linea} municipio={municipio} size="lg" />
           </div>
           {withOwner && (

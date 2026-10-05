@@ -14,6 +14,8 @@ import FaqSection from "@/components/local/FaqSection";
 import WhatsAppComposer from "@/components/local/WhatsAppComposer";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 
+import SolutionLinks from "@/components/local/SolutionLinks";
+
 const businessSchema = {
   "@context": "https://schema.org",
   ...buildLocalBusinessNode({
@@ -38,6 +40,7 @@ export default function Home() {
       <main id="main-content">
         <HomeHero />
         <ServiceCards pageType="home" />
+        <SolutionLinks heading="Encuentra la solución que necesitas" />
         <ProcessSteps pageType="home" />
         <TrustSignals />
         <RecentWork />

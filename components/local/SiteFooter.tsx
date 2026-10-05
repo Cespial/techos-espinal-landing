@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { BRAND_COMPACT } from "@/lib/brand-layout";
 import Link from "next/link";
-import { COMPANY_NAME, PHONE_DISPLAY, PHONE_E164 } from "@/lib/conversion";
+import { COMPANY_NAME } from "@/lib/conversion";
 import { NAP, GBP_URL } from "@/lib/business";
 import { OWNER } from "@/lib/owner";
 import { LINE_OPTIONS } from "@/lib/conversion";
+
+import FooterPhone from "./FooterPhone";
 
 /** Pie único del sitio, con NAP visible y la línea de propiedad. */
 export default function SiteFooter() {
@@ -22,13 +24,11 @@ export default function SiteFooter() {
           </p>
           <address className="mt-4 space-y-1 text-sm not-italic text-slate-700">
             <p>
-              <a href={`tel:${PHONE_E164}`} className="font-semibold text-slate-900 hover:underline">
-                {PHONE_DISPLAY}
-              </a>{" "}
+              <FooterPhone />{" "}
               (WhatsApp y llamadas)
             </p>
             <p>{NAP.hours}</p>
-            <p>Urgencias fuera de horario por WhatsApp.</p>
+            <p>Consultas fuera de horario por WhatsApp; atención según disponibilidad.</p>
           </address>
         </div>
 
@@ -43,8 +43,13 @@ export default function SiteFooter() {
               </li>
             ))}
             <li>
+              <Link href="/soluciones" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
+                Soluciones para tu hogar y negocio
+              </Link>
+            </li>
+            <li>
               <Link href="/cobertura" className="inline-flex min-h-10 items-center hover:text-slate-950 hover:underline">
-                Los 12 municipios que atendemos
+                Cobertura en el Valle y Oriente
               </Link>
             </li>
           </ul>

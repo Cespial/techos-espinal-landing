@@ -17,6 +17,8 @@ import FaqSection from "@/components/local/FaqSection";
 import RelatedLinks from "@/components/local/RelatedLinks";
 import TrustSignals from "@/components/local/TrustSignals";
 
+import SolutionLinks from "@/components/local/SolutionLinks";
+
 export function generateStaticParams() {
   return SERVICE_LINE_SEO.map((s) => ({ linea: s.slug }));
 }
@@ -68,6 +70,7 @@ export default async function ServicioPage({ params }: Props) {
           illustration={lineIllustration(lineId)}
         />
         <ServiceGrid pageType={pageType} linea={lineId} services={services} heading="Servicios y precios de referencia" tone="slate" />
+        <SolutionLinks linea={lineId} />
         <ProcessSteps pageType={pageType} linea={lineId} />
         <TrustSignals />
         <FaqSection items={seo.faqs} />

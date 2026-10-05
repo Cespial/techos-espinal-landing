@@ -22,7 +22,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
         <Portrait size={56} />
         <p className="text-sm leading-snug">
           <span className="font-bold">{OWNER.name}</span>, {OWNER.role.toLowerCase()}.{" "}
-          {municipio ? `Su equipo revisa en ${municipio} sin costo.` : "Su equipo revisa sin costo y responde con garantía."}{" "}
+          {municipio ? `Cotiza con su equipo en ${municipio} sin costo.` : "Cotiza con su equipo sin costo y con el precio por escrito."}{" "}
           <Link href="/nosotros" className="font-semibold underline decoration-slate-950/40 underline-offset-4 hover:decoration-slate-950">
             Conoce al equipo
           </Link>
@@ -89,7 +89,7 @@ export default function OwnerCard({ variant = "hero", municipio }: Props) {
         </div>
         <div>
           <dt className="text-slate-600">Dónde</dt>
-          <dd className="font-semibold">Medellín y 11 municipios</dd>
+          <dd className="font-semibold">Medellín y el Valle de Aburrá</dd>
         </div>
       </dl>
     </aside>
