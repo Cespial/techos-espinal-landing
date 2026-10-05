@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { WORKBENCH, VALLEY_MAP } from "@/lib/illustrations";
 import {
   COMPANY_NAME,
   SITE_URL,
@@ -87,7 +89,7 @@ export default function NosotrosPage() {
         <Breadcrumbs items={[{ name: "Inicio", href: "/" }, { name: OWNER.name }]} />
 
         <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-start">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-center">
             <div>
               <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                 Somos {COMPANY_NAME}, el equipo de {OWNER.name}
@@ -108,7 +110,17 @@ export default function NosotrosPage() {
                 <CallButton source="hero" pageType={pageType} size="lg" />
               </div>
             </div>
-            <OwnerCard variant="hero" />
+            <div className="space-y-4">
+              <Image
+                src={WORKBENCH.src}
+                alt={WORKBENCH.alt}
+                width={WORKBENCH.width}
+                height={WORKBENCH.height}
+                sizes="(min-width: 1152px) 464px, (min-width: 1024px) 42vw, calc(100vw - 32px)"
+                className="h-auto w-full rounded-3xl"
+              />
+              <OwnerCard variant="hero" />
+            </div>
           </div>
         </section>
 
@@ -169,22 +181,32 @@ export default function NosotrosPage() {
         <TrustSignals heading="Nuestras reglas" />
 
         <section className="border-t border-slate-200 bg-white py-16 md:py-24" aria-labelledby="where-heading">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 id="where-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-              Dónde trabajamos
-            </h2>
-            <p className="mt-3 max-w-2xl text-base text-slate-600">
-              Medellín, Valle de Aburrá y Oriente cercano. {COVERAGE_SCHEDULE.hours} {COVERAGE_SCHEDULE.urgencyNote}
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {MUNICIPALITY_SEO.map((m) => (
-                <li key={m.slug}>
-                  <Link href={`/cobertura/${m.slug}`} className="inline-flex min-h-11 items-center rounded-full border border-slate-300 bg-white px-3.5 text-sm font-semibold text-slate-700 hover:border-orange-300 hover:text-orange-700">
-                    {m.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center">
+            <div>
+              <h2 id="where-heading" className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+                Dónde trabajamos
+              </h2>
+              <p className="mt-3 max-w-2xl text-base text-slate-600">
+                Medellín, Valle de Aburrá y Oriente cercano. {COVERAGE_SCHEDULE.hours} {COVERAGE_SCHEDULE.urgencyNote}
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {MUNICIPALITY_SEO.map((m) => (
+                  <li key={m.slug}>
+                    <Link href={`/cobertura/${m.slug}`} className="inline-flex min-h-11 items-center rounded-full border border-slate-300 bg-white px-3.5 text-sm font-semibold text-slate-700 hover:border-orange-300 hover:text-orange-700">
+                      {m.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Image
+              src={VALLEY_MAP.src}
+              alt={VALLEY_MAP.alt}
+              width={VALLEY_MAP.width}
+              height={VALLEY_MAP.height}
+              sizes="(min-width: 1152px) 480px, (min-width: 768px) 42vw, calc(100vw - 32px)"
+              className="h-auto w-full rounded-3xl"
+            />
           </div>
         </section>
 

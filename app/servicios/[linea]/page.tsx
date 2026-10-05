@@ -9,6 +9,7 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import PageHero from "@/components/local/PageHero";
+import { lineIllustration } from "@/lib/illustrations";
 import ServiceGrid from "@/components/local/ServiceGrid";
 import ProcessSteps from "@/components/local/ProcessSteps";
 import CtaBand from "@/components/local/CtaBand";
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "es_CO",
       images: [{ url: data.ogImage, width: 1200, height: 630, alt: data.title }],
     },
-    twitter: { card: "summary_large_image", title: data.title, description: data.metaDescription },
+    twitter: { card: "summary_large_image", title: data.title, description: data.metaDescription, images: [data.ogImage] },
   };
 }
 
@@ -64,6 +65,7 @@ export default async function ServicioPage({ params }: Props) {
           bullets={seo.heroBullets}
           linea={lineId}
           ctaLabel="Cotizar por WhatsApp"
+          illustration={lineIllustration(lineId)}
         />
         <ServiceGrid pageType={pageType} linea={lineId} services={services} heading="Servicios y precios de referencia" tone="slate" />
         <ProcessSteps pageType={pageType} linea={lineId} />

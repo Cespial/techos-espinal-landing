@@ -17,6 +17,7 @@ import SiteFooter from "@/components/local/SiteFooter";
 import MobileStickyBar from "@/components/local/MobileStickyBar";
 import Breadcrumbs from "@/components/local/Breadcrumbs";
 import PageHero from "@/components/local/PageHero";
+import { lineIllustration, municipioIllustration } from "@/lib/illustrations";
 import ServiceGrid from "@/components/local/ServiceGrid";
 import LocalZones from "@/components/local/LocalZones";
 import ProcessSteps from "@/components/local/ProcessSteps";
@@ -84,6 +85,7 @@ export default async function CrossPage({ params }: Props) {
           municipio={muniSeo.name}
           linea={lineId}
           ctaLabel={`Cotizar en ${muniSeo.name}`}
+          illustration={lineIllustration(lineId)}
         />
         <ServiceGrid
           pageType={pageType}
@@ -94,7 +96,7 @@ export default async function CrossPage({ params }: Props) {
           intro={`Precios de referencia para ${muniSeo.name}. El valor final te lo damos por escrito después de la visita gratis.`}
           tone="slate"
         />
-        {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="paper" />}
+        {profile && <LocalZones municipio={muniSeo.name} profile={profile} tone="paper" illustration={municipioIllustration(muniSeo.slug)} />}
         <ProcessSteps pageType={pageType} municipio={muniSeo.name} linea={lineId} />
         <TrustSignals municipality={muniSeo.name} />
         <FaqSection

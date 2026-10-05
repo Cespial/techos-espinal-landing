@@ -1,4 +1,6 @@
 import { BLOG_POSTS, type BlogCategory, type BlogPost } from "./blog-data";
+import { lexer } from "marked";
+import { createHeadingId } from "./blog-headings";
 
 export function getAllPosts(): BlogPost[] {
   return [...BLOG_POSTS].sort(
@@ -22,20 +24,12 @@ export type HeadingItem = {
 
 export function extractHeadings(markdown: string): HeadingItem[] {
   const headings: HeadingItem[] = [];
-  const lines = markdown.split("\n");
-
-  for (const line of lines) {
-    const match = line.match(/^(#{2,3})\s+(.+)$/);
-    if (match) {
-      const level = match[1].length as 2 | 3;
-      const text = match[2].trim();
-      const id = text
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "");
-      headings.push({ id, text, level });
+  const headingId = createHeadingId();
+  for (const token of lexer(markdown)) {
+    if (token.type !== "heading") continue;
+    const id = headingId(token.text);
+    if (token.depth === 2 || token.depth === 3) {
+      headings.push({ id, text: token.text, level: token.depth });
     }
   }
 

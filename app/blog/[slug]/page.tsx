@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
@@ -155,15 +156,24 @@ export default async function BlogPostPage({ params }: Props) {
               alt={post.featuredImageAlt}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 896px"
-              priority
+              sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 895px) calc(100vw - 48px), 848px"
+              preload
             />
           </div>
 
           {/* Grid: content + sidebar */}
           <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_280px]">
             {/* Main content */}
-            <article>
+            <article className="min-w-0 lg:max-w-[68ch]">
+              {headings.length > 0 && (
+                <details className="group mb-6 rounded-2xl border border-slate-200 bg-white p-4 lg:hidden">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+                    En este artículo
+                    <ChevronDown className="h-4 w-4 shrink-0 text-slate-600 group-open:rotate-180" aria-hidden="true" />
+                  </summary>
+                  <TableOfContents headings={headings} bare />
+                </details>
+              )}
               <BlogContent body={post.body} />
               <RelatedServices
                 serviceLines={post.serviceLines}
@@ -177,7 +187,7 @@ export default async function BlogPostPage({ params }: Props) {
             </article>
 
             {/* Sidebar */}
-            <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <aside className="hidden space-y-6 lg:sticky lg:top-24 lg:block lg:self-start">
               <TableOfContents headings={headings} />
               <BlogCTA
                 serviceLine={primaryServiceLine}

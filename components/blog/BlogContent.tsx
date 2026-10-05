@@ -1,4 +1,5 @@
 import { marked, type Tokens } from "marked";
+import { createHeadingId } from "@/lib/blog-headings";
 
 type BlogContentProps = {
   body: string;
@@ -6,6 +7,7 @@ type BlogContentProps = {
 
 export default function BlogContent({ body }: BlogContentProps) {
   const renderer = new marked.Renderer();
+  const headingId = createHeadingId();
 
   // Wrap tables in a scrollable container for mobile
   const originalTable = renderer.table.bind(renderer);
@@ -15,12 +17,7 @@ export default function BlogContent({ body }: BlogContentProps) {
 
   // Add IDs to headings for scroll-spy anchor links
   renderer.heading = ({ text, depth }: { text: string; depth: number }) => {
-    const id = text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
+    const id = headingId(text);
     return `<h${depth} id="${id}">${text}</h${depth}>`;
   };
 
