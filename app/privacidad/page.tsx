@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "Conoce cómo Espinal Multiservicios trata los datos personales que recibimos por WhatsApp, llamada o formulario.",
   alternates: { canonical: `${SITE_URL}/privacidad` },
   robots: { index: false, follow: true },
+  openGraph: { images: [{ url: "/og/og-default.png", width: 1200, height: 630 }] },
 };
 
 export default function PrivacidadPage() {

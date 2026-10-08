@@ -1,0 +1,618 @@
+{
+  "/": {
+    "title": "Techos, pintura y plomería a domicilio en Medellín | Espinal Multiservicios",
+    "description": "Reparamos techos, pintamos y arreglamos la plomería de tu casa o negocio en Medellín y Valle de Aburrá. Equipo de Henrry Espinal: visita gratis, precio por escrito y garantía firmada. Escríbenos por WhatsApp.",
+    "h1": "Reparación de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá",
+    "internal": 55,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  },
+  "/blog": {
+    "title": "Blog — Consejos de techos, pintura y plomería | Espinal Multiservicios",
+    "description": "Consejos prácticos sobre techos, pintura y plomería para tu casa o negocio en Medellín. Guías, precios y soluciones del equipo de Espinal Multiservicios.",
+    "h1": "Consejos para tu casa o negocio",
+    "internal": 3,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-blog-servicios.png"
+  },
+  "/cobertura": {
+    "title": "Cobertura en Medellín y el Valle de Aburrá | Espinal Multiservicios",
+    "description": "Espinal Multiservicios atiende techos, pintura y plomería en Medellín y los municipios del Valle de Aburrá y el Oriente antioqueño. Encuentra tu municipio y cotiza por WhatsApp.",
+    "h1": "Cobertura en Medellín y el Valle de Aburrá",
+    "internal": 55,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  },
+  "/soluciones": {
+    "title": "Soluciones para tu hogar en Medellín y Bello | Espinal Multiservicios",
+    "description": "Reparación de goteras y fugas, pintura interior, impermeabilización y destapes en Medellín, Bello y Valle de Aburrá. Conoce alcances y cómo cotizar.",
+    "h1": "¿Qué necesitas resolver en tu casa o negocio?",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  },
+  "/soluciones/reparacion-goteras": {
+    "title": "Reparación de goteras en Medellín y Bello | Espinal Multiservicios",
+    "description": "Reparación de goteras en Medellín, Bello y Valle de Aburrá. Consulta el alcance, qué cambia el precio y cuándo conviene revisar toda la cubierta.",
+    "h1": "Reparación de goteras en Medellín y Bello",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/soluciones/pintura-interior": {
+    "title": "Pintura interior en Medellín y Bello | Espinal Multiservicios",
+    "description": "Pintura interior de casas, apartamentos y locales en Medellín y Bello. Define superficies, preparación, materiales y presupuesto antes de empezar.",
+    "h1": "Pintura interior en Medellín y Bello",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/soluciones/reparacion-fugas-agua": {
+    "title": "Reparación de fugas de agua en Medellín y Bello | Espinal Multiservicios",
+    "description": "Reparación de fugas de agua en Medellín, Bello y Valle de Aburrá. Diferencia una fuga visible de una oculta y conoce qué debe incluir la cotización.",
+    "h1": "Reparación de fugas de agua en Medellín y Bello",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/soluciones/impermeabilizacion-techos": {
+    "title": "Impermeabilización de techos en Medellín y Bello | Espinal Multiservicios",
+    "description": "Impermeabilización de techos y cubiertas en Medellín y Bello. Compara reparación puntual y tratamiento por área, preparación, materiales y presupuesto.",
+    "h1": "Impermeabilización de techos en Medellín y Bello",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/soluciones/destape-desagues": {
+    "title": "Destape de desagües en Medellín y Bello | Espinal Multiservicios",
+    "description": "Destape de desagües de baño, cocina y patio en Medellín y Bello. Conoce qué cotizar si el problema afecta un punto o varios y qué cambia el precio.",
+    "h1": "Destape de desagües en Medellín y Bello",
+    "internal": 5,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/techos": {
+    "title": "Techos y cubiertas en Medellín: reparación, impermeabilización y mantenimiento | Espinal Multiservicios",
+    "description": "Reparación de goteras, impermeabilización y mantenimiento de techos en Medellín y Valle de Aburrá. Visita técnica gratis. Cotiza por WhatsApp.",
+    "h1": "Que no te entre agua por el techo",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/pintura": {
+    "title": "Pintura y acabados en Medellín: interior, exterior y tratamiento de paredes | Espinal Multiservicios",
+    "description": "Pintura interior y exterior, resanes, estuco y tratamiento de humedad en Medellín y Valle de Aburrá. Cotización gratis. Escríbenos por WhatsApp.",
+    "h1": "Tu casa o negocio como nuevo",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/plomeria": {
+    "title": "Plomería en Medellín: reparación de fugas, destape y mantenimiento | Espinal Multiservicios",
+    "description": "Reparación de fugas, destape de desagües y mantenimiento de tuberías en Medellín y Valle de Aburrá. Consulta disponibilidad por WhatsApp.",
+    "h1": "Adiós a las fugas y desagües tapados",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/cobertura/medellin": {
+    "title": "Techos, pintura y plomería en Medellín | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Medellín. Atendemos todas las comunas, de Belén a El Poblado. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Medellín",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/medellin/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/envigado": {
+    "title": "Techos, pintura y plomería en Envigado | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Envigado. Del centro a Loma del Escobero y Las Palmas. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Envigado",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/envigado/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/sabaneta": {
+    "title": "Techos, pintura y plomería en Sabaneta | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Sabaneta. Casas tradicionales y edificios nuevos del sur. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Sabaneta",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/sabaneta/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/bello": {
+    "title": "Techos, pintura y plomería en Bello | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Bello. Niquía, Cabañas, Fontidueño y el centro de Bello. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Bello",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/bello/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/itagui": {
+    "title": "Techos, pintura y plomería en Itagüí | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Itagüí. Viviendas, locales y bodegas del sector industrial. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Itagüí",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/itagui/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/la-estrella": {
+    "title": "Techos, pintura y plomería en La Estrella | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en La Estrella. Pueblo Viejo, Suramérica y el casco urbano. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en La Estrella",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/la-estrella/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/caldas": {
+    "title": "Techos, pintura y plomería en Caldas | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Caldas. Casco urbano y veredas cercanas del sur del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Caldas",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/caldas/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/copacabana": {
+    "title": "Techos, pintura y plomería en Copacabana | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Copacabana. Casco urbano y zona campestre del norte del Valle. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Copacabana",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/copacabana/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/girardota": {
+    "title": "Techos, pintura y plomería en Girardota | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Girardota. Casco urbano y fincas del norte del Valle de Aburrá. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Girardota",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/girardota/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/barbosa": {
+    "title": "Techos, pintura y plomería en Barbosa | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Barbosa. Consulta atención en el casco urbano, El Hatillo, Popalito y veredas. Cotización por escrito.",
+    "h1": "Techos, pintura y plomería en Barbosa",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/barbosa/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/rionegro": {
+    "title": "Techos, pintura y plomería en Rionegro | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Rionegro. Casco urbano, Llanogrande y San Antonio de Pereira. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Rionegro",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/rionegro/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/la-ceja": {
+    "title": "Techos, pintura y plomería en La Ceja | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en La Ceja. Casco urbano y parcelaciones del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en La Ceja",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/la-ceja/opengraph-image?2cba05d999302832"
+  },
+  "/cobertura/marinilla": {
+    "title": "Techos, pintura y plomería en Marinilla | Reparación a domicilio | Espinal Multiservicios",
+    "description": "Reparación de techos, pintura y plomería en Marinilla. Casco urbano y veredas del altiplano del Oriente. Visita técnica gratis y garantía por escrito.",
+    "h1": "Techos, pintura y plomería en Marinilla",
+    "internal": 18,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/cobertura/marinilla/opengraph-image?2cba05d999302832"
+  },
+  "/servicios/techos/medellin": {
+    "title": "Reparación de techos y goteras en Medellín | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Medellín. Consulta atención en todas las comunas, de Belén a El Poblado. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Medellín",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/envigado": {
+    "title": "Reparación de techos y goteras en Envigado | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Envigado. Consulta atención en el centro, Zúñiga y sectores de las lomas. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Envigado",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/sabaneta": {
+    "title": "Reparación de techos y goteras en Sabaneta | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Sabaneta. Consulta atención en el centro, Aves María y La Doctora. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Sabaneta",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/bello": {
+    "title": "Reparación de techos y goteras en Bello | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Bello. Consulta atención en Niquía, Cabañas, Fontidueño y el centro. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Bello",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/itagui": {
+    "title": "Reparación de techos y goteras en Itagüí | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Itagüí. Consulta atención en el centro, Ditaires y Santa María. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Itagüí",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/la-estrella": {
+    "title": "Reparación de techos y goteras en La Estrella | Espinal Multiservicios",
+    "description": "Techos y cubiertas en La Estrella. Consulta atención en Pueblo Viejo, Suramérica y el casco urbano. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en La Estrella",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/caldas": {
+    "title": "Reparación de techos y goteras en Caldas | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Caldas. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Caldas",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/copacabana": {
+    "title": "Reparación de techos y goteras en Copacabana | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Copacabana. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Copacabana",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/girardota": {
+    "title": "Reparación de techos y goteras en Girardota | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Girardota. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Girardota",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/barbosa": {
+    "title": "Reparación de techos y goteras en Barbosa | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Barbosa. Consulta atención en el casco urbano, El Hatillo, Popalito y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Barbosa",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/rionegro": {
+    "title": "Reparación de techos y goteras en Rionegro | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Rionegro. Consulta atención en el casco urbano, Llanogrande y San Antonio de Pereira. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Rionegro",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/la-ceja": {
+    "title": "Reparación de techos y goteras en La Ceja | Espinal Multiservicios",
+    "description": "Techos y cubiertas en La Ceja. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en La Ceja",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/techos/marinilla": {
+    "title": "Reparación de techos y goteras en Marinilla | Espinal Multiservicios",
+    "description": "Techos y cubiertas en Marinilla. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Reparación de techos y goteras en Marinilla",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-techos.png"
+  },
+  "/servicios/pintura/medellin": {
+    "title": "Pintores en Medellín: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Medellín. Consulta atención en todas las comunas, de Belén a El Poblado. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Medellín",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/envigado": {
+    "title": "Pintores en Envigado: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Envigado. Consulta atención en el centro, Zúñiga y sectores de las lomas. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Envigado",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/sabaneta": {
+    "title": "Pintores en Sabaneta: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Sabaneta. Consulta atención en el centro, Aves María y La Doctora. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Sabaneta",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/bello": {
+    "title": "Pintores en Bello: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Bello. Consulta atención en Niquía, Cabañas, Fontidueño y el centro. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Bello",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/itagui": {
+    "title": "Pintores en Itagüí: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Itagüí. Consulta atención en el centro, Ditaires y Santa María. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Itagüí",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/la-estrella": {
+    "title": "Pintores en La Estrella: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en La Estrella. Consulta atención en Pueblo Viejo, Suramérica y el casco urbano. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en La Estrella",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/caldas": {
+    "title": "Pintores en Caldas: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Caldas. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Caldas",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/copacabana": {
+    "title": "Pintores en Copacabana: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Copacabana. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Copacabana",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/girardota": {
+    "title": "Pintores en Girardota: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Girardota. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Girardota",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/barbosa": {
+    "title": "Pintores en Barbosa: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Barbosa. Consulta atención en el casco urbano, El Hatillo, Popalito y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Barbosa",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/rionegro": {
+    "title": "Pintores en Rionegro: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Rionegro. Consulta atención en el casco urbano, Llanogrande y San Antonio de Pereira. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Rionegro",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/la-ceja": {
+    "title": "Pintores en La Ceja: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en La Ceja. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en La Ceja",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/pintura/marinilla": {
+    "title": "Pintores en Marinilla: interior y exterior | Espinal Multiservicios",
+    "description": "Pintura y acabados en Marinilla. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Pintura de casas y apartamentos en Marinilla",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-pintura.png"
+  },
+  "/servicios/plomeria/medellin": {
+    "title": "Plomero en Medellín: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Medellín. Consulta atención en todas las comunas, de Belén a El Poblado. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Medellín",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/envigado": {
+    "title": "Plomero en Envigado: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Envigado. Consulta atención en el centro, Zúñiga y sectores de las lomas. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Envigado",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/sabaneta": {
+    "title": "Plomero en Sabaneta: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Sabaneta. Consulta atención en el centro, Aves María y La Doctora. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Sabaneta",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/bello": {
+    "title": "Plomero en Bello: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Bello. Consulta atención en Niquía, Cabañas, Fontidueño y el centro. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Bello",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/itagui": {
+    "title": "Plomero en Itagüí: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Itagüí. Consulta atención en el centro, Ditaires y Santa María. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Itagüí",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/la-estrella": {
+    "title": "Plomero en La Estrella: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en La Estrella. Consulta atención en Pueblo Viejo, Suramérica y el casco urbano. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en La Estrella",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/caldas": {
+    "title": "Plomero en Caldas: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Caldas. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Caldas",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/copacabana": {
+    "title": "Plomero en Copacabana: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Copacabana. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Copacabana",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/girardota": {
+    "title": "Plomero en Girardota: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Girardota. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Girardota",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/barbosa": {
+    "title": "Plomero en Barbosa: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Barbosa. Consulta atención en el casco urbano, El Hatillo, Popalito y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Barbosa",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/rionegro": {
+    "title": "Plomero en Rionegro: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Rionegro. Consulta atención en el casco urbano, Llanogrande y San Antonio de Pereira. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Rionegro",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/la-ceja": {
+    "title": "Plomero en La Ceja: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en La Ceja. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en La Ceja",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/servicios/plomeria/marinilla": {
+    "title": "Plomero en Marinilla: fugas y destapes a domicilio | Espinal Multiservicios",
+    "description": "Plomería en Marinilla. Consulta atención en el casco urbano y sectores rurales. Alcance y precio por escrito.",
+    "h1": "Plomería a domicilio en Marinilla",
+    "internal": 17,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-plomeria.png"
+  },
+  "/blog/segunda-temporada-lluvias-valle-aburra-revisar-techo": {
+    "title": "Techos y segunda temporada de lluvias en el Valle de Aburrá | Espinal Multiservicios",
+    "description": "Qué revisar desde un lugar seguro antes de las lluvias en el Valle de Aburrá. Señales de atención, mantenimiento y precios base de Espinal.",
+    "h1": "Techos y segunda temporada de lluvias en el Valle de Aburrá",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-segunda-temporada-lluvias-valle-aburra-revisar-techo.png"
+  },
+  "/blog/cuanto-cuesta-impermeabilizar-techo-envigado-sabaneta-itagui": {
+    "title": "Impermeabilizar techos en Envigado, Sabaneta e Itagüí: precio | Espinal Multiservicios",
+    "description": "Precio base de impermeabilización de Espinal y factores para cotizar en Envigado, Sabaneta e Itagüí: área, preparación, acceso, sistema y alcance.",
+    "h1": "Impermeabilizar techos en Envigado, Sabaneta e Itagüí: precio",
+    "internal": 6,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-cuanto-cuesta-impermeabilizar-techo-envigado-sabaneta-itagui.png"
+  },
+  "/blog/tipos-tejas-casas-colombia-comparativa": {
+    "title": "Tipos de tejas para casas en Colombia: comparativa completa | Espinal Multiservicios",
+    "description": "Compara tipos de tejas para casas en Colombia: material, estructura, accesorios y mantenimiento. Qué revisar al cotizar y cuidado con cubiertas antiguas.",
+    "h1": "Tipos de tejas para casas en Colombia: comparativa completa",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-tipos-tejas-casas-colombia-comparativa.png"
+  },
+  "/blog/como-quitar-moho-paredes-definitivamente": {
+    "title": "Cómo tratar el moho en paredes y evitar que reaparezca | Espinal Multiservicios",
+    "description": "Moho en paredes: corregir la humedad, reconocer cuándo pedir ayuda especializada y preparar la recuperación del acabado. Orientaciones EPA y CDC.",
+    "h1": "Cómo tratar el moho en paredes y evitar que reaparezca",
+    "internal": 6,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-como-quitar-moho-paredes-definitivamente.png"
+  },
+  "/blog/destape-canerias-medellin-metodos-precios": {
+    "title": "Destape de cañerías en Medellín: métodos, precios y consejos | Espinal Multiservicios",
+    "description": "Destape de cañerías en Medellín: precio base de Espinal, métodos y límites, qué hacer si el agua se devuelve y qué informar antes de la revisión.",
+    "h1": "Destape de cañerías en Medellín: métodos, precios y consejos",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-destape-canerias-medellin-metodos-precios.png"
+  },
+  "/blog/cuanto-cobra-plomero-medellin-precios": {
+    "title": "Precios de plomería en Medellín 2026: tabla y alcances | Espinal Multiservicios",
+    "description": "Tabla de precios base de plomería 2026 publicada por Espinal en Medellín: fugas, destapes, grifería y sanitarios. Compara alcances antes de contratar.",
+    "h1": "Precios de plomería en Medellín 2026: tabla y alcances",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-cuanto-cobra-plomero-medellin-precios.png"
+  },
+  "/blog/preparar-casa-temporada-lluvias-medellin": {
+    "title": "Cómo preparar tu casa para la temporada de lluvias en Medellín | Espinal Multiservicios",
+    "description": "Lista para revisar tu casa antes de las lluvias en Medellín y el Valle de Aburrá: techo, desagües, señales de atención y mantenimiento.",
+    "h1": "Cómo preparar tu casa para la temporada de lluvias en Medellín",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-preparar-casa-temporada-lluvias-medellin.png"
+  },
+  "/blog/como-arreglar-gotera-techo": {
+    "title": "Cómo arreglar una gotera en el techo: guía completa | Espinal Multiservicios",
+    "description": "Qué hacer ante una gotera, cómo orientar la revisión y qué reparaciones pueden corresponder. Precios base de Espinal en Medellín y Bello.",
+    "h1": "Cómo arreglar una gotera en el techo: guía completa",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-como-arreglar-gotera-techo.png"
+  },
+  "/blog/precio-pintar-apartamento-medellin": {
+    "title": "¿Cuánto cuesta pintar un apartamento en Medellín? | Espinal Multiservicios",
+    "description": "Precio base de pintura interior de Espinal en Medellín, factores del presupuesto y qué pedir en una cotización de apartamento. Alcance y materiales.",
+    "h1": "¿Cuánto cuesta pintar un apartamento en Medellín?",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-precio-pintar-apartamento-medellin.png"
+  },
+  "/blog/fuga-agua-pared-como-detectar": {
+    "title": "Fuga de agua en la pared: cómo detectarla y qué hacer | Espinal Multiservicios",
+    "description": "Señales de una posible fuga en la pared, medidas iniciales y qué aclarar al cotizar la reparación en Medellín o Bello. Alcance y precios base.",
+    "h1": "Fuga de agua en la pared: cómo detectarla y qué hacer",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-fuga-agua-pared-como-detectar.png"
+  },
+  "/blog/impermeabilizacion-techos-medellin-precios": {
+    "title": "Impermeabilización de techos en Medellín: precios y tipos | Espinal Multiservicios",
+    "description": "Impermeabilización de techos en Medellín: precio base de Espinal, sistemas, preparación y criterios para comparar cotizaciones sin promesas de duración.",
+    "h1": "Impermeabilización de techos en Medellín: precios y tipos",
+    "internal": 7,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-impermeabilizacion-techos-medellin-precios.png"
+  },
+  "/blog/humedad-paredes-causas-soluciones": {
+    "title": "Humedad en las paredes: causas, soluciones y prevención | Espinal Multiservicios",
+    "description": "Cómo orientar la revisión de humedad en paredes: filtración, fuga y condensación. Qué información recoger y qué corregir antes de pintar.",
+    "h1": "Humedad en las paredes: causas, soluciones y prevención",
+    "internal": 6,
+    "ld": "ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/blog-humedad-paredes-causas-soluciones.png"
+  },
+  "/nosotros": {
+    "title": "Quiénes somos: el equipo de Henrry Espinal en Espinal Multiservicios | Espinal Multiservicios",
+    "description": "Espinal Multiservicios es una empresa de techos, pintura y plomería a domicilio en Medellín y el Valle de Aburrá, fundada y dirigida por Henrry Espinal. Revisamos gratis, damos el precio por escrito y respondemos con garantía firmada.",
+    "h1": "Somos Espinal Multiservicios, el equipo de Henrry Espinal",
+    "internal": 16,
+    "ld": "ok,ok,ok,ok,ok,ok",
+    "og": "https://espinalservicios.com/og/og-default.png"
+  }
+}

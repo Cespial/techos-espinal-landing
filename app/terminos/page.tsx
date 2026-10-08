@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "Términos generales de Espinal Multiservicios para inspección técnica, cotización y ejecución de trabajos.",
   alternates: { canonical: `${SITE_URL}/terminos` },
   robots: { index: false, follow: true },
+  openGraph: { images: [{ url: "/og/og-default.png", width: 1200, height: 630 }] },
 };
 
 export default function TerminosPage() {
