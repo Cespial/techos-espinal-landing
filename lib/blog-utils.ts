@@ -35,3 +35,13 @@ export function extractHeadings(markdown: string): HeadingItem[] {
 
   return headings;
 }
+
+/**
+ * Divide el artículo antes de su tercer H2 para ubicar un llamado a la acción
+ * cuando el lector ya vio la respuesta inicial. Con menos de tres H2 no divide.
+ */
+export function splitBodyForEarlyCta(body: string): [string, string] | null {
+  const starts = [...body.matchAll(/^## /gm)].map((match) => match.index);
+  if (starts.length < 3) return null;
+  return [body.slice(0, starts[2]), body.slice(starts[2])];
+}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ServiceLineId } from "@/lib/conversion";
 import { SERVICE_LINE_SEO, MUNICIPALITY_SEO } from "@/lib/seo-data";
+import { getSolutionsByLine } from "@/lib/solutions";
 
 type Props = {
   serviceLines: ServiceLineId[];
@@ -22,6 +23,7 @@ export default function RelatedServices({ serviceLines, municipalities }: Props)
   const lines = serviceLines.filter((l) => SERVICE_LINE_SEO.some((s) => s.slug === l));
   if (lines.length === 0) return null;
   const primary = lines[0];
+  const solutions = lines.flatMap((line) => getSolutionsByLine(line));
   const munis = municipalities
     .map((name) => MUNICIPALITY_SEO.find((m) => m.name === name))
     .filter((m): m is NonNullable<typeof m> => Boolean(m))
@@ -36,6 +38,17 @@ export default function RelatedServices({ serviceLines, municipalities }: Props)
         ¿Necesitas que lo hagamos nosotros?
       </h2>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+        {solutions.map((solution) => (
+          <li key={solution.slug}>
+            <Link
+              href={`/soluciones/${solution.slug}`}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-700 hover:underline"
+            >
+              {solution.name}: alcance y precio
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </li>
+        ))}
         {lines.map((line) => (
           <li key={line}>
             <Link

@@ -4,7 +4,7 @@ import WaButton from "@/components/local/WaButton";
 type BlogCTAProps = {
   serviceLine: ServiceLineId;
   postTitle: string;
-  variant?: "inline" | "sticky";
+  variant?: "inline" | "sticky" | "early";
 };
 
 const COPY_BY_LINE: Record<ServiceLineId, { heading: string; body: string }> = {
@@ -25,12 +25,13 @@ const COPY_BY_LINE: Record<ServiceLineId, { heading: string; body: string }> = {
 export default function BlogCTA({ serviceLine, postTitle, variant = "inline" }: BlogCTAProps) {
   const copy = COPY_BY_LINE[serviceLine];
   const sticky = variant === "sticky";
+  const source = sticky ? "blog_sticky" : variant === "early" ? "blog_banner" : "blog_inline";
   return (
     <div className={`rounded-2xl border border-slate-200 bg-slate-50 ${sticky ? "p-5" : "my-8 p-5 sm:p-6"}`}>
       <p className={`font-semibold text-slate-900 ${sticky ? "text-sm" : "text-base"}`}>{copy.heading}</p>
-      <p className={`mt-1 text-slate-600 ${sticky ? "text-xs" : "text-sm"}`}>{copy.body}</p>
+      <p className={`mt-1 text-slate-600 ${sticky ? "text-xs" : "text-sm"}`}>{copy.body} Atendemos en Medellín y el Valle de Aburrá.</p>
       <WaButton
-        source={sticky ? "blog_sticky" : "blog_inline"}
+        source={source}
         pageType="blog"
         linea={serviceLine}
         intent="blog"

@@ -3,11 +3,12 @@ import { createHeadingId } from "@/lib/blog-headings";
 
 type BlogContentProps = {
   body: string;
+  /** Asignador compartido cuando un artículo se renderiza en dos tramos. */
+  headingId?: (text: string) => string;
 };
 
-export default function BlogContent({ body }: BlogContentProps) {
+export default function BlogContent({ body, headingId = createHeadingId() }: BlogContentProps) {
   const renderer = new marked.Renderer();
-  const headingId = createHeadingId();
 
   // Wrap tables in a scrollable container for mobile
   const originalTable = renderer.table.bind(renderer);
