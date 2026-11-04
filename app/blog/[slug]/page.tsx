@@ -7,7 +7,8 @@ import { SITE_URL, COMPANY_NAME } from "@/lib/conversion";
 import { buildBlogAuthorNode, ORGANIZATION_ID } from "@/lib/business";
 import RelatedServices from "@/components/blog/RelatedServices";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog-data";
-import { getPostBySlug, getAllPosts, extractHeadings } from "@/lib/blog-utils";
+import { getPostBySlug, getAllPosts, extractHeadings, splitBodyForEarlyCta } from "@/lib/blog-utils";
+import { createHeadingId } from "@/lib/blog-headings";
 import SiteHeader from "@/components/local/SiteHeader";
 import SiteFooter from "@/components/local/SiteFooter";
 import Breadcrumbs from "@/components/blog/Breadcrumbs";
@@ -81,6 +82,8 @@ export default async function BlogPostPage({ params }: Props) {
 
   const categoryLabel = BLOG_CATEGORIES[post.category].label;
   const primaryServiceLine = post.serviceLines[0];
+  const bodyParts = splitBodyForEarlyCta(post.body);
+  const headingId = createHeadingId();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -174,7 +177,15 @@ export default async function BlogPostPage({ params }: Props) {
                   <TableOfContents headings={headings} bare />
                 </details>
               )}
-              <BlogContent body={post.body} />
+              {bodyParts ? (
+                <>
+                  <BlogContent body={bodyParts[0]} headingId={headingId} />
+                  <BlogCTA serviceLine={primaryServiceLine} postTitle={post.title} variant="early" />
+                  <BlogContent body={bodyParts[1]} headingId={headingId} />
+                </>
+              ) : (
+                <BlogContent body={post.body} />
+              )}
               <RelatedServices
                 serviceLines={post.serviceLines}
                 municipalities={post.targetMunicipalities}

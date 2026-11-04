@@ -66,7 +66,7 @@ export default async function SolutionPage({ params }: Props) {
           pageType={pageType}
           h1={solution.title}
           intro={solution.intro}
-          bullets={solution.bullets}
+          bullets={[`Desde ${service.basePrice}`, ...solution.bullets]}
           linea={solution.linea}
           servicio={solution.name}
           ctaLabel="Consultar mi caso"
